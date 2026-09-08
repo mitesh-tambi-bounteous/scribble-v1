@@ -1,0 +1,424 @@
+WEBVTT
+
+00:00:38.761 --> 00:00:40.361
+<v Rajeev Kumar>Hey, hi, Shubhankar.</v>
+
+00:00:42.681 --> 00:00:43.481
+<v Shubhankar Bhavsar>Yeah, hi Rajeev.</v>
+
+00:00:48.601 --> 00:00:50.121
+<v Rajeev Kumar>Hey, hi Nitish.</v>
+
+00:00:51.241 --> 00:00:52.001
+<v Nitish Goyal>Hey, hi, Rajeev.</v>
+
+00:01:14.076 --> 00:01:15.676
+<v Rajeev Kumar>Hey, hi Erik.</v>
+
+00:01:16.396 --> 00:01:16.956
+<v Eric Rice>How are you?</v>
+
+00:01:18.156 --> 00:01:20.316
+<v Rajeev Kumar>Very fine, sir. Thank you.</v>
+
+00:01:32.476 --> 00:01:34.956
+<v Rajeev Kumar>Hey, hi, Karuna. Very good evening.</v>
+
+00:01:36.156 --> 00:01:37.516
+<v Karuna Arshakota>Yeah, hi, Jason. Hi, everybody.</v>
+
+00:01:42.396 --> 00:01:44.236
+<v Eric Rice>Rajeev, what time is it over there for you?</v>
+
+00:01:45.916 --> 00:01:49.676
+<v Rajeev Kumar>This is right now, 8.30pm.</v>
+
+00:01:50.236 --> 00:01:50.636
+<v Eric Rice>Ohh, wow.</v>
+
+00:01:56.396 --> 00:01:57.876
+<v Rob Forshier II>You say 830?</v>
+
+00:01:59.836 --> 00:02:09.196
+<v Rob Forshier II>I always thought the time zones were like hour-wise. I never knew that they would go into like the minutes like that, because it's 10.01 for me, so I would assume that it's 8.31 for you.</v>
+
+00:01:59.956 --> 00:02:00.476
+<v Rajeev Kumar>Yes.</v>
+
+00:02:10.156 --> 00:02:13.116
+<v Rajeev Kumar>Yeah, man, 830 or 830?</v>
+
+00:02:11.516 --> 00:02:13.396
+<v Rob Forshier II>I've never seen it go to the minutes. That's cool.</v>
+
+00:02:15.756 --> 00:02:20.476
+<v Rajeev Kumar>Hey, hi Pankaj. Okay, shall we get going everyone?</v>
+
+00:02:19.036 --> 00:02:19.436
+<v Pankaj Aggarwal>And.</v>
+
+00:02:23.916 --> 00:02:39.396
+<v Rajeev Kumar>OK, so Eric, from today we will start using the board for everyone's update, and you know we can start looking at how we are progressing from the Jira board itself.</v>
+
+00:02:41.436 --> 00:02:43.996
+<v Rajeev Kumar>Let me go ahead, share my screen.</v>
+
+00:02:51.196 --> 00:02:54.996
+<v Rajeev Kumar>Yeah, let me know once everyone is able to see my screen.</v>
+
+00:02:58.796 --> 00:03:05.596
+<v Rajeev Kumar>Wonderful. So let's, who want to go first? Shall we start with you, Pankaj?</v>
+
+00:03:08.636 --> 00:03:10.796
+<v Pankaj Aggarwal>Yap, that's fine.</v>
+
+00:03:11.676 --> 00:03:14.556
+<v Pankaj Aggarwal>Actually, my my updates may not go.</v>
+
+00:03:15.436 --> 00:03:35.596
+<v Pankaj Aggarwal>Really, you know, aligned with Jira. So GitHub, yes, GitHub access is already set up, but along with GitHub setup, I'm working on setting up the entire repo. As I said, you know, we were able to set up the checks, the PR checks, the security around the branch and all. Since Erik, you already upgraded the team, so I was able to access that part and.</v>
+
+00:03:36.316 --> 00:03:49.636
+<v Pankaj Aggarwal>We are implementing the security and other settings around the branching that will be there. Along with that, I've also set up the Git flow. The way we'll be cutting out the branches during development cycles alone.</v>
+
+00:03:51.036 --> 00:04:09.996
+<v Pankaj Aggarwal>So mostly setting of the development baselines and all. Everything is set up. And the other thing I was able to do is since I got access to Apple developer account, I was able to set up end-to-end build using an Apple developer profile. So I was able to log in, set up Xcode and everything.</v>
+
+00:04:10.236 --> 00:04:14.796
+<v Pankaj Aggarwal>even the provisioning profile and at least on my machine I'm able to build.</v>
+
+00:04:15.836 --> 00:04:16.876
+<v Pankaj Aggarwal>Everything end to end.</v>
+
+00:04:18.476 --> 00:04:32.236
+<v Rajeev Kumar>So, buckets, can we pull those relevant items as you are working into this sprint one, which is our discovery phase sprint, and then mark it as done?</v>
+
+00:04:33.196 --> 00:04:34.956
+<v Pankaj Aggarwal>I will do that after this.</v>
+
+00:04:40.156 --> 00:04:43.436
+<v Rajeev Kumar>Anything else, Pankaj, for me, your side to cover?</v>
+
+00:04:44.396 --> 00:04:46.156
+<v Pankaj Aggarwal>Night, and that that's all myself.</v>
+
+00:04:47.756 --> 00:04:53.116
+<v Rajeev Kumar>Okay, who want to go next? Shall we go with you, Nitish?</v>
+
+00:04:54.316 --> 00:05:01.676
+<v Nitish Goyal>Yeah, sure, Rajeev. So, basically, today I was working on the API.</v>
+
+00:05:00.556 --> 00:05:01.276
+<v Rajeev Kumar>Just a minute.</v>
+
+00:05:03.916 --> 00:05:06.476
+<v Rajeev Kumar>Let it get filtered. OK, Yap.</v>
+
+00:05:07.356 --> 00:05:27.316
+<v Nitish Goyal>Yeah, okay, so today I was working on the API contracting schema. The PR is now merged. The Pankaj review day and there was some, there was some review comments, so we closed it and it get merged in the meta repo. Apart from that, I just...</v>
+
+00:05:27.436 --> 00:05:34.076
+<v Nitish Goyal>It was one of the ticket in the sprint one also, the Arora gate ticket. I just closed it as we discussed.</v>
+
+00:05:35.276 --> 00:05:42.716
+<v Nitish Goyal>And I would be, I am going to look into this 16 as well, if...</v>
+
+00:05:44.156 --> 00:05:47.876
+<v Nitish Goyal>We can just put some comment and close this one as well right now.</v>
+
+00:05:49.436 --> 00:06:00.076
+<v Nitish Goyal>And I actually started today on the data model as well, the scribble number 20, and this spin 12. Yeah, that's what I'm doing there. Thank you.</v>
+
+00:06:00.796 --> 00:06:10.876
+<v Rajeev Kumar>So, this was already in progress, Nitish, right? This should be then near, near conclusion or closer, like where we stand on this.</v>
+
+00:06:03.836 --> 00:06:04.876
+<v Nitish Goyal>Yeah, this is in.</v>
+
+00:06:09.516 --> 00:06:10.636
+<v Nitish Goyal>No, no.</v>
+
+00:06:11.596 --> 00:06:13.836
+<v Nitish Goyal>I started working today itself.</v>
+
+00:06:14.916 --> 00:06:30.476
+<v Nitish Goyal>And it would require certain review from Pankaj as well, and there will be more iterations of review for this one. So, and I think today tomorrow is our holiday. People would not be available.</v>
+
+00:06:33.836 --> 00:06:36.316
+<v Rajeev Kumar>Is it holiday for you also, Nitish?</v>
+
+00:06:36.636 --> 00:06:38.636
+<v Nitish Goyal>Yes, I'm not available, yeah.</v>
+
+00:06:39.436 --> 00:06:41.036
+<v Rajeev Kumar>Okay, I think.</v>
+
+00:06:46.636 --> 00:06:50.716
+<v Rajeev Kumar>Any blocker for you or any impedimency?</v>
+
+00:06:52.236 --> 00:06:52.956
+<v Rajeev Kumar>Readyment.</v>
+
+00:06:52.476 --> 00:06:53.076
+<v Nitish Goyal>No Rajeev.</v>
+
+00:06:55.036 --> 00:06:55.316
+<v Rajeev Kumar>BU.</v>
+
+00:06:59.836 --> 00:07:01.996
+<v Rajeev Kumar>Pramod, you have any updates?</v>
+
+00:07:02.996 --> 00:07:21.676
+<v Pramod Kumar>Yeah, so I think on the access stuff, Eric, you saw your note, so on the AWS one, so you can now make that temporary user for Pankaj and Mohamed, but one thing I just wanted to check was after you created the account.</v>
+
+00:07:22.476 --> 00:07:31.676
+<v Pramod Kumar>You probably would have had to switch to that account before creating the additional IM roles.</v>
+
+00:07:32.756 --> 00:07:52.516
+<v Pramod Kumar>That may be something to double check if you, that is probably the connection between the new account added and then, so if you are already, if you are still in the management, original management view where you created the account and you created the IM roles there, it would just be tied to that.</v>
+
+00:07:52.676 --> 00:08:05.596
+<v Pramod Kumar>and not to the newly created account, so you might want to try that switch. And if it still doesn't work, right, please and create a temporary thing and Mohamed can take a look at it.</v>
+
+00:08:06.476 --> 00:08:09.596
+<v Eric Rice>Okay, that makes sense. I think that's the missing piece, so I'll keep you updated.</v>
+
+00:08:10.636 --> 00:08:10.796
+<v Pramod Kumar>But.</v>
+
+00:08:13.356 --> 00:08:15.436
+<v Rajeev Kumar>OK, we can move over to you.</v>
+
+00:08:14.636 --> 00:08:32.516
+<v Pramod Kumar>One other thing I wanted to check, this was something that came from Karuna on the testing aspect. Since you have had in the past you have had a browser application and might have had QA teams working, does Rupal have a...</v>
+
+00:08:32.956 --> 00:08:52.396
+<v Pramod Kumar>browser stack account by any chance. This is basically used to test against different combinations of browsers, versions, and mobile apps as well, mobile versions as well. So if you have something, I think that's something that Karuna team would want to use.</v>
+
+00:08:53.276 --> 00:09:01.276
+<v Eric Rice>Okay, I can send you a screenshot of the five accounts that we have under our root account and possibly one of those might work and we can work with that.</v>
+
+00:09:03.276 --> 00:09:05.196
+<v Pramod Kumar>Sure, sure you can. You can send that, yeah.</v>
+
+00:09:03.756 --> 00:09:04.476
+<v Rajeev Kumar>Amazing.</v>
+
+00:09:06.956 --> 00:09:25.356
+<v Pramod Kumar>Also, one other thing, just a heads up, I think Karuna or someone from the team will share the detail once we have the AWS account. I think there will probably be one EC2 instance, a Linux one, that will be required where the QA team will, one, be maintaining the...</v>
+
+00:09:25.636 --> 00:09:44.876
+<v Pramod Kumar>test repository and also running some of these automated tests using browser stack and other tools. So when we do intend to create that, we will run it through you so that you are aware and it makes sense.</v>
+
+00:09:45.236 --> 00:09:45.676
+<v Pramod Kumar>There you go.</v>
+
+00:09:45.516 --> 00:09:45.956
+<v Eric Rice>Okay.</v>
+
+00:09:47.116 --> 00:09:47.436
+<v Eric Rice>Greg.</v>
+
+00:09:49.036 --> 00:09:50.396
+<v Karuna Arshakota>Thanks, Prema, for bringing the.</v>
+
+00:09:52.396 --> 00:09:53.196
+<v Rajeev Kumar>Great.</v>
+
+00:09:52.436 --> 00:09:52.796
+<v Pramod Kumar>Proofs.</v>
+
+00:09:54.076 --> 00:09:55.876
+<v Pramod Kumar>I think that's about it from here.</v>
+
+00:09:57.996 --> 00:10:03.436
+<v Rajeev Kumar>Thanks, thanks so much, Pramod. I appreciate your update. So, what do you, Rob?</v>
+
+00:10:07.756 --> 00:10:30.076
+<v Rob Forshier II>So yesterday, the big thing for me was finishing out the rest of the backlog. So I was able to push in the remaining epics and user stories. So I got pushed in there. And then this morning, pumpkin reviewed my harness PR. And so we got that merged in. And so I pushed that over. And so that was</v>
+
+00:10:30.796 --> 00:10:46.316
+<v Rob Forshier II>one of those ones that I marked on, the scribble 4. And then I'd already had the POC in line with the MVP minus the designs, which on that note, Eric, do we have a timeline from Christina on when she'll get the designs to us?</v>
+
+00:11:07.516 --> 00:11:09.116
+<v Rob Forshier II>Yes, yes, the shape review.</v>
+
+00:11:09.756 --> 00:11:16.556
+<v Eric Rice>Yep, so maybe I could bring them up then and we could just finalize anything as far as deliverables go, but it's looking good.</v>
+
+00:11:17.516 --> 00:11:19.196
+<v Rob Forshier II>Awesome, awesome. Perfect. Thank you.</v>
+
+00:11:19.116 --> 00:11:25.396
+<v Pankaj Aggarwal>Rob, can you can you just add an icon also to the list because we will be needing an icon also for the application.</v>
+
+00:11:27.676 --> 00:11:30.236
+<v Rob Forshier II>We should have the icon already, but I'll double check.</v>
+
+00:11:31.276 --> 00:11:31.676
+<v Pankaj Aggarwal>Okay.</v>
+
+00:11:35.836 --> 00:11:41.196
+<v Rajeev Kumar>Thank you. Thank you, Rob. Then we can go over to you, Shubhankar.</v>
+
+00:11:45.276 --> 00:11:54.076
+<v Shubhankar Bhavsar>Hi, so I picked this item scribble 18 and assigned a few more items to me. So primarily this 18 I worked.</v>
+
+00:11:58.796 --> 00:11:59.996
+<v Shubhankar Bhavsar>Okay, and for...</v>
+
+00:12:06.956 --> 00:12:09.356
+<v Rajeev Kumar>Sorry, Shubhankar, you are going on mute.</v>
+
+00:12:07.996 --> 00:12:09.196
+<v Rob Forshier II>You muted yourself.</v>
+
+00:12:14.636 --> 00:12:33.476
+<v Shubhankar Bhavsar>Sorry, sorry, I got some background issues. Okay, so yeah, I've put in my comment in this scribble 18. Along with that, I was just doing this setup from my side, the Dave tools and all of them are installed. I can run the app. I also got the GitHub access. Now I can see GitHub code as well.</v>
+
+00:12:33.596 --> 00:12:53.076
+<v Shubhankar Bhavsar>So that is pretty much from my side right now. I'm just preparing for, I mean, cross-checking the meta against the development that has been done so far. And I'm trying to figure out the gaps which are there. And once those gaps are identified, I'll just prepare a subtask for that so that I can pick one individually and.</v>
+
+00:12:53.276 --> 00:13:01.996
+<v Shubhankar Bhavsar>work up on them. So for now, just the preparation phase from my side and scribble 18 is almost complete from my side.</v>
+
+00:13:07.836 --> 00:13:08.476
+<v Shubhankar Bhavsar>That is all.</v>
+
+00:13:09.836 --> 00:13:12.956
+<v Rajeev Kumar>Sounds good. Then over to you, Karuna.</v>
+
+00:13:11.436 --> 00:13:12.076
+<v Shubhankar Bhavsar>Thank you.</v>
+
+00:13:14.876 --> 00:13:15.196
+<v Karuna Arshakota>Yeah.</v>
+
+00:13:16.396 --> 00:13:35.676
+<v Karuna Arshakota>So I'm actually working on analyzing the requirements like workflows one and two I have gone through and we have a user story scribble 28. I have gone through that and then I had some questions and I have some understanding. So I'll go with.</v>
+
+00:13:35.836 --> 00:13:45.356
+<v Karuna Arshakota>this and then try to generate test cases for this. And parallel, I was also working on the execution plan for the automation that we just discussed today.</v>
+
+00:13:47.836 --> 00:13:48.276
+<v Karuna Arshakota>That's all.</v>
+
+00:13:50.556 --> 00:13:57.076
+<v Rajeev Kumar>Wonderful. Thank you. Thank you, Karuna. Any open questions or any other?</v>
+
+00:13:58.716 --> 00:14:00.556
+<v Rajeev Kumar>Points, anyone to add a code?</v>
+
+00:14:06.516 --> 00:14:25.516
+<v Rajeev Kumar>OK, and Rob and Erik, as I understand, we will be concluding the discovery phase by today or tomorrow, right? And then that that will equip our team to be fully prepared and ready for.</v>
+
+00:14:25.836 --> 00:14:35.036
+<v Rajeev Kumar>doing the app development work and our next sprint which we are planning to start from Monday onwards which will run till 18 September.</v>
+
+00:14:36.156 --> 00:14:39.116
+<v Rajeev Kumar>That that will be our sprint number.</v>
+
+00:14:41.036 --> 00:14:48.236
+<v Rajeev Kumar>One in, you know, after the discovery phase, but here in Jira board that is coming as supreme #2.</v>
+
+00:14:52.956 --> 00:14:57.476
+<v Rajeev Kumar>Okay, any question Erik you have for me or for anyone in the team?</v>
+
+00:14:59.036 --> 00:15:03.916
+<v Eric Rice>Nope, I think I'm good. Mod, I'll be in touch about the AWS stuff. We'll get that buttoned up today.</v>
+
+00:15:05.916 --> 00:15:06.636
+<v Rajeev Kumar>Wonderful.</v>
+
+00:15:06.316 --> 00:15:06.716
+<v Rob Forshier II>IT.</v>
+
+00:15:06.476 --> 00:15:07.516
+<v Pramod Kumar>Sounds good, thanks.</v>
+
+00:15:08.556 --> 00:15:09.756
+<v Rajeev Kumar>Okay, and...</v>
+
+00:15:08.676 --> 00:15:23.996
+<v Rob Forshier II>Probably like middle of next week, we'll get you invited to the board, Eric. We're still, you know, I pushed this in yesterday. The team's kind of like absorbing it right now. And so we're still kind of getting things aligned and like readjusted. So like middle of next week, we should have it in a good enough shape that I'll try and get you on the board.</v>
+
+00:15:25.196 --> 00:15:26.076
+<v Rob Forshier II>For access to it.</v>
+
+00:15:29.436 --> 00:15:43.756
+<v Rob Forshier II>Oh, and then half the team will be out tomorrow for stand-up because of a holiday. So just, you know, just being aware, Eric, that again, sort of like last Friday, we'll just have a slightly reduced set for tomorrow.</v>
+
+00:15:45.236 --> 00:15:51.676
+<v Eric Rice>Is there any plan for our Monday? I'm not sure. I don't. Most of the scribble team is probably out. I can be available if need be.</v>
+
+00:15:53.356 --> 00:15:54.396
+<v Rob Forshier II>Monday, the 7th.</v>
+
+00:15:54.796 --> 00:15:56.636
+<v Eric Rice>Yeah, it's uh, is it Labor Day?</v>
+
+00:15:58.396 --> 00:16:00.316
+<v Rajeev Kumar>Ohh, yeah, right.</v>
+
+00:16:01.916 --> 00:16:02.956
+<v Rob Forshier II>I have to check.</v>
+
+00:16:05.436 --> 00:16:07.756
+<v Rajeev Kumar>Right, Monday is a U.S. holiday, Rob.</v>
+
+00:16:08.476 --> 00:16:09.116
+<v Rob Forshier II>Okay.</v>
+
+00:16:10.156 --> 00:16:12.076
+<v Rob Forshier II>Sweet, I didn't know we had it off, but awesome.</v>
+
+00:16:13.916 --> 00:16:14.556
+<v Rajeev Kumar>Yeah.</v>
+
+00:16:15.116 --> 00:16:16.276
+<v Eric Rice>Happy to be here.</v>
+
+00:16:16.396 --> 00:16:17.116
+<v Rob Forshier II>Hey, awesome.</v>
+
+00:16:18.796 --> 00:16:32.636
+<v Rajeev Kumar>Sure, we will meet Erik if you are available. We will have a regular stand up on Monday because tomorrow I will not be there and a few others might also not be there. So we will connect on Monday with full house.</v>
+
+00:16:33.756 --> 00:16:36.956
+<v Rob Forshier II>Just note, if it is a holiday, I won't be there, so...</v>
+
+00:16:40.396 --> 00:16:43.516
+<v Rob Forshier II>But Erik knows all the answers, so you can just ask him at this point.</v>
+
+00:16:47.516 --> 00:16:48.156
+<v Eric Rice>I wish.</v>
+
+00:16:47.876 --> 00:17:00.956
+<v Rajeev Kumar>Okay, up to you, Erik. If you are also off, we will then connect. We, India team, will connect internally and get moving, and we will then circle back on Tuesday with full hopes.</v>
+
+00:17:01.916 --> 00:17:02.716
+<v Eric Rice>OK, let's do that.</v>
+
+00:17:03.756 --> 00:17:04.716
+<v Rajeev Kumar>Okay, wonderful.</v>
+
+00:17:05.836 --> 00:17:16.236
+<v Rajeev Kumar>OK, then. Thanks, thanks everyone, and we'll connect back again partly on Friday tomorrow for some people, and full house on case.</v>
+
+00:17:19.116 --> 00:17:19.676
+<v Rob Forshier II>Thank you.</v>
+
+00:17:19.636 --> 00:17:21.036
+<v Rajeev Kumar>Thank you. Thanks, everyone.</v>
+
+00:17:20.836 --> 00:17:22.316
+<v Pramod Kumar>Thanks, all. Bye now.</v>
+
+00:17:21.356 --> 00:17:21.916
+<v Rob Forshier II>Thank you.</v>
+
+00:17:22.116 --> 00:17:22.876
+<v Nitish Goyal>Like, 7.</v>
+
+00:17:24.636 --> 00:17:25.196
+<v Pankaj Aggarwal>Excellent.</v>

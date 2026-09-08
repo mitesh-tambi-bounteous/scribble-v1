@@ -1,0 +1,598 @@
+WEBVTT
+
+00:00:03.574 --> 00:00:08.734
+<v Nitish Goyal>Tell for a curator or someone or someone from their team would be.</v>
+
+00:00:10.014 --> 00:00:27.534
+<v Nitish Goyal>might upload a list for a whole week or a whole month. From there, it would be randomly picked or how it is going to be. The prompts on the basis of which persons are going to draw. And will it vary from person to person or will it be same to all?</v>
+
+00:00:28.414 --> 00:00:46.574
+<v Rob Forshier II>Yeah, so that's what I was saying. Like their prompts, they put a lot of thought into it because I mean, this is a very simple app. So I mean, a lot of thought has to go into the different pieces and the prompt is where a lot of thought is going to go into it. For us, we're just going to be pulling this daily prompt out of the database. Now for them,</v>
+
+00:00:46.654 --> 00:01:05.214
+<v Rob Forshier II>they're either going to be just like seeding these kind of regularly, like seeding the database with, oh, here's a set of prompts to use on these specific dates. And then those prompts can be specialized based on like your regions, based on like your, you know, traditions, you know.</v>
+
+00:01:06.014 --> 00:01:23.214
+<v Rob Forshier II>And all that still needs to be like fleshed out. Because like even when you go onto like this app, it just kind of like gives you like a set of questions. You just kind of like pick from it and then it kind of uses that to then focus going forward on then, you know, what are the decisions and like what type of prompts are they looking for?</v>
+
+00:01:25.934 --> 00:01:32.654
+<v Nitish Goyal>So, will it differ from if you logged in and I logged in? Prompts can be different.</v>
+
+00:01:26.974 --> 00:01:27.374
+<v Karuna Arshakota>So...</v>
+
+00:01:33.814 --> 00:01:38.334
+<v Nitish Goyal>In a day, for two different or different set of people, is it so?</v>
+
+00:01:38.254 --> 00:01:38.414
+<v Rob Forshier II>Yeah.</v>
+
+00:01:39.374 --> 00:01:48.894
+<v Rob Forshier II>I think eventually it can be. I think for the very first ones that we're going to be doing is that we're just going to be pulling it out of the database and we can extend that prompt functionality later.</v>
+
+00:01:39.494 --> 00:01:39.694
+<v Karuna Arshakota>Yap.</v>
+
+00:01:50.894 --> 00:01:59.454
+<v Nitish Goyal>Okay, because we need to keep it like unique. A person might should not be receiving the same kind of prompt like.</v>
+
+00:02:01.214 --> 00:02:08.814
+<v Nitish Goyal>even randomly on different day in a week or something like this, right? Uniqueness of the prompt.</v>
+
+00:02:06.414 --> 00:02:25.534
+<v Rob Forshier II>Well, so daily prompt, I think daily prompts will be very consistent. I think that they can vary via region, but that's to say, like, if we're both in the US, we would see the exact same prompt or something like that. They're not going to be like 100% unique every day to every person. There are going to be just like standard ones, like</v>
+
+00:02:25.614 --> 00:02:45.334
+<v Rob Forshier II>October is coming up and so that's fall in like the US. And so it'll be fall themed and maybe, you know, Halloween in there because I'm in the US. And maybe even on like your user page later on going down, we even allow them to like, hey, do you follow like this? Would you be interested in like a Halloween theme? Or, you know, and then we just do like month.</v>
+
+00:02:45.414 --> 00:02:50.174
+<v Rob Forshier II>themes of, you know, fall for them or something like that. But is that like, that's...</v>
+
+00:02:51.334 --> 00:03:00.094
+<v Rob Forshier II>Don't worry about that right now. All that will just come out of the database and we can extend that later. For right now, there'll just be some predefined single prompts per day, and that's it.</v>
+
+00:02:53.134 --> 00:02:53.534
+<v Nitish Goyal>Okay.</v>
+
+00:03:02.854 --> 00:03:14.574
+<v Karuna Arshakota>So, Rob, in terms of validation, right, like, like, will that be also in scope? Like, we have to test by region, like, whether they are getting the relevant prompts for this MVP or...</v>
+
+00:03:16.294 --> 00:03:18.894
+<v Karuna Arshakota>No, that's the future. OK.</v>
+
+00:03:18.654 --> 00:03:20.414
+<v Rob Forshier II>That's a future, right? Yes.</v>
+
+00:03:20.174 --> 00:03:22.974
+<v Karuna Arshakota>Okay, and this app they can use only.</v>
+
+00:03:21.614 --> 00:03:23.294
+<v Rob Forshier II>Right now, we're just trying to build the ground.</v>
+
+00:03:24.174 --> 00:03:24.934
+<v Karuna Arshakota>Hmm, I understand.</v>
+
+00:03:26.334 --> 00:03:31.534
+<v Karuna Arshakota>I understand, OK, and this this app they can use only once in a day, or...</v>
+
+00:03:32.654 --> 00:03:51.934
+<v Rob Forshier II>So that's what I'm going to talk to you about because in my version, I had created a skill, one where you can create challenges where then you could, you make the prompt and then you can then create as many as you want. Additionally, they'll have prompt packs on your personal wall where then you can</v>
+
+00:03:52.974 --> 00:04:04.094
+<v Rob Forshier II>you know, go through a series of like prompts and then draw like whatever it is. Again, we need to talk about all that. It's all the same like functionality and feature-wise, it's just, you know.</v>
+
+00:04:07.094 --> 00:04:07.374
+<v Karuna Arshakota>Okay.</v>
+
+00:04:10.734 --> 00:04:20.894
+<v Karuna Arshakota>Yeah, there are a bunch of the user stories tasks. I see it's been added to the board, so...</v>
+
+00:04:22.254 --> 00:04:32.094
+<v Karuna Arshakota>Like, we will, we will walk, I mean, go through all of them during discussion, or you want us to go through the entire set of information and come back with the questions.</v>
+
+00:04:33.854 --> 00:04:51.854
+<v Rob Forshier II>Yeah, I mean, this is the hard part about me being in the US and only having like the tail end of your day. What we could do is maybe schedule a longer session where we go over the epics and features. I mean, for the most part, I was just, Pramod just wanted me to get you guys a start.</v>
+
+00:04:46.694 --> 00:04:46.974
+<v Karuna Arshakota>Mm.</v>
+
+00:04:52.894 --> 00:05:11.774
+<v Rob Forshier II>I'm not a product manager. So I just kind of, I used what I knew from the POC because I kind of already had like a backlog kind of flushed out. And so for the most part, I've given you guys the epics and the features. And they're prioritized based on what the client wants and their order. And so I was hoping that</v>
+
+00:04:55.934 --> 00:04:56.094
+<v Karuna Arshakota>Mm.</v>
+
+00:05:11.854 --> 00:05:21.214
+<v Rob Forshier II>You know, you guys would actually create the user stories underneath them or just subcast them because I didn't create the board correctly, right? Again, I don't know how to do stuff like that. I just did what I could.</v>
+
+00:05:15.454 --> 00:05:15.774
+<v Karuna Arshakota>Yeah.</v>
+
+00:05:22.494 --> 00:05:22.734
+<v Karuna Arshakota>K.</v>
+
+00:05:23.814 --> 00:05:34.014
+<v Pankaj Aggarwal>And by the way, where are we going to store the code and every argument? For now, it's fine. We are showing it in bit bucket, but are we going to keep it in like multi-ser apples only or?</v>
+
+00:05:35.054 --> 00:05:46.174
+<v Rob Forshier II>For right now, we're going to start in Bounteous repos and then eventually, probably like towards the end, we'll start shifting it into their repositories. But for right now, we're going to be building it locally inside our house.</v>
+
+00:05:46.974 --> 00:05:49.934
+<v Pankaj Aggarwal>No, because a lot of CICD depends on that.</v>
+
+00:05:50.654 --> 00:05:51.214
+<v Rob Forshier II>Yes.</v>
+
+00:05:52.694 --> 00:06:04.094
+<v Pankaj Aggarwal>Are we going to defer it towards the end because as per plan, day one, CICD, you know, everything we are expecting to be running through automated pipelines and all, which anyway won't be the case, but.</v>
+
+00:06:06.094 --> 00:06:08.254
+<v Pankaj Aggarwal>You know, shifting the repos or something.</v>
+
+00:06:06.334 --> 00:06:21.214
+<v Rob Forshier II>Yeah, I'll ask them like how they're doing their CICD now, but I have a feeling that they're just going to follow whatever we set them up with. But I'll try and get more to that today. Maybe like what do they currently use for the repositories.</v>
+
+00:06:22.854 --> 00:06:32.494
+<v Rob Forshier II>Which would it make sense or would it be good for me to get, because they will give me their B2B app source code. Do we want that?</v>
+
+00:06:34.814 --> 00:06:36.414
+<v Rob Forshier II>Do we see any value in bidding that?</v>
+
+00:06:34.894 --> 00:06:44.334
+<v Pankaj Aggarwal>I think, yes, that would anyway help us, because ultimately, whatever, you know, there could be participants from B2B app also, right? Or...</v>
+
+00:06:46.414 --> 00:06:58.814
+<v Pankaj Aggarwal>Are we like, at some point, are we expecting right now? I'm sure that's a fair expectation that there would be certain members joining from web app, certain would be at some point would be from, you know, Android, iOS, so it's going to be a...</v>
+
+00:07:00.254 --> 00:07:04.334
+<v Pankaj Aggarwal>Global game, not just specific to iOS devices or cooler devices.</v>
+
+00:07:05.774 --> 00:07:08.094
+<v Rob Forshier II>Well, so we're targeting...</v>
+
+00:07:09.254 --> 00:07:26.654
+<v Rob Forshier II>iOS first and then Android second. Just because we can build the web version, I don't know that they're going to use it. So I think they're only going to be, you know, I think they're only wanting the iOS and Android, but yeah, I mean, we could always like say that because I mean, what did I use?</v>
+
+00:07:29.294 --> 00:07:46.494
+<v Rob Forshier II>I built with, I'm forgetting the name of it, that allows me to have, yeah, Expo. Yeah, that's why I built with Expo, so that I could have the web view, the Android, and then the iOS, because I've even, like, I've sped up the POC that I built on an iOS emulator and proved that it works.</v>
+
+00:07:32.814 --> 00:07:33.454
+<v Pankaj Aggarwal>Expo.</v>
+
+00:07:46.134 --> 00:08:03.534
+<v Pankaj Aggarwal>So my question, Rob, was with respect to the participants, you know, that's fine, we are building it for IS, but what if they want in the same app, same room or something? They also want participants from web app, you know, like you shared a link, we all joined from mobiles, but...</v>
+
+00:08:03.574 --> 00:08:13.854
+<v Pankaj Aggarwal>What if I want to join from my browser, not from my mobile, right? And there would be someone else who would be using an Android device or something. So that means.</v>
+
+00:08:12.574 --> 00:08:16.974
+<v Rob Forshier II>Yeah, I'll put that on the board on whether they want to support web app functionality.</v>
+
+00:08:18.174 --> 00:08:24.734
+<v Rob Forshier II>Because I said, right now I just know of iOS and Android. I don't know that they want to support the mobile app, but we can find that out if they want to support web app.</v>
+
+00:08:19.374 --> 00:08:19.774
+<v Pankaj Aggarwal>Yes.</v>
+
+00:08:21.774 --> 00:08:22.334
+<v Pankaj Aggarwal>Yap.</v>
+
+00:08:34.094 --> 00:08:37.774
+<v Rob Forshier II>Are we planning on using the same framework, Expo?</v>
+
+00:08:39.294 --> 00:08:53.854
+<v Pankaj Aggarwal>Yes, I in the in the ADR you'll see I've done that is that also, you know, so native react native, you know, before 2023 I expose very slow and all, but now it's all good. In fact, expo is the best choice now.</v>
+
+00:08:52.494 --> 00:08:52.894
+<v Rob Forshier II>Okay.</v>
+
+00:08:55.454 --> 00:09:09.374
+<v Rob Forshier II>That's what I like to hear. I mean, that's what my research said, but that's why I like when we were bringing on the team, I was like, no, no, no, no, my POC is garbage. I want to hear what the team says because I built it in a cave by myself. And I am not an expert.</v>
+
+00:09:10.574 --> 00:09:13.374
+<v Pankaj Aggarwal>Expo is best now, so we should go with expo now.</v>
+
+00:09:14.214 --> 00:09:15.854
+<v Rob Forshier II>Beautiful, so I like to hear.</v>
+
+00:09:18.174 --> 00:09:18.934
+<v Rob Forshier II>Cool.</v>
+
+00:09:18.414 --> 00:09:37.214
+<v Pankaj Aggarwal>But yeah, when you ask for that, please ask for the compatibility between their, you know, my question was that the second part of my question was about compatibility of whatever they already have. So what if they want their existing app to be, you know, usable with the mobile app? You have a room, they want their.</v>
+
+00:09:37.534 --> 00:09:44.734
+<v Pankaj Aggarwal>Web app user to be joining to the same room using whatever they already have. They'll say, no, we don't need web app. We already have web app, but...</v>
+
+00:09:45.814 --> 00:09:56.014
+<v Pankaj Aggarwal>You know, if you really want to use the same web app with the iOS application, you need to build that compatibility layer. You need to see everything, you know, the way you'll share the images and strokes and everything between them.</v>
+
+00:09:56.574 --> 00:10:03.134
+<v Rob Forshier II>So are you talking about merging like their current B2B that we just played with this? So that would be like the web app version.</v>
+
+00:10:03.614 --> 00:10:03.854
+<v Rob Forshier II>Um...</v>
+
+00:10:04.814 --> 00:10:16.094
+<v Pankaj Aggarwal>I'm sure they might have that in mind. I don't know if that's discussed or not, but what are they going to do? They'll separately develop this entire thing and then at some point they'll discard what they have.</v>
+
+00:10:15.294 --> 00:10:15.694
+<v Rob Forshier II>Okay.</v>
+
+00:10:16.814 --> 00:10:40.854
+<v Rob Forshier II>I got what you're saying. I mean, the way that I heard it was, this is like a completely separate product to them. So they'll have two products, one business to business, because they're like web app one is their business to business one. And then this is their like business to consumer, which is then the mobile apps only friendly one. But I will 100%, because as I said, like that makes sense to me, because then, yeah, then you could have Canvas or, you know, web app people playing with mobile people. So.</v>
+
+00:10:41.534 --> 00:10:41.774
+<v Rob Forshier II>Um...</v>
+
+00:10:43.054 --> 00:10:47.534
+<v Rob Forshier II>All right, and I will also grab the source code from them today.</v>
+
+00:10:48.774 --> 00:10:49.054
+<v Pankaj Aggarwal>So.</v>
+
+00:10:58.574 --> 00:11:01.934
+<v Rob Forshier II>But yes, please start making the JIRA board your JIRA board.</v>
+
+00:11:04.414 --> 00:11:12.574
+<v Rob Forshier II>If features don't make sense, please work together to update that. And as I said, we can work together to finalize, you know, any changes to that, just let me know.</v>
+
+00:11:18.494 --> 00:11:18.734
+<v Pankaj Aggarwal>Ohh.</v>
+
+00:11:23.534 --> 00:11:29.774
+<v Rob Forshier II>Alright, so scribble today, I need to make sure that source code.</v>
+
+00:11:39.054 --> 00:11:51.134
+<v Rob Forshier II>And yeah, please put your questions on the board because then we'll, as I said, I'll get them asked that we can have the decisions and it'll all live right here. And then I'll update the HTML that I'm going to send to them right before the meeting. I'll take all these and update it.</v>
+
+00:11:53.414 --> 00:11:54.494
+<v Pankaj Aggarwal>Yeah, it will be in.</v>
+
+00:11:53.614 --> 00:11:53.934
+<v Rob Forshier II>Um...</v>
+
+00:12:02.974 --> 00:12:07.294
+<v Karuna Arshakota>Yeah, I did my from my side yesterday, Rob. I don't have any new questions today.</v>
+
+00:12:07.854 --> 00:12:09.134
+<v Rob Forshier II>Okay, perfect, perfect.</v>
+
+00:12:14.974 --> 00:12:19.534
+<v Rob Forshier II>And then from that HTML that I shared, I also did, I put.</v>
+
+00:12:20.494 --> 00:12:41.934
+<v Rob Forshier II>Just the green, so just the first eight weeks epics and features in the backlog. The orange ones still exist, they're just sitting inside of the meta-repo, because the meta-repo is kind of synced with all this. And then remember all the skills that I used to do the insertions into JIRA was done with the meta-repo, and so all those live in the meta-repo.</v>
+
+00:12:45.214 --> 00:12:45.454
+<v Pankaj Aggarwal>Yap.</v>
+
+00:12:48.974 --> 00:12:51.054
+<v Pankaj Aggarwal>By the way, what do you mean by walls?</v>
+
+00:12:52.734 --> 00:12:53.894
+<v Pankaj Aggarwal>channels or something.</v>
+
+00:12:54.574 --> 00:12:57.774
+<v Rob Forshier II>Yes, so walls are.</v>
+
+00:13:00.494 --> 00:13:01.134
+<v Rob Forshier II>This screen.</v>
+
+00:13:03.374 --> 00:13:08.974
+<v Rob Forshier II>So, okay, let me, whatever, I just gotta draw something on here. Okay, done drawing.</v>
+
+00:13:07.814 --> 00:13:14.414
+<v Nitish Goyal>Can that be like our LinkedIn profile or like a profile? We can see.</v>
+
+00:13:13.854 --> 00:13:32.654
+<v Rob Forshier II>Yes. So these are the actual walls, these little things right there. All right, we're going through the flow. All right, these are the walls. So these are where you actually like work with, start dragging. But here, you got personal wall, family test wall, and then I have like a family, like Forshier family wall below that.</v>
+
+00:13:32.974 --> 00:13:34.654
+<v Rob Forshier II>These are what are considered the walls.</v>
+
+00:13:36.654 --> 00:13:38.734
+<v Rob Forshier II>so that you can come in and actually see the wall.</v>
+
+00:13:41.694 --> 00:14:00.654
+<v Rob Forshier II>Here's like the family wall, which I've updated it to now show the user profile pics above. I don't know that we actually have a feature for that. So I'll have to make sure we add that because you can create these custom ones. That will definitely need to go in the, I think the orange section, because that's what this is right here, where you can actually come in here and change your,</v>
+
+00:14:01.054 --> 00:14:04.014
+<v Rob Forshier II>draw your own avatar. That's what I kind of did right there.</v>
+
+00:14:04.814 --> 00:14:05.294
+<v Pankaj Aggarwal>Mhm.</v>
+
+00:14:06.814 --> 00:14:07.294
+<v Rob Forshier II>So.</v>
+
+00:14:08.374 --> 00:14:15.934
+<v Rob Forshier II>which mine looks bad, but if you look at, so Chris, I can't, let me redo this. It's not letting me.</v>
+
+00:14:17.294 --> 00:14:18.094
+<v Rob Forshier II>Scroll.</v>
+
+00:14:21.454 --> 00:14:34.254
+<v Rob Forshier II>Okay, now I can scroll. Christina is their designer, which we might end up actually getting a slightly different designer, but she's going to help do at least a few of the screens. But I want to show you.</v>
+
+00:14:38.614 --> 00:14:41.854
+<v Rob Forshier II>She actually spent some time on hers. Hers looks really good.</v>
+
+00:14:44.574 --> 00:14:44.894
+<v Pankaj Aggarwal>Yap.</v>
+
+00:14:44.734 --> 00:14:49.214
+<v Rob Forshier II>She had to have used like a stylus or something when she did that. That's way too good.</v>
+
+00:14:54.934 --> 00:14:56.334
+<v Pankaj Aggarwal>Yeah, that, that's really good.</v>
+
+00:14:56.654 --> 00:15:03.854
+<v Rob Forshier II>Yeah, I mean, she's got like the like under the nose, like the like side of your nose here, got good looking lips.</v>
+
+00:15:05.134 --> 00:15:07.294
+<v Rob Forshier II>Can you see she did a good chin shape?</v>
+
+00:15:08.734 --> 00:15:09.934
+<v Rob Forshier II>Yeah, it's really good.</v>
+
+00:15:10.254 --> 00:15:10.654
+<v Karuna Arshakota>Yap.</v>
+
+00:15:13.614 --> 00:15:17.214
+<v Nitish Goyal>Can we create our own channels as well?</v>
+
+00:15:18.734 --> 00:15:20.734
+<v Nitish Goyal>Is this something I ask from the client?</v>
+
+00:15:23.214 --> 00:15:24.814
+<v Rob Forshier II>You can create these walls, yeah?</v>
+
+00:15:25.934 --> 00:15:27.774
+<v Nitish Goyal>OK, just.</v>
+
+00:15:27.014 --> 00:15:38.654
+<v Rob Forshier II>So, that's where, and that's how I can then see, like the invite, so, like, as example here, I can be like, you know, I don't know, just a new wall and I'm gonna invite my wife.</v>
+
+00:15:40.414 --> 00:15:46.094
+<v Rob Forshier II>I spelled that rightly. Okay. So now on mine, you now can see...</v>
+
+00:15:47.894 --> 00:15:59.774
+<v Rob Forshier II>I think I called it New Wall. So you can see that I have it right here. So now if we go, oh, I invited my wife to Christina. Oh, well, that works too. So I can come back over to here. And if we come over under her side,</v>
+
+00:16:01.054 --> 00:16:02.454
+<v Rob Forshier II>Oh, I did this again, Dag Navee.</v>
+
+00:16:08.294 --> 00:16:18.734
+<v Rob Forshier II>Kind of curious what that will do. Probably nothing. But if we come to her side now, it just shows up as new invite, Christina has invited you, and then you click on it and now it's, hey, Christina has invited you. Let's scribble.</v>
+
+00:16:20.854 --> 00:16:31.974
+<v Rob Forshier II>Hi, Katie. This is the actual invite flow that Eric had shared with me. Now you can do your drawing and then share it, do your text.</v>
+
+00:16:35.294 --> 00:16:37.134
+<v Rob Forshier II>Share the story, and then this goes a new one.</v>
+
+00:16:35.934 --> 00:16:43.934
+<v Nitish Goyal>So there will be like e-mail notification and application notification, these kind of notification.</v>
+
+00:16:42.534 --> 00:16:42.974
+<v Rob Forshier II>Gregg.</v>
+
+00:16:45.294 --> 00:16:45.614
+<v Rob Forshier II>Right.</v>
+
+00:16:58.254 --> 00:16:59.134
+<v Nitish Goyal>Any limit?</v>
+
+00:17:01.214 --> 00:17:01.694
+<v Rob Forshier II>Sorry?</v>
+
+00:17:02.334 --> 00:17:08.734
+<v Nitish Goyal>Any limit on creation, creating these kind of channels and everything for a user.</v>
+
+00:17:06.494 --> 00:17:24.734
+<v Rob Forshier II>Like creating like the boards or the walls and stuff. Yeah, so that's something that they want to figure out because they think that maybe that's one of the ways in which they monetize this is they like limit the number of walls you can create. Also, like, you know, maybe they add, you know,</v>
+
+00:17:10.254 --> 00:17:10.654
+<v Nitish Goyal>Yap.</v>
+
+00:17:25.294 --> 00:17:37.214
+<v Rob Forshier II>We'll give you, you know, give us $1.99, you can have an extra brush or whatever. So yeah, they're still trying to figure out how to monetize it, whether they just like limit the number of walls you can go into.</v>
+
+00:17:40.254 --> 00:17:53.214
+<v Rob Forshier II>Or they as that add extra features. They're even thinking of maybe even like if you play this app for so long, maybe they'll like give you orange or something like that, you know? And so then like you'll want to play longer so you'll get the orange color added.</v>
+
+00:17:57.534 --> 00:18:17.854
+<v Nitish Goyal>Okay, so there is currently no limit. And what about the ordering of it? Is there any, like, predefined walls are already there that this will be a sequence? But after, like, if you start adding things, will it be alphabetical or will it be...</v>
+
+00:18:17.894 --> 00:18:19.934
+<v Nitish Goyal>Be showing us for the dates.</v>
+
+00:18:22.174 --> 00:18:29.534
+<v Rob Forshier II>I think that's just something we want to talk to them about. I think right now they just kind of have like personal family and then like external to family.</v>
+
+00:18:36.974 --> 00:18:41.534
+<v Rob Forshier II>But again, that's, I mean, that's just sorting. That's something we can easily do when we get there.</v>
+
+00:18:40.734 --> 00:18:41.214
+<v Nitish Goyal>Mhm.</v>
+
+00:18:46.174 --> 00:19:06.414
+<v Rob Forshier II>Here's a question for all of you. So remember, starting tomorrow, the client will be in these meetings. So we'll have to make sure that these are a little bit more streamlined, very professional. But I was wondering, does it make sense for me to book, are you guys free as well in the 30 minutes before this meeting?</v>
+
+00:19:07.214 --> 00:19:13.294
+<v Rob Forshier II>So like 930 to 10 my time or just basically 30 minutes before this meeting? Are you guys free then too?</v>
+
+00:19:18.214 --> 00:19:19.934
+<v Nitish Goyal>Not 30 minutes before elements, right?</v>
+
+00:19:18.734 --> 00:19:21.854
+<v Karuna Arshakota>I have an overlap actually, Rob.</v>
+
+00:19:22.574 --> 00:19:24.174
+<v Rob Forshier II>Okay, so okay, because I'm...</v>
+
+00:19:23.054 --> 00:19:24.334
+<v Karuna Arshakota>I have another meeting.</v>
+
+00:19:23.294 --> 00:19:24.174
+<v Pankaj Aggarwal>Maybe if we can...</v>
+
+00:19:25.254 --> 00:19:28.254
+<v Pankaj Aggarwal>If we can go an hour early, I think that should be fine, but...</v>
+
+00:19:29.374 --> 00:19:53.454
+<v Rob Forshier II>Okay, because I was thinking about doing like an internal one for us, where then we have the internal one, and then this is then the client one, and we just kind of like, if the client shows up, then we like work with them else, like we can just like even like give the time back for this current meeting. And then we just, we're always in our internal one. So then always then we always have like our internal one before then this one. So then like if there's something we do want to bring up and the other one, we're all prepped and ready for it and all on the same.</v>
+
+00:19:53.534 --> 00:19:56.814
+<v Rob Forshier II>space so then we can go into the meeting like unified.</v>
+
+00:20:03.894 --> 00:20:06.974
+<v Karuna Arshakota>Yeah, for me, 7 PMIST works, so.</v>
+
+00:20:04.174 --> 00:20:05.214
+<v Rob Forshier II>There's a question.</v>
+
+00:20:09.934 --> 00:20:17.934
+<v Karuna Arshakota>That's only the slot I could make because three of my weekdays or the 7.30 I have other calls.</v>
+
+00:20:19.614 --> 00:20:22.494
+<v Rob Forshier II>Okay, so you said seven, and what time does this one start for you?</v>
+
+00:20:21.734 --> 00:20:26.894
+<v Karuna Arshakota>7 P.m. I.S.T. like it's 1 1/2 hour before this, like...</v>
+
+00:20:28.414 --> 00:20:33.374
+<v Rob Forshier II>Oh, okay, so you, okay, so I'm trying to find a meeting before this one so we can be an internal.</v>
+
+00:20:35.854 --> 00:20:37.134
+<v Rob Forshier II>Is that before this meeting?</v>
+
+00:20:37.534 --> 00:20:39.614
+<v Karuna Arshakota>Yes, yes, yes, 7 PM IST.</v>
+
+00:20:38.574 --> 00:20:41.774
+<v Rob Forshier II>Okay, okay. Let me see what that is.</v>
+
+00:20:41.414 --> 00:20:46.574
+<v Karuna Arshakota>Yeah, so now it's like this call started 8:30 for us, so it's 1 1/2 hour before to this.</v>
+
+00:20:47.854 --> 00:20:51.774
+<v Rob Forshier II>Oh, it's an hour and a half early. Let me look at that one, because that might be a little too early for me.</v>
+
+00:20:49.854 --> 00:20:51.214
+<v Karuna Arshakota>I don't know, yes.</v>
+
+00:20:53.934 --> 00:20:54.414
+<v Karuna Arshakota>Okay.</v>
+
+00:20:54.334 --> 00:20:57.054
+<v Rob Forshier II>That's the hard part about these meetings, yeah.</v>
+
+00:20:56.854 --> 00:20:57.614
+<v Karuna Arshakota>Dave.</v>
+
+00:20:59.134 --> 00:21:01.374
+<v Pankaj Aggarwal>I have few other client meetings also.</v>
+
+00:21:02.894 --> 00:21:06.814
+<v Rob Forshier II>Okay. Okay, I think this just might be our meeting slot and we just might have to deal with it.</v>
+
+00:21:09.694 --> 00:21:18.254
+<v Karuna Arshakota>Or this time only probably we will have 15 minutes. We should meet and then other 50 or 30 minutes for the.</v>
+
+00:21:09.734 --> 00:21:10.014
+<v Rob Forshier II>Okay.</v>
+
+00:21:19.614 --> 00:21:20.414
+<v Karuna Arshakota>Other column.</v>
+
+00:21:21.534 --> 00:21:23.694
+<v Karuna Arshakota>This call for 1 1/2 hours.</v>
+
+00:21:24.894 --> 00:21:30.494
+<v Karuna Arshakota>And first we can meet and then we can have the other invite where they can also join.</v>
+
+00:21:32.694 --> 00:21:33.454
+<v Karuna Arshakota>It works.</v>
+
+00:21:34.014 --> 00:21:39.774
+<v Rob Forshier II>Okay, so you're saying like, um, because like, are you guys free for this next half hour that we're we've already we're already over?</v>
+
+00:21:38.934 --> 00:21:39.374
+<v Karuna Arshakota>Neha.</v>
+
+00:21:40.414 --> 00:21:40.814
+<v Karuna Arshakota>They.</v>
+
+00:21:41.614 --> 00:21:46.814
+<v Rob Forshier II>Okay, yeah, I mean, if we're already over, then yeah, maybe we extend this to an hour and then we invite the clients for the second-half.</v>
+
+00:21:50.814 --> 00:21:53.374
+<v Karuna Arshakota>Yeah, that's what I'm thinking, Pankaj, Nitish.</v>
+
+00:21:56.414 --> 00:22:02.414
+<v Rob Forshier II>We don't have to make the decision now, but I'll go ahead and I'll keep that in mind. That is a great idea. Okay, cool.</v>
+
+00:22:00.774 --> 00:22:00.974
+<v Karuna Arshakota>Mm.</v>
+
+00:22:08.734 --> 00:22:16.654
+<v Pankaj Aggarwal>I'll say maybe let's run it for a day or two, same time, and see if we need to extend. Maybe we can go a little further and continue.</v>
+
+00:22:17.694 --> 00:22:18.334
+<v Rob Forshier II>Yap, yep.</v>
+
+00:22:19.854 --> 00:22:39.214
+<v Rob Forshier II>Okay. As I said, please get your questions up there. If you see any issues with the HTML that I sent you, please let me know. Just so it's less egg on my face while I'm talking about it. And now that, yeah, please feel free to start running through the JIRA board, start making your areas, your areas.</v>
+
+00:22:40.174 --> 00:22:58.134
+<v Rob Forshier II>As I said, if there's tickets that I created that don't make sense, we can get rid of them or repurpose them. And then if there's things that I missed, by all means, let's start putting in the backlog. Because basically by the end of next, I'd like to get by the end of this week our backlog in a good flushed out spot so that we can really start getting the planning part.</v>
+
+00:22:59.294 --> 00:23:00.814
+<v Rob Forshier II>of how much we can actually get done.</v>
+
+00:23:04.494 --> 00:23:05.054
+<v Rob Forshier II>Going.</v>
+
+00:23:07.534 --> 00:23:17.854
+<v Karuna Arshakota>Sure, and uh, sure of, and this week, uh, any expectations, like, I mean, anything that we will have to project to the client from individual or uh...</v>
+
+00:23:18.814 --> 00:23:24.414
+<v Karuna Arshakota>We will just discuss or you will drive the call with them. What is the plan this week?</v>
+
+00:23:23.534 --> 00:23:23.854
+<v Rob Forshier II>And.</v>
+
+00:23:25.494 --> 00:23:44.094
+<v Rob Forshier II>As I said, this week, as I said, we're in shape this next, this week and next week. So our goal is to get all of our access, get our devices, get our questions asked, get our backlog in order, so that then hopefully next week would start like</v>
+
+00:23:31.694 --> 00:23:31.854
+<v Karuna Arshakota>Mm.</v>
+
+00:23:44.254 --> 00:23:54.494
+<v Rob Forshier II>really planning out how we want to go about so that then once this two weeks is over, we're just rocking and rolling with our heads down, you know, moving as fast as we can, trying to deliver as much as we can.</v>
+
+00:23:47.854 --> 00:23:48.014
+<v Karuna Arshakota>Mm.</v>
+
+00:23:55.574 --> 00:24:02.334
+<v Rob Forshier II>And remember, the money is going to come in, you know, more money will come in to extend this project on, so this isn't like just the eight weeks.</v>
+
+00:23:55.854 --> 00:23:56.174
+<v Karuna Arshakota>Okay.</v>
+
+00:24:05.054 --> 00:24:05.854
+<v Karuna Arshakota>Yap, but...</v>
+
+00:24:15.374 --> 00:24:20.174
+<v Rob Forshier II>All right, well, you guys have a great evening, and I will see you tomorrow morning or evening.</v>
+
+00:24:22.094 --> 00:24:25.774
+<v Karuna Arshakota>Sure, yeah. Thank you. Have a good day. Bye-bye.</v>
+
+00:24:22.654 --> 00:24:26.094
+<v Rob Forshier II>All right. Thank you, everybody. All right. Have a good day. Bye.</v>
+
+00:24:23.694 --> 00:24:24.974
+<v Nitish Goyal>Have a good day. Bye bye.</v>

@@ -1,0 +1,490 @@
+{
+  "/": {
+    "backend": "Today's prompt and the user's stats for a computed streak both need serving, gated behind an authenticated user so no request fires before auth resolves.",
+    "frontend": "ScreenHeader and a bottom nav sit around a date badge, the prompt text, a live countdown tile, and a streak tile, with the primary button's label swapping between Open the canvas and Draw another depending on today's submit status. A bare loading spinner covers the whole body until auth hydration resolves, and a retry control needs to appear if the prompt load fails.",
+    "page": "root-today.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a signed-in person with an unsubmitted day lands on the root route, the prompt, countdown, and streak render with a button reading Open the canvas."
+      },
+      {
+        "kind": "edge",
+        "text": "When auth hydration has not finished yet, the screen shows only a loading spinner and neither the prompt body nor the sign-up bounce."
+      },
+      {
+        "kind": "edge",
+        "text": "When hydration finishes with no signed-in user, the screen replaces itself with the sign-up route instead of flashing the prompt."
+      }
+    ],
+    "state": "Pulls auth hydration state, the current user, the prompt store, and the streak store. Bounces to /sign-up once hydration finishes and no user is set, otherwise shows a spinner rather than flashing the prompt; writes nothing on entry or exit, only triggers the two store loads."
+  },
+  "/+not-found": {
+    "backend": "No backend need at all. This is a client-only route guard with no journey pointed at it, existing only to catch a stale or broken link.",
+    "frontend": "A themed ghost icon, a heading, one line of body copy, and a single Back to Today button, laid out as a small centered card with no header chrome or nav bar.",
+    "page": "not-found.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a broken or stale link resolves to no matching route, the ghost icon, heading, and Back to Today button render and tapping the button returns to the root route."
+      }
+    ],
+    "state": "Nothing is read or written except the active theme color for the ghost icon. The only control routes back to the root with router.replace, no store touched."
+  },
+  "/avatar": {
+    "backend": "A self-only PATCH on the user record needs to accept an avatar image and return the updated profile.",
+    "frontend": "DrawPad renders with a circular guide mask and the full, unnarrowed color palette, plus an undo control and a Save avatar button that shows a Saving label while busy. An error line needs to render below the canvas when a save attempt fails, and the header back arrow exits with no confirmation dialog.",
+    "page": "avatar.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person draws inside the circular guide and taps Save avatar, the button shows a busy Saving state and the screen returns to settings on success."
+      },
+      {
+        "kind": "edge",
+        "text": "When the save PATCH fails, the screen stays on the avatar canvas and shows an error message instead of navigating away."
+      },
+      {
+        "kind": "edge",
+        "text": "When the header back arrow is tapped without saving, the drawn avatar is discarded with no confirmation prompt."
+      }
+    ],
+    "state": "Only the auth error banner is read on entry. On Save the cropped image is PATCHed and the local user mirrors the server response before returning to settings; on failure the screen stays put with an error shown, and Cancel writes nothing."
+  },
+  "/choose-channels": {
+    "backend": "A single submit endpoint has to validate prompt and channel ids, reject text plus audio together, and write the one row that unlocks the wall for the reader side.",
+    "frontend": "A SHARE TO header above a multi-select list of the person's own wall rows, a disabled-until-checked Submit and unlock the wall button, and an inline error line that appears without clearing the picker's selections. A pinned-prompt deep link needs to skip the list and show a one-wall confirmation view instead.",
+    "page": "choose-channels.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person selects one or more wall rows and taps submit, the request succeeds and the app lands on family with the wall unlocked."
+      },
+      {
+        "kind": "edge",
+        "text": "When no draft image exists on entry, the screen redirects straight to the draw route instead of showing the picker."
+      },
+      {
+        "kind": "edge",
+        "text": "When the submit call fails, the picker stays populated with the prior selections and an inline error appears so the person can retry."
+      }
+    ],
+    "state": "On entry reads the full draft and the wall list, and bounces to /draw if the draft has no image. Success clears the draft and resets navigation to home then family; failure keeps the picker state so the person can retry."
+  },
+  "/compose": {
+    "backend": "Backend needs a compositions endpoint that derives the destination channel from the caller's identity server-side and re-checks membership and prior submission before accepting the save or share.",
+    "frontend": "A guard message with a back control renders when fewer than two source drawings are picked; otherwise a Skia canvas stage shows placed drawings with move, corner-scale, and rotate handles, a tray of picked drawings below it, and undo, clear, Save, and Share buttons.",
+    "page": "compose.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When at least two drawings are picked and one is placed and arranged, tapping Save writes the composition and returns to family."
+      },
+      {
+        "kind": "edge",
+        "text": "When fewer than two source drawings are available, the screen shows the guard message instead of the canvas."
+      },
+      {
+        "kind": "edge",
+        "text": "When a save attempt fails, the picked drawings stay in the tray so the person can retry without re-picking."
+      }
+    ],
+    "state": "The only fetch on entry is the selected source drawings. Save clears the compose selection and returns to family; Share instead routes to the share screen with the saved response's fields; a failed save leaves the selection intact for retry."
+  },
+  "/create-wall": {
+    "backend": "Backend needs a wall-create endpoint returning a real server id, plus a per-address member-invite endpoint the screen calls once per parsed address; invite delivery itself is simulated, not a real email send.",
+    "frontend": "Build a wall-name input and an invite-by-email input that parses comma, semicolon, or space separated addresses, a pink Create wall button that stays disabled until the name is non-empty, per-address error rows for a failed or invalid invite, and the ScreenHeader on top.",
+    "page": "create-wall.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person enters a wall name and submits, the wall is created and the screen returns to home."
+      },
+      {
+        "kind": "edge",
+        "text": "When one of several invite addresses fails to parse or send, the screen shows an error only against that address while the wall creation still succeeds."
+      },
+      {
+        "kind": "edge",
+        "text": "When the session is stale at submit time, the person is signed out and lands on sign-up instead of seeing the wall created."
+      }
+    ],
+    "state": "Form opens blank with nothing read on entry. Success writes a new wall row and any invite rows plus a local pending-invite record; failure on a stale session signs the user out and sends them to sign-up."
+  },
+  "/draw": {
+    "backend": "Backend supplies today's prompt for the unpinned path only; the pinned deep-link path carries its prompt in route params and skips the call. No write endpoint fires from this screen.",
+    "frontend": "Build the DrawPad canvas with its color swatch row, undo and trash controls, a running elapsed-time chip in the header, and a Done button that is disabled with an explanatory label when the prompt fetch fails.",
+    "page": "draw.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person finishes a drawing and taps Done, the app advances to story-select with the drawing exported."
+      },
+      {
+        "kind": "edge",
+        "text": "When an unpinned prompt fetch fails, Done stays disabled and shows an explanatory label instead of letting the person continue."
+      },
+      {
+        "kind": "edge",
+        "text": "When an unauthenticated visitor lands on this route, they are redirected to sign-up before the canvas ever renders."
+      }
+    ],
+    "state": "Gates on auth hydration, then reads the prompt store or route params depending on pinned status. Finishing writes the image, prompt id, strokes, and pinned channel id into the shared draft store, then pushes to story-select; nothing is sent to the server here."
+  },
+  "/family": {
+    "backend": "Channel roster, channel days, channel members, and wall prompts all need serving, plus a reaction write and a text-only reflection submit through the same submit endpoint the drawing flow uses.",
+    "frontend": "Build the response grid with WallMemberCard tiles and the WallMemberAvatarRow roster strip, a locked-day draw prompt versus an unlocked reveal state, the ReflectionInput text field for past locked days, a multi-select toggle with a selection counter and compose button, and the archive gallery variant for personal walls.",
+    "page": "family.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person opens a wall with a channel in context, the grid shows the roster and each member's drawing for today's unlocked prompt."
+      },
+      {
+        "kind": "edge",
+        "text": "When a member is removed from the wall, the roster row for that member disappears the next time the screen regains focus."
+      },
+      {
+        "kind": "edge",
+        "text": "When at least two drawings are selected in multi-select mode, the compose button becomes enabled, and stays disabled below that count."
+      }
+    ],
+    "state": "Channel id comes from route params, which then drives fetches for roster, days, prompts, and today's members, all reloaded on every focus so removals and new state show up promptly. Selecting drawings writes into the compose store for the compose screen to pick up; nothing else is written on exit."
+  },
+  "/home": {
+    "backend": "A stats endpoint has to compute streak, weekly completion, drawing count, and badges from real submission history, plus endpoints for the wall list and today's prompt.",
+    "frontend": "Build the greeting header with avatar, the stats card showing streak, best streak, drawing count, weekly dot strip, and three milestone badges, the Your walls list with a dashed Create new row, and a Try again button that retries all four loads on failure.",
+    "page": "home.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When the four loads succeed, the person sees their greeting, real stats, and their wall list with any pending invite badged."
+      },
+      {
+        "kind": "edge",
+        "text": "When one of the four loads fails, the screen shows a Try again control that retries all four rather than just the failed one."
+      },
+      {
+        "kind": "edge",
+        "text": "When a wall is created or an invite is accepted elsewhere and the person returns to this screen, the wall list and invite badges refresh instead of showing stale data."
+      }
+    ],
+    "state": "Streak, walls, prompt, and stats load from four stores on mount, alongside current user and pending invites filtered to that user. Walls and invites also reload on every focus so returning from creating or joining a wall is never stale; the screen itself writes nothing, only routes forward with params."
+  },
+  "/invite/[id]": {
+    "backend": "No network call on accept or defer. The local useInvitesStore stands in for a hosted invite service, backed by AsyncStorage, and only decline (unreachable here) would call leaveWall.",
+    "frontend": "Build the accept card with the wall-name headline illustration, a solid Accept and join button, a plain-text Not now link, a loading spinner while the invite record loads, and an honest no-longer-available state with a way back to the wall list.",
+    "page": "invite-id.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person taps Accept and join on a pending invite, they land on onboarding or directly on the family wall depending on whether they have already onboarded."
+      },
+      {
+        "kind": "edge",
+        "text": "When the invite id in the route does not match any stored record, the screen shows the no-longer-available state instead of the accept card."
+      },
+      {
+        "kind": "edge",
+        "text": "When a person taps Not now, the invite stays pending and they return to home without the invite being decided."
+      }
+    ],
+    "state": "Entry pulls the loaded flag and the matching invite from useInvitesStore. Accept flips the invite to accepted and sets it active, then routes to onboarding or /family by hasOnboarded; defer writes nothing and bounces to /home."
+  },
+  "/onboarding/canvas": {
+    "backend": "Needs GET /prompt/today to return the day's prompt; there is no cached or bundled fallback, so a failed fetch strands a first-run person on a retry loop.",
+    "frontend": "Build the DrawPad canvas with its reduced onboarding colour palette, undo control, and a clear-canvas action behind a confirm modal. Header shows the day's prompt with a Try again control for a failed load, and a Done Drawing button exports the stroke data and advances the flow.",
+    "page": "onboarding-canvas.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person draws on the canvas and taps Done Drawing, the flow advances to the story fork with the drawing visible on later screens."
+      },
+      {
+        "kind": "edge",
+        "text": "When the prompt fails to load, the screen shows a Try again control instead of the drawing prompt."
+      },
+      {
+        "kind": "edge",
+        "text": "When a person taps the trash control, a confirmation modal appears before the canvas clears."
+      }
+    ],
+    "state": "The cached prompt comes from usePromptStore, fetched if absent, and the step name is persisted for resume on mount. On exit it saves imageRef, promptId, and strokes into useDraftStore rather than passing the drawing as a route param."
+  },
+  "/onboarding/prompt-intro": {
+    "backend": "Shares the same GET /prompt/today call as the canvas screen, guarded so it only fires once per session; invite context can override the fetched text with a personalized prompt.",
+    "frontend": "Render the prompt card inside the shared onboarding shell, with a loading spinner while the prompt resolves and a Let's Scribl button that stays disabled until prompt text is present.",
+    "page": "onboarding-prompt-intro.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When the prompt loads, the Let's Scribl button enables and the prompt text shows in the card."
+      },
+      {
+        "kind": "edge",
+        "text": "When the prompt fails to load, a Try again control appears inside the card while the button stays disabled."
+      }
+    ],
+    "state": "On entry it reads the prompt store and the active invite for a personalized override, and records the step for resume. It writes nothing on exit; the prompt is re-read by the canvas screen from the same store rather than forwarded."
+  },
+  "/onboarding/ready": {
+    "backend": "No submit call here; the first Scribl already posted from the prior /onboarding/walls screen via POST /submit. This screen only confirms that and reads invite state to decide where to send the person next.",
+    "frontend": "Show the confirmation heading, the personalized or generic posted-to line, three fixed highlight bullets, and a Let's go! button that reports an inline error and stays put if finishing fails.",
+    "page": "onboarding-ready.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person taps Let's go!, onboarding completes and the app lands on the invited wall or the root screen."
+      },
+      {
+        "kind": "edge",
+        "text": "When completing onboarding fails to save, an inline error shows and the person stays on this screen instead of navigating away."
+      }
+    ],
+    "state": "The active invite context is read on entry and its step recorded, deliberately exempt from the draft-required guard since the drawing is already submitted. On exit it completes onboarding and clears any active invite, then forks to /family with the wall id or to the root."
+  },
+  "/onboarding/story": {
+    "backend": "Touches no API at all; it reads and writes only local state and the draft store, so nothing behind this screen depends on a live endpoint.",
+    "frontend": "Show the drawing preview card above a text input capped at 280 characters with a live counter, and a Share Your Story button that submits the caption and advances.",
+    "page": "onboarding-story.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person types a caption and taps Share Your Story, the flow advances to the wall-selection screen."
+      },
+      {
+        "kind": "edge",
+        "text": "When the screen is opened without a drawing already captured, it redirects back to the canvas step."
+      }
+    ],
+    "state": "useDraftStore's imageRef backs both the guard and the drawing preview, redirecting to canvas if it is missing, and records the step for resume. On exit it saves the typed caption to useDraftStore and pushes to /onboarding/walls."
+  },
+  "/onboarding/story-select": {
+    "backend": "No call and no read. The screen is two static buttons plus a guard, with nothing behind it for the backend to serve.",
+    "frontend": "Present two stacked choice cards, one for typing the story and one for recording it, each routing to a different next screen with no back or skip affordance.",
+    "page": "onboarding-story-select.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person taps the typed-story card, the flow advances to the story text screen."
+      },
+      {
+        "kind": "edge",
+        "text": "When the screen is opened without a drawing already captured, it redirects back to the canvas step."
+      }
+    ],
+    "state": "On mount it checks useDraftStore's imageRef directly and redirects to canvas if missing, duplicating the resume-time guard in onboardingFlow.ts rather than relying on it. It writes nothing on exit or on mount beyond the step-name record for resume."
+  },
+  "/onboarding/walls": {
+    "backend": "POST /submit must accept prompt id, caption or audio, strokes, and chosen wall ids as channelIds, and create the submission item the AC2 unlock check depends on.",
+    "frontend": "List every wall the person belongs to as toggleable rows with a filled-circle selected state, and a Share button that stays visibly disabled until at least one wall is picked and shows an inline error if the share fails.",
+    "page": "onboarding-walls.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person selects a wall and taps Share, the drawing posts and the flow advances to the ready screen."
+      },
+      {
+        "kind": "edge",
+        "text": "When no wall is selected, the Share button stays disabled."
+      },
+      {
+        "kind": "edge",
+        "text": "When the share request fails, an inline error shows and the person stays on this screen."
+      }
+    ],
+    "state": "Entry loads the walls list and the in-memory draft (imageRef, promptId, caption, audioRef, strokes), and bounces to /onboarding/canvas if imageRef is missing. On a successful submit it clears the draft and moves on; on failure it shows an inline error and holds the person here."
+  },
+  "/onboarding/welcome": {
+    "backend": "No network call. Local storage stands in. Invite state comes from two AsyncStorage keys read through useInvitesStore, and the onboarding step name is persisted the same way.",
+    "frontend": "Show the wordmark, a personalized or generic greeting, three lines of intro copy, and a single Get Started button with no back or skip control.",
+    "page": "onboarding-welcome.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person taps Get Started, the flow advances to the prompt intro screen."
+      }
+    ],
+    "state": "The active simulated invite is read, which can be null for a generic walk. Writes only the onboarding step marker on mount so a relaunch resumes here; Get Started just navigates forward with no other write."
+  },
+  "/record": {
+    "backend": "Backend must accept POST /audio to store an uploaded recording; the actual Scribl submission is deferred to /choose-channels, not made from this screen.",
+    "frontend": "Build the mic capture control with a countdown to the 30 second cap, playback with a visible playing state, a re-record action, and a Use this recording button that shows an explicit error and blocks navigation on a failed upload. On an unsupported browser, show the fallback message telling the person to go back and type instead.",
+    "page": "record.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person records within the time limit and taps Use this recording, the audio uploads and the flow advances to the next screen."
+      },
+      {
+        "kind": "edge",
+        "text": "When recording is not supported in the current browser, the screen shows the fallback message and a disabled Use this recording button."
+      },
+      {
+        "kind": "edge",
+        "text": "When the audio upload fails, an inline error shows and the person stays on this screen without advancing."
+      }
+    ],
+    "state": "Reads the next route param and the draft's imageRef, bouncing to /draw or /onboarding/canvas (depending on the onboarding flag) if imageRef is absent. A successful upload writes audioRef, audioMime, and audioDurationMs to the draft and advances; a failed upload or re-record clears those same fields and keeps the person on the screen."
+  },
+  "/response/[id]": {
+    "backend": "Backend must serve a day's response list so the screen can pick out one response by id, must accept a reaction post that returns the updated response in place, and must serve the channel's day list to resolve prompt text for a pack-injected prompt id.",
+    "frontend": "Show the prompt, author, timestamp, drawing with an original and enhanced toggle pill, caption or voice-note player, and a single heart reaction chip. Include a header share button, a retry control on load failure, and a locked-state message with no bypass for a viewer who has not yet submitted today's drawing.",
+    "page": "response-id.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person opens a response they are unlocked to view, the drawing, caption or audio, and heart chip render."
+      },
+      {
+        "kind": "edge",
+        "text": "When the viewer has not yet submitted today's drawing, the screen shows the locked message with no retry or bypass."
+      },
+      {
+        "kind": "edge",
+        "text": "When loading the response fails, the screen shows an error with a retry control."
+      }
+    ],
+    "state": "ChannelId, promptId, and id come from route params, then load the response detail store and the channel days list on mount. Reacting writes the new reaction straight into the loaded response rather than reloading; sharing pushes the payload to /share as route params instead of writing to a store."
+  },
+  "/settings": {
+    "backend": "A PATCH to the user record for displayName and email needs to be self-gated to the caller's own id, and the wall list this screen reads to build roster links needs serving too.",
+    "frontend": "Build a ScreenHeader with back chevron, an Avatar plus Change avatar pill routing to /avatar, three text inputs for name, email and an inert password field with a fixed caption, a DarkModeToggle row, a Save button, a Your walls list with chevron rows linking into the member roster, and a Log out row.",
+    "page": "settings.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person edits display name and email and presses Save, the fields persist and the screen shows the updated values."
+      },
+      {
+        "kind": "edge",
+        "text": "When the signed-in account belongs to no walls, the Your walls list renders empty with no create-wall affordance on this screen."
+      }
+    ],
+    "state": "The current user loads into local displayName and email fields, and the walls store loads on mount if empty. Saves displayName and email to the server and the auth store only on a Save press; dark mode and password are local-only and never round-trip, with no visual cue telling them apart from the fields that do."
+  },
+  "/share": {
+    "backend": "Backend supplies one lookup, the channel's day list, used only to find the prompt text for the caption line. The share itself calls the device's native share sheet, not the backend, so no call records that a share happened.",
+    "frontend": "Build the branded share card view showing drawing, caption or voice marker, prompt line and date badge, a row of four target tiles (Share, Instagram, Copy link, More), a back control and a Done button, plus the hidden ViewShot export tree that renders the same card for capture.",
+    "page": "share.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person taps Share, the OS share sheet opens with the captured card image."
+      },
+      {
+        "kind": "edge",
+        "text": "When card capture fails, the Share tile falls back to sharing a URL instead of the image."
+      }
+    ],
+    "state": "The whole response comes from route params passed in by the caller, plus the prompt store's date-keyed fallback. Resets a share-dispatch guard on mount so a stale in-flight flag never carries over; Done just navigates to /family or /home with no store or API write."
+  },
+  "/sign-up": {
+    "backend": "Needs signup and login endpoints that provision or verify a user by email plus display name, and a users-list endpoint to populate the existing-account picker; switching accounts hits no endpoint.",
+    "frontend": "Build the sign-up and log-in toggle with shared email and name fields, an existing-user picker list that only appears in sign-up mode once accounts exist, the demo NewUserToggle switch, and a primary submit button whose label follows the active mode.",
+    "page": "sign-up.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person enters an email and name and submits in sign-up mode, a new account is created and the app moves on."
+      },
+      {
+        "kind": "edge",
+        "text": "When a log-in attempt does not match any account on both email and name, the screen shows an error and offers to switch to sign-up."
+      }
+    ],
+    "state": "Pulls the auth store's signup, login, listUsers, switchUser plus loading and error state, and fetches the account list on mount. Every successful path writes the active user seam, persists the current user, then routes to home or splash based on onboarding status."
+  },
+  "/splash": {
+    "backend": "No network call on this screen; onboarding progress lives entirely in local AsyncStorage and there is nothing for a backend to serve here.",
+    "frontend": "Build a full-bleed splash image with the wordmark centered over it, no buttons or text controls, held for a fixed dwell before the screen moves itself on.",
+    "page": "splash.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When the dwell finishes, the screen advances on its own to today's prompt or to the resumed onboarding step."
+      }
+    ],
+    "state": "After a fixed dwell it reads the onboarding store's hasOnboarded flag and the draft store's imageRef, then picks a resume step that clamps back to canvas if the draft the step needs is gone. Writes nothing itself; the route change is a replace, not a state write."
+  },
+  "/story-select": {
+    "backend": "No API call and no backend dependency at all; this is a pure router between the write and record screens.",
+    "frontend": "Build two large choice cards, one for typing with a character-limit caption and one for recording with a duration caption, plus a back control to the drawing screen. No canvas or list on this screen.",
+    "page": "story-select.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person taps the type card, the app moves to the caption screen."
+      },
+      {
+        "kind": "edge",
+        "text": "When this route is opened with no active draft, the screen bounces straight back to the drawing screen instead of rendering the cards."
+      }
+    ],
+    "state": "Reads only the draft store's imageRef to guard entry, and bounces to the drawing screen if that draft is missing. Writes nothing on exit; it just routes to one of two next screens."
+  },
+  "/wall/[id]/members": {
+    "backend": "Needs a roster endpoint keyed by channel id, plus member add, member remove, leave, and delete endpoints on the wall; invite is simulated server-side and never sends a real email.",
+    "frontend": "Build a member list with avatar, name, email and a per-row Remove link, an Add member card with an email input and Add button, and Delete wall and Leave wall rows, each control shown or hidden by whether the viewer is the wall's creator.",
+    "page": "wall-id-members.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When the wall's creator opens this screen, the roster, invite card and delete row all render."
+      },
+      {
+        "kind": "edge",
+        "text": "When the sole owner of a wall with no other members tries to leave, the screen blocks the action and shows an explanatory message."
+      }
+    ],
+    "state": "The route's wall id and an origin param that changes the back arrow feed the screen, then it loads the roster in an effect. Remove, invite, leave, and delete are direct user actions with no automatic write on exit; a successful leave or delete also refreshes the walls list so home drops the wall."
+  },
+  "/wall/[id]/prompt-packs": {
+    "backend": "Needs a prompt-pack catalog listing endpoint and a wall-scoped endpoint to persist a custom prompt; picking a pack itself is read-only until the next screen writes.",
+    "frontend": "Build a custom-prompt card with a text area, character counter and a disabled-until-typed submit button, placed above a list of prompt-pack rows each showing a title and prompt count, plus a retry control if the pack list fails to load.",
+    "page": "wall-id-prompt-packs.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person types a custom prompt and submits it, the wall receives the new prompt and the screen returns to the wall view."
+      },
+      {
+        "kind": "edge",
+        "text": "When the pack catalog fails to load, the screen shows a retry control instead of an empty list."
+      }
+    ],
+    "state": "The wall id drives the pack catalog load on mount. A successful custom-prompt submit writes a new prompt row for the wall and bounces back to the family screen with the wall in context; opening a pack writes nothing here."
+  },
+  "/wall/[id]/prompt-packs/[packId]": {
+    "backend": "Needs a pack-detail endpoint keyed by pack id and a wall-scoped endpoint that persists the chosen prompt ids, guarding against a non-creator caller or a bad pack or prompt id.",
+    "frontend": "Build a prompt list for one pack with a per-row check mark for selection, a running selected count in the header line, and a submit button pinned to the bottom that shows the count once at least one prompt is picked.",
+    "page": "wall-id-prompt-packs-packid.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person selects up to five prompts and submits, the chosen prompts are added to the wall and the screen returns to the wall view."
+      },
+      {
+        "kind": "edge",
+        "text": "When a person tries to select a sixth prompt while five are already picked, the tap has no visible effect and the sixth row stays unselected."
+      }
+    ],
+    "state": "Wall id and pack id load the pack detail on mount. A successful inject writes the chosen prompts to the wall on the server and replaces the route to the family screen, deliberately blocking a back navigation into the picker once it succeeds."
+  },
+  "/write": {
+    "backend": "There is no network call here; the caption is local state only, and the actual submit-to-unlock call happens later on the choose-channels screen.",
+    "frontend": "Build a preview card sized to the drawing's own aspect ratio showing the real draft image with a placeholder doodle fallback, a caption input with a live character counter and a clear control, a primary Continue button, and a back control to the story-select screen.",
+    "page": "write.md",
+    "qe": [
+      {
+        "kind": "happy",
+        "text": "When a person types a caption under the limit and presses Continue, the screen advances to channel selection."
+      },
+      {
+        "kind": "edge",
+        "text": "When this route is opened with no active draft, the screen bounces straight back to the drawing screen instead of showing the caption field."
+      }
+    ],
+    "state": "Reads the draft store's imageRef for the preview and as an entry guard, bouncing to the drawing screen if no draft exists. On exit it writes the caption into the draft store and clears any leftover voice-note fields, then hands off to choose-channels."
+  }
+}

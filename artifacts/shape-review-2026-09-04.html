@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shape Review talk track, 2026-09-04</title>
+<style>
+:root{
+  --midnight:#0B111C; --indigo:#33139F; --violet:#693AF4; --purple:#853EFF; --eblue:#34B4FF;
+  --paper:#FAFAFC; --card:#FFFFFF;
+  --gray-50:#F4F5F8; --gray-100:#EAECF2; --gray-500:#636B82;
+  --ink:var(--midnight); --muted:var(--gray-500); --line:var(--gray-100); --accent:var(--violet);
+  --bad:#B3261E; --warn:#8A5A00; --good:#1F7A4D;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding-bottom:80px;
+}
+a{color:var(--indigo)}
+
+/* ---------- header, always visible ---------- */
+header{position:sticky;top:0;z-index:50;background:var(--midnight);color:#fff;
+  box-shadow:0 2px 12px rgba(11,17,28,.22)}
+.bar{display:flex;align-items:center;gap:18px;padding:10px 18px;flex-wrap:wrap}
+.master{display:flex;align-items:baseline;gap:10px;min-width:250px}
+.master .lbl{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#9AA6BF}
+.master b{font-family:var(--mono);font-size:44px;line-height:1;font-variant-numeric:tabular-nums;
+  font-weight:700;color:#fff}
+.master b.over{color:#FF8A80}
+.master .of{font-family:var(--mono);font-size:15px;color:#9AA6BF}
+.seg{display:flex;align-items:baseline;gap:10px}
+.seg .lbl{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#9AA6BF}
+.seg b{font-family:var(--mono);font-size:30px;line-height:1;font-variant-numeric:tabular-nums;
+  font-weight:700;color:var(--eblue)}
+.seg b.over{color:#FF8A80}
+.segname{font-size:14px;font-weight:600;color:#fff;max-width:230px}
+.spacer{flex:1}
+.ctrls{display:flex;align-items:center;gap:7px}
+.mini{appearance:none;border:1px solid rgba(255,255,255,.28);background:transparent;color:#E7EBF3;
+  font:600 12px/1 inherit;padding:8px 12px;border-radius:6px;cursor:pointer}
+.mini:hover{border-color:var(--eblue);color:var(--eblue)}
+.mini.go{background:var(--violet);border-color:var(--violet);color:#fff}
+.mini.go:hover{background:var(--purple);border-color:var(--purple);color:#fff}
+input.num{width:56px;font:inherit;font-family:var(--mono);font-size:13px;padding:6px;
+  border:1px solid rgba(255,255,255,.28);border-radius:5px;background:rgba(255,255,255,.07);color:#fff}
+.carrynote{font-size:12px;color:#FFB4A8;font-family:var(--mono)}
+.alarm{background:var(--bad);color:#fff;padding:9px 18px;font-size:14px;font-weight:700}
+
+/* ---------- section strip ---------- */
+.plan{display:flex;flex-wrap:wrap;gap:0;background:#141C2B;padding:0 12px 10px}
+.plan div{padding:6px 9px;margin:0 3px 3px 0;border:1px solid rgba(255,255,255,.14);border-radius:5px;
+  font-size:11.5px;color:#9AA6BF;white-space:nowrap;cursor:pointer;user-select:none}
+.plan div:hover{border-color:var(--eblue);color:var(--eblue)}
+.plan div b{font-family:var(--mono);color:#E7EBF3;font-weight:700;margin-right:5px}
+.plan div.now{background:var(--violet);border-color:var(--violet);color:#fff}
+.plan div.now b{color:#fff}
+.plan div.done{opacity:.5}
+
+/* ---------- layout ---------- */
+main{max-width:1120px;margin:0 auto;padding:22px 18px}
+.panel{display:none}
+.panel.on{display:block}
+.blockhead{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  margin:0 0 4px}
+h1{font-size:27px;line-height:1.2;margin:0 0 14px}
+h2{font-size:19px;margin:26px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:18px 20px;
+  margin:0 0 14px}
+.credit{font-size:19px;line-height:1.45;margin:0 0 14px;font-weight:600}
+ul.points{margin:0 0 16px;padding-left:20px}
+ul.points li{margin:0 0 7px;font-size:16px}
+.src{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.openrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+a.open{display:inline-block;background:var(--violet);color:#fff;text-decoration:none;
+  font:600 13px/1 inherit;padding:10px 14px;border-radius:7px}
+a.open:hover{background:var(--purple)}
+a.open.alt{background:transparent;color:var(--indigo);border:1px solid var(--line)}
+a.open.alt:hover{border-color:var(--violet);color:var(--violet)}
+.say{border-left:3px solid var(--accent);background:var(--gray-50);padding:12px 16px;
+  border-radius:0 7px 7px 0;margin:0 0 14px;font-size:16px}
+.say .who{display:block;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 5px}
+
+/* ---------- flags ---------- */
+.flag{border:2px solid var(--bad);background:#FDECEA;border-radius:11px;padding:14px 18px;
+  margin:0 0 16px}
+.flag .t{font-weight:700;color:var(--bad);margin:0 0 6px}
+.flag p{margin:0 0 6px}
+.flag p:last-child{margin:0}
+.privnote{border:1px dashed var(--warn);background:#FFF8E8;border-radius:9px;padding:12px 16px;
+  margin:0 0 14px;font-size:14px}
+.privnote .t{font-weight:700;color:var(--warn);margin:0 0 5px}
+
+/* ---------- capture ---------- */
+.cap{margin:0 0 16px}
+.cap label{display:block;font-weight:700;font-size:15px;margin:0 0 5px}
+.cap .hint{font-size:13px;color:var(--muted);margin:0 0 7px}
+textarea{width:100%;font:inherit;font-size:15px;line-height:1.5;padding:11px 13px;
+  border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);
+  resize:vertical}
+textarea:focus{outline:2px solid var(--violet);outline-offset:-1px;border-color:var(--violet)}
+.saved{font-size:11px;color:var(--good);font-family:var(--mono);height:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:860px){.grid2{grid-template-columns:1fr}}
+
+.prompts{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:16px 20px;
+  margin:0 0 16px}
+.prompts h3{margin:0 0 4px;font-size:16px}
+.prompts .sub{font-size:13px;color:var(--muted);margin:0 0 12px}
+.prompts ol{margin:0;padding-left:22px}
+.prompts li{margin:0 0 13px}
+.prompts .q{font-size:16px}
+.prompts .against{display:block;font-size:13px;color:var(--muted);margin-top:3px}
+
+.qbig{font-size:24px;font-weight:700;margin:0 0 8px}
+
+/* the show-and-tell list, one page, scannable while talking */
+ol.tour{list-style:none;counter-reset:t;margin:0;padding:0}
+ol.tour > li{counter-increment:t;position:relative;background:var(--card);
+  border:1px solid var(--line);border-radius:11px;padding:16px 20px 16px 58px;margin:0 0 12px}
+ol.tour > li::before{content:counter(t);position:absolute;left:18px;top:16px;
+  font-family:var(--mono);font-size:19px;font-weight:700;color:var(--accent)}
+ol.tour .credit{font-size:17px;margin:0 0 10px}
+ol.tour ul.points{margin:0 0 12px}
+ol.tour ul.points li{font-size:15px}
+ol.tour a.open{padding:7px 11px;font-size:12.5px}
+ol.tour .flag{padding:10px 14px;margin:0 0 12px}
+
+footer.exp{position:fixed;bottom:0;left:0;right:0;background:var(--midnight);
+  padding:10px 18px;display:flex;gap:9px;align-items:center;z-index:40}
+footer.exp .note{color:#9AA6BF;font-size:12.5px}
+#out{width:100%;height:300px;font-family:var(--mono);font-size:12.5px}
+#toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:var(--midnight);
+  color:#fff;padding:11px 18px;border-radius:8px;font-size:14px;opacity:0;transition:opacity .2s;
+  pointer-events:none;z-index:99}
+#toast.on{opacity:1}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <div class="master">
+      <span class="lbl">Hour</span>
+      <b id="mdisp">0:00</b>
+      <span class="of">/ 60:00</span>
+    </div>
+    <div class="seg">
+      <span class="lbl">Now</span>
+      <b id="sdisp">20:00</b>
+    </div>
+    <div class="segname" id="sname">What the team built in two weeks</div>
+    <span class="carrynote" id="carry"></span>
+    <span class="spacer"></span>
+    <div class="ctrls">
+      <button class="mini go" id="run">Start</button>
+      <button class="mini" id="prev">Back</button>
+      <button class="mini" id="next">Next</button>
+      <input class="num" id="mins" type="number" min="0.5" max="60" step="0.5" value="20">
+      <button class="mini" id="reset">Reset section</button>
+      <button class="mini" id="resetall">Reset all</button>
+    </div>
+  </div>
+  <div class="plan" id="plan"></div>
+  <div class="alarm" id="alarm" hidden></div>
+</header>
+
+<main>
+
+<!-- ============ BLOCK 1 ============ -->
+
+<section class="panel" id="p-b1">
+  <p class="blockhead">Block 1, show and tell, 20 min, you present</p>
+  <h1>What the team built in two weeks</h1>
+
+  <div class="privnote"><div class="t">Before you start</div>
+    Expect to open five minutes late. Meet and greet, then say the one line about what
+    Shape set out to prove, then work down the list. If you are running behind, the budget
+    box in the header is editable, so drop this to 15 and the time comes off here rather
+    than out of Eric's design walkthrough.
+    <br><br>
+    The delivery team is in India and it is 22:30 there. Pramod and Pankaj are on the
+    invite for the recording only. You are presenting all of this on their behalf, so
+    every line below is you naming an absent person out loud.
+  </div>
+
+  <div class="card">
+    <div class="say"><span class="who">Open with this</span>
+      Two weeks ago we set out to prove two things at once. That we can build a real
+      consumer app on the target cloud, and that an AI-assisted delivery process can carry
+      it. What you are about to see is the proof, not the product.</div>
+    <ul class="points">
+      <li>Shape is a proof of an AI-assisted SDLC and the target cloud, not a production
+        release. <span class="src">product/overview.md</span></li>
+      <li>Eight week term under the SOW effective 2026-08-13, a two week Shape then three
+        two week build sprints. <span class="src">product/overview.md</span></li>
+    </ul>
+    <div class="openrow"><a class="open alt" href="http://localhost:5173/overview" target="_blank">Overview</a></div>
+  </div>
+
+  <ol class="tour">
+
+    <li>
+      <p class="credit">Pramod Kumar has been driving this team day to day. He built the
+        time off tracking spreadsheet the team runs on, and he is the reason the daily
+        rhythm held through a two week Shape.</p>
+      <ul class="points">
+        <li>Standup is fifteen minutes on three questions, finished, next, blocking, and
+          the answers land on the board the same day. <span class="src">handbook/ceremonies.md</span></li>
+        <li>One pull request per work item, kept small, one reviewer approval before it
+          merges. <span class="src">handbook/team-process.md</span></li>
+      </ul>
+      <div class="openrow">
+        <a class="open" href="http://localhost:5173/handbook/ceremonies" target="_blank">Ceremonies</a>
+        <a class="open alt" href="http://localhost:5173/handbook/team-process" target="_blank">Team process</a>
+      </div>
+    </li>
+
+    <li>
+      <p class="credit">Pankaj Aggarwal is the architect on this. He laid down the
+        architecture standards, and they are not a slide, they are in the wiki and the team
+        builds against them.</p>
+      <ul class="points">
+        <li>Directory names are constrained on purpose. No utils, helpers, common, shared,
+          misc, core, base or stuff, anywhere, no exceptions, because those names are where
+          architecture goes to die. <span class="src">handbook/engineering/architecture.md</span></li>
+        <li>No new top level directory without an ADR saying what it is for and what may
+          import it. <span class="src">handbook/engineering/architecture.md section 4</span></li>
+      </ul>
+      <div class="openrow"><a class="open" href="http://localhost:5173/handbook/engineering/architecture" target="_blank">Architecture standards</a></div>
+    </li>
+
+    <li>
+      <p class="credit">Nitish Goyal owns the API contracts and the schema. His work landed
+        on main this morning as PR number 2, and it is the most concrete thing we have.</p>
+      <ul class="points">
+        <li>The contract draft is 1065 lines across 45 endpoint sections, and the schema
+          draft is 698 lines across 20 tables.
+          <span class="src">handbook/engineering/data-and-api/api-contract-draft.md, schema-draft.md</span></li>
+        <li>It merged as commit bb808d4, after three rounds of review fixes for drift
+          between the two drafts. <span class="src">git log on main</span></li>
+      </ul>
+      <div class="openrow">
+        <a class="open" href="http://localhost:5173/handbook/engineering/data-and-api/api-contract-draft" target="_blank">API contract</a>
+        <a class="open alt" href="http://localhost:5173/handbook/engineering/data-and-api/schema-draft" target="_blank">Schema draft</a>
+      </div>
+    </li>
+
+    <li>
+      <p class="credit">This one is the whole team. What you are looking at is where the
+        code actually is at the end of two weeks.</p>
+      <div class="flag"><div class="t">Pick the repo before you share your screen</div>
+        <p>project.json lists three pointers and they disagree. code_repo is Bitbucket
+          hs2studio/scribl-app, which is what CLAUDE.md also says. build_repo is GitHub
+          ScriblOrg/scribl-mobile-app, which is the one named in the brief.</p></div>
+      <ul class="points">
+        <li>One Expo codebase produces three build outputs, a web export on S3 and
+          CloudFront, an Android APK, and an iOS build.
+          <span class="src">docs/ios-distribution.md</span></li>
+      </ul>
+      <div class="openrow">
+        <a class="open" href="https://bitbucket.org/hs2studio/scribl-app" target="_blank">Bitbucket, code_repo</a>
+        <a class="open alt" href="https://github.com/ScriblOrg/scribl-mobile-app" target="_blank">GitHub, build_repo</a>
+      </div>
+    </li>
+
+    <li>
+      <p class="credit">Karuna Arshakota owns QA. She has been selecting the automation
+        frameworks and standing up the test approach, and the choices are already made
+        rather than still being debated.</p>
+      <ul class="points">
+        <li>Jest everywhere in two projects, Playwright for web end to end because it is
+          already proven on the POC, and native end to end deferred with Maestro picked
+          over Detox for when we need it. <span class="src">handbook/engineering/toolchain.md</span></li>
+        <li>Tests are tiered by value. Invariant tests first, something like submit to
+          unlock cannot be bypassed, then contract tests, then the rest.
+          <span class="src">handbook/engineering/engineering-standards.md section 4</span></li>
+      </ul>
+      <div class="openrow"><a class="open" href="http://localhost:5173/handbook/engineering/toolchain" target="_blank">Toolchain</a></div>
+    </li>
+
+    <li>
+      <p class="credit">Shubhankar Bhavsar worked iOS access and the Apple account
+        provisioning. Pramod Kumar and Pankaj Aggarwal worked the AWS, Apple and GitHub
+        account setup, and Eric, you were on the other side of most of that, so thank
+        you.</p>
+      <ul class="points">
+        <li>The three access asks are written up as runbooks dated 2026-08-26, one per
+          account family. <span class="src">artifacts/access-runbooks.html</span></li>
+      </ul>
+      <div class="openrow">
+        <a class="open" href="http://localhost:5173/artifacts/access-runbooks.html" target="_blank">Access runbooks</a>
+        <a class="open alt" href="http://localhost:5173/ios-distribution" target="_blank">iOS</a>
+        <a class="open alt" href="http://localhost:5173/android-distribution" target="_blank">Android</a>
+      </div>
+    </li>
+
+    <li>
+      <p class="credit">Rajeev Kumar set up the Jira board and has been running PM on this.
+        The backlog exists in Jira now rather than in a document.</p>
+      <ul class="points">
+        <li>Eighteen epics, and the nine that carry the daily loop, E00 through E08, are
+          filed on the SCRIBL project. <span class="src">tracking/epic-board-mapping.md</span></li>
+        <li>63 of 127 backlog items were filed as of the 2026-08-25 fetch, and the gap is a
+          re-file that has not happened yet, not work that was dropped.
+          <span class="src">tracking/epic-board-mapping.md</span></li>
+      </ul>
+      <div class="openrow">
+        <a class="open" href="https://bounteous.jira.com/jira/software/projects/SCRIBL/boards/13809/backlog" target="_blank">SCRIBL board</a>
+        <a class="open alt" href="http://localhost:5173/board" target="_blank">Board page</a>
+      </div>
+    </li>
+
+    <li>
+      <p class="credit">The prototype is mine. I built it so we had something to argue with
+        instead of arguing about a document.</p>
+      <ul class="points">
+        <li>32 screens and 9 documented workflows, F1 through F9, from launch and auth
+          through to account and profile. <span class="src">docs/prototype/</span></li>
+      </ul>
+      <div class="openrow"><a class="open" href="http://localhost:5173/prototype/index" target="_blank">Prototype</a></div>
+    </li>
+
+  </ol>
+</section>
+
+<!-- ============ BLOCK 2 ============ -->
+
+<section class="panel" id="p-b2">
+  <p class="blockhead">Block 2, 20 min, Eric presents, you listen and capture</p>
+  <h1>Eric walks us through the new designs</h1>
+
+  <div class="prompts">
+    <h3>Prepared prompts, use them when a design quietly reopens a settled call</h3>
+    <p class="sub">Each one is a live conflict between the new design direction and the
+      ratified decision register. Ranked by how likely a design walkthrough hits it.</p>
+    <ol>
+      <li><span class="q">When we get to the avatar screen, can you walk us through where
+        that image actually needs to end up, because right now it is landing somewhere our
+        own data rules say images cannot live.</span>
+        <span class="against">Against register 2.5, images go to object storage by
+          pre-signed URL and never into the database. The avatar PATCH is sending a base64
+          data URI.</span></li>
+      <li><span class="q">If the new designs walk through all eight onboarding screens
+        today, are we saying that flow is back in for this phase, or are we still doing
+        email invite first and the eight screens later.</span>
+        <span class="against">Against register 3.4 and E02-F4, which defer the eight screen
+          guided onboarding.</span></li>
+      <li><span class="q">If the new wall design shows a way to catch up on a missed day,
+        does opening that still require you to have drawn something for it, or can someone
+        see the reveal without submitting.</span>
+        <span class="against">Against register 4.1, submit to unlock enforced as a
+          transactional check rather than in the UI. Raised as C22, Matthew objecting.</span></li>
+      <li><span class="q">The new response detail screen, does it let someone go back and
+        change a drawing they already submitted, or is that still a closed door.</span>
+        <span class="against">Against register 2.6, an edit adds a revision rather than
+          mutating one. Eric leaning no on edits at all in C23.</span></li>
+      <li><span class="q">When someone builds one of these composed pieces from several
+        drawings and saves it, is that a brand new stored image in its own right, or is it
+        something we generate on the fly each time.</span>
+        <span class="against">Against register 2.4 and 2.5. Composition is described in C16
+          and C17.</span></li>
+      <li><span class="q">When someone uses white to erase part of a drawing, is that meant
+        to actually delete those strokes, or just paint white on top of them, because those
+        are two different things underneath.</span>
+        <span class="against">Against register 2.6, strokes are the source of truth. White
+          as eraser is C11 and C20.</span></li>
+    </ol>
+    <div class="openrow"><a class="open alt" href="http://localhost:5173/handbook/engineering/decision-register" target="_blank">Open the decision register</a></div>
+  </div>
+
+  <div class="cap">
+    <label for="b2-notes">Running notes</label>
+    <p class="hint">Everything as it goes past. Sort it later.</p>
+    <textarea id="b2-notes" rows="10"></textarea>
+    <div class="saved" data-for="b2-notes"></div>
+  </div>
+
+  <div class="grid2">
+    <div class="cap">
+      <label for="b2-decisions">Design decisions made</label>
+      <p class="hint">Things Eric settled in the room.</p>
+      <textarea id="b2-decisions" rows="7"></textarea>
+      <div class="saved" data-for="b2-decisions"></div>
+    </div>
+    <div class="cap">
+      <label for="b2-questions">Questions I want to raise</label>
+      <p class="hint">Yours, to bring back before the end of the block.</p>
+      <textarea id="b2-questions" rows="7"></textarea>
+      <div class="saved" data-for="b2-questions"></div>
+    </div>
+    <div class="cap">
+      <label for="b2-conflicts">Contradicts the ratified decision register</label>
+      <p class="hint">Note the register number if you catch it live.</p>
+      <textarea id="b2-conflicts" rows="7"></textarea>
+      <div class="saved" data-for="b2-conflicts"></div>
+    </div>
+    <div class="cap">
+      <label for="b2-followups">Follow ups</label>
+      <p class="hint">Who owes what, by when.</p>
+      <textarea id="b2-followups" rows="7"></textarea>
+      <div class="saved" data-for="b2-followups"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCK 3 ============ -->
+
+<section class="panel" id="p-b3">
+  <p class="blockhead">Block 3, 10 min, you present</p>
+  <h1>Sprint 1 and the backlog</h1>
+
+  <div class="flag"><div class="t">You have not reviewed this block. Correct it before Friday.</div>
+    <p>Everything below is drafted from the tracking files, not from you. Read it, cut what
+      is wrong, and check the two private notes before you say any of it out loud.</p></div>
+
+  <div class="card">
+    <div class="say"><span class="who">Say this, plainly, no spin</span>
+      The backlog is still being fleshed out. What is in Jira today is the nine epics that
+      carry the daily loop and about half the items under them. The rest is written down
+      but not yet filed.</div>
+    <div class="say"><span class="who">And say this</span>
+      Eric, I want to get you into the backlog directly rather than reporting it at you.
+      I will send you an invite around Wednesday the ninth so you can start seeing it as it
+      moves.</div>
+  </div>
+
+  <div class="card">
+    <h2>Where Sprint 0 got to</h2>
+    <ul class="points">
+      <li>Sprint 0 ran 2026-08-24 to 2026-09-01 as fifteen spikes, filed on Jira as Spike
+        rather than Story. <span class="src">tracking/sprint-zero.md, tracking/backlog-sprint0.md</span></li>
+      <li>Four things closed. Dev environment, the Aurora question closed in favour of
+        managed serverless Postgres, client architecture and portability written up, and the
+        device matrix set at iPhone 11 and up, phone first, iPad deferred.
+        <span class="src">tracking/backlog-sprint0.md</span></li>
+      <li>Backend compute is decided, one long running Node container rather than Lambda,
+        on a managed serverless container rather than self managed Kubernetes. The sizing
+        memo is still outstanding. <span class="src">tracking/backlog-sprint0.md E00-F4</span></li>
+      <li>Four decisions still block the build. Under 13 and COPPA scope, the channel
+        model, the moderation fail open versus fail safe policy, and whether agentic follow
+        up is in the MLP or after launch. <span class="src">tracking/sprint-zero.md</span></li>
+    </ul>
+    <div class="privnote"><div class="t">For you, not for the room</div>
+      All fifteen spikes still carry status Not started in
+      tracking/backlog-sprint0.md, including the four the prose calls closed. If you say
+      closed out loud and Eric opens the board, that is an awkward moment. Either get the
+      statuses updated before Friday or say decided rather than closed.</div>
+  </div>
+
+  <div class="card">
+    <h2>Where Sprint 1 is heading</h2>
+    <ul class="points">
+      <li>Sprint 1 started 2026-09-02. <span class="src">tracking/backlog-sprint0.md</span></li>
+      <li>Order of work is the Green band first, E00 through E08, then Orange, then Gray.
+        Orange is the real conversation about what earns a sprint slot.
+        <span class="src">tracking/epic-board-mapping.md</span></li>
+      <li>Feature work is serial behind one iOS engineer, so sequence matters more than it
+        usually would. <span class="src">tracking/epic-board-mapping.md</span></li>
+      <li>Four epics grew after the 2026-08-25 fetch, from a screen by screen pass that
+        added 25 features across auth, the daily prompt, drawing and walls.
+        <span class="src">tracking/epic-board-mapping.md</span></li>
+    </ul>
+    <div class="privnote"><div class="t">For you, not for the room</div>
+      There is no sprint 1 story list in the tracking files. I did not invent one. Also,
+      tracking/backlog-sprint0.md says the week four demo is at risk because a regional
+      holiday lands on the last two days of sprint 1, and separately that it depends on a
+      real device being available. That is worth raising, but it is your call whether it
+      belongs in this meeting.
+      <br><br>
+      Deliberately left out of the spoken text, capacity arithmetic. The sources show
+      demand at 142 lane days against 108 of capacity, a 34 day overrun. That is internal
+      staffing maths and artifacts/README.md keeps it out of anything the client sees. Use
+      it if you want to, knowingly.</div>
+    <div class="openrow">
+      <a class="open" href="https://bounteous.jira.com/jira/software/projects/SCRIBL/boards/13809/backlog" target="_blank">Open the SCRIBL backlog</a>
+      <a class="open alt" href="http://localhost:5173/epic-board-mapping" target="_blank">Epic board mapping</a>
+      <a class="open alt" href="http://localhost:5173/sprint-zero" target="_blank">Sprint zero</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCK 4 ============ -->
+
+<section class="panel" id="p-b4">
+  <p class="blockhead">Block 4, 10 min, you listen and capture</p>
+  <h1>Q and A, and a short retro</h1>
+
+  <div class="card">
+    <p class="qbig">What's been working?</p>
+    <textarea id="b4-working" rows="6"></textarea>
+    <div class="saved" data-for="b4-working"></div>
+  </div>
+  <div class="card">
+    <p class="qbig">What do we need to add?</p>
+    <textarea id="b4-add" rows="6"></textarea>
+    <div class="saved" data-for="b4-add"></div>
+  </div>
+  <div class="card">
+    <p class="qbig">What are you thinking?</p>
+    <textarea id="b4-thinking" rows="6"></textarea>
+    <div class="saved" data-for="b4-thinking"></div>
+  </div>
+  <div class="card">
+    <p class="qbig">What are you worried about?</p>
+    <textarea id="b4-worried" rows="6"></textarea>
+    <div class="saved" data-for="b4-worried"></div>
+  </div>
+</section>
+
+<!-- ============ EXPORT ============ -->
+
+<section class="panel" id="p-exp">
+  <p class="blockhead">After the meeting</p>
+  <h1>Export</h1>
+  <div class="card">
+    <p>Everything you typed in block 2 and block 4, in one plain block. Copy it into the
+      wiki.</p>
+    <div class="openrow">
+      <button class="mini go" id="build" style="border-color:var(--violet)">Rebuild</button>
+      <button class="mini" id="copy" style="border-color:var(--line);color:var(--ink)">Copy</button>
+      <button class="mini" id="dl" style="border-color:var(--line);color:var(--ink)">Download</button>
+      <button class="mini" id="clr" style="border-color:var(--line);color:var(--ink)">Clear all notes</button>
+    </div>
+    <p></p>
+    <textarea id="out" readonly></textarea>
+  </div>
+</section>
+
+</main>
+
+<footer class="exp">
+  <button class="mini go" id="goexp">Export notes</button>
+  <span class="note" id="fnote">Private working surface for Rob. Not shown on screen, not sent to the client.</span>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------------- sections, 20 + 20 + 10 + 10 = 60 ---------------- */
+var SEC = [
+  {id:"b1",  block:1, mins:20, label:"Show and tell"},
+  {id:"b2",  block:2, mins:20, label:"Eric's designs"},
+  {id:"b3",  block:3, mins:10, label:"Sprint 1"},
+  {id:"b4",  block:4, mins:10, label:"Q and A"},
+  {id:"exp", block:5, mins:0,  label:"Export"}
+];
+var TITLE = {
+  b1:"What the team built in two weeks",
+  b2:"Eric walks us through the new designs",
+  b3:"Sprint 1 and the backlog",
+  b4:"Q and A, and a short retro",
+  exp:"Export"
+};
+var HOUR = 60 * 60;
+var DEFAULT_MINS = SEC.map(function(x){ return x.mins; });
+
+/* ---------------- element handles ---------------- */
+var mdisp=document.getElementById("mdisp"), sdisp=document.getElementById("sdisp"),
+    sname=document.getElementById("sname"), carryEl=document.getElementById("carry"),
+    minsEl=document.getElementById("mins"), runBtn=document.getElementById("run"),
+    planEl=document.getElementById("plan"), toastEl=document.getElementById("toast");
+
+/* ---------------- timer state ---------------- */
+var cur = 0;          /* index into SEC */
+var left = 0;         /* seconds left in the current section, may go negative */
+var elapsed = 0;      /* master hour clock, counts up, never resets on advance */
+var carried = 0;      /* seconds of debt inherited by the current section, <= 0 */
+var running = false;
+var tick = null;
+var resume = {};      /* section id -> left, so going Back restores where you were */
+var anchor = 0;       /* Date.now() when the current run leg started */
+var left0 = 0, elapsed0 = 0;  /* left and elapsed at the top of that leg */
+var rang = false;     /* has this section already announced that it is up */
+
+function budget(i){ return Math.max(0.5, SEC[i].mins) * 60; }
+
+function fmt(s){
+  var neg = s < 0;
+  s = Math.abs(Math.round(s));
+  var m = Math.floor(s / 60), r = s % 60;
+  return (neg ? "-" : "") + m + ":" + (r < 10 ? "0" : "") + r;
+}
+
+function paint(){
+  sdisp.textContent = fmt(left);
+  sdisp.classList.toggle("over", left < 0);
+  mdisp.textContent = fmt(elapsed);
+  mdisp.classList.toggle("over", elapsed > HOUR);
+  sname.textContent = TITLE[SEC[cur].id];
+  minsEl.value = SEC[cur].mins;
+  carryEl.textContent = carried < 0 ? "carried in " + fmt(carried) : "";
+  Array.prototype.forEach.call(planEl.children, function(d, i){
+    d.classList.toggle("now", i === cur);
+    d.classList.toggle("done", i < cur);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".panel"), function(p){
+    p.classList.toggle("on", p.id === "p-" + SEC[cur].id);
+  });
+}
+
+/* Both clocks are derived from Date.now(), never from counting setInterval fires.
+   Browsers throttle timers in a background tab, and this runs while Rob is presenting
+   from another window, so a counted tick would quietly fall behind the wall clock. */
+function sync(){
+  if(!running) return;
+  var d = (Date.now() - anchor) / 1000;
+  left = left0 - d;
+  elapsed = elapsed0 + d;
+  if(!rang && left <= 0){
+    rang = true;
+    toast(TITLE[SEC[cur].id] + " is up. " + nextUp());
+  }
+}
+
+function stop(){
+  if(running){ sync(); }
+  running = false;
+  if(tick){ clearInterval(tick); tick = null; }
+  runBtn.textContent = "Start";
+  paint();
+}
+
+function start(){
+  if(running) return;
+  running = true;
+  anchor = Date.now();
+  left0 = left; elapsed0 = elapsed;
+  runBtn.textContent = "Pause";
+  tick = setInterval(function(){ sync(); paint(); }, 250);
+  paint();
+}
+
+/* Coming back to the tab re-reads the real time immediately rather than waiting a tick. */
+document.addEventListener("visibilitychange", function(){
+  if(!document.hidden){ sync(); paint(); }
+});
+
+function nextUp(){
+  return cur < SEC.length - 1
+    ? "Next is " + TITLE[SEC[cur + 1].id] + ", " + SEC[cur + 1].mins + " min."
+    : "That is the hour.";
+}
+
+/* Overtime carries forward. Going over on one section starts the next one short by
+   exactly that much, so running long visibly costs the block after it. */
+function goTo(i){
+  if(i < 0 || i >= SEC.length || i === cur) return;
+  var wasRunning = running;
+  stop();
+  resume[SEC[cur].id] = left;
+  var debt = (i > cur && left < 0) ? left : 0;   /* only carry forward, never backward */
+  cur = i;
+  /* Debt always applies when moving forward, including into a section already visited.
+     Revisiting restores where you were and then subtracts the fresh overrun on top. */
+  carried = debt;
+  left = (resume[SEC[cur].id] !== undefined ? resume[SEC[cur].id] : budget(cur)) + debt;
+  rang = left <= 0;
+  paint();
+  window.scrollTo(0, 0);
+  if(wasRunning) start();
+}
+
+runBtn.addEventListener("click", function(){ running ? stop() : start(); });
+document.getElementById("next").addEventListener("click", function(){ goTo(cur + 1); });
+document.getElementById("prev").addEventListener("click", function(){ goTo(cur - 1); });
+document.getElementById("goexp").addEventListener("click", function(){
+  buildOut(); goTo(SEC.length - 1);
+});
+
+document.getElementById("reset").addEventListener("click", function(){
+  var wasRunning = running;
+  stop();
+  carried = 0;
+  left = budget(cur);
+  rang = false;
+  delete resume[SEC[cur].id];
+  paint();
+  if(wasRunning) start();
+});
+
+document.getElementById("resetall").addEventListener("click", function(){
+  if(!confirm("Reset the hour clock and every section budget? Your notes are kept.")) return;
+  stop();
+  SEC.forEach(function(x, i){ x.mins = DEFAULT_MINS[i]; });
+  elapsed = 0; carried = 0; resume = {}; cur = 0;
+  left = budget(0);
+  rang = false;
+  buildPlan();
+  paint();
+  toast("Clocks and budgets back to 20 / 20 / 10 / 10. Notes untouched.");
+});
+
+/* Editing the budget shifts the remaining time by the delta. It does not reset the
+   section, so time already spent and any debt carried in both survive the edit. */
+minsEl.addEventListener("change", function(){
+  var v = parseFloat(minsEl.value);
+  if(!isFinite(v) || v < 0.5 || v > 60){
+    minsEl.value = SEC[cur].mins;
+    toast("A section budget has to be between half a minute and 60 minutes.");
+    return;
+  }
+  sync();
+  var was = budget(cur);
+  SEC[cur].mins = v;
+  left += budget(cur) - was;
+  rang = left <= 0;
+  if(running){ anchor = Date.now(); left0 = left; elapsed0 = elapsed; }
+  buildPlan();
+  paint();
+});
+
+document.addEventListener("keydown", function(e){
+  if(/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) return;
+  if(e.key === "ArrowRight"){ goTo(cur + 1); }
+  if(e.key === "ArrowLeft"){ goTo(cur - 1); }
+  if(e.key === " "){ e.preventDefault(); running ? stop() : start(); }
+});
+
+/* ---------------- section strip ---------------- */
+function buildPlan(){
+  planEl.innerHTML = "";
+  SEC.forEach(function(s, i){
+    var d = document.createElement("div");
+    d.innerHTML = "<b>" + (s.mins ? s.mins + "m" : "-") + "</b>" + s.label;
+    d.addEventListener("click", function(){ goTo(i); });
+    planEl.appendChild(d);
+  });
+}
+
+/* ---------------- toast ---------------- */
+var toastT = null;
+function toast(msg){
+  toastEl.textContent = msg;
+  toastEl.classList.add("on");
+  if(toastT) clearTimeout(toastT);
+  toastT = setTimeout(function(){ toastEl.classList.remove("on"); }, 3800);
+}
+
+/* ---------------- notes, autosaved ---------------- */
+var KEY = "scribl.shapereview.2026-09-04.v1";
+var TABKEY = KEY + ".tab." + Math.random().toString(36).slice(2, 8);
+var store = {};
+var canPersist = true;
+var loadWarning = "";
+try {
+  var raw = localStorage.getItem(KEY);
+  store = raw ? (JSON.parse(raw) || {}) : {};
+} catch(e){
+  /* Do not quietly start from nothing. Keep the unreadable copy and say so. */
+  store = {};
+  try { localStorage.setItem(KEY + ".corrupt." + Date.now(), localStorage.getItem(KEY) || ""); } catch(e2){}
+  loadWarning = "Saved notes on this machine could not be read and were not loaded. A copy was kept under a .corrupt key.";
+}
+
+/* If autosave ever fails, say so and keep saying so. A toast that fades is no use to
+   someone who is talking and not looking at the screen. */
+function alarm(msg){
+  var a = document.getElementById("alarm");
+  a.textContent = msg;
+  a.hidden = false;
+  toast(msg);
+}
+
+function persistFailed(){
+  canPersist = false;
+  alarm("Autosave is not working. Your notes live only in this tab. Export before you close it.");
+}
+
+/* Two tabs on this file would otherwise clobber each other on last write. Each tab also
+   writes its own copy, so nothing typed anywhere is ever destroyed by the other tab. */
+function save(){
+  if(!canPersist) return;
+  var json = JSON.stringify(store);
+  try {
+    localStorage.setItem(TABKEY, json);
+    localStorage.setItem(KEY, json);
+  }
+  catch(e){ persistFailed(); }
+}
+
+window.addEventListener("storage", function(e){
+  if(e.key !== KEY) return;
+  alarm("Another tab of this file is also taking notes. Export from both before you close either one.");
+});
+
+var FIELDS = [
+  {id:"b2-notes",     block:"Block 2", head:"Running notes"},
+  {id:"b2-decisions", block:"Block 2", head:"Design decisions made"},
+  {id:"b2-questions", block:"Block 2", head:"Questions to raise"},
+  {id:"b2-conflicts", block:"Block 2", head:"Contradicts the decision register"},
+  {id:"b2-followups", block:"Block 2", head:"Follow ups"},
+  {id:"b4-working",   block:"Block 4", head:"What's been working?"},
+  {id:"b4-add",       block:"Block 4", head:"What do we need to add?"},
+  {id:"b4-thinking",  block:"Block 4", head:"What are you thinking?"},
+  {id:"b4-worried",   block:"Block 4", head:"What are you worried about?"}
+];
+
+FIELDS.forEach(function(f){
+  var ta = document.getElementById(f.id);
+  if(!ta){ return; }
+  var flag = document.querySelector('.saved[data-for="' + f.id + '"]');
+  if(store[f.id]) ta.value = store[f.id];
+  var t = null;
+  ta.addEventListener("input", function(){
+    store[f.id] = ta.value;
+    if(t) clearTimeout(t);
+    t = setTimeout(function(){
+      save();
+      if(flag && canPersist){
+        flag.textContent = "saved";
+        setTimeout(function(){ flag.textContent = ""; }, 1400);
+      }
+    }, 400);
+  });
+  /* Flush immediately on blur, so leaving a field never depends on the debounce. */
+  ta.addEventListener("blur", function(){ store[f.id] = ta.value; save(); });
+});
+
+/* Last line of defence. Whatever is on screen gets written before the tab goes away. */
+function flushAll(){
+  FIELDS.forEach(function(f){
+    var ta = document.getElementById(f.id);
+    if(ta) store[f.id] = ta.value;
+  });
+  save();
+}
+window.addEventListener("pagehide", flushAll);
+window.addEventListener("beforeunload", flushAll);
+
+/* Every open leaves a tab copy behind. Keep the six most recent and drop the rest, so
+   this cannot creep up on the storage quota after weeks of opening the file. */
+(function pruneTabCopies(){
+  try {
+    var mine = Object.keys(localStorage).filter(function(k){
+      return k.indexOf(KEY + ".tab.") === 0 && k !== TABKEY;
+    }).sort();
+    while(mine.length > 6){ localStorage.removeItem(mine.shift()); }
+  } catch(e){}
+})();
+
+if(loadWarning) alarm(loadWarning);
+
+/* Prove persistence works here at all, rather than finding out at 12:55. */
+try {
+  localStorage.setItem(KEY + ".probe", "1");
+  localStorage.removeItem(KEY + ".probe");
+} catch(e){ persistFailed(); }
+
+/* ---------------- export ---------------- */
+function buildOut(){
+  var L = [];
+  L.push("# Scribl Shape Review, 2026-09-04, notes");
+  L.push("");
+  L.push("Captured by Rob Forshier. Written out " + new Date().toLocaleString() + ".");
+  L.push("Hour clock at export: " + fmt(elapsed) + " of 60:00.");
+  L.push("");
+  var lastBlock = "";
+  FIELDS.forEach(function(f){
+    if(f.block !== lastBlock){
+      L.push("## " + f.block);
+      L.push("");
+      lastBlock = f.block;
+    }
+    L.push("### " + f.head);
+    L.push("");
+    var v = (store[f.id] || "").trim();
+    L.push(v || "_nothing captured_");
+    L.push("");
+  });
+  var out = L.join("\n");
+  document.getElementById("out").value = out;
+  return out;
+}
+
+document.getElementById("build").addEventListener("click", function(){
+  buildOut(); toast("Rebuilt from what is in the fields now.");
+});
+
+document.getElementById("dl").addEventListener("click", function(){
+  var blob = new Blob([buildOut()], {type:"text/markdown"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "shape-review-2026-09-04-notes.md";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+  toast("Downloaded");
+});
+
+document.getElementById("copy").addEventListener("click", function(){
+  var md = buildOut();
+  function fallback(){
+    var ta = document.createElement("textarea");
+    ta.value = md; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); toast("Copied"); }
+    catch(e){ toast("Copy failed. Use Download instead."); }
+    ta.remove();
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(md).then(function(){ toast("Copied"); }, fallback);
+  } else { fallback(); }
+});
+
+document.getElementById("clr").addEventListener("click", function(){
+  if(!confirm("Clear every note on this machine? This cannot be undone.")) return;
+  store = {};
+  try { localStorage.removeItem(KEY); localStorage.removeItem(TABKEY); } catch(e){}
+  FIELDS.forEach(function(f){
+    var ta = document.getElementById(f.id);
+    if(ta) ta.value = "";
+  });
+  document.getElementById("out").value = "";
+  toast("Cleared");
+});
+
+/* ---------------- boot ---------------- */
+buildPlan();
+left = budget(0);
+paint();
+
+})();
+</script>
+</body>
+</html>

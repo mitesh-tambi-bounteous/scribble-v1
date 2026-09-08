@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scribl B2B stack review -- read this</title>
+<style>
+  :root {
+    /* Bounteous brand, the same tokens index.html and the board assets use */
+    --midnight: #0B111C;
+    --indigo: #33139F;
+    --violet: #693AF4;
+    --purple: #853EFF;
+    --eblue: #34B4FF;
+    --paper: #FAFAFC;
+    --card: #FFFFFF;
+    --gray-50: #F4F5F8;
+    --gray-100: #EAECF2;
+    --gray-500: #636B82;
+
+    --ink: var(--midnight);
+    --muted: var(--gray-500);
+    --line: var(--gray-100);
+    --accent: var(--violet);
+    --accent-soft: var(--gray-50);
+    --code-bg: var(--gray-50);
+    --good: #18864A;
+    --bad: #DB0632;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 1.25rem 5rem;
+    font: 16px/1.6 "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+  }
+  .wrap { max-width: 58rem; margin: 0 auto; }
+  .masthead { background: linear-gradient(90deg, var(--eblue) 0%, var(--purple) 100%); height: 6px; }
+  header { padding: 2.5rem 0 1.25rem; border-bottom: 2px solid var(--ink); }
+  h1 { font-size: 2rem; margin: 0 0 .35rem; letter-spacing: -0.02em; }
+  .tagline { color: var(--muted); margin: 0; font-size: 1.05rem; }
+  .meta { color: var(--muted); font-size: .85rem; margin: .6rem 0 0; }
+
+  /* Tabs */
+  nav.tabs {
+    display: flex; flex-wrap: wrap; gap: .25rem;
+    margin: 1.25rem 0 0; border-bottom: 1px solid var(--line);
+  }
+  nav.tabs button {
+    font: inherit; font-size: .92rem; font-weight: 700;
+    background: none; border: 0; border-bottom: 3px solid transparent;
+    color: var(--muted); padding: .6rem .85rem; cursor: pointer;
+  }
+  nav.tabs button:hover { color: var(--ink); }
+  nav.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  nav.tabs button:focus-visible { outline: 2px solid var(--eblue); outline-offset: 2px; }
+  section[role="tabpanel"] { display: none; }
+  section[role="tabpanel"].on { display: block; }
+
+  h2 {
+    font-size: 1.3rem;
+    margin: 2rem 0 .75rem;
+    padding-bottom: .3rem;
+    border-bottom: 3px solid var(--accent);
+    font-weight: 700;
+  }
+  h3 { font-size: 1.02rem; margin: 1.75rem 0 .4rem; }
+  p { margin: .7rem 0; }
+  ul { margin: .7rem 0; padding-left: 1.3rem; }
+  li { margin: .35rem 0; }
+  code, pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .89em;
+  }
+  code { background: var(--code-bg); padding: .1em .35em; border-radius: 3px; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .92rem; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  td.n { text-align: right; color: var(--muted); white-space: nowrap; }
+  td.q { white-space: nowrap; color: var(--muted); font-weight: 700; }
+  .callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: .85rem 1rem;
+    margin: 1.25rem 0;
+  }
+  .callout p:first-child { margin-top: 0; }
+  .callout p:last-child { margin-bottom: 0; }
+  .two { display: grid; gap: .9rem; grid-template-columns: 1fr; margin: 1.25rem 0; }
+  @media (min-width: 44rem) { .two { grid-template-columns: repeat(2, 1fr); } }
+  .card { border: 1px solid var(--line); border-top: 3px solid var(--accent); padding: .85rem .9rem; background: var(--card); }
+  .card h3 { margin: 0 0 .35rem; font-size: .95rem; }
+  .card p { margin: .35rem 0 0; font-size: .92rem; }
+  .say { border-left: 3px solid var(--ink); padding-left: 1rem; margin: 1rem 0; }
+  .say p { font-size: 1.05rem; }
+  .tag { display: inline-block; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+         letter-spacing: .06em; padding: .12rem .45rem; border-radius: 3px; }
+  .tag.ours { background: #E7F7EE; color: var(--good); }
+  .tag.theirs { background: #FDE9EC; color: var(--bad); }
+  .tag.none { background: var(--gray-100); color: var(--gray-500); }
+  footer { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="masthead"></div>
+<div class="wrap">
+
+<header>
+  <h1>Scribl B2B stack review</h1>
+  <p class="tagline">What their product is actually built on, what the code answers for the board, and what we should reuse.</p>
+  <p class="meta">Read from <code>scribl-b2b</code> at commit <code>e7876a1</code>, 577 files, and from the D2C POC, both read only, on 2026-08-25.
+  Source of truth is <code>knowledge/research/scribl-b2b-stack-review.md</code>. Engagement knowledge, not client-facing.</p>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button role="tab" aria-selected="true"  aria-controls="p1" id="t1">1. The stack</button>
+  <button role="tab" aria-selected="false" aria-controls="p2" id="t2">2. Testing</button>
+  <button role="tab" aria-selected="false" aria-controls="p3" id="t3">3. Board questions</button>
+  <button role="tab" aria-selected="false" aria-controls="p4" id="t4">4. The canvas</button>
+  <button role="tab" aria-selected="false" aria-controls="p5" id="t5">5. Reuse</button>
+  <button role="tab" aria-selected="false" aria-controls="p6" id="t6">Backlog map</button>
+</nav>
+
+<!-- ============ 1 ============ -->
+<section role="tabpanel" id="p1" aria-labelledby="t1" class="on">
+
+<div class="callout">
+  <p>One framing note before the detail. The B2B product is a facilitated group game, not a
+  consumer journal. It has hosts, players, sessions, gamepacks, prompts, player cards, and a
+  paid trial check. Our D2C app is a personal daily-prompt loop. When their design looks
+  thinner than ours, that is usually the product speaking, not the engineering.</p>
+</div>
+
+<h2>Three packages, three manifests</h2>
+
+<p>pnpm, TypeScript everywhere, no monorepo tool. Each package installs and builds on its own.</p>
+
+<table>
+  <tr><th>Package</th><th>What it is</th><th>Key versions</th></tr>
+  <tr>
+    <td><code>api/</code></td>
+    <td>Fastify server hosting an Apollo GraphQL endpoint, plus a <code>graphql-ws</code> websocket for subscriptions</td>
+    <td>Fastify 5.2.0, Apollo Server 4.11.2, GraphQL 16.10.0, Sequelize <code>@sequelize/core</code> 7.0.0-alpha.43, <code>pg</code> 8.13.1, redis 4.7.0, <code>aws-jwt-verify</code> 4.0.1 <br><code>api/package.json:31-58</code></td>
+  </tr>
+  <tr>
+    <td><code>client/</code></td>
+    <td>Browser SPA, Vite to a static bundle</td>
+    <td>React 19.0.0, react-router-dom 7.0.2, Vite 6.0.4, Apollo Client 3.12.4, aws-amplify 6.10.3, MUI 6.2.1, konva 9.3.16, react-konva 19.0.1 <br><code>client/package.json</code></td>
+  </tr>
+  <tr>
+    <td><code>infrastructure/</code></td>
+    <td>AWS CDK v2 app in TypeScript</td>
+    <td>aws-cdk-lib 2.173.2, cdk CLI 2.173.2, <code>@aws-cdk/aws-cognito-identitypool-alpha</code> 2.173.2-alpha.0 <br><code>infrastructure/package.json</code></td>
+  </tr>
+</table>
+
+<p>Runtimes. The api declares <code>engines.node &gt;=20.0</code> (<code>api/package.json:16-18</code>)
+and its container is <code>node:22-slim</code> (<code>api/Dockerfile:2</code>). There is no
+<code>.nvmrc</code>, and the api is the only containerized piece.</p>
+
+<h3>Shape of each package</h3>
+
+<div class="two">
+  <div class="card">
+    <h3><code>api/</code></h3>
+    <p><code>src/server.ts</code> is the bootstrap: one Fastify instance (<code>:90</code>), Apollo at
+    <code>/graphql</code> (<code>:191-201, :230-244</code>), and a separate <code>WebSocketServer</code> with
+    <code>graphql-ws</code> on the same path (<code>:266-290</code>). GraphQL is the primary surface: 13 schemas,
+    12 resolvers, merged at <code>src/graphql/index.ts:1-19</code> with a custom auth directive. The ten
+    files in <code>src/controllers/</code> are called by resolvers, not mounted as routes.</p>
+  </div>
+  <div class="card">
+    <h3><code>client/</code></h3>
+    <p>A browser SPA and nothing else. Amplify configured at <code>src/index.tsx:39-52</code>,
+    <code>createBrowserRouter</code> at <code>src/router.tsx:39</code>, whole router wrapped in a
+    <code>MobileDeviceGate</code> (<code>:41-42</code>), which is a responsive gate, not a native shell.
+    No React Native and no Expo dependency anywhere.</p>
+  </div>
+  <div class="card">
+    <h3><code>infrastructure/</code></h3>
+    <p><code>bin/infrastructure.ts:5-88</code> declares one <code>cdk.Stage</code> per environment, named
+    <code>Scribl-${env}</code>. <code>lib/index.ts:1-13</code> composes nine constructs: Network, Data, Redis,
+    Auth, API, Client, Resources, AsyncTasks, Metrics.</p>
+  </div>
+  <div class="card">
+    <h3>Datastore</h3>
+    <p>RDS Postgres (<code>lib/constructs/data.ts:70</code>) through Sequelize v7-alpha
+    (<code>api/src/database/index.ts:19-72</code>), 12 models. Redis is a second store for hot session
+    state and pubsub.</p>
+  </div>
+</div>
+
+<h3>AWS services actually provisioned</h3>
+
+<table>
+  <tr><th>Service</th><th>Construct and location</th></tr>
+  <tr><td>VPC</td><td><code>ec2.Vpc</code>, <code>lib/constructs/network.ts:52</code></td></tr>
+  <tr><td>RDS Postgres</td><td><code>rds.DatabaseInstance</code>, <code>data.ts:70</code>, with <code>DatabaseSecret</code> <code>:52</code> and <code>SubnetGroup</code> <code>:62</code></td></tr>
+  <tr><td>Bastion and a Metabase EC2 box</td><td><code>data.ts:108</code> and <code>:154</code></td></tr>
+  <tr><td>AWS Backup vault and plan</td><td><code>data.ts:216-227</code></td></tr>
+  <tr><td>ElastiCache Redis</td><td><code>elasticache.CfnReplicationGroup</code>, <code>redis.ts:53</code></td></tr>
+  <tr><td>Cognito pool, app client, identity pool, 3 groups</td><td><code>auth.ts:120</code>, <code>:158</code>, ~<code>:168-178</code>, <code>:186-198</code></td></tr>
+  <tr><td>ECS Fargate behind an ALB</td><td><code>ecs.Cluster</code> <code>api.ts:121</code>, <code>ecs_patterns.ApplicationLoadBalancedFargateService</code> <code>api.ts:126</code></td></tr>
+  <tr><td>Lambda</td><td><code>auth.ts:86</code> and <code>:104</code> (Cognito triggers), <code>asyncTasks.ts:60</code> (worker), one in <code>metrics.ts</code></td></tr>
+  <tr><td>SQS queue and DLQ</td><td><code>asyncTasks.ts:40</code> and <code>:45</code></td></tr>
+  <tr><td>EventBridge rules</td><td><code>asyncTasks.ts:115</code>, <code>metrics.ts:46</code></td></tr>
+  <tr><td>S3 plus CloudFront, twice</td><td><code>client.ts:19,26</code> (app bundle) and <code>resource.ts:21,28</code> (assets)</td></tr>
+  <tr><td>Route 53 A records</td><td><code>client.ts:48,53</code>, <code>resource.ts:40</code></td></tr>
+  <tr><td>SSM parameter</td><td><code>api.ts:203</code></td></tr>
+</table>
+
+<p>No DynamoDB, no Bedrock, no AppSync is instantiated. <code>api.ts:36</code> declares an
+<code>appsyncApi</code> field that no constructor assigns, which reads as dead code. ACM certificates
+are imported by ARN through stack props (<code>bin/infrastructure.ts:21-22</code>), not created here.</p>
+
+<h3>Auth: Cognito, confirmed</h3>
+
+<p>The pool is <code>${environmentName}-Auth-UserPool</code> with email-alias sign-in, self-signup, and
+custom attributes <code>tenant_id</code>, <code>migrated_from_v1</code>, <code>migrated_reset_sent</code>,
+<code>visited_guide</code>, <code>organization</code> (<code>auth.ts:120-137</code>). The app client enables
+<code>userPassword</code> and <code>userSrp</code> flows (<code>:158-165</code>); the identity pool allows
+unauthenticated identities (~<code>:168-178</code>). On the api side <code>api/src/auth.ts:4-8</code> builds a
+<code>CognitoJwtVerifier</code> over access tokens, wired into both the HTTP and websocket context
+(<code>api/src/server.ts:236-241</code>, <code>:279-287</code>).</p>
+
+<p>The root <code>validate-cognito-env.sh</code> is a shell script, not an environment file: it reads the
+client's production Cognito variable names (~<code>:23-34</code>), then confirms the pool, app client,
+identity pool, bucket, and distribution exist through the AWS CLI (~<code>:47-99</code>).</p>
+
+<div class="callout">
+  <p>Two things in that auth path deserve to be said out loud. <code>api/src/auth.ts:10-24</code> returns
+  <code>null</code> on any verification failure with no logging, so a misconfigured pool and a forged
+  token look identical in the logs. And <code>api/src/server.ts:30-41</code> holds a literal-token bypass,
+  gated on an environment flag, that grants an admin role on a hardcoded tenant, with a second
+  shared-secret bypass at <code>:48-61</code>. Both sit in the same code path as real auth. Neither is ours
+  to fix, and both matter if we are ever asked to review their security posture.</p>
+</div>
+
+<h3>Migrations, and the riskiest thing in the stack</h3>
+
+<p>There is no versioned migration chain. <code>api/scripts/migrate.ts:11</code> calls
+<code>sequelize.sync()</code> and then runs a long block of hand-written <code>ALTER TABLE</code>,
+<code>CREATE INDEX</code>, and backfill SQL (<code>:45-232</code>), and the Dockerfile runs
+<code>pnpm db:migrate</code> on every container start before <code>pnpm start</code> (~<code>:50-59</code>).
+Schema changes apply automatically on every deploy with no gate. That is a direct argument for
+E01-F3 authoring real migrations rather than copying this pattern.</p>
+
+<h3>Deploy</h3>
+
+<p><code>.github/workflows/deploy.yml</code> is GitHub Actions, <code>workflow_dispatch</code> only, no push
+trigger (<code>:3-13</code>), one required environment choice of <code>QA</code> or <code>Stg</code>
+(<code>:6-12</code>). OIDC, no static keys (<code>:15</code>, <code>:37-49</code>). pnpm 9 and Node 22
+(<code>:51-60</code>), then <code>pnpm cdk deploy --require-approval never</code> (<code>:64-65</code>). The
+frontend job (<code>:77-143</code>) builds, runs <code>aws s3 sync dist/ --delete</code> (<code>:129</code>),
+and invalidates CloudFront at <code>/*</code> (<code>:131-132</code>). No lint, test, typecheck, or build gate
+precedes the deploy.</p>
+
+</section>
+
+<!-- ============ 2 ============ -->
+<section role="tabpanel" id="p2" aria-labelledby="t2">
+
+<h2>Counts, computed rather than judged</h2>
+
+<table>
+  <tr><th>Area</th><th class="n">Source files</th><th class="n">Test files</th><th>What is covered</th></tr>
+  <tr><td><code>api/src</code></td><td class="n">70</td><td class="n">9</td>
+      <td>Integration-style controller and resolver pairs under <code>api/src/tests/integration/</code>, for game, gamepack, playercard, user, session, player, organization</td></tr>
+  <tr><td><code>client/src</code></td><td class="n">235</td><td class="n">0</td>
+      <td>Nothing. One Playwright spec exists outside <code>src</code>, at <code>client/e2e/game.spec.ts</code>, plus <code>auth.setup.ts</code> and three helpers</td></tr>
+  <tr><td><code>infrastructure/</code></td><td class="n">23</td><td class="n">1</td>
+      <td>Nothing. <code>infrastructure/test/infrastructure.test.ts:1-14</code> is a stub with an empty body and its assertions commented out</td></tr>
+</table>
+
+<p>What is untested in the api, named: <code>gamepack-organizations</code>, <code>gamepack-prompts</code>
+and <code>artwork-reaction</code> have neither a controller nor a resolver test, and
+<code>metrics.resolver.ts</code> and <code>async-task.resolver.ts</code> have none either. The nine tests
+only exercise controllers and resolvers, so the services, utils, auth, and database layers, roughly 61
+files, have no direct coverage.</p>
+
+<h3>Frameworks</h3>
+
+<p>Jest with ts-jest in <code>api/</code> (<code>api/package.json:11</code>, <code>api/jest.config.js:1-11</code>)
+and in <code>infrastructure/</code> (<code>infrastructure/package.json:7</code>,
+<code>infrastructure/jest.config.js:1-7</code>). <code>client/package.json:5</code> sets
+<code>"test": "playwright test"</code>, configured at <code>client/playwright.config.ts:1-49</code> with one
+worker and a <code>webServer</code> on port 5173. <code>@testing-library/react</code>,
+<code>@testing-library/jest-dom</code> and <code>@types/jest</code> are declared
+(<code>client/package.json:16-22</code>) with no runner config to consume them, so they are template
+leftovers.</p>
+
+<p>Coverage thresholds: none anywhere. No <code>coverageThreshold</code> and no
+<code>collectCoverage</code> in either Jest config, and no coverage gate in any workflow.</p>
+
+<h3>What CI actually enforces</h3>
+
+<ul>
+  <li><code>.github/workflows/pr.yml:1-96</code> checks process hygiene only: a label is present
+  (<code>:24</code>), an assignee is present (<code>:60</code>), the title matches a two-project Jira prefix
+  pattern (<code>:83</code>). No code check at all.</li>
+  <li><code>.github/workflows/linting.yml</code> has exactly two jobs.
+  <code>lint-infrastructure</code> (<code>:21-61</code>) runs <code>pnpm check</code> in
+  <code>infrastructure/</code>. <code>lint-client</code> (<code>:62-121</code>) runs <code>pnpm check</code> in
+  <code>client/</code>. The Playwright step is commented out at <code>:88-95</code> behind a "TODO:
+  implement e2e tests once project is stable", while the <code>upload-artifact</code> step for
+  <code>client/test-results/</code> is still live at <code>:97-101</code> with nothing to upload.</li>
+  <li>There is no api job in any workflow. The api package's lint, format, and its nine tests never
+  run in CI.</li>
+</ul>
+
+<div class="callout">
+  <p>The honest read: CI enforces lint and format for two of three packages and nothing else. No test
+  suite runs in CI, in any package. Nothing runs a build or a discrete typecheck. The e2e suite exists
+  and is switched off. The api is outside CI entirely, and the deploy workflow is not gated on any of
+  it.</p>
+</div>
+
+<h3>Lint and types</h3>
+
+<p>Flat ESLint configs in all three packages (<code>api/eslint.config.mjs:1-13</code>,
+<code>client/eslint.config.mjs:1-40</code>, <code>infrastructure/eslint.config.mjs:1-9</code>), all on
+<code>typescript-eslint</code> recommended rather than strict. The client turns off
+<code>no-explicit-any</code> (<code>:29</code>), <code>no-unsafe-assignment</code> (<code>:28</code>) and
+<code>explicit-function-return-type</code> (<code>:27</code>). All three tsconfigs set
+<code>strict: true</code> and then each carves out an exception:
+<code>api/tsconfig.json:11</code> sets <code>noImplicitAny: false</code>, and
+<code>infrastructure/tsconfig.json:16</code> sets <code>strictPropertyInitialization: false</code>.</p>
+
+<p>Test management or reporting tooling: none. No JUnit reporter, no Allure, TestRail or Xray, no
+Codecov or Coveralls, and no Jest <code>reporters</code> entry. The only test-adjacent CI step is the
+artifact upload that never has anything to upload.</p>
+
+</section>
+
+<!-- ============ 3 ============ -->
+<section role="tabpanel" id="p3" aria-labelledby="t3">
+
+<h2>Answers to the open board questions</h2>
+
+<p>The Eric feedback note the brief points at is not on <code>main</code> in this repo, so the question
+set below is taken from <code>docs/open-questions.md</code> and the five themes the brief names. Ten
+questions, each answered from code with a citation or marked unanswerable from code.</p>
+
+<table>
+  <tr><th class="q">#</th><th>Question</th><th>Answer from the B2B code</th></tr>
+
+  <tr><td class="q">1</td>
+  <td>Which AWS environments exist, and are all three needed in phase one? (Q17, E01-F1)</td>
+  <td>Four environment definitions exist in CDK, <code>Dev</code>, <code>Poc</code>, <code>Stg</code>,
+  <code>Prod</code>, plus an ad hoc <code>Sandbox</code> (<code>infrastructure/bin/infrastructure.ts:5-88</code>).
+  Only three have sizing config (<code>lib/index.ts:40-74</code>), so <code>Stg</code> and
+  <code>Sandbox</code> silently inherit Dev sizing at <code>:81</code>. The pipeline ships only two:
+  <code>QA</code>, which maps to the <code>Scribl-Poc</code> stack, and <code>Stg</code>
+  (<code>deploy.yml:6-12,26</code>). <code>Prod</code> exists in code with no deploy job.
+  <strong>Their own team runs a real product on two deployable environments, which makes a
+  three-environment ask in phase one a choice, not a necessity.</strong></td></tr>
+
+  <tr><td class="q">2</td>
+  <td>What test management or reporting tooling is wired up? (Q53)</td>
+  <td>None. No reporter, no JUnit XML, no TestRail, Xray, Allure, or coverage upload anywhere. The only
+  artifact step, <code>linting.yml:97-101</code>, uploads a directory that is never populated because the
+  test step above it is commented out.</td></tr>
+
+  <tr><td class="q">3</td>
+  <td>Does Scribl have an existing test automation framework we can adopt? (Q58)</td>
+  <td>Effectively no, and the code confirms the client's own answer. The infrastructure suite is an empty
+  stub (<code>infrastructure/test/infrastructure.test.ts:1-14</code>), the client has zero unit tests
+  against 235 source files, and the e2e suite is disabled in CI (<code>linting.yml:88-95</code>). There is
+  one Playwright spec, <code>client/e2e/game.spec.ts</code>, worth reading as a pattern and not as a
+  harness.</td></tr>
+
+  <tr><td class="q">4</td>
+  <td>Does crash or error reporting exist, and which provider? Crashlytics, Sentry, or Firebase?</td>
+  <td>None of those three. The provider is <strong>Rollbar</strong>, and only on the client:
+  <code>client/package.json:12</code>, wired as a provider and error boundary at
+  <code>client/src/index.tsx:13,75-78,105-108</code>, enabled only when a client token is set
+  (<code>client/src/config.ts:24-27</code>). The api has no crash-reporting SDK at all, only pino logging
+  (<code>api/src/log.ts:1-24</code>). No CDK construct creates a <code>LogGroup</code>,
+  <code>Alarm</code>, or <code>Dashboard</code>; the <code>Metrics</code> construct
+  (<code>lib/constructs/metrics.ts:16-49</code>) is a scheduled Lambda collecting in-product game stats,
+  not observability. <strong>Browser crashes are captured, server and infrastructure failures page
+  nobody.</strong> That is the gap E01-F8 and E07-F5 should be sized against.</td></tr>
+
+  <tr><td class="q">5</td>
+  <td>Where is the code hosted, and what does CI assume about that? (Q34, Q54)</td>
+  <td>The git remote is Bitbucket, <code>hs2studio/scribl-b2b</code>. There is no
+  <code>bitbucket-pipelines.yml</code> anywhere. All CI is GitHub Actions, and <code>deploy.yml</code>
+  depends on GitHub OIDC and GitHub secrets (<code>:15,37-49</code>). Either the repo is mirrored to
+  GitHub or those workflows do not run at all, and the repo alone cannot tell us which. Worth asking
+  directly, because it decides whether their deploy path exists today.</td></tr>
+
+  <tr><td class="q">6</td>
+  <td>Is a webapp already supported?</td>
+  <td>Yes, outright, and it is the only client they have. React 19 and Vite browser SPA, no React Native
+  or Expo dependency, served from S3 behind CloudFront with a 403-to-200 SPA fallback
+  (<code>lib/constructs/client.ts:18-44</code>), and the deploy job already syncs the bundle and
+  invalidates the distribution (<code>deploy.yml:129,131-132</code>). Web support is shipped
+  infrastructure, not a build item. The only mobile accommodation is the responsive gate at
+  <code>client/src/router.tsx:41-42</code>.</td></tr>
+
+  <tr><td class="q">7</td>
+  <td>What AWS infrastructure does Scribl already hold, and who built the existing backend? (Q57)</td>
+  <td>Partly answered. The infrastructure this product holds is fully enumerated on tab 1, from CDK
+  source. Who built it is not in the code: no LICENSE, CODEOWNERS, or attribution file, and the whole
+  history is one import commit, <code>e7876a1</code>. Unanswerable from code beyond the inventory.</td></tr>
+
+  <tr><td class="q">8</td>
+  <td>Do we reuse the existing backend and mirror the web product on mobile? (Q60)</td>
+  <td>The code supports the greenfield decision already taken. Their domain model is a facilitated group
+  game, hosts, sessions, gamepacks, player cards, and a paid trial check, not a personal daily loop.
+  Their auth carries <code>tenant_id</code> and <code>organization</code> custom attributes
+  (<code>lib/constructs/auth.ts:129-137</code>), a B2B multi-tenant shape our D2C model does not have.
+  Reusing it would mean inheriting a tenancy model we do not want.</td></tr>
+
+  <tr><td class="q">9</td>
+  <td>Can generated art be edited after the fact?</td>
+  <td>Not in their product. <code>client/src/components/Controls/Canvas.tsx:112,139</code> hard-returns in
+  viewer mode, and the review screen mounts exactly that way
+  (<code>.../PlayerEndGame/DrawingCards.tsx:168</code>). Submission is one-shot: a client guard at
+  <code>PlayerCanvas.tsx:19-20</code> and a server-side idempotency return at
+  <code>session.controller.ts:544-547</code>. An update mutation exists,
+  <code>playerCardUpdateDrawing</code> (<code>playercard.controller.ts:206-218</code>), with no client
+  caller. But see tab 4: because they persist strokes, later editing is a client feature away for them,
+  and a schema migration away for us.</td></tr>
+
+  <tr><td class="q">10</td>
+  <td>What user base, concurrency, and regions should the backend be sized for? (Q50)</td>
+  <td>Unanswerable from code. The RDS instance class and the Redis node type are the only sizing signals
+  and they live in the <code>environmentConfigs</code> block at <code>lib/index.ts:40-74</code>. Real usage
+  numbers are not in the repo.</td></tr>
+</table>
+
+<p>Two further register questions this repo cannot answer, recorded so nobody re-reads the code hoping:
+who pays for hosting (Q49) is a commercial fact, and stylus or Apple Pencil support (Q61) has no answer
+here because the canvas takes generic pointer events through Konva and never inspects an input type.</p>
+
+</section>
+
+<!-- ============ 4 ============ -->
+<section role="tabpanel" id="p4" aria-labelledby="t4">
+
+<h2>The canvas, in detail</h2>
+
+<p>This is the section Eric's "mimic the drawing canvas in simplicity and feel" request rests on, and it
+changes what E04-F2 is worth.</p>
+
+<div class="two">
+  <div class="card">
+    <h3>How B2B persists a drawing</h3>
+    <p>As vector stroke data: a JSON array of ordered strokes, each with its own points, color, width,
+    and source canvas size, written into a Postgres <code>TEXT</code> column.</p>
+  </div>
+  <div class="card">
+    <h3>How ours persists a drawing</h3>
+    <p>As a flattened raster: a single base64 PNG data URI captured from the Skia surface and stored in a
+    Postgres <code>text</code> column.</p>
+  </div>
+</div>
+
+<h3>Side by side</h3>
+
+<table>
+  <tr><th></th><th>Theirs</th><th>Ours</th></tr>
+  <tr><td><strong>Renderer</strong></td>
+      <td>react-konva <code>Stage</code>/<code>Layer</code> (<code>Canvas.tsx:199</code>), konva 9.3.16.
+      Strokes painted by a hand-written <code>sceneFunc</code>, <code>DrawPlayerImage</code>
+      (<code>utils/drawing.tsx:72-108</code>), quadratic smoothing <code>:86-92</code>. 517px wide, aspect 7/10
+      (<code>Canvas.tsx:30,33</code>)</td>
+      <td>React Native Skia, GPU-backed. <code>useCanvasRef()</code> at
+      <code>components/canvas/SkiaCanvas.tsx:225</code>, ops rendered <code>:384-411</code></td></tr>
+  <tr><td><strong>Persisted as</strong></td>
+      <td><span class="tag ours">vector</span> Stroke record
+      <code>{ points, stroke, width, tool, canvasWidth, canvasHeight }</code> (<code>Canvas.tsx:20-27</code>),
+      serialized whole by <code>submitDrawing(JSON.stringify(drawing))</code>
+      (<code>PlayerCanvas.tsx:24</code>), through a GraphQL <code>String</code>
+      (<code>session.schema.ts:104</code>), hot into Redis (<code>session.controller.ts:552-566</code>) and
+      durably via <code>PlayerCard.bulkCreate</code> (<code>session.service.ts:193-199,216</code>) into
+      <code>player_cards.drawing</code>, <code>DataTypes.TEXT</code>
+      (<code>playercard.model.ts:38-39</code>). Read back by <code>JSON.parse</code>
+      (<code>DrawingCards.tsx:252</code>). No S3 object, no blob, no PNG in that path</td>
+      <td><span class="tag theirs">raster</span> <code>makeImageSnapshot()</code>
+      (<code>SkiaCanvas.tsx:354-356</code>), encoded to a PNG data URI
+      (<code>DrawPad.tsx:150-153</code>), stashed as <code>imageRef</code>
+      (<code>app/draw.tsx:42-49</code>), submitted (<code>app/choose-channels.tsx:64-70</code>) and written
+      to <code>responses.image_ref</code>, typed <code>text</code>
+      (<code>backend/db/schema.sql:76</code>). The structured <code>committedOps</code>
+      (<code>SkiaCanvas.tsx:205</code>, shape <code>:124-142</code>) is discarded at Done</td></tr>
+  <tr><td><strong>Undo / redo</strong></td>
+      <td><code>setDrawing(drawing.slice(0, -1))</code> (<code>Canvas.tsx:173-177</code>), one whole
+      stroke. <span class="tag none">no redo</span></td>
+      <td>Pops the last op (<code>SkiaCanvas.tsx:350-352</code>, <code>DrawPad.tsx:140-144</code>).
+      <span class="tag none">no redo</span></td></tr>
+  <tr><td><strong>Brush sizes</strong></td>
+      <td>A single hardcoded 7 (<code>Canvas.tsx:54</code>), no setter, no UI</td>
+      <td>Six widths <code>[2, 3, 5, 8, 12, 18]</code> (<code>DrawPad.tsx:13</code>) and four brush styles
+      (<code>packages/shared-types/tools.ts:13</code>)</td></tr>
+  <tr><td><strong>Fill tool</strong></td>
+      <td>None. The tool state declares <code>'pen' | 'eraser'</code> (<code>Canvas.tsx:52</code>) and the
+      eraser is unreachable</td>
+      <td>Real: snapshot, <code>readPixels</code>, scanline fill, pushed as a full-canvas
+      <code>FillOp</code> (<code>SkiaCanvas.tsx:266-306</code>)</td></tr>
+  <tr><td><strong>Colors</strong></td>
+      <td>Six literals (<code>Canvas.tsx:36-43</code>): <code>#f58c29</code>, <code>#db0632</code>,
+      <code>#d51668</code>, <code>#99d9d9</code>, <code>#20145f</code>, <code>#18864a</code></td>
+      <td><strong>Sixteen</strong>, not eight (<code>packages/shared-types/tools.ts:18-38</code>):
+      <code>#000000</code>, <code>#E23B3B</code>, <code>#FF8A3D</code>, <code>#F5C518</code>,
+      <code>#2FA84F</code>, <code>#2F6BE2</code>, <code>#7A4A28</code>, <code>#D9CBB8</code>, then
+      <code>#8E44AD</code>, <code>#E84393</code>, <code>#00B5AD</code>, <code>#8BC34A</code>,
+      <code>#34B3F1</code>, <code>#3F51B5</code>, <code>#7F8C8D</code>, <code>#CBD5E1</code></td></tr>
+  <tr><td><strong>Branded share</strong></td>
+      <td>Client-side, hidden Konva stage. Wrapper hidden (<code>CanvasShare.tsx:45</code>), off-screen
+      829x1473 stage (<code>:30-32</code>), branded background image (<code>:60-66</code>), prompt text
+      (<code>:68-78</code>), the same vector strokes re-rendered on top (<code>:79-85</code>). Asset
+      <code>client/src/assets/images/frame/share.svg</code>. Raster only at export,
+      <code>toBlob</code> into <code>navigator.share</code> or a download link
+      (<code>DrawingCards.tsx:269,288,293-296</code>). No server-side image pipeline in
+      <code>api/</code> at all</td>
+      <td>Server-side, and the background is generated rather than prebuilt. sharp composite in
+      <code>backend/lambda/enhance/service.ts:103-148</code>: background <code>cover</code>, drawing
+      <code>inside</code> at about 80 percent, optional shadow, <code>.png().toBuffer()</code>. The
+      background comes from a Claude vision description feeding an image model (<code>:180-199</code>),
+      result into <code>enhanced_image_ref</code>. We have no fixed branded background asset; the share
+      chrome at <code>app/share.tsx:129-158</code> is live React and never rasterized</td></tr>
+  <tr><td><strong>Stroke order and timing</strong></td>
+      <td>Order retained twice over, strokes in array order and points in capture order.
+      <strong>No timestamps</strong>, so replay is possible at a synthetic constant speed, not at true
+      tempo. They clearly intended replay: <code>player_cards</code> carries a second column
+      <code>drawingLines</code> commented "for replay functionality"
+      (<code>playercard.model.ts:41-43</code>), written only by a mutation no client calls</td>
+      <td><span class="tag theirs">none</span> A single PNG. No strokes, no points, no order, no
+      timestamps. Animated replay is impossible from our persisted data without a schema change</td></tr>
+  <tr><td><strong>Editable later</strong></td>
+      <td>No user-reachable path (see tab 3, question 9)</td>
+      <td>Pre-submit only. Post-submit updates touch caption and background prompt
+      (<code>backend/lambda/handlers/response-update.ts</code>,
+      <code>postgres-client.ts:379-394</code>), never the image refs</td></tr>
+</table>
+
+<h3>Which design is better</h3>
+
+<div class="say">
+  <p>Theirs, on persistence, and it is not close. Ours, on the drawing experience, and that should not be
+  traded away in the argument. The two are separable, and that is the recommendation.</p>
+</div>
+
+<p>From one row of stroke JSON you can render a phone thumbnail, a print, a T-shirt, an animated replay,
+or an analytics feature like strokes-per-player, all after the fact. Their own code proves it: the same
+stroke array renders at 517px in the editor (<code>Canvas.tsx:213</code>) and at 749px onto the share
+background (<code>CanvasShare.tsx:79</code>) with no quality loss, because <code>scalePoint</code>
+(<code>utils/drawing.tsx:21</code>) rescales from the stored canvas dimensions. Our PNG was captured at
+one device resolution and every downstream use is stuck with it, which is exactly why our enhance
+pipeline resizes the drawing to "inside 80 percent" and hopes (<code>service.ts:124</code>). Storage
+compounds it: their payload is a few KB of JSON, ours is a base64 PNG inlined into a Postgres
+<code>text</code> column, which is the wrong home for image bytes at any real volume.</p>
+
+<p>Ours is better on tools. They have one brush width, six inks, a dead eraser, no fill, and no redo. We
+have sixteen colors, six widths, four brush styles, and a working flood fill.</p>
+
+<div class="callout">
+  <p>Our Skia canvas already computes exactly the representation their persistence layer wants, ordered
+  stroke paths with color, width, and style (<code>SkiaCanvas.tsx:124-142</code>), and then throws it
+  away at <code>DrawPad.tsx:150</code>. <strong>Persist <code>committedOps</code> alongside the PNG and
+  add a per-stroke timestamp</strong>, which they do not have either, and we get their optionality plus
+  replay at true tempo plus our richer tools. The one real obstacle is <code>FillOp</code>
+  (<code>SkiaCanvas.tsx:139-142</code>), already a raster mask, which would have to serialize as a seed
+  point and a color rather than pixels. That is the whole engineering cost, and it is small next to what
+  it buys. It is also why the E04-F2 cut at <code>tracking/backlog-epics.md:274</code> is the wrong two
+  days to save: raster-only cannot be applied retroactively to art already submitted.</p>
+</div>
+
+<p>One small bug worth a line in E04-F1 while we are here: our default stroke fallback is
+<code>#1A1A1A</code> (<code>SkiaCanvas.tsx:198</code>), which is not in the palette. And the
+eight-color framing in the brief is stale; the palette doubled.</p>
+
+</section>
+
+<!-- ============ 5 ============ -->
+<section role="tabpanel" id="p5" aria-labelledby="t5">
+
+<h2>What to reuse</h2>
+
+<p>Nothing was copied in this review. Every item is a path and a recommendation for you to decide on.</p>
+
+<table>
+  <tr><th>Asset</th><th>Path in <code>scribl-b2b</code></th><th>Destination in <code>scribl-app</code></th><th>Provenance</th></tr>
+  <tr><td>Emotion reaction icons, 8 PNGs (belonging, celebrate, empathy, engagement, insightful, love, support, trust)</td>
+      <td><code>client/src/assets/images/emotions/</code></td>
+      <td><code>assets/images/emotions/</code></td>
+      <td>First-party. No LICENSE or attribution file exists in the repo, names are semantic, and they sit
+      inside bespoke game art. Directly relevant to E05-F6</td></tr>
+  <tr><td>Gamepack category icons, 11 single-color SVGs</td>
+      <td><code>client/public/gamepacks/</code></td>
+      <td><code>assets/images/gamepacks/</code></td>
+      <td>First-party. Cleanly themeable line icons</td></tr>
+  <tr><td>Gamepack object icons, 15 objects in three weights</td>
+      <td><code>client/src/assets/images/gamepacks/{big,small,white}/</code></td>
+      <td><code>assets/images/gamepacks/</code></td>
+      <td>First-party. Lower value than the SVGs, being fixed-size raster</td></tr>
+  <tr><td>Share-card frame art, including the branded share background</td>
+      <td><code>client/src/assets/images/frame/</code></td>
+      <td><code>assets/images/frame/</code></td>
+      <td>First-party. This is the artwork behind the share composite Eric described</td></tr>
+  <tr><td>Prompt and QR-join UI chrome</td>
+      <td><code>client/src/assets/images/</code> (<code>Drawing Board.svg</code>, <code>Prompt.svg</code>,
+      <code>LargePrompt.svg</code>, <code>QR-Code-*.svg</code>, <code>gamePromptBackground.svg</code>)</td>
+      <td><code>assets/images/</code></td>
+      <td>First-party. We have no QR-join art at all today</td></tr>
+  <tr><td>The hidden-stage share compositor, as a pattern not as code</td>
+      <td><code>client/src/components/Controls/CanvasShare.tsx:30-88</code></td>
+      <td>conceptually into <code>app/share.tsx</code></td>
+      <td>First-party logic. Their Konva implementation does not port to Skia; the approach, render
+      off-screen at a fixed export size over a frame, does</td></tr>
+  <tr><td>Brand logo marks</td>
+      <td><code>client/src/assets/images/logo.svg</code>, <code>rounded-logo.png</code>,
+      <code>infrastructure/assets/imgs/logo.png</code></td>
+      <td>none proposed</td>
+      <td>First-party but brand-sensitive. Whether D2C shares the B2B mark is a brand decision, not an
+      engineering one. Named, not recommended</td></tr>
+</table>
+
+<h3>Leave these</h3>
+
+<ul>
+  <li><strong>The typeface.</strong> <code>client/src/assets/styles/index.css:1</code> imports a hosted
+  Adobe Fonts kit by URL. Third-party licensed, tied to the client's Adobe account and domains, and not
+  transferable. No local font file exists anywhere in the repo. Similar type means our own license.</li>
+  <li><strong>Their color tokens as values.</strong> The Tailwind <code>@theme</code> block at
+  <code>client/src/assets/styles/index.css:8-40</code> is the B2B brand palette. Our
+  <code>src/theme/tokens.ts</code> is further along, carrying three runtime themes feeding both NativeWind
+  and Skia. Borrow their numeric-step pattern for utility colors if we ever want one; do not import their
+  hexes.</li>
+  <li><code>client/public/og-image.png</code> and <code>docs/imgs/banners/banner.png</code>, an identical
+  2100x1050 pair. <strong>Unknown provenance</strong>, plausibly a designer's stock composite, and no
+  metadata tool was available to check. Do not move until confirmed. Low value either way.</li>
+  <li>Deploy banners, host-guide PDFs under <code>infrastructure/assets/</code>, and the architecture and
+  ERD diagrams under <code>docs/imgs/</code>. Useful to read, not product assets.</li>
+</ul>
+
+<div class="callout">
+  <p><strong>One open item, not a decision.</strong> Prompt copy is not in a static file: prompts live in
+  the database, provisioned by <code>api/scripts/seed.ts</code>. If we want their editorial prompt set for
+  E03-F1, someone has to read the literal strings in that script or get a data extract. Worth asking for,
+  because eight weeks of hand-seeded prompts is exactly the work E03-F4 was cut to avoid.</p>
+</div>
+
+<h2>Standards worth adopting, and where ours already win</h2>
+
+<table>
+  <tr><th>Area</th><th>Call</th><th>Why</th></tr>
+  <tr><td>CDK layout</td><td><span class="tag theirs">adopt theirs</span></td>
+      <td><code>infrastructure/lib/constructs/</code>, one named construct per concern, plus <code>bin/</code>
+      staging per environment, beats our single <code>backend/cdk/scribl-stack.ts</code>. Not urgent at POC
+      size; do it before the stack grows, which is E01-F2</td></tr>
+  <tr><td>tsconfig flags</td><td><span class="tag theirs">adopt two</span></td>
+      <td><code>noImplicitReturns</code> and <code>allowUnreachableCode: false</code>
+      (<code>api/tsconfig.json:5-20</code>) are cheap and catch real bugs. Do not copy
+      <code>noImplicitAny: false</code> from the same file, which defeats the <code>strict</code> it sits
+      next to</td></tr>
+  <tr><td>CI gates</td><td><span class="tag ours">ours</span></td>
+      <td>Their PR gate checks labels, assignees, and title prefixes and never runs a test. Ours runs
+      typecheck, lint, test, and a web export on every PR. Worth remembering when E06-F6 writes a release
+      gate: this is what a real product looks like without one</td></tr>
+  <tr><td>Error handling</td><td><span class="tag ours">ours</span></td>
+      <td><code>api/src/middleware/trialCheck.ts:36-43</code> catches any database error and returns
+      <code>false</code>, so an outage silently reads as "trial not expired". Paired with the silent
+      <code>null</code> from <code>api/src/auth.ts:10-24</code>, a pattern to name and avoid. Our typed
+      <code>ApiError</code> shapes with explicit request validation
+      (<code>backend/lambda/handlers/submit.ts:11,26,37-45</code>) are better</td></tr>
+  <tr><td>Migrations</td><td><span class="tag ours">reject theirs</span></td>
+      <td><code>sequelize.sync()</code> plus hand-rolled <code>ALTER TABLE</code> running automatically on
+      container start (<code>api/scripts/migrate.ts:11,45-232</code>, <code>api/Dockerfile</code>
+      ~<code>:50-59</code>) is the thing in this codebase most likely to cause an incident. E01-F3 should
+      ship a versioned chain with a deploy gate</td></tr>
+  <tr><td>Runtime validation</td><td><span class="tag none">shared gap</span></td>
+      <td>Neither repo uses runtime schema validation. They rely on GraphQL codegen for compile-time
+      types, we rely on a shared types package, and both trust hand-written validators at the edge. Worth
+      one line in the E01-F5 API contract</td></tr>
+</table>
+
+</section>
+
+<!-- ============ 6 ============ -->
+<section role="tabpanel" id="p6" aria-labelledby="t6">
+
+<h2>Reuse candidates against the backlog</h2>
+
+<p>Triage, offered because it is cheap once the lists above exist.</p>
+
+<table>
+  <tr><th>Reuse candidate or finding</th><th>Epic feature that would consume it</th></tr>
+  <tr><td>Persist stroke data alongside the raster, with timestamps</td><td>E04-F2 Stroke serialization and artwork capture</td></tr>
+  <tr><td>Their six inks and single brush width as the "simplicity" reference</td><td>E04-F1 Skia canvas with the six-ink reduced tool set</td></tr>
+  <tr><td>Share frame art and the hidden-stage compositor pattern</td><td>E15-F4 Artifacts and keepsake composition, and the share step in E05-F3</td></tr>
+  <tr><td>Emotion reaction icon set</td><td>E05-F6 Reactions, post-unlock only</td></tr>
+  <tr><td>Gamepack category and object icons</td><td>E03-F2 Today's prompt screen</td></tr>
+  <tr><td>QR-join and prompt UI chrome</td><td>E02-F5 Invite redemption and the invite-code fallback</td></tr>
+  <tr><td>Prompt seed extract, if the client provides it</td><td>E03-F1 Seeded prompt set and fetch contract</td></tr>
+  <tr><td>CDK construct decomposition</td><td>E01-F2 CDK stack skeleton</td></tr>
+  <tr><td>Versioned migrations instead of sync-on-boot</td><td>E01-F3 Relational data model</td></tr>
+  <tr><td>Rollbar on the client only, nothing server-side</td><td>E01-F8 Baseline observability, E07-F5 Crash reporting and build traceability</td></tr>
+  <tr><td>Two deployable environments in practice against a three-environment ask</td><td>E01-F1 AWS accounts and three environments</td></tr>
+  <tr><td>One Playwright spec as a pattern, no harness to inherit</td><td>E06-F2 Tooling recommendation, E06-F5 Automation harness build</td></tr>
+</table>
+
+</section>
+
+<footer>
+  <p>This page is hand-maintained and is not generated by <code>docs:sync</code>. It mirrors
+  <code>knowledge/research/scribl-b2b-stack-review.md</code>, which is the source of truth. Keep them
+  agreeing.</p>
+</footer>
+
+</div>
+<script>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('nav.tabs button'));
+    var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+
+    function show(i) {
+      for (var k = 0; k < tabs.length; k++) {
+        var on = k === i;
+        tabs[k].setAttribute('aria-selected', on ? 'true' : 'false');
+        panels[k].classList.toggle('on', on);
+      }
+      if (history.replaceState) history.replaceState(null, '', '#' + tabs[i].getAttribute('aria-controls'));
+      window.scrollTo(0, 0);
+    }
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { show(i); });
+      t.addEventListener('keydown', function (e) {
+        var next = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : -1;
+        if (next < 0 || next >= tabs.length) return;
+        tabs[next].focus();
+        show(next);
+      });
+    });
+
+    var hash = window.location.hash.replace('#', '');
+    var start = panels.findIndex ? panels.findIndex(function (p) { return p.id === hash; }) : -1;
+    show(start > 0 ? start : 0);
+  })();
+</script>
+</body>
+</html>

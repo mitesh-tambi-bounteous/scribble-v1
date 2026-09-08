@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# VitePress build output and cache
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+docs/.vitepress/.temp/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs and diagnostics
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+
+# Environment and secrets (JIRA_* credentials for scripts/jira-sync)
+.env
+.env.*
+!.env.example
+
+# Python bytecode from scripts/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Temp and local scratch
+tmp/
+.tmp/
+*.local

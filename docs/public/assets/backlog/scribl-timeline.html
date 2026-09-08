@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>scribl -- Timeline, milestones and capacity</title>
+<style>
+
+:root {
+  --ink: #1D1A34;
+  --accent: #D51668;
+  --paper: #F8F8FA;
+  --card: #FFFFFF;
+  --peach: #FEF2E6;
+  --line: #DDDCE6;
+  --muted: #6B6880;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --green: #18864A;
+  --orange: #B4530A;
+  --gray: #55606E;
+  --parked: #20145F;
+  --over: #FDE9F0;
+  --grid: #ECEBF1;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.wrap { max-width: 1000px; margin: 0 auto; padding: 32px 20px 64px; }
+h1 { font-size: 26px; margin: 0 0 8px; letter-spacing: -0.01em; }
+h1, h2, h3, h4 { color: var(--ink); }
+h2 { font-size: 20px; margin: 44px 0 12px; border-bottom: 3px solid var(--accent); padding-bottom: 8px; }
+h3 { font-size: 16px; margin: 22px 0 8px; }
+h4 { font-size: 14px; margin: 16px 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+p { margin: 0 0 12px; }
+a { color: var(--accent); }
+.meta-line { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+.intro p, .note { max-width: 78ch; }
+.note { color: var(--muted); font-size: 13px; margin: 8px 0 16px; }
+.caption { font-size: 13px; color: var(--ink); background: var(--peach); border-radius: 10px; padding: 8px 12px; margin: 0 0 14px; max-width: 78ch; }
+
+table.tbl { width: 100%; border-collapse: collapse; font-size: 13.5px; background: var(--card); border: 1px solid var(--line); margin: 10px 0 18px; border-radius: 12px; overflow: hidden; }
+table.tbl th, table.tbl td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.tbl th { background: var(--peach); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink); }
+table.tbl tr:last-child td { border-bottom: none; }
+table.tbl td.num { font-family: var(--mono); white-space: nowrap; }
+
+code { font-family: var(--mono); background: var(--peach); border-radius: 4px; padding: 1px 5px; font-size: 12.5px; }
+
+.chip {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+  padding: 3px 10px; border-radius: 999px; vertical-align: middle; white-space: nowrap;
+  margin-right: 6px; text-transform: uppercase;
+}
+.chip.band-GREEN  { background: var(--green); color: #ffffff; }
+.chip.band-ORANGE { background: var(--orange); color: #ffffff; }
+.chip.band-GRAY   { background: var(--gray); color: #ffffff; }
+.chip.band-PARKED { background: var(--parked); color: #ffffff; }
+.chip.q5gate { background: var(--accent); color: #ffffff; }
+.chip.anchor { background: var(--ink); color: #ffffff; }
+
+.panel { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 10px 0 18px; }
+
+/* ---- shared dated-grid geometry ----
+   Day 0 is 2026-08-24, day 53 is 2026-10-16. 54 calendar days span the window.
+   Every left/width percentage below is day-index / 54 rounded to 3 decimals. */
+.row { display: grid; grid-template-columns: 148px 1fr; gap: 10px; align-items: center; }
+.row.margin { grid-template-columns: 148px 1fr 178px; }
+.rlab { font-size: 12.5px; font-weight: 600; }
+.rlab .sub { display: block; font-weight: 400; color: var(--muted); font-size: 11.5px; }
+.track { position: relative; height: 30px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; }
+.track.tall { height: 46px; }
+.gl { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--grid); }
+.mtick { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+
+.seg { position: absolute; top: 4px; bottom: 4px; border-radius: 6px; color: #ffffff; font-size: 11.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.seg.shape { background: var(--parked); }
+.seg.s1 { background: var(--green); }
+.seg.s2 { background: #14713E; }
+.seg.s3 { background: #0F5C32; }
+.seg.tail { background: repeating-linear-gradient(135deg, var(--line) 0 4px, var(--paper) 4px 8px); color: var(--muted); }
+
+.demo { position: absolute; top: -6px; bottom: -6px; width: 3px; background: var(--accent); }
+.demo::after { content: ""; position: absolute; left: -3px; top: -5px; width: 9px; height: 9px; background: var(--accent); border-radius: 2px; }
+.hol { position: absolute; top: -3px; bottom: -3px; background: repeating-linear-gradient(45deg, var(--accent) 0 3px, transparent 3px 7px); border-left: 2px dotted var(--accent); border-right: 2px dotted var(--accent); }
+.axis { position: relative; height: 34px; font-size: 11px; color: var(--muted); }
+.axis span { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; }
+.axis span.l { transform: none; }
+.axis b { display: block; color: var(--ink); font-size: 11px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12.5px; color: var(--ink); margin: 12px 0 4px; }
+.legend i { display: inline-block; width: 14px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.marks { list-style: none; padding: 0; margin: 6px 0 0; font-size: 12.5px; }
+.marks li { margin: 2px 0; }
+
+/* epic bars */
+.bar { position: absolute; top: 6px; bottom: 6px; background: var(--green); border-radius: 6px; }
+.bar span { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); color: #ffffff; font-size: 10.5px; font-family: var(--mono); }
+.track .gate { position: absolute; top: -4px; bottom: -4px; width: 3px; background: var(--accent); }
+.track .gatelab { position: absolute; font-size: 10.5px; font-weight: 700; color: var(--accent); top: -2px; white-space: nowrap; }
+.noslot { position: absolute; left: 0; right: 0; top: 6px; bottom: 6px; border: 2px dashed var(--orange); border-radius: 6px; background: repeating-linear-gradient(45deg, rgba(180,83,10,0.16) 0 4px, transparent 4px 9px); display: flex; align-items: center; padding-left: 10px; font-size: 11.5px; color: var(--orange); font-weight: 600; }
+.endrule { border-left: 3px solid var(--ink); padding-left: 10px; }
+.later { font-size: 11.5px; color: var(--gray); border: 1px solid var(--gray); border-left: 4px solid var(--gray); border-radius: 6px; padding: 4px 8px; background: var(--card); }
+.rulelab { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink); }
+.parked-line { border: 1px solid var(--line); border-left: 4px solid var(--parked); border-radius: 8px; padding: 10px 12px; background: var(--card); font-size: 13px; }
+
+/* overrun */
+.cap { position: relative; height: 30px; }
+.capbox { position: absolute; left: 0; top: 0; bottom: 0; width: 45%; border: 2px solid var(--ink); border-radius: 6px 0 0 6px; background: var(--card); }
+.overzone { position: absolute; left: 45%; right: 0; top: 0; bottom: 0; background: repeating-linear-gradient(45deg, var(--over) 0 6px, #FBD9E6 6px 12px); border-top: 1px dashed var(--accent); border-bottom: 1px dashed var(--accent); }
+.load { position: absolute; left: 0; top: 7px; height: 16px; border-radius: 0 4px 4px 0; }
+.load.g { background: var(--green); }
+.load.o { background: var(--orange); }
+.load.a { background: var(--parked); }
+.load em { position: absolute; left: calc(100% + 6px); top: -3px; font-style: normal; font-size: 11.5px; font-family: var(--mono); font-weight: 700; color: var(--ink); white-space: nowrap; }
+.caplab { position: absolute; left: 45%; top: -18px; font-size: 10.5px; font-weight: 700; color: var(--ink); transform: translateX(-100%); padding-right: 4px; }
+.lanehead { font-size: 13.5px; font-weight: 700; margin: 18px 0 2px; }
+.lanesub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.orow { display: grid; grid-template-columns: 168px 1fr; gap: 10px; align-items: center; margin: 10px 0; }
+.orow .k { font-size: 12px; color: var(--ink); }
+
+/* milestones */
+.ms { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 14px 0; overflow: hidden; }
+.ms.anchor { border: 2px solid var(--accent); }
+.mshead { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 12px 16px; background: var(--peach); border-bottom: 1px solid var(--line); }
+.mshead .mid { font-family: var(--mono); font-weight: 700; color: var(--accent); }
+.mshead .mdate { font-family: var(--mono); font-size: 12.5px; margin-left: auto; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; }
+.cols > div { padding: 14px 16px; font-size: 13.5px; }
+.cols > div:first-child { border-right: 1px solid var(--line); }
+.cols h4 { margin-top: 0; }
+.cols ul { margin: 0; padding-left: 18px; }
+.cols li { margin: 3px 0; }
+.gatebox { position: relative; border-top: 1px solid var(--line); padding: 12px 16px; font-size: 13px; background: var(--paper); }
+
+footer { margin-top: 44px; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-size: 12.5px; }
+
+@media (max-width: 720px) {
+  .row, .row.margin, .orow { grid-template-columns: 1fr; }
+  .cols { grid-template-columns: 1fr; }
+  .cols > div:first-child { border-right: none; border-bottom: 1px solid var(--line); }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #F2F1F7;
+    --accent: #FF6FA3;
+    --paper: #17162A;
+    --card: #201E38;
+    --peach: #2C2545;
+    --line: #3B3856;
+    --muted: #A9A5BF;
+    --green: #3FA96C;
+    --orange: #D98436;
+    --gray: #8B96A6;
+    --parked: #8B7DE0;
+    --over: #3A1F2E;
+    --grid: #2A2842;
+  }
+  .seg.s2 { background: #348C58; }
+  .seg.s3 { background: #2A7247; }
+  .seg.shape, .seg.s1, .seg.s2, .seg.s3 { color: #12111F; }
+  .chip.band-GREEN, .chip.band-ORANGE, .chip.band-GRAY, .chip.band-PARKED, .chip.q5gate { color: #12111F; }
+  .chip.anchor { background: var(--ink); color: #12111F; }
+  .bar span { color: #12111F; }
+  .overzone { background: repeating-linear-gradient(45deg, var(--over) 0 6px, #4A2739 6px 12px); }
+  .noslot { background: repeating-linear-gradient(45deg, rgba(217,132,54,0.22) 0 4px, transparent 4px 9px); }
+}
+
+@media print {
+  body { background: #ffffff; }
+  h2, .panel, .ms, table.tbl { break-inside: avoid; }
+  .overzone, .noslot, .seg.tail, .hol { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a { color: var(--ink); text-decoration: underline; }
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>scribl -- Timeline, milestones and capacity</h1>
+<div class="meta-line">Project: scribl. Status: draft for team review. Updated: 2026-08-20. Window: 2026-08-24 to 2026-10-16.</div>
+<div class="intro">
+<p>Four views of the same eight weeks. The dated calendar, the epic timeline, the per-lane overrun, and the four milestones with what is not yet true at each one. Every date and number here comes off the confirmed meeting plan and the reviewed capacity arithmetic. Nothing on this page is re-derived.</p>
+<p>Sprint boundaries fall on Wednesdays, so any week-numbered label is approximate at every boundary. Read the dates, not the week numbers.</p>
+</div>
+</header>
+
+<!-- VIEW 1 -->
+<h2>1. The dated calendar</h2>
+<p class="caption">One band, drawn to true calendar width. Four phase segments, the four demo Wednesdays as markers, the three holiday collisions marked on the band itself. The last three days after the final demo are hatched because no work is planned there and there is no hardening sprint.</p>
+
+<div class="panel">
+<div class="row">
+  <div class="rlab">Phases<span class="sub">2026-08-24 to 2026-10-16</span></div>
+  <div>
+    <div class="track tall">
+      <div class="gl" style="left:12.963%"></div>
+      <div class="gl" style="left:25.926%"></div>
+      <div class="gl" style="left:38.889%"></div>
+      <div class="gl" style="left:51.852%"></div>
+      <div class="gl" style="left:64.815%"></div>
+      <div class="gl" style="left:77.778%"></div>
+      <div class="gl" style="left:90.741%"></div>
+      <div class="mtick" style="left:14.815%"></div>
+      <div class="mtick" style="left:70.370%"></div>
+
+      <div class="seg shape" style="left:0%;width:16.667%">Shape 7d</div>
+      <div class="seg s1" style="left:16.667%;width:25.926%">Sprint 1, 10d</div>
+      <div class="seg s2" style="left:42.593%;width:25.926%">Sprint 2, 10d</div>
+      <div class="seg s3" style="left:68.519%;width:25.926%">Sprint 3, 10d</div>
+      <div class="seg tail" style="left:94.444%;width:5.556%">no plan</div>
+
+      <div class="hol" style="left:25.926%;width:1.852%" title="US Labor Day, 2026-09-07"></div>
+      <div class="hol" style="left:38.889%;width:3.704%" title="Ganesh Chaturthi, regional, 2026-09-14 to 2026-09-15, to be confirmed"></div>
+      <div class="hol" style="left:72.222%;width:1.852%" title="Gandhi Jayanti, 2026-10-02"></div>
+
+      <div class="demo" style="left:17.593%" title="Shape readout, 2026-09-02"></div>
+      <div class="demo" style="left:43.519%" title="Sprint 1 demo, 2026-09-16"></div>
+      <div class="demo" style="left:69.444%" title="Sprint 2 demo, 2026-09-30"></div>
+      <div class="demo" style="left:95.370%" title="Sprint 3 demo, 2026-10-14"></div>
+    </div>
+    <div class="axis">
+      <span class="l" style="left:0%">08-24<b>week 1</b></span>
+      <span style="left:17.593%">09-02<b>M0 readout</b></span>
+      <span style="left:43.519%">09-16<b>M1 anchor</b></span>
+      <span style="left:69.444%">09-30<b>M2 demo</b></span>
+      <span style="left:95.370%">10-14<b>M3 demo</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <span><i style="background:#20145F"></i>Shape, discovery</span>
+  <span><i style="background:#18864A"></i>Build sprint</span>
+  <span><i style="background:#D51668;width:4px;border-radius:1px"></i>Demo Wednesday</span>
+  <span><i style="background:repeating-linear-gradient(45deg,#D51668 0 3px,transparent 3px 7px);border:1px dotted #D51668"></i>Holiday collision</span>
+  <span><i style="background:repeating-linear-gradient(135deg,#DDDCE6 0 4px,#F8F8FA 4px 8px)"></i>No work planned</span>
+</div>
+</div>
+
+<h3>Phases</h3>
+<table class="tbl">
+<thead><tr><th>Phase</th><th>Dates</th><th>Working days</th><th>What closes it</th></tr></thead>
+<tbody>
+<tr><td>Shape, discovery</td><td class="num">Mon 2026-08-24 to Tue 2026-09-01</td><td class="num">7</td><td>Shape readout, Wed 2026-09-02</td></tr>
+<tr><td>Sprint 1</td><td class="num">Wed 2026-09-02 to Tue 2026-09-15</td><td class="num">10</td><td>Sprint 1 demo, Wed 2026-09-16</td></tr>
+<tr><td>Sprint 2</td><td class="num">Wed 2026-09-16 to Tue 2026-09-29</td><td class="num">10</td><td>Sprint 2 demo, Wed 2026-09-30</td></tr>
+<tr><td>Sprint 3</td><td class="num">Wed 2026-09-30 to Tue 2026-10-13</td><td class="num">10</td><td>Sprint 3 demo, Wed 2026-10-14</td></tr>
+</tbody>
+</table>
+<p class="note">Shape is seven working days, not ten. Starting sprint 1 on 2026-09-02 rather than 2026-09-09 costs Shape three days, and the later start would push the last demo past 2026-10-16 and into the re:Invent freeze around 2026-10-23. Discovery supply is 25 build-lane days (Neelesh 7, Nitish 7, Karuna 7, Pankaj 4 at 0.6), not the 35 a full two weeks would give. Any text that still says "two weeks of discovery" is wrong.</p>
+
+<h3>Holiday and availability collisions</h3>
+<p>Named as risks, not absorbed into the arithmetic.</p>
+<table class="tbl">
+<thead><tr><th>Date</th><th>What</th><th>Lands in</th><th>Who it costs</th></tr></thead>
+<tbody>
+<tr><td class="num">Mon 2026-09-07</td><td>US Labor Day</td><td>Sprint 1, week 3</td><td>Rob Forshier, David Lawton, John Kilgore. All three sit outside the 21 person-weeks, so no build-lane day is lost. What is lost is a day of the design and product answers Rob supplies, plus that week's Monday standup and Monday backlog check-in</td></tr>
+<tr><td class="num">Fri 2026-10-02</td><td>Gandhi Jayanti, an India national holiday</td><td>Sprint 3, week 7</td><td>Up to four build-lane days across Neelesh, Nitish, Karuna and Pankaj's share, in the sprint that already carries zero slack</td></tr>
+<tr><td class="num">Mon 2026-09-14 to Tue 2026-09-15</td><td>Ganesh Chaturthi, regional in India, date to be confirmed</td><td>The last two days of sprint 1, immediately before the week-four demo</td><td>Unknown until the roster's own holiday calendar is confirmed. If it holds, it lands on the two days before the anchor demo</td></tr>
+</tbody>
+</table>
+<p class="note">The delivery team is largely India-based, so a US-only holiday calendar would be the wrong calendar. Nobody has published the roster's holiday list. Owner: Pramod Kumar, to publish the team's actual holiday and planned-leave calendar for 2026-08-24 to 2026-10-16 before sprint 1 planning on 2026-09-03. The two India dates above are what a public calendar gives. Treat them as a prompt for that list, not as the list.</p>
+
+<!-- VIEW 2 -->
+<h2>2. The epic timeline</h2>
+<p class="caption">Bar length is elapsed span, the calendar stretch an epic has work in flight. It is not effort. A long bar can be two days of work spread thin and a short bar can be a full lane. Effort lives in view 3.</p>
+<p class="note">Green epics have dates, so they are drawn on the dated grid. Orange epics have no dates because they have no slot, so they are drawn below the grid with no position at all. Gray epics sit outside the eight weeks entirely, past the hard rule at 2026-10-16.</p>
+
+<div class="panel">
+<div class="row margin">
+  <div class="rlab">Epic</div>
+  <div>
+    <div class="axis" style="height:20px">
+      <span class="l" style="left:0%">08-24</span>
+      <span style="left:17.593%">09-02</span>
+      <span style="left:43.519%">09-16</span>
+      <span style="left:69.444%">09-30</span>
+      <span style="left:95.370%">10-14</span>
+    </div>
+  </div>
+  <div class="endrule rulelab">Past the rule</div>
+</div>
+
+<div class="row margin">
+  <div class="rlab">E01 Cloud foundation and app shell<span class="sub">GREEN, 08-24 to 09-29</span></div>
+  <div class="track"><div class="gl" style="left:16.667%"></div><div class="gl" style="left:42.593%"></div><div class="gl" style="left:68.519%"></div>
+    <div class="bar" style="left:0%;width:68.519%"><span>08-24 -&gt; 09-29</span></div></div>
+  <div class="endrule">&nbsp;</div>
+</div>
+<div class="row margin">
+  <div class="rlab">E02 Auth and onboarding<span class="sub">GREEN, 09-02 to 09-29</span></div>
+  <div class="track"><div class="gl" style="left:16.667%"></div><div class="gl" style="left:42.593%"></div><div class="gl" style="left:68.519%"></div>
+    <div class="bar" style="left:16.667%;width:51.852%"><span>09-02 -&gt; 09-29</span></div></div>
+  <div class="endrule">&nbsp;</div>
+</div>
+<div class="row margin">
+  <div class="rlab">E03 Daily prompt<span class="sub">GREEN, 09-02 to 09-29</span></div>
+  <div class="track"><div class="gl" style="left:16.667%"></div><div class="gl" style="left:42.593%"></div><div class="gl" style="left:68.519%"></div>
+    <div class="bar" style="left:16.667%;width:51.852%"><span>09-02 -&gt; 09-29</span></div></div>
+  <div class="endrule">&nbsp;</div>
+</div>
+<div class="row margin">
+  <div class="rlab">E04 Drawing and submit, with submit-to-unlock<span class="sub">GREEN, 08-24 to 10-13</span></div>
+  <div class="track"><div class="gl" style="left:16.667%"></div><div class="gl" style="left:42.593%"></div><div class="gl" style="left:68.519%"></div>
+    <div class="bar" style="left:0%;width:94.444%"><span>08-24 -&gt; 10-13</span></div></div>
+  <div class="endrule">&nbsp;</div>
+</div>
+<div class="row margin">
+  <div class="rlab">E05 Walls and channels<span class="sub">GREEN, 09-16 to 10-13</span></div>
+  <div class="track"><div class="gl" style="left:16.667%"></div><div class="gl" style="left:42.593%"></div><div class="gl" style="left:68.519%"></div>
+    <div class="bar" style="left:42.593%;width:51.852%"><span>09-16 -&gt; 10-13</span></div></div>
+  <div class="endrule">&nbsp;</div>
+</div>
+<div class="row margin">
+  <div class="rlab">E06 QA foundation and standards<span class="sub">GREEN, 08-24 to 10-13</span></div>
+  <div class="track"><div class="gl" style="left:16.667%"></div><div class="gl" style="left:42.593%"></div><div class="gl" style="left:68.519%"></div>
+    <div class="bar" style="left:0%;width:94.444%"><span>08-24 -&gt; 10-13</span></div></div>
+  <div class="endrule">&nbsp;</div>
+</div>
+<div class="row margin">
+  <div class="rlab">E07 Build, signing and tester distribution<span class="sub">GREEN, 08-24 to 10-13</span></div>
+  <div class="track"><div class="gl" style="left:16.667%"></div><div class="gl" style="left:42.593%"></div><div class="gl" style="left:68.519%"></div>
+    <div class="bar" style="left:0%;width:94.444%"><span>08-24 -&gt; 10-13</span></div>
+    <div class="gate" style="left:17.593%"></div>
+    <div class="gatelab" style="left:19.5%">Q5 gate, 09-02</div>
+  </div>
+  <div class="endrule">&nbsp;</div>
+</div>
+
+<p class="note">The Q5 marker on E07 is the Apple Developer account. If it has not closed by 2026-09-02, E07-F1, E07-F3 and E07-F4 stall and the bar to the right of the marker is not deliverable as drawn.</p>
+
+<h3>Orange band, no slot inside the eight weeks</h3>
+<p class="note">These four have no position on the dated grid because no date exists to give them. The empty frame is the fact. Each carries its lane-day cost, so the ask is priced whenever somebody wants to fund one.</p>
+<div class="row margin">
+  <div class="rlab">E08 Push notifications, the daily nudge<span class="sub">ORANGE, no slot</span></div>
+  <div class="track"><div class="noslot">No slot. 8 backend-days and 2 iOS-days when funded</div></div>
+  <div class="endrule">&nbsp;</div>
+</div>
+<div class="row margin">
+  <div class="rlab">E09 Moderation, fail-safe<span class="sub">ORANGE, no slot</span></div>
+  <div class="track"><div class="noslot">No slot. 7 backend-days and 2 iOS-days when funded</div></div>
+  <div class="endrule">&nbsp;</div>
+</div>
+<div class="row margin">
+  <div class="rlab">E10 Streaks and progression<span class="sub">ORANGE, no slot</span></div>
+  <div class="track"><div class="noslot">No slot. 5 backend-days and 3 iOS-days when funded</div></div>
+  <div class="endrule">&nbsp;</div>
+</div>
+<div class="row margin">
+  <div class="rlab">E11 Analytics instrumentation, instrument now, report later<span class="sub">ORANGE, no slot</span></div>
+  <div class="track"><div class="noslot">No slot. 7 backend-days and 2 iOS-days when funded</div></div>
+  <div class="endrule">&nbsp;</div>
+</div>
+
+<h3>Gray band, outside the eight weeks</h3>
+<p class="note">The rule at 2026-10-16 is the end of the eight weeks. Everything below sits past it, in the margin, with its named later home. None of the three is dropped and none of the three is in this window.</p>
+<div class="row margin">
+  <div class="rlab">E12 App Store readiness and compliance<span class="sub">GRAY, past the rule</span></div>
+  <div class="track" style="background:transparent;border-style:dashed;opacity:0.5"></div>
+  <div class="endrule"><span class="rulelab">End of the eight weeks</span><div class="later">Release phase after sprint 3. Gated on Q56</div></div>
+</div>
+<div class="row margin">
+  <div class="rlab">E13 re:Invent event wall<span class="sub">GRAY, past the rule</span></div>
+  <div class="track" style="background:transparent;border-style:dashed;opacity:0.5"></div>
+  <div class="endrule"><div class="later">Its own scope and funding call. Tracked as Q21</div></div>
+</div>
+<div class="row margin">
+  <div class="rlab">E14 Under-13 and the COPPA Family edition<span class="sub">GRAY, past the rule</span></div>
+  <div class="track" style="background:transparent;border-style:dashed;opacity:0.5"></div>
+  <div class="endrule"><div class="later">Post-launch planning. Tracked as Q32</div></div>
+</div>
+
+<h3>Parked</h3>
+<div class="parked-line"><span class="chip band-PARKED">Parked</span>E15 challenges. Not work and it has no span. It is already built and switched off, recorded so the reduction in the new designs does not read as a deletion.</div>
+</div>
+
+<!-- VIEW 3 -->
+<h2>3. The overrun, per lane</h2>
+<p class="caption">Each lane's capacity is the boxed frame. Its full width is 100 percent of that lane's supply. A demand bar that runs past the box's right edge has broken the frame and entered the shaded over-capacity zone, where there are no days to spend.</p>
+
+<!--
+  Rejected forms, on purpose.
+  1. A stacked-to-100 bar. Every stacked bar sums to the frame, so a 205 percent
+     demand renders as a full bar identical to a 100 percent demand. The overrun
+     becomes invisible at exactly the moment it matters.
+  2. A burndown or burnup line. It assumes a committed scope that is being worked
+     off. Nothing has been committed yet and the point is that the scope does not
+     fit at all.
+  3. A pie or donut of lane share. Part-to-whole cannot exceed the whole, so the
+     overrun has nowhere to go.
+  4. A gauge or percent-complete meter capped at 100. Same defect, and it also
+     reads as progress rather than as load.
+  5. A single total-capacity bar. 96 percent after Shape looks fine and hides the
+     two lanes that are still over. Lane rows only.
+  Chosen form: an absolute-scale horizontal bar against a fixed capacity frame,
+  scaled so 100 percent of supply is 45 percent of the row width. That leaves
+  headroom to 222 percent, so the 205 percent backend load is drawn at true
+  length rather than clipped.
+
+  Palette note. The band colors are the brand's and are not swapped. The dataviz
+  validator flags this set on the lightness band, the chroma floor of the gray,
+  and a deutan separation of 6.8 between green and orange. That separation is
+  legal only with secondary encoding, so every mark here carries a printed number
+  and a text label, and the three bands additionally differ in form: green is
+  filled and positioned, orange is outlined and unpositioned, gray sits past the
+  rule. Identity is never color alone on this page.
+-->
+
+<div class="panel">
+<div class="lanehead">iOS, Neelesh Aggarwal. Supply 30 days</div>
+<div class="lanesub">Green demand 41 days. Green plus orange 50 days. After Shape absorbs 7 days, 34.</div>
+<div class="orow"><div class="k"><span class="chip band-GREEN">Green</span>as it stands</div>
+  <div class="cap"><div class="capbox"></div><div class="overzone"></div><div class="caplab">supply 30d</div><div class="load g" style="width:61.65%"><em>137%</em></div></div></div>
+<div class="orow"><div class="k"><span class="chip band-ORANGE">Green + orange</span></div>
+  <div class="cap"><div class="capbox"></div><div class="overzone"></div><div class="load o" style="width:75.15%"><em>167%</em></div></div></div>
+<div class="orow"><div class="k">After Shape</div>
+  <div class="cap"><div class="capbox"></div><div class="overzone"></div><div class="load a" style="width:50.85%"><em>113%</em></div></div></div>
+
+<div class="lanehead">Backend and AWS, Nitish Goyal plus Pankaj Aggarwal. Supply 39 days</div>
+<div class="lanesub">Green demand 53 days. Green plus orange 80 days. After Shape absorbs 9 days, 44.</div>
+<div class="orow"><div class="k"><span class="chip band-GREEN">Green</span>as it stands</div>
+  <div class="cap"><div class="capbox"></div><div class="overzone"></div><div class="caplab">supply 39d</div><div class="load g" style="width:61.2%"><em>136%</em></div></div></div>
+<div class="orow"><div class="k"><span class="chip band-ORANGE">Green + orange</span></div>
+  <div class="cap"><div class="capbox"></div><div class="overzone"></div><div class="load o" style="width:92.25%"><em>205%</em></div></div></div>
+<div class="orow"><div class="k">After Shape</div>
+  <div class="cap"><div class="capbox"></div><div class="overzone"></div><div class="load a" style="width:50.85%"><em>113%</em></div></div></div>
+
+<div class="lanehead">QA, Karuna Arshakota. Supply 30 days</div>
+<div class="lanesub">Green demand 24 days. Orange adds nothing to this lane. After Shape absorbs 7 days, 17.</div>
+<div class="orow"><div class="k"><span class="chip band-GREEN">Green</span>as it stands</div>
+  <div class="cap"><div class="capbox"></div><div class="overzone"></div><div class="caplab">supply 30d</div><div class="load g" style="width:36%"><em>80%</em></div></div></div>
+<div class="orow"><div class="k"><span class="chip band-ORANGE">Green + orange</span></div>
+  <div class="cap"><div class="capbox"></div><div class="overzone"></div><div class="load o" style="width:36%"><em>80%</em></div></div></div>
+<div class="orow"><div class="k">After Shape</div>
+  <div class="cap"><div class="capbox"></div><div class="overzone"></div><div class="load a" style="width:25.65%"><em>57%</em></div></div></div>
+</div>
+
+<p><strong>An idle QA-day cannot be spent as an iOS-day.</strong> That is why the lane rows matter and the total does not. The build-lane total after Shape is 95 against 99, 96 percent, and that number is comfortable and useless. Underneath it, iOS is 4 days over and backend is 5 days over, and the 13 days of QA slack cannot convert to either.</p>
+
+<table class="tbl">
+<thead><tr><th>Lane</th><th>Supply</th><th>Green</th><th>Green load</th><th>Green + orange</th><th>G+O load</th><th>After Shape</th><th>Load after Shape</th></tr></thead>
+<tbody>
+<tr><td>iOS, Neelesh Aggarwal</td><td class="num">30</td><td class="num">41</td><td class="num">137%</td><td class="num">50</td><td class="num">167%</td><td class="num">34</td><td class="num">113%</td></tr>
+<tr><td>Backend and AWS, Nitish Goyal plus Pankaj Aggarwal</td><td class="num">39</td><td class="num">53</td><td class="num">136%</td><td class="num">80</td><td class="num">205%</td><td class="num">44</td><td class="num">113%</td></tr>
+<tr><td>QA, Karuna Arshakota</td><td class="num">30</td><td class="num">24</td><td class="num">80%</td><td class="num">24</td><td class="num">80%</td><td class="num">17</td><td class="num">57%</td></tr>
+<tr><td>Total build lanes</td><td class="num">99</td><td class="num">118</td><td class="num">119%</td><td class="num">154</td><td class="num">156%</td><td class="num">95</td><td class="num">96%</td></tr>
+</tbody>
+</table>
+<p class="note">The totals row is the rollup of the three build lanes. Earlier copies of this document totalled green at 119 and green plus orange at 155, both counting the one platform green-day twice and both dividing by 105 rather than 99. Shape absorbs 23 green lane-days, 7 iOS, 9 backend and 7 QA, which takes green demand from 118 to 95 against 99. It is the cheapest relief available and it was worth claiming before asking for money. It is not a fix. The green band still does not fit in the two lanes that build the product.</p>
+
+<!-- VIEW 4 -->
+<h2>4. Milestones. What is true, and what is not yet true</h2>
+<p class="caption">Bar the Shape readout, every date here is a demo Wednesday off the confirmed calendar. The two columns get the same width and the same type size, because the right-hand one is the half a client needs.</p>
+
+<div class="ms">
+<div class="mshead"><span class="mid">M0</span><strong>Shape readout</strong><span class="mdate">Wed 2026-09-02</span></div>
+<div class="cols">
+<div>
+<h4>True at this date</h4>
+<ul>
+<li>The dated calendar and the sprint 1 ranked queue</li>
+<li>The API contract and a running mock server</li>
+<li>The relational schema drafted and reviewed</li>
+<li>The CDK stack authored and synthesizing locally</li>
+<li>The app shell running, with routing and the single brand theme</li>
+<li>The Skia canvas engine started</li>
+<li>The QA process standard and the tooling recommendation</li>
+<li>The build host and pipeline decision</li>
+<li>An auth and identity ADR</li>
+</ul>
+</div>
+<div>
+<h4>Not yet true</h4>
+<ul>
+<li>Nothing is deployed to AWS. Q17 and Q49 decide whose account and whose money</li>
+<li>No signed build exists and nothing is in TestFlight</li>
+<li>Nobody outside the delivery team has touched anything</li>
+<li>No onboarding, no submit, no wall</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="ms anchor">
+<div class="mshead"><span class="mid">M1</span><strong>Sprint 1 demo</strong><span class="chip anchor">Anchor</span><span class="mdate">Wed 2026-09-16</span></div>
+<div class="cols">
+<div>
+<h4>True at this date</h4>
+<ul>
+<li>A hosted API and a relational database in a real AWS environment</li>
+<li>Sign in with email and password, on a device</li>
+<li>Today's prompt on screen</li>
+<li>The Skia canvas with the six inks, and you can draw on it</li>
+<li>A manually signed build in TestFlight that named testers can install and open</li>
+</ul>
+<p>In Rob's words: here is the app, it is hosted, it has a back end, it is in TestFlight and you can use it.</p>
+</div>
+<div>
+<h4>Not yet true</h4>
+<ul>
+<li><strong>Submitting does not persist your drawing.</strong> The submit endpoint needs presigned upload (E04-F4, 3 backend-days) which needs media storage and delivery (E01-F6, 3 backend-days), and there are not 6 spare backend-days in a lane committed to 10 of 10. What you draw is not saved and nothing unlocks a wall</li>
+<li>Guided onboarding screens 1 to 8 are not built, so first run is bare</li>
+<li>No walls, no channels, and no other people's work to see</li>
+<li>No invite path, so a second person cannot reach a wall</li>
+<li>The build is signed by hand, not by CI</li>
+<li>No push, no streaks, no moderation, no analytics</li>
+</ul>
+</div>
+</div>
+<div class="gatebox"><span class="chip q5gate">Gate Q5</span>The Apple Developer account. If Q5 has not closed by 2026-09-02, E07-F1, E07-F3 and E07-F4 stall, there is no TestFlight build here, and the demo is a simulator screen recording rather than an app on a tester's phone.</div>
+<div class="gatebox"><span class="chip q5gate">Gate Q17 with Q49</span>Whose AWS account, and whose money. The hosted API and the database in the left-hand column are exactly as conditional as the TestFlight build. Ranks 1 and 2 in the backend lane cannot start until these close and nothing else in that lane deploys behind them. If they are still open on 2026-09-02, "it is hosted, it has a back end" is not true at this demo, and what survives is the app running against E01-F5's mock server.</div>
+</div>
+
+<div class="ms">
+<div class="mshead"><span class="mid">M2</span><strong>Sprint 2 demo</strong><span class="mdate">Wed 2026-09-30</span></div>
+<div class="cols">
+<div>
+<h4>True at this date</h4>
+<ul>
+<li>Guided onboarding, screens 1 to 8</li>
+<li>Submit persists, with artwork in S3 behind CloudFront</li>
+<li>Submit-to-unlock at the data layer, with its bypass test</li>
+<li>Today's prompt served from the seeded curated set on the real fetch contract rather than the mock</li>
+<li>An automated signed build out of CI</li>
+<li>The QA automation harness running against the contract</li>
+</ul>
+</div>
+<div>
+<h4>Not yet true</h4>
+<ul>
+<li>Walls and channels are backend-first, so the social half is not demonstrable end to end</li>
+<li>No reactions</li>
+<li>No dashboard or stats card</li>
+<li>Invites are still unfunded (Q8)</li>
+<li>Still no push, streaks, moderation or analytics</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="ms">
+<div class="mshead"><span class="mid">M3</span><strong>Sprint 3 demo</strong><span class="mdate">Wed 2026-10-14</span></div>
+<div class="cols">
+<div>
+<h4>True at this date</h4>
+<ul>
+<li>The daily loop end to end for one person and their wall. Prompt, draw, submit, unlock, the wall grid and a response detail</li>
+<li>Server-side channel isolation with its regression gate</li>
+<li>Crash reporting with build traceability</li>
+<li>The release gate applied at the demo rather than after it</li>
+</ul>
+</div>
+<div>
+<h4>Not yet true</h4>
+<ul>
+<li>No daily nudge, no moderation lane, no streaks, no analytics events. All four are orange band and none has a slot</li>
+<li>No dashboard or stats card if E05-F5 stays cut</li>
+<li>No invite path, so a second person still reaches a wall only by a route nobody has funded</li>
+<li>Not submitted to the App Store, and whether submission is even in this phase is Q56</li>
+<li>No iPad</li>
+</ul>
+</div>
+</div>
+</div>
+
+<p class="note">The eight weeks end 2026-10-16, two working days after the M3 demo. There is no hardening sprint.</p>
+
+<footer>
+scribl timeline, milestones and capacity. Sources: the confirmed meeting schedule plan of 2026-08-20, the backlog epics page, and the reviewed capacity arithmetic. Production stories move to Jira project SCRIBL, board 13809: <a href="https://bounteous.jira.com/jira/software/projects/SCRIBL/boards/13809/backlog">https://bounteous.jira.com/jira/software/projects/SCRIBL/boards/13809/backlog</a>. No numbers on this page are re-derived from source; they are transcribed from the reviewed figures.
+</footer>
+</div>
+</body>
+</html>

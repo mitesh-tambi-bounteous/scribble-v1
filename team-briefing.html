@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scribl team briefing, 2026-08-26</title>
+<style>
+  :root {
+    /* Bounteous brand, the same tokens index.html and the board assets use */
+    --midnight: #0B111C;
+    --indigo: #33139F;
+    --violet: #693AF4;
+    --purple: #853EFF;
+    --eblue: #34B4FF;
+    --paper: #FAFAFC;
+    --card: #FFFFFF;
+    --gray-50: #F4F5F8;
+    --gray-100: #EAECF2;
+    --gray-500: #636B82;
+
+    --ink: var(--midnight);
+    --muted: var(--gray-500);
+    --line: var(--gray-100);
+    --accent: var(--violet);
+    --accent-soft: var(--gray-50);
+    --code-bg: var(--gray-50);
+    --bad: #DB0632;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 1.25rem 5rem;
+    font: 16px/1.6 "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+  }
+  .wrap { max-width: 58rem; margin: 0 auto; }
+  .masthead { background: linear-gradient(90deg, var(--eblue) 0%, var(--purple) 100%); height: 6px; }
+  header { padding: 2.5rem 0 1.25rem; border-bottom: 2px solid var(--ink); }
+  h1 { font-size: 2rem; margin: 0 0 .35rem; letter-spacing: -0.02em; }
+  .tagline { color: var(--muted); margin: 0; font-size: 1.05rem; }
+  .meta { color: var(--muted); font-size: .85rem; margin: .6rem 0 0; }
+
+  /* Tabs */
+  nav.tabs {
+    display: flex; flex-wrap: wrap; gap: .25rem;
+    margin: 1.25rem 0 0; border-bottom: 1px solid var(--line);
+  }
+  nav.tabs button {
+    font: inherit; font-size: .92rem; font-weight: 700;
+    background: none; border: 0; border-bottom: 3px solid transparent;
+    color: var(--muted); padding: .6rem .85rem; cursor: pointer;
+  }
+  nav.tabs button:hover { color: var(--ink); }
+  nav.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  nav.tabs button:focus-visible { outline: 2px solid var(--eblue); outline-offset: 2px; }
+  section[role="tabpanel"] { display: none; }
+  section[role="tabpanel"].on { display: block; }
+
+  h2 {
+    font-size: 1.3rem;
+    margin: 2rem 0 .75rem;
+    padding-bottom: .3rem;
+    border-bottom: 3px solid var(--accent);
+    font-weight: 700;
+  }
+  h3 { font-size: 1.02rem; margin: 1.75rem 0 .4rem; }
+  p { margin: .7rem 0; }
+  ul, ol { margin: .7rem 0; padding-left: 1.3rem; }
+  li { margin: .35rem 0; }
+  ol li { margin: .5rem 0; }
+  code, pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .89em;
+  }
+  code { background: var(--code-bg); padding: .1em .35em; border-radius: 3px; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .92rem; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: .85rem 1rem;
+    margin: 1.25rem 0;
+  }
+  .callout p:first-child { margin-top: 0; }
+  .callout p:last-child { margin-bottom: 0; }
+  .say { border-left: 3px solid var(--ink); padding-left: 1rem; margin: 1rem 0; }
+  .say p { font-size: 1.05rem; }
+  .tag { display: inline-block; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+         letter-spacing: .06em; padding: .12rem .45rem; border-radius: 3px; }
+  .tag.theirs { background: #FDE9EC; color: var(--bad); }
+  footer { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="masthead"></div>
+<div class="wrap">
+
+<header>
+  <h1>Scribl team briefing</h1>
+  <p class="tagline">What we decided on 2026-08-25, what the team works on, and the three setups we are asking Scribl to own.</p>
+  <p class="meta">Prepared for the standup on 2026-08-26 (Wednesday) 10:00 CDT, the first one the client attends.
+  This page is for our own delivery team. Tabs 1, 2 and 6 come from the two calls held on 2026-08-25, the Scribl Shape kickoff and the team standup, and every quote is verbatim from those calls.
+  The three runbooks quote what the client said, then set out what we have already checked and what we are asking them to produce. The AWS and GitHub runbooks also draw on the Scribl B2B source Eric sent.</p>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button role="tab" aria-selected="true"  aria-controls="p1" id="t1">1. What we decided</button>
+  <button role="tab" aria-selected="false" aria-controls="p2" id="t2">2. The team's work</button>
+  <button role="tab" aria-selected="false" aria-controls="p3" id="t3">3. Apple runbook</button>
+  <button role="tab" aria-selected="false" aria-controls="p4" id="t4">4. AWS runbook</button>
+  <button role="tab" aria-selected="false" aria-controls="p5" id="t5">5. GitHub runbook</button>
+  <button role="tab" aria-selected="false" aria-controls="p6" id="t6">6. Tomorrow</button>
+</nav>
+
+<!-- ============ 1 ============ -->
+<section role="tabpanel" id="p1" aria-labelledby="t1" class="on">
+
+<h2>What we decided on 2026-08-25</h2>
+
+<p>Two calls fed these outcomes, the client kickoff with Eric Rice and Matthew
+Kaplan of Scribl, and the delivery team's standup. Everything below is a
+decision the team can build against today. Anything that ended without an answer
+stays on the client's board and in the change-request record, and none of it
+belongs in code yet.</p>
+
+<h3>Prompts</h3>
+
+<p>The MVP serves one predefined daily prompt per day, pulled from the database.
+Everyone in a region sees the same prompt. Region variation, personalization and
+per-person uniqueness are all future work. Testing prompt relevance by region is
+out of MVP scope.</p>
+
+<div class="say"><p>"For right now, there'll just be some predefined single prompts per day, and that's it." -- Rob Forshier II, 00:02:51</p></div>
+
+<h3>Stack and repositories</h3>
+
+<p>Expo is the framework, recorded in Pankaj Aggarwal's ADR. The objections to
+Expo that people carried from before 2023 no longer apply.</p>
+
+<div class="say"><p>"Before 2023 Expo was very slow and all, but now it's all good. In fact, Expo is the best choice now." -- Pankaj Aggarwal, 00:08:39</p></div>
+
+<p>Code starts in Bounteous repositories and shifts into Scribl's toward the end
+of the engagement. The standup and the client call reached the same answer
+independently, and Matthew Kaplan said it out loud on the client call. Pankaj
+Aggarwal's caveat stands, a lot of CI/CD depends on when the move happens, so
+day-one fully automated pipelines are not what this phase gets.</p>
+
+<table>
+<tr><th>Subject</th><th>Decision</th><th>Cue</th></tr>
+<tr><td>Framework</td><td>React Native with Expo, same as the POC</td><td>Pankaj Aggarwal, 00:08:39; Rob Forshier II, 00:48:38</td></tr>
+<tr><td>Repositories</td><td>Bounteous now, handoff to Scribl later. "It probably makes sense for you guys to own everything now and then it's a handoff at some point." -- Matthew Kaplan</td><td>00:59:44</td></tr>
+<tr><td>Platform</td><td>iOS focus, Android second as a best-effort free build shipped alongside. Not an iOS-only beta</td><td>00:48:57 to 00:52:21</td></tr>
+<tr><td>Form factor</td><td>Phone first, iPad deferred</td><td>Eric Rice, 00:52:45</td></tr>
+<tr><td>Environments</td><td>Dev only this phase. QA and prod come later</td><td>Rob Forshier II, 00:54:17 to 00:54:26</td></tr>
+<tr><td>Web</td><td>No web app, and the B2B and D2C products stay separate</td><td>Matthew Kaplan and Eric Rice, 01:00:52 to 01:01:56</td></tr>
+<tr><td>Crash reporting</td><td>Sentry or Firebase, the choice is left to Bounteous. The client said they have nothing in place, though their B2B browser client does wire up Rollbar, so ask before assuming a blank slate</td><td>00:57:29 to 00:57:56</td></tr>
+<tr><td>Test management</td><td>The client does not know what they use. Matthew Kaplan suggested asking Nick</td><td>00:52:59 to 00:53:24</td></tr>
+<tr><td>Jira board</td><td>The delivery team owns it, writes the stories under the existing epics and features, and can discard or repurpose what does not fit</td><td>Rob Forshier II, 00:10:58, 00:22:40</td></tr>
+</table>
+
+<p>Record the platform call accurately. Matthew Kaplan's dissent was not
+withdrawn, it was answered by the compromise. He argued that an iOS-only beta
+distorts the beta group because families run mixed platforms, and that objection
+is still on the record.</p>
+
+<p>The no-web-app answer settles the product boundary and nothing more. It does
+not answer the second half of Pankaj Aggarwal's question, which is whether a
+browser user can ever join a wall that mobile users are drawing on. Two separate
+products still leaves that open, and it needs a compatibility layer if the answer
+is ever yes.</p>
+
+<h3>Canvas</h3>
+
+<p>Settled and buildable now. One brush, no size picker and no style picker. Undo
+at a single step back. A trash button that clears the canvas, behind a
+confirmation dialog, which is Eric's call and carries a live objection from
+Matthew Kaplan on the same grounds as the eraser, so expect it to be revisited. An explicit bounding box, matching the treatment in the B2B
+game, drawn as a circle for avatar creation. The eight confirmed colours, and
+not laid out in rainbow order.</p>
+
+<h3>Screens and navigation</h3>
+
+<p>Sign-out moves out of the top-level avatar area and into profile options,
+because there is little reason for a person to sign out and a control up by the
+avatar invites accidental taps. The returning-user onboarding screen goes away on
+mobile, since the device remembers the user after the first login and the screen
+only existed because the POC is a web app.</p>
+
+<h3>Data and features</h3>
+
+<p>Store the individual strokes, not only the flattened final image. Eric's
+reason is reproduction. He can pull a drawing's strokes out of Metabase, feed
+them to a model, and get the image redrawn, which opens up everything downstream
+of that record.</p>
+
+<div class="say"><p>"I can pull that code, those keystrokes, and if I throw that into like ChatGPT or whatever, it'll draw the image for me based on that. So I can reproduce the images." -- Eric Rice, 00:56:05</p></div>
+
+<p>Challenges come back into scope, trimmed for the MVP to prompt injection only.
+The wider chance-card mechanic, restricting a colour or a hand, is deferred.
+Editing an already-submitted drawing is no, for now.</p>
+
+<p>Notifications are email plus in-app. Walls come in three kinds, personal,
+family, and external to family.</p>
+
+<h3>Design</h3>
+
+<p>Christina covers three screens, the intro screen, the home screen, and the
+single-story shareable. Eric or Alex cover the rest.</p>
+
+</section>
+
+<!-- ============ 2 ============ -->
+<section role="tabpanel" id="p2" aria-labelledby="t2" class="">
+
+<h2>What the team works on</h2>
+
+<h3>The four things Rob asked the team for</h3>
+
+<p>Asked at the 2026-08-25 standup. Three are expected at the standup on 2026-08-26.
+The backlog itself is due by the end of this week.</p>
+
+<table>
+<tr><th>#</th><th>Item</th><th>What done looks like</th></tr>
+<tr><td>1</td><td>Own the Jira board</td><td>Pankaj, Nitish and Karuna write user stories under the existing epics and features. Any ticket that does not make sense gets discarded or repurposed. Anything missing gets added.</td></tr>
+<tr><td>2</td><td>Backlog fleshed out</td><td>Done by end of this week, so planning can start next week.</td></tr>
+<tr><td>3</td><td>Open questions on the board</td><td>Every open question is on the board where the client can answer it, with a link back to where the answer will live.</td></tr>
+<tr><td>4</td><td>Flag time-zone handoffs</td><td>Anything that crosses a US-to-India handoff is called out, not left to surface on its own.</td></tr>
+</table>
+
+<p>Board ownership is a handover, not a caveat. The board was built from the POC backlog that already existed, and it is now the team's board to run, including the right to discard a ticket that does not fit.</p>
+
+<h3>The app changes this team builds</h3>
+
+<p>The client walkthrough on 2026-08-25 produced twenty-six change requests. Most
+of them are not this team's work. Some are Rob's own POC fixes, some are design
+deliverables, some the client agreed sit past the MVP, and four are still being
+argued inside Scribl. The rows below are the ones this team builds. Everything
+else lives in the change-request record and on the client's board, which is where
+it stays current.</p>
+
+<table>
+<tr><th>Work</th><th>What changes</th><th>Backlog</th><th>Owner</th></tr>
+<tr><td>Canvas tool set and layout <br><code>C02 C04 C05 C06 C08 C10</code></td><td>One brush, no style or size selector. Undo stays, at a single step back. A trash button that clears the canvas behind a confirmation. Every control moves to the bottom bar and the prompt is featured at the top. A clearly defined bounding box. Eight colours, and not in rainbow order.</td><td>E04-F1</td><td>unassigned</td></tr>
+<tr><td>Stroke storage <br><code>C14</code></td><td>Store the individual strokes, not only the flattened final image. Eric's reason is reproduction, so the shape of the stored data matters as much as the fact of storing it.</td><td>E04-F2</td><td>unassigned</td></tr>
+<tr><td>Avatar creation <br><code>C07</code></td><td>Avatar creation reuses the canvas with the bounding box drawn as a circle.</td><td>no backlog home. Closest parent is E02-F4</td><td>unassigned</td></tr>
+<tr><td>Sign-out moves <br><code>C01</code></td><td>Sign-out comes off the home screen and into profile options.</td><td>E05-F5</td><td>unassigned</td></tr>
+<tr><td>Returning-user onboarding screen goes <br><code>C03</code></td><td>Drop it on mobile. It exists only because the POC is a web app.</td><td>E02-F4</td><td>unassigned</td></tr>
+<tr><td>Share card <br><code>C13</code></td><td>Feature the prompt on the shareable, and carry the story, voice or text, onto it.</td><td>E12-F1</td><td>unassigned</td></tr>
+<tr><td>Home screen avatar <br><code>C12</code></td><td>Make the avatar more prominent. Design-led, and Christina's home screen pass may absorb it, so check before building it twice.</td><td>E05-F5</td><td>unassigned</td></tr>
+<tr><td>Challenges, trimmed <br><code>C15</code></td><td>Challenges come back for the MVP as prompt injection only. The wider chance-card mechanic stays parked.</td><td>E18-F2, which needs splitting first</td><td>unassigned</td></tr>
+</table>
+
+<p>Every owner here reads <code>unassigned</code> because the team has not
+divided this work yet. Put names on these rows at planning rather than assuming
+the person who wrote the story owns the build.</p>
+
+<p>One naming point to fix while the stories are written. <code>E04-F1</code> is
+recorded as the six-ink reduced tool set, and the client confirmed eight colours
+on this call. Rename the feature before planning it. Do not leave the stale title
+in place and talk around it.</p>
+
+<h3>Backlog gaps to raise at sprint 1 planning</h3>
+
+<p>These will not surface on their own.</p>
+
+<table>
+<tr><th>Gap</th><th>Why it needs raising</th></tr>
+<tr><td>Avatar creation has no feature (C07)</td><td>It has a canvas, a circular bounding box and a save path, and it is on the client's design list, but nothing on the backlog names it. Closest parent is E02-F4.</td></tr>
+<tr><td>E18-F2 Challenges needs splitting (C15)</td><td>It is recorded as a parked capability, built and switched off. Prompt injection is now in the MVP, so split the feature before planning it or the whole parked mechanic comes with it.</td></tr>
+<tr><td>Member avatars above a family wall have no feature</td><td>The standup flagged it. The client confirmed the wall layout on the same call without discussing the avatars, so the kickoff did not close it.</td></tr>
+</table>
+
+<h3>Time-zone handoffs to flag</h3>
+
+<p>Client decisions land in US hours, the team plans in India hours. A decision that lands after the team's standup is a full day of drift before it can be acted on.</p>
+
+<p>Apple, AWS and GitHub access sit with Scribl and unblock the team's work. Anything blocked on that access should sit visibly on the board, not in a chat thread.</p>
+
+<p>Sprint demos are intended for Fridays. Rob owns scheduling them and no date is
+set yet, so treat the day as the plan rather than as a fixed slot.</p>
+
+<p>Add your own handoffs to this list. The team knows its own dependencies better than this document does.</p>
+
+<div class="callout">
+<p>Nothing in this document is written to Jira by an agent. Every row here is a draft for a human to file.</p>
+</div>
+
+</section>
+
+<!-- ============ 3 ============ -->
+<section role="tabpanel" id="p3" aria-labelledby="t3" class="">
+
+<h2>Runbook, the Apple setup</h2>
+
+<h3>What Scribl said</h3>
+
+<div class="say"><p>"We don't have anything." -- Eric Rice, 00:48:15</p></div>
+
+<div class="say"><p>"I'm happy to go through and do the work on it. I'm just pointing me in the right direction" -- Eric Rice, 01:02:47</p></div>
+
+<p>Scribl has no Apple accounts today and Eric is doing the signup himself, so
+this is his work. What follows is what we already know about the path, written
+to save him the hour of starting cold. It is not a checklist we filled in on his
+behalf.</p>
+
+<h3>Our initial research</h3>
+
+<div class="callout"><p>The D-U-N-S number is the critical path. Apple will not
+enrol an organisation without one, and no Apple Developer account means no
+signing identity, no TestFlight, and side-loading only. Start it first.</p></div>
+
+<p>One practical note on the D-U-N-S, because a mismatch is the usual cause of a
+rejection. The legal entity name, the registered address, and a public website on
+a domain Scribl owns all have to line up with Scribl's incorporation records.
+Apple has its own lookup for an existing number, and a fresh request can take
+several business days, longer if Dun and Bradstreet comes back with questions.</p>
+
+<p>Enrolment goes in as an organisation, not an individual, because the
+account has to outlive any one person and the app needs to show Scribl as the
+seller. The Account Holder is one person and the role cannot be shared. Only
+that person can accept new Apple agreements or change the membership, so if
+they go quiet the whole account can stall.</p>
+
+<p>In App Store Connect, seats go at <em>Developer</em> or <em>App Manager</em>.
+Nobody outside Scribl needs <em>Admin</em> or <em>Finance</em>. The bundle
+identifier is permanent and reverse-DNS, built from a domain Scribl controls.
+We have deliberately not guessed Scribl's domain here.</p>
+
+<p>Signing needs a distribution certificate and a provisioning profile.
+An App Store Connect API key is what lets a build pipeline upload to
+TestFlight with no person at a keyboard.</p>
+
+<p>Internal TestFlight testers get builds with no Apple review. External
+testers trigger Beta App Review, which takes time and can come back with
+changes required. That is the timing risk for the mixed-platform beta group
+Matthew Kaplan raised.</p>
+
+<h3>What we are asking Scribl for</h3>
+
+<ul>
+<li>A named owner and a date on the enrolment. That date is what tells us when
+signing and TestFlight become possible.</li>
+<li>The D-U-N-S number, or the date it was requested. Either one closes the
+biggest open risk on the timeline.</li>
+<li>The Account Holder's name, and a second person at Scribl who knows it. That
+role cannot be shared, so we need to know who has to stay reachable.</li>
+<li>The exact bundle identifier string. We register that string and nothing
+else, because it cannot be changed once an app record exists.</li>
+<li>App Store Connect invitations at the roles above, once we send the email
+list. Accepted invitations are what let our engineers build and upload.</li>
+<li>A yes or no on the API key. Yes means the pipeline uploads on its own. No
+means a person with the account credentials does every upload by hand.</li>
+<li>The names and emails of the first internal TestFlight testers. With those,
+a build reaches them the same day it finishes processing.</li>
+</ul>
+
+<p>If any of this does not fit how Scribl works, say so and tell us what does.
+We can plan against a counter-proposal. We cannot plan against silence.</p>
+
+</section>
+
+<!-- ============ 4 ============ -->
+<section role="tabpanel" id="p4" aria-labelledby="t4" class="">
+
+<h2>Runbook, AWS deploy access</h2>
+
+<h3>What Scribl said</h3>
+
+<p>Eric Rice confirmed at kickoff that Scribl already has an AWS account
+hosting the B2B game (00:45:38 to 00:46:01). What the room did not settle is
+whether we deploy the D2C app into that existing account or into a new one
+(00:46:01 to 00:47:44). Rob is taking that question to Bounteous's AWS side
+and following up with James, Scribl's AWS contact, and Bhasin, the technical
+contact James would loop in.</p>
+
+<h3>Our initial research</h3>
+
+<p>We read the B2B infrastructure code before asking anything, so we would
+ask a specific question instead of a vague one. The CDK app declares four
+environment stages, <code>Dev</code>, <code>Poc</code>, <code>Stg</code>,
+<code>Prod</code>, plus an ad hoc <code>Sandbox</code>, but only
+<code>Dev</code>, <code>Poc</code>, and <code>Prod</code> carry sizing config,
+so <code>Stg</code> and <code>Sandbox</code> inherit <code>Dev</code> sizing.
+The deploy workflow (<code>deploy.yml</code>) runs on
+<code>workflow_dispatch</code> only, and its environment input offers exactly
+two choices, <code>QA</code> and <code>Stg</code>. Those map to the CDK stacks
+<code>Scribl-Poc/Infrastructure</code> and <code>Scribl-Stg/Infrastructure</code>.
+<code>Prod</code> exists in the CDK code with no deploy job. The workflow
+assumes <code>AWS_QA_ROLE_ARN</code> or <code>AWS_STG_ROLE_ARN</code> through
+GitHub OIDC, and pins <code>us-east-1</code> throughout. So their own team
+ships on two environments, not three, whatever the stack names suggest.</p>
+
+<table>
+<tr><th>Option</th><th>What Scribl does</th><th>What it gives us</th><th>Trade-off</th></tr>
+<tr>
+<td>Cross-account IAM role</td>
+<td>Creates a role in their account that trusts our AWS account, scoped to the permissions we enumerate</td>
+<td>Fastest to set up, easiest to revoke, keeps their account boundary intact, their team has already set up a role-assumption trust for the B2B deploy, so the shape is familiar</td>
+<td>Our workloads run inside their account, so their billing and their guardrails apply to us, and every permission we need has to be listed up front</td>
+</tr>
+<tr>
+<td>Dedicated account in their AWS Organization</td>
+<td>Creates a new account inside their organization and wires its guardrails, then grants us access to that account only</td>
+<td>Clean blast radius, clean cost attribution, nothing we do can touch the B2B product</td>
+<td>Someone at Scribl has to create the account and set up its guardrails, more work up front and needs an owner</td>
+</tr>
+<tr>
+<td>Their existing CDK path</td>
+<td>Adds our stacks to the same CDK app and shape, then runs the same deploy pipeline for both products</td>
+<td>Reuses what their team already knows, keeps one deployment story</td>
+<td>We inherit their patterns, and our release schedule has to move with theirs</td>
+</tr>
+</table>
+
+<div class="callout">
+<p>This is a recommendation, not a decision. The dedicated account is the
+cleanest path if someone at Scribl will own creating it. The cross-account
+role is the right answer if we need to move this week. Rob is checking both
+with Bounteous's AWS side and with James and Bhasin before either is locked
+in.</p>
+</div>
+
+<p>One thing we will not carry over. The B2B API applies schema changes on
+every container start, with no versioned migration chain and no gate. We will
+author versioned migrations for the D2C app instead.</p>
+
+<h3>What we are asking Scribl for</h3>
+
+<p>Six things. Put a named owner and a date on the first one, because the rest
+follow from it. Each line says what it unblocks.</p>
+
+<ul>
+<li>A decision on the existing account versus a new one, with a named owner and a date. <span class="tag theirs">Scribl decision</span> That locks one row of the table above and setup starts.</li>
+<li>The AWS account id we deploy into. <span class="tag theirs">Scribl decision</span> That id goes straight into our CDK config.</li>
+<li>The AWS region, stated explicitly. Their B2B pipeline deploys to <code>us-east-1</code> and our POC database is in <code>us-east-2</code>, so this is a real question rather than a formality. The answer is pinned across our CDK stacks and our deploy workflow.</li>
+<li>The name and contact for whoever can create an IAM role or an organization account. <span class="tag theirs">Scribl decision</span> We send that person a least-privilege policy scoped to what the D2C app needs, rather than a copy of the B2B product's full permission set.</li>
+<li>The approval path for a permission change, and how long it takes. We build that lead time into our sprint plan rather than discovering it mid-sprint.</li>
+<li>Confirmation that this phase is dev only, with QA and prod added later. <span class="tag theirs">Scribl decision</span> That scopes our environment plan and keeps us off prod work we would have to redo.</li>
+</ul>
+
+<p>If a constraint on Scribl's side rules one of these out, send back the
+version that works. Adjusting the plan now is cheap. Finding out after we have
+built against the wrong account is not.</p>
+
+</section>
+
+<!-- ============ 5 ============ -->
+<section role="tabpanel" id="p5" aria-labelledby="t5" class="">
+
+<h2>Runbook, GitHub and the deploy trust</h2>
+
+<h3>What Scribl said</h3>
+
+<p>The kickoff covered where code lives, and it did not cover GitHub at all.
+Nobody asked whether Scribl has a GitHub organisation, so nobody answered. What
+was settled is the ownership arc.</p>
+
+<div class="say"><p>"It probably makes sense for you guys to own everything now and then it's a handoff at some point." -- Matthew Kaplan, 00:59:44</p></div>
+
+<div class="callout"><p>Our code starts in Bounteous repositories, as agreed in
+the kickoff. Nothing on this tab blocks this week. It is here because one thing
+we found may change where the code starts, and that is worth asking about
+early.</p></div>
+
+<h3>Our initial research</h3>
+
+<p>We read the B2B source Eric sent. The git remote is Bitbucket,
+<code>hs2studio/scribl-b2b</code>, and there is no
+<code>bitbucket-pipelines.yml</code> anywhere in the tree. Every piece of CI in
+the repo is GitHub-only tooling, under <code>.github/</code>:</p>
+
+<ul>
+<li><code>workflows/deploy.yml</code> is a live GitHub Actions deploy. It runs on
+<code>workflow_dispatch</code> with an environment choice of QA or Stg, takes
+<code>id-token: write</code>, and uses
+<code>aws-actions/configure-aws-credentials@v4</code> to assume
+<code>secrets.AWS_QA_ROLE_ARN</code> or <code>secrets.AWS_STG_ROLE_ARN</code>.
+It deploys the CDK stacks <code>Scribl-Poc/Infrastructure</code> and
+<code>Scribl-Stg/Infrastructure</code> into <code>us-east-1</code>. The named
+secrets and named stacks make this a real OIDC trust rather than a sample
+workflow. Whether it still runs is the part the files cannot tell us.</li>
+<li><code>workflows/pr.yml</code> gates pull requests on a label, an assignee,
+and a Jira-prefixed title, through <code>actions/github-script</code> on
+<code>pull_request</code> events.</li>
+<li><code>workflows/linting.yml</code> runs lint on pushes to <code>main</code>
+and <code>dev</code> and on every pull request. Its client test step is commented
+out with a note to add e2e tests later.</li>
+<li><code>dependabot.yml</code> schedules weekly updates for GitHub Actions and
+for the <code>client</code> and <code>infrastructure</code> package trees.
+Dependabot runs on GitHub and nowhere else.</li>
+<li>A pull request template.</li>
+</ul>
+
+<p>Here is the possibility, and it is a possibility rather than a finding.
+Dependabot, <code>pull_request</code> triggers, GitHub secrets and GitHub OIDC do
+nothing outside a GitHub repository. So a GitHub organisation with a working
+Actions-to-AWS trust may already exist for this product. If it does, and if it is
+Scribl's, this engagement may be able to build inside it from the start rather
+than transferring at the end, which is the cheaper end of the handoff Matthew
+described.</p>
+
+<p>Two things stop us calling it more than a possibility. The client has not
+confirmed any of it. And the files cannot tell us whose organisation ran them.
+The pull request template links its tickets to a third-party Atlassian domain
+that is not Scribl's, which fits an earlier build vendor's organisation as
+comfortably as it fits Scribl's own. The git history in our copy is a Bounteous
+import dated 2026-08-25 and tells us nothing about origin. The file contents are
+the whole of the evidence, and they support the question, not the answer.</p>
+
+<p>One more thing to reconcile rather than to argue about. Their pipeline deploys
+to <code>us-east-1</code>. Our POC database is in <code>us-east-2</code>.</p>
+
+<p>On the OIDC trust itself, so nobody starts from zero. A GitHub Actions run
+exchanges a short-lived token for AWS credentials, so no long-lived AWS access
+key is ever stored in the repository. The identity provider is created once in
+IAM, and the B2B account very likely has it already. The deploy role's trust
+policy has to pin the subject claim to the organisation, the repository, and the
+branch or environment, because a policy that does not pin them lets any workflow
+in any repository on GitHub assume the role. The role ARN is handed to the
+workflow as a secret, one per environment, which is the pattern
+<code>deploy.yml</code> already uses. And the workflow needs
+<code>id-token: write</code>, which is the line people forget; without it the
+role assumption fails with an error that reads like a trust-policy problem when
+it is not.</p>
+
+<h3>What we are asking Scribl for</h3>
+
+<p>One question first, answered by a named person on a date. Is there a GitHub
+organisation for Scribl, who administers it, and do the B2B app's workflows still
+run in it? "We did not know we had one" is a perfectly good
+answer, and it is the one we would bet on. Either way the answer decides the
+next question, so it is worth five minutes with whoever set up the B2B build.</p>
+
+<p>If the answer is yes, we want a decision on whether the D2C app can start in
+that organisation rather than move into it later, and with it four things Scribl
+owns:</p>
+
+<ul>
+<li>A team for us in the organisation, or per-repo collaborator access. A team is
+easier to revoke, because removing one team removes everyone from every repo at
+once. Collaborator access has to be cleaned up repo by repo, so it drifts.</li>
+<li>The branch protection and required-reviewer rules Scribl wants to live with.
+Tell us the rule and we work inside it.</li>
+<li>A fresh repo rather than an existing one. That is our recommendation, because
+the D2C app shares no code with the B2B product, and a fresh repo keeps the two
+histories, access lists and CI configurations independent.</li>
+<li>The AWS account id the deploy role lives in, and the name of whoever can
+create an IAM role there.</li>
+</ul>
+
+<p>Once we have that, we send our GitHub handles for invitations, stand up the
+deploy role and trust policy with Scribl's IAM owner, and wire our pipeline to
+it. Our own deploys will gate on typecheck, lint, test and a build before they
+run, which is a choice about our pipeline rather than a comment on theirs.</p>
+
+<p>If any of this cuts across how Scribl runs its estate, tell us the shape that
+works instead. An answer we can plan against is what we are after.</p>
+
+</section>
+
+<!-- ============ 6 ============ -->
+<section role="tabpanel" id="p6" aria-labelledby="t6" class="">
+
+<h2>Tomorrow's standup, 2026-08-26 at 10:00 CDT</h2>
+
+<p>The client joins standup for the first time. The slot is thirty minutes.</p>
+
+<ol>
+<li>Brief intros from everyone. Name, what you are working on, where you are
+located, how long you have been with the company, and a light one, favourite ice
+cream. Keep them short, because the slot is thirty minutes and the client is in
+the room for all of it.</li>
+<li>Straight into the team's own items, the same as any other day.</li>
+</ol>
+
+<h3>One question to ask while the client is in the room</h3>
+
+<p>Does Scribl have a GitHub organisation, who administers it, and do the B2B
+app's workflows still run in it? Ask it so that "we did not know we had one" is
+a comfortable answer, because that is the likely shape of it. The B2B source
+Eric sent carries a full set of GitHub Actions workflows and a Dependabot config,
+and none of that runs anywhere but GitHub. So an organisation may exist that
+nobody has looked at since the B2B build. The GitHub runbook has the evidence and
+what turns on the answer.</p>
+
+<p>Whether an internal slot runs before the client half of standup is undecided.
+The leaning in the standup was to extend the slot to an hour and bring the client
+into the second half. Pankaj Aggarwal countered that we run the current shape for
+a day or two first and see whether it needs extending. No decision was taken.</p>
+
+</section>
+
+<footer>
+  <p>One file, no network calls, opens from disk. Every runbook ends with what we are asking Scribl to produce.
+  Nothing on this page has been written to Jira; the drafts are for a person to file.</p>
+</footer>
+
+</div>
+<script>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('nav.tabs button'));
+    var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+
+    function show(i) {
+      for (var k = 0; k < tabs.length; k++) {
+        var on = k === i;
+        tabs[k].setAttribute('aria-selected', on ? 'true' : 'false');
+        panels[k].classList.toggle('on', on);
+      }
+      if (history.replaceState) history.replaceState(null, '', '#' + tabs[i].getAttribute('aria-controls'));
+      window.scrollTo(0, 0);
+    }
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { show(i); });
+      t.addEventListener('keydown', function (e) {
+        var next = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : -1;
+        if (next < 0 || next >= tabs.length) return;
+        tabs[next].focus();
+        show(next);
+      });
+    });
+
+    var hash = window.location.hash.replace('#', '');
+    var start = panels.findIndex ? panels.findIndex(function (p) { return p.id === hash; }) : -1;
+    show(start > 0 ? start : 0);
+  })();
+</script>
+</body>

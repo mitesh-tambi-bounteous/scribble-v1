@@ -1,0 +1,43 @@
+{
+  "name": "scribl",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "docs:clean": "node -e \"require('fs').rmSync('docs/.vitepress/cache',{recursive:true,force:true});require('fs').rmSync('docs/.vitepress/dist',{recursive:true,force:true})\"",
+    "predocs:dev": "npm run docs:clean",
+    "docs:dev": "vitepress dev docs",
+    "predocs:build": "npm run docs:clean",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "docs:sync": "node scripts/docs-sync.mjs",
+    "board:render": "node scripts/flow-board/render.mjs",
+    "context:ingest": "node scripts/context-ingest.mjs",
+    "wiki:update": "node scripts/context-ingest.mjs && node scripts/docs-sync.mjs",
+    "workshop:build": "python3 scripts/build-workshop-artifact.py",
+    "backlog:v2": "python3 scripts/build-backlog-epics-v2.py",
+    "test:artifact": "node scripts/check-artifact-offline.mjs",
+    "test": "npm run test:content && npm run test:jira && npm run test:schedule && npm run test:docs-sync && npm run test:docs-fresh && npm run test:bootstrap && npm run test:flow-inventory",
+    "test:content": "node scripts/test-guard.mjs && node scripts/test-normalize-prose.mjs",
+    "test:jira": "node scripts/jira-sync/run-tests.mjs",
+    "test:docs-sync": "node scripts/test-docs-sync.mjs",
+    "test:docs-fresh": "node scripts/test-docs-fresh.mjs",
+    "test:schedule": "python3 scripts/verify-schedule-plan.py",
+    "test:bootstrap": "node scripts/test-bootstrap-sync.mjs",
+    "test:flow-inventory": "node scripts/check-flow-inventory.mjs"
+  },
+  "dependencies": {
+    "mammoth": "1.8.0",
+    "pdf-parse": "1.1.1",
+    "xlsx": "0.18.5"
+  },
+  "devDependencies": {
+    "mermaid": "11.14.0",
+    "vitepress": "1.6.4",
+    "vitepress-plugin-mermaid": "2.0.17",
+    "vue": "3.5.33"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
