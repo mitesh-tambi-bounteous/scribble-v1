@@ -1,0 +1,236 @@
+WEBVTT
+
+00:00:05.539 --> 00:00:06.899
+<v Rob Forshier II>Good morning, Eric.</v>
+
+00:00:07.579 --> 00:00:08.219
+<v Eric Rice>How's it go?</v>
+
+00:00:07.659 --> 00:00:08.219
+<v Pramod Kumar>Eric.</v>
+
+00:00:08.459 --> 00:00:08.779
+<v Pramod Kumar>Rob.</v>
+
+00:00:09.419 --> 00:00:10.899
+<v Rob Forshier II>Hey, good evening, Pramod.</v>
+
+00:00:16.219 --> 00:00:18.699
+<v Eric Rice>Matt is unable to make it so they had a conflict.</v>
+
+00:00:19.779 --> 00:00:20.099
+<v Rob Forshier II>Okay.</v>
+
+00:00:20.916 --> 00:00:23.716
+<v Rob Forshier II>I imagine you guys would come on and off as you needed to.</v>
+
+00:00:29.716 --> 00:00:30.276
+<v Karuna Arshakota>Everyone.</v>
+
+00:00:35.476 --> 00:00:36.356
+<v Nitish Goyal>Hey, Hiren.</v>
+
+00:00:49.476 --> 00:00:54.276
+<v Rob Forshier II>Give it another minute and wait for other people to roll in, and then we can go through our stand-up.</v>
+
+00:01:31.316 --> 00:01:49.556
+<v Pramod Kumar>I think we are good now, Rob. Shubhankar also has joined, so obviously he's just completing his onboarding and he's got access to most of the stuff. The access tracker has been updated, so, but, but yeah, his, I think we should, we have a quorum now, Rob.</v>
+
+00:01:50.436 --> 00:02:08.996
+<v Rob Forshier II>Okay, perfect, perfect. All right, well, I'll go ahead and queue us off. So yesterday, I had the design sync with Christina and Eric. I put in some of the changes to the prototype that Eric had made mention of in the scribble shape from the day before on Tuesday. So right now, I've handed off.</v>
+
+00:02:10.996 --> 00:02:27.836
+<v Rob Forshier II>So this is also for Karuna. So I have a script that's a part of the prototype that will generate the workflows of the application. And so that's like the actual, and I can actually show this in a moment.</v>
+
+00:02:31.916 --> 00:02:54.436
+<v Rob Forshier II>right here, okay, yeah. Let me show this real quick. But I can get this over to you. So these would be the flows that you would see. So right here, so it has basically, I have all the PNGs, but I have this, it creates not just all the individual PNGs, but it creates this all screens board PNG. So then we have all the screens available.</v>
+
+00:02:54.716 --> 00:03:13.476
+<v Rob Forshier II>It also produces this, which I need to fix this, leave it to a robot to make a straightforward like diagram going through like this. But then here is the more important one that you would like to see, which is like, you know, this talks about like the invite and 1st run flows. And so, and this just builds it. It's just a script that we can run as we add the new slides.</v>
+
+00:03:11.556 --> 00:03:12.156
+<v Karuna Arshakota>Mm-hmm.</v>
+
+00:03:13.636 --> 00:03:18.676
+<v Rob Forshier II>So then we can always just have this in place and then see the screens. So I'll get you a copy of this.</v>
+
+00:03:22.036 --> 00:03:23.076
+<v Karuna Arshakota>Suren up, yeah.</v>
+
+00:03:24.036 --> 00:03:42.676
+<v Rob Forshier II>Yeah, so we've decided, I handed off the screens. They're going to take this on their side and Christina is going to, Christine and Eric have picked a subset of the screens, more of the more challenging ones, slash the items on the screen. Christina is going to then put her mark on them and design them. And then what I'll do is I'll take them and then</v>
+
+00:03:42.796 --> 00:04:00.596
+<v Rob Forshier II>For the screens that she didn't get us, we should have enough information where I can use Claude to just kind of fill in the middle on those other screens, now that we have that all kind of like laid out. Beyond that, Eric started the e-mail chains yesterday, which I have forwarded it on to Pramod and...</v>
+
+00:04:01.716 --> 00:04:24.956
+<v Rob Forshier II>our architect. So that's all in place. So now we have the e-mail chain set up so they can start getting the GitHub, because we will be using Scribbles GitHub now for our repository, which then will be using their AWS, so then our pipeline will be in there and be all set, so then we don't have to worry about any migration or anything like that. And then there's the other e-mail where it was, Eric's going to be walking through everything that we need for Apple.</v>
+
+00:04:25.876 --> 00:04:39.956
+<v Rob Forshier II>and like sending us up, getting us the IDs. He just needs to know how to do that. And so that's what those e-mail chains are for. And then my day then for today then is I'm going to start working on like the harness and just, you know, little bits of the backlog. And that's my handoff.</v>
+
+00:04:41.156 --> 00:04:42.516
+<v Rob Forshier II>No blockers for me right now.</v>
+
+00:04:45.676 --> 00:04:48.116
+<v Rob Forshier II>Eric, I don't know if you want to give yours and then we can run through the team.</v>
+
+00:04:49.476 --> 00:04:58.596
+<v Eric Rice>Sure, so the AWS e-mail chain that I started, I haven't seen anything back yet. James, we're kind of close with personally. I think he's got something.</v>
+
+00:04:59.556 --> 00:05:19.196
+<v Eric Rice>pretty personal going on right now and I wouldn't be surprised if there's a delay there. So I'm not sure what he's doing about handing that off to someone else at AWS or like forwarding his emails. I am the owner. I have access to our AWS account. If there's anything I can do to get you guys in, I assume we're just going to use that same account in.</v>
+
+00:05:19.556 --> 00:05:38.676
+<v Eric Rice>use a partition in there. So just let me know. I think what I mentioned mission had sent over. Once it was a packet that they called it that I deployed. So if you know I opened it up inside there and that that gave them access to everything that they need and they opened up a partition inside our AWS account. So just let me know what I how I can help.</v>
+
+00:05:38.796 --> 00:05:39.876
+<v Eric Rice>and having to do so.</v>
+
+00:05:42.156 --> 00:05:58.196
+<v Rob Forshier II>Okay, perfect. So as I said, I did a reply all and then added our side. So I know they were going to take their day to kind of plan this all out and then come back to you. So yeah, so we'll just wait in the e-mail chains. But then Pramod, if you want to go through your stand-ups and then we can go through the rest of the team.</v>
+
+00:05:59.796 --> 00:06:19.596
+<v Pramod Kumar>Yeah, so I think on my part, so on those two e-mail chains, I'm working with Pankaj and we also have our AWS DevOps person. So we were just seeing what would be the best way for Scribble Eric to do that. So we'll try to get our heads around that and then maybe...</v>
+
+00:06:19.676 --> 00:06:38.996
+<v Pramod Kumar>what we could probably do either as on one of these calls or as an extension. We can probably get on a call with Eric and see if we can action on that. I think at a high level, there's going to be another account under the organization and then you give access.</v>
+
+00:06:39.236 --> 00:07:01.156
+<v Pramod Kumar>for that to Pankaj and our DevOps person and then we, so that again, like it should be partitioned so that there's no way to touch the B2B portion of it. So that's on that. GitHub as well, we'll look to see how best to have that one new repository.</v>
+
+00:07:02.436 --> 00:07:21.076
+<v Pramod Kumar>spun off and then again full access for that to this team and then we'll take it forward. So that's on those and in terms of the team readiness, Shubhankar has been getting up and running. We are setting up all the accesses for him and pretty much.</v>
+
+00:07:21.716 --> 00:07:40.676
+<v Pramod Kumar>all the code base, et cetera, has been done. So yeah, I think that those are probably the ones that are on my end. I'm also looking at planning for some of the devices that we'll need later in the cycle in terms of testing, at least.</v>
+
+00:07:40.796 --> 00:07:49.956
+<v Pramod Kumar>a basic set of iPhones, et cetera, that the devs and testers will use for real app testing.</v>
+
+00:07:51.316 --> 00:07:55.636
+<v Pramod Kumar>Yeah, I think that's it for me. Nothing blocking at this point.</v>
+
+00:07:58.436 --> 00:08:00.596
+<v Pramod Kumar>Karuna, you want to?</v>
+
+00:08:01.716 --> 00:08:20.516
+<v Karuna Arshakota>Sure, sure. So I'm working on the evolution of the automation framework. I'm trying to actually create a sample test. I think we'll be almost go with the Appium with the XQE driver, but I will need more time to actually...</v>
+
+00:08:19.956 --> 00:08:20.116
+<v Pramod Kumar>Oops.</v>
+
+00:08:21.396 --> 00:08:45.476
+<v Karuna Arshakota>to prepare and show a small demo of that. Then, parallel, I'm working on the requirements. I'm going through the user stories. Yeah, right now, no questions from my end. But yeah, I need some more time to do the analysis and see if you have to add more user stories from a QS standpoint. Then the other point, actually, I checked the B2B repository. It looks like.</v>
+
+00:08:46.236 --> 00:09:06.036
+<v Karuna Arshakota>Like we don't have any existing test cases over there, but yeah, I could find there are some playwright test, automation test that's been written. Yeah, that's about the test cases and the B2B. And then I'm also exploring the tool for the test case management tool. Yeah, probably I should have some details by Monday for that.</v>
+
+00:09:06.796 --> 00:09:07.956
+<v Karuna Arshakota>Yeah, it's all for me.</v>
+
+00:09:14.116 --> 00:09:32.676
+<v Nitish Goyal>Okay, so let me go next. So I've been working on the DB schema and the API contracts right now. So I created an initial draft for it and I was reviewing it manually, so there is no gaps as per my best of my understanding. So I will.</v>
+
+00:09:34.356 --> 00:09:50.676
+<v Nitish Goyal>put this draft in the meta repo right now so that others can also have a look and we can discuss it further if there is certain gaps or what kind of DV or the API contracts we want to extend.</v>
+
+00:09:52.276 --> 00:09:58.836
+<v Nitish Goyal>And yeah, side by side, I was also looking through the tickets that have been been there in the Jira board.</v>
+
+00:10:00.196 --> 00:10:03.756
+<v Nitish Goyal>Uh, yeah, that's all I've been doing the whole day.</v>
+
+00:10:07.476 --> 00:10:18.516
+<v Pramod Kumar>Yeah, I think that leaves us with Shubhankar. So Shubhankar has just started today. Maybe Shubhankar, we you can probably just say hi to the team. We all introduced ourselves yesterday, so.</v>
+
+00:10:19.076 --> 00:10:19.396
+<v Pramod Kumar>Um...</v>
+
+00:10:20.876 --> 00:10:24.356
+<v Shubhankar Bhavsar>Hi everyone, this side. You can call me Shubhang.</v>
+
+00:10:25.396 --> 00:10:46.036
+<v Shubhankar Bhavsar>If that helps you. So I just started exploring things. Thank you, Pramod, for granting all the accesses for now. I am exploring some projects on Jira, Scribble Mobile, Meta Scribble App, and Scribble B2B. So I'm just going through the code and waiting for my laptop so I can set up things fully on.</v>
+
+00:10:46.476 --> 00:10:52.916
+<v Shubhankar Bhavsar>on the system. For now, I have also seen the designs of especially the mobile app script art board.</v>
+
+00:10:53.796 --> 00:11:07.716
+<v Shubhankar Bhavsar>So yeah, that's pretty much about my learning so far. So I'm just building my knowledge base. Once I have things in place and I'll participate, I think I should be doing things in action like.</v>
+
+00:11:08.796 --> 00:11:09.556
+<v Shubhankar Bhavsar>That's not my site.</v>
+
+00:11:12.836 --> 00:11:13.556
+<v Pramod Kumar>Thank you.</v>
+
+00:11:14.276 --> 00:11:14.836
+<v Shubhankar Bhavsar>Thank you.</v>
+
+00:11:14.436 --> 00:11:20.196
+<v Rob Forshier II>Are you in are you in the Teams channel by chance? The Scribble Dev Team and Scribble General? You're in there? Okay.</v>
+
+00:11:20.916 --> 00:11:21.476
+<v Shubhankar Bhavsar>Yes.</v>
+
+00:11:21.796 --> 00:11:40.716
+<v Rob Forshier II>Okay, remember at the top that there's the links for everything too. So the prototype links are everything in there. Okay, cool. And then Eric, something I forgot to give him my stand up. I did put in all the changes that I could remember from yesterday. So right now the prototype is, I'm not touching it. It's in its final state. So I moved like the log out button and the final things we were talking about. So now it's just.</v>
+
+00:11:27.236 --> 00:11:27.636
+<v Shubhankar Bhavsar>Yap.</v>
+
+00:11:40.996 --> 00:11:44.196
+<v Rob Forshier II>No, once she gets me those designs, I'll do the next pass on it, so...</v>
+
+00:11:45.956 --> 00:11:48.996
+<v Rob Forshier II>Cool. It's great to meet you, Shubh. Is Shubh or Shoop?</v>
+
+00:11:50.836 --> 00:11:51.756
+<v Rob Forshier II>Chu, OK.</v>
+
+00:11:54.116 --> 00:11:54.756
+<v Eric Rice>Awesome.</v>
+
+00:11:59.876 --> 00:12:11.956
+<v Rob Forshier II>Well, we flew through it as I figured this eventually we could get down to 15 outside of any demos or anything you wanted to show. So yeah, it seems like we're just moving along and let's just get those e-mail chains going and yeah, everybody have a great day and evening.</v>
+
+00:12:14.596 --> 00:12:29.396
+<v Nitish Goyal>Before we close the call, I hope you know that tomorrow is off on some of, I have on my side, there is a holiday tomorrow on the event of Rakshavan in India.</v>
+
+00:12:14.756 --> 00:12:15.716
+<v Pramod Kumar>Thanks, thanks, Rathi.</v>
+
+00:12:15.156 --> 00:12:15.716
+<v Eric Rice>Take your mom.</v>
+
+00:12:24.836 --> 00:12:24.996
+<v Pramod Kumar>Bye.</v>
+
+00:12:26.276 --> 00:12:26.436
+<v Pramod Kumar>What?</v>
+
+00:12:30.276 --> 00:12:35.556
+<v Rob Forshier II>Okay, okay, good to know, good to know. So yeah, so tomorrow some of you will be out. Will the whole team be out or just a few?</v>
+
+00:12:36.116 --> 00:12:44.276
+<v Pramod Kumar>Yeah, most actually, because Gurugram, Gurugram or Delhi is the location, so that's a lot of folks, but yeah.</v>
+
+00:12:37.796 --> 00:12:38.836
+<v Karuna Arshakota>Yeah, I'm also out.</v>
+
+00:12:43.956 --> 00:12:49.876
+<v Rob Forshier II>Okay. No worries. No worries. Okay. Well, then I will see you guys then bright and early on Monday.</v>
+
+00:12:53.596 --> 00:12:54.196
+<v Pramod Kumar>Thanks, Holly.</v>
+
+00:12:53.876 --> 00:12:56.196
+<v Rob Forshier II>All right. Thank you. Take all.</v>
+
+00:12:54.476 --> 00:12:56.276
+<v Karuna Arshakota>Thank you. Bye. Bye.</v>
+
+00:12:54.996 --> 00:12:55.996
+<v Nitish Goyal>Thank you. Bye bye.</v>
+

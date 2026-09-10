@@ -1,0 +1,49 @@
+# Sprint 0, the seven days before sprint 1
+
+Sprint 0 is the Shape window, 2026-08-24 to 2026-09-01. Seven working days,
+20 lane-days, named as a sprint and given a structure it did not have. Sprint 1
+keeps its 2026-09-02 start and all four demo dates hold.
+
+Fifteen spikes, each with an owner, a timebox, the question it answers, the
+artifact it produces, and the sprint 1 work it unblocks. The full table, the
+per-lane day cost and the not-startable list are in the merged plan below.
+
+## The merged plan
+
+<iframe src="/assets/backlog/scribl-backlog-onefile.html" style="width:100%;height:1200px;border:1px solid var(--vp-c-divider);border-radius:8px;" title="scribl, the eight-week plan"></iframe>
+
+[Open the plan full-window](/assets/backlog/scribl-backlog-onefile.html). Sprint 0
+is in section 4, immediately before the sprint 1 lane view.
+
+## Why it exists
+
+Sprint 1 presumes fifteen decisions that nobody has made. A feature-by-feature
+pass over all 112 features in `tracking/backlog-epics.md`, asking what
+decision each sprint 1 item presumes, produced six of the fifteen that were
+on nobody's list.
+
+## What it costs
+
+Fourteen lane-days of the fifteen spikes are new work inside the three build
+lanes. Green demand was 128 against 108 before Sprint 0 and is 142 against 108
+after it. The overrun goes from 20 lane-days to 34. Fourteen lane-days of
+committed green work have to come out to pay for the spikes, and this page does
+not choose which.
+
+Six further spike-days sit outside the 108, three on delivery and three on the
+harness and Arc, so they do not compete with feature work.
+
+## Four decisions block the build and none has a question number
+
+The architecture decision register lists four decisions as blocking the build:
+under-13 and COPPA scope, the channel model, the moderation fail policy, and
+whether agentic follow-up is in the minimum lovable product or after launch.
+None appears in the open-questions register. Three reach Sprint 0 as spikes and
+the fourth sits outside these eight weeks. Give all four a Q ID at sprint 1
+planning.
+
+## Versioned source
+
+`docs/public/assets/backlog/scribl-backlog-epics-v1.html` is the versioned epics
+view the merged plan is built from. The unsuffixed `scribl-backlog-epics.html`
+stays as the reference copy.

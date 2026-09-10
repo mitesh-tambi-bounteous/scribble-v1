@@ -1,0 +1,242 @@
+WEBVTT
+
+00:00:06.797 --> 00:00:17.957
+<v Rob Forshier II>All right, so this is the team that we're going to have today because there's a regional holiday for the rest of the team in India. So it is what it is. Exactly.</v>
+
+00:00:15.237 --> 00:00:16.117
+<v Matthew Kaplan>Happy Holidays.</v>
+
+00:00:18.357 --> 00:00:18.837
+<v Rob Forshier II>Um...</v>
+
+00:00:19.957 --> 00:00:41.797
+<v Rob Forshier II>So since I have the mic, I'll go ahead and start with my handoff or my stand up for the day. So yesterday, I pretty much handed off to the team the next actions for the GitHub, the AWS, as well as the Apple. They're working on that now, and Pramod will have details in his stand up for that one. So</v>
+
+00:00:41.837 --> 00:01:00.837
+<v Rob Forshier II>I'll let him have that one. I had mentioned to Eric, because we had done a design review with Christina, that I wasn't touching the app anymore. And I've remembered one last thing that I know that Eric wanted that also was kind of a challenge to me to build. And so I had to build it. So I built that yesterday. And so now.</v>
+
+00:01:00.997 --> 00:01:02.757
+<v Rob Forshier II>And I might as well just show that real quick.</v>
+
+00:01:04.477 --> 00:01:08.597
+<v Rob Forshier II>Now, when you come into the app, which let me full screen this real quick.</v>
+
+00:01:11.397 --> 00:01:30.917
+<v Rob Forshier II>So when you come in here now and you say go on the personal wall, and then you say pick like a couple things, you'll now see this little hamburger icon up here. So if you click on the hamburger icon, you can pick a couple images. Then you hit the C, and I had no idea how to like handle the experience of this, and so Christine will have to do this one.</v>
+
+00:01:31.357 --> 00:01:50.117
+<v Rob Forshier II>But when you hit the C, now it brings those in as items that then you can use. You have an undo and then a delete, which then like empties the canvas. So now you can put them on here, move them around. Because this is a phone and not like the exact same experience like what you were showing, Eric, I couldn't make the corners do rotation as well. So the black</v>
+
+00:01:50.157 --> 00:02:14.437
+<v Rob Forshier II>dot is the rotation. So this way then on a cell phone, that makes more sense because like, you know, you'll only be able to like touch this and then control the width and the sizes. And then you touch this then for your rotations. And then I made a little delete key just to make it a little bit easier for these. And so you can actually bring out a couple of them. You'll notice I did get the strokes in here too. And so I'll have to talk about that in a second. But you can see how now it's basically just the strokes and no background.</v>
+
+00:02:15.237 --> 00:02:36.037
+<v Rob Forshier II>So you can overlay them. You can do as many as you want. And then you can rotate them, delete them. And then you can then save them, which then saved it to your personal wall, or you can hit share, which then takes it to the share, which also saves it in your personal wall too. So like if we hit on share now, now we go to our normal share screen. And then if we go to like share,</v>
+
+00:02:37.077 --> 00:02:45.117
+<v Rob Forshier II>that I can do like a note because that's just what I'm allowed to do. So if I save that, which, let me see, hopefully this...</v>
+
+00:02:49.357 --> 00:03:10.917
+<v Rob Forshier II>Let me just find those real fast. And so now what we get then is then choose or compose from 4 drawings, and then you can see the composition and it's at our normal share is what it was. So that's all in place now. So now you hit done. And kind of as mentioned, now you can kind of see it here on your wall as well, even though you saved it. So yeah, so just alert Christine that she'll just set to</v>
+
+00:03:00.757 --> 00:03:01.317
+<v Eric Rice>Karwal.</v>
+
+00:03:10.957 --> 00:03:25.317
+<v Rob Forshier II>plan that into her designs, but yeah, that feature is there. Now I'm officially not done, or officially done making changes, and so this is actually in the Vercel POC. So just let me know if you want new pictures too, I can send those out too. Not a big deal. But other than that,</v>
+
+00:03:16.197 --> 00:03:16.317
+<v Matthew Kaplan>Yeah.</v>
+
+00:03:24.757 --> 00:03:26.677
+<v Eric Rice>Awesome. I can suppose Paul right from there.</v>
+
+00:03:27.237 --> 00:03:45.397
+<v Rob Forshier II>Yeah, yeah. And so other than that, that was the last thing. And now I'm officially hands off outside of any bugs or new designs that come in or new features. But as I said, when I remembered that one yesterday, I think I even told you when you were explaining that feature and functionality to me, I was like, that sounds like a lot of fun to build. And so I had to build it. So.</v>
+
+00:03:46.517 --> 00:03:46.997
+<v Rob Forshier II>It's there.</v>
+
+00:03:47.717 --> 00:03:48.197
+<v Eric Rice>Nasal.</v>
+
+00:03:47.957 --> 00:03:52.197
+<v Rob Forshier II>Um, yeah, and so right now then my what I'm working on today is the harness. Go ahead.</v>
+
+00:03:50.037 --> 00:04:02.597
+<v Pramod Kumar>And I think the way Eric actually demonstrated it, the way Eric actually demonstrated it with that wall, with all those colorful images coming together into that story, I think that was very catchy.</v>
+
+00:04:03.197 --> 00:04:21.397
+<v Rob Forshier II>Yeah, exactly, exactly. Eric, yeah, when you were doing it on your wall and you were able to actually click and show me it doing its manipulations, that was why, as I said, like I was able to just build it, because once I saw it, it was just easy enough to build. So, yeah, and so other than that, then today I'm going to be start like laying down the harness or, you know, what the base harness will look like.</v>
+
+00:04:14.037 --> 00:04:14.517
+<v Eric Rice>Awesome.</v>
+
+00:04:22.437 --> 00:04:23.237
+<v Rob Forshier II>That's about it for me.</v>
+
+00:04:25.477 --> 00:04:26.037
+<v Matthew Kaplan>Very cool.</v>
+
+00:04:29.637 --> 00:04:51.717
+<v Pramod Kumar>Yeah, I can go next. So yeah, like Rob said, a few of the key logistical steps that we need on the AWS, GitHub, and the Apple. So we are preparing fairly deep steps for that, Eric. So we will look to send that over to you on Monday.</v>
+
+00:04:52.517 --> 00:04:52.837
+<v Eric Rice>But...</v>
+
+00:04:52.757 --> 00:05:11.877
+<v Pramod Kumar>At a high level, it's basically on GitHub. We would be looking at having a new repository spun up and a couple of teams created, one as admin and one as a user edit kind of permissions. And then you can hand that over to us with just.</v>
+
+00:05:12.117 --> 00:05:31.637
+<v Pramod Kumar>And then we can handle accesses for the internal members there. And then they'll be able to do all the pipelines, et cetera. Same thing on the AWS front as well. So the way we are, I think, looking at it is you have your organization, AWS organization.</v>
+
+00:05:32.357 --> 00:05:52.517
+<v Pramod Kumar>We will be looking at adding one account for it, into it for the dev. We'll be focusing on the dev. So you'll be adding an account and hopefully giving us, again, sandboxed access to that so that we can do further setups there. Yeah, that's the AWS and Git.</v>
+
+00:05:53.157 --> 00:06:09.237
+<v Pramod Kumar>closely related. And then the Apple one, we look to share across to you the steps that you can initiate. Obviously, I think that's going to be a bit of a long and winding Rd. but we can work with you on as through the steps there.</v>
+
+00:06:10.397 --> 00:06:10.677
+<v Eric Rice>Right.</v>
+
+00:06:11.077 --> 00:06:11.397
+<v Pramod Kumar>Yap.</v>
+
+00:06:12.517 --> 00:06:16.197
+<v Pramod Kumar>I think that's it from my side.</v>
+
+00:06:23.317 --> 00:06:24.277
+<v Pramod Kumar>Shubhankar.</v>
+
+00:06:27.397 --> 00:06:46.117
+<v Shubhankar Bhavsar>Yeah, thanks Pramod. So hi everyone. Yeah, today I looked into the Apple part of the things like how we should set up the account. So the first step is to verify the organization at the Apple level by initiating the new SN process. Once you fill in that form and Apple will.</v>
+
+00:06:46.477 --> 00:07:07.757
+<v Shubhankar Bhavsar>Initiate the verification process and I've shared one quick short notes on this one in the channel the team, so please check that one and yeah, ping me if anything needed from my side, I can definitely do that part. So the first step is that.</v>
+
+00:07:06.837 --> 00:07:07.157
+<v Pramod Kumar>Yap.</v>
+
+00:07:07.957 --> 00:07:18.917
+<v Shubhankar Bhavsar>We just submit this form and let Apple do the review, cross-check the details, and yeah, then we'll set up the account or user level accesses.</v>
+
+00:07:20.797 --> 00:07:27.797
+<v Pramod Kumar>Yeah, so yeah, I should we'll collect that and send that over to Eric for him to follow through the steps, so.</v>
+
+00:07:28.797 --> 00:07:29.077
+<v Shubhankar Bhavsar>Shah.</v>
+
+00:07:34.757 --> 00:07:42.277
+<v Matthew Kaplan>Robin, your experience is is that a is that a time consuming task on our end or is it relatively straightforward?</v>
+
+00:07:35.877 --> 00:07:36.117
+<v Pramod Kumar>No.</v>
+
+00:07:43.877 --> 00:07:45.397
+<v Rob Forshier II>For which one for filling out the apple?</v>
+
+00:07:46.037 --> 00:07:48.277
+<v Matthew Kaplan>Yeah, just for, yeah, on our end. Correct.</v>
+
+00:07:48.197 --> 00:07:52.677
+<v Rob Forshier II>I'm feeling it's just going to be a lot of just filling out some documents and then waiting.</v>
+
+00:07:53.477 --> 00:07:54.277
+<v Matthew Kaplan>Okay, gotcha.</v>
+
+00:07:55.437 --> 00:07:59.637
+<v Matthew Kaplan>I was going to say, Eric, I've got an hour this afternoon if we just wanted to tackle it real quick.</v>
+
+00:08:01.597 --> 00:08:03.797
+<v Eric Rice>As soon as it comes in from the team, we'll work on it.</v>
+
+00:08:04.357 --> 00:08:04.757
+<v Matthew Kaplan>Sounds good.</v>
+
+00:08:06.357 --> 00:08:13.637
+<v Rob Forshier II>Yeah, as I mentioned, we're doing like a write-up for you, so you'll have like a brief of like, you know, here are the details, here are some like pain points and stuff like that. Yeah.</v>
+
+00:08:11.477 --> 00:08:11.877
+<v Matthew Kaplan>Yap.</v>
+
+00:08:13.957 --> 00:08:14.837
+<v Matthew Kaplan>Cool. Okay.</v>
+
+00:08:19.637 --> 00:08:34.277
+<v Rob Forshier II>That's, I mean, that's pretty much it from our side. Our side's pretty light today, as said, just due to the fact that, you know, a good chunk of the team's out. But I don't know, is there anything new from your side? I mean, I highly doubt it. We've kind of got everything out and we're just kind of now just kind of entering an intermission right now.</v>
+
+00:08:34.677 --> 00:08:53.877
+<v Eric Rice>The only thing I have is getting into our GitHub itself. That was set up by Marty, actually, back in the day in his team when he was at Slalom. And then that was transferred to the devs that who followed that. That's where I got the link from. So we're just trying to get in there and make sure that I can get you guys proper access.</v>
+
+00:08:54.597 --> 00:08:56.757
+<v Rob Forshier II>Okay, nice. I used to work at Slalom.</v>
+
+00:08:58.757 --> 00:09:02.277
+<v Rob Forshier II>David used to work at Sloan. That's actually where we all came from. So yeah.</v>
+
+00:09:04.277 --> 00:09:08.517
+<v Matthew Kaplan>Who was that, uh, Eric, who was our lead designer on the initial prototype?</v>
+
+00:09:09.037 --> 00:09:09.877
+<v Eric Rice>Kyle.</v>
+
+00:09:11.037 --> 00:09:11.557
+<v Eric Rice>One year.</v>
+
+00:09:12.637 --> 00:09:13.877
+<v Eric Rice>I think it was his name.</v>
+
+00:09:13.237 --> 00:09:14.117
+<v Matthew Kaplan>You know Kyle, Rob?</v>
+
+00:09:14.597 --> 00:09:15.237
+<v Rob Forshier II>No.</v>
+
+00:09:16.197 --> 00:09:16.677
+<v Eric Rice>He's great.</v>
+
+00:09:16.437 --> 00:09:21.157
+<v Rob Forshier II>Unfortunately, no, some was a very big company, very big, yeah.</v>
+
+00:09:17.637 --> 00:09:18.237
+<v Matthew Kaplan>Yeah, it was Greg.</v>
+
+00:09:19.677 --> 00:09:20.437
+<v Matthew Kaplan>Sure, yeah.</v>
+
+00:09:26.757 --> 00:09:30.757
+<v Rob Forshier II>Cool. Anybody have any after-party items? Because other than that, then we'll just let everybody go a little early.</v>
+
+00:09:26.837 --> 00:09:27.317
+<v Matthew Kaplan>Right.</v>
+
+00:09:33.237 --> 00:09:33.877
+<v Matthew Kaplan>Richard.</v>
+
+00:09:33.557 --> 00:09:33.797
+<v Eric Rice>Yeah.</v>
+
+00:09:34.277 --> 00:09:35.797
+<v Rob Forshier II>Awesome. See everybody on Monday then.</v>
+
+00:09:34.757 --> 00:09:35.957
+<v Pramod Kumar>Nothing from here, I guess.</v>
+
+00:09:36.277 --> 00:09:38.277
+<v Matthew Kaplan>All right, enjoy your holiday, guys. Take care.</v>
+
+00:09:37.557 --> 00:09:37.957
+<v Pramod Kumar>Okay.</v>
+
+00:09:37.837 --> 00:09:39.477
+<v Rob Forshier II>All right, thank you. Bye.</v>
+
+00:09:38.877 --> 00:09:39.197
+<v Eric Rice>Thank you.</v>
+
+00:09:40.157 --> 00:09:41.157
+<v Pramod Kumar>Thanks, Paul. Bye.</v>
+
+00:09:41.157 --> 00:09:41.717
+<v Shubhankar Bhavsar>Thank you.</v>
+

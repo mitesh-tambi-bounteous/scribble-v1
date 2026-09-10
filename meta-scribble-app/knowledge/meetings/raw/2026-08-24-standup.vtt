@@ -1,0 +1,914 @@
+WEBVTT
+
+00:00:04.681 --> 00:00:17.761
+<v Pramod Kumar>And Rob, I think you had tried making me admin on that. I somehow don't have that. It's grayed out the share with share me with others links or buttons. So you can probably just grant.</v>
+
+00:00:17.841 --> 00:00:18.081
+<v Pramod Kumar>Okay.</v>
+
+00:00:21.241 --> 00:00:26.041
+<v Rob Forshier II>All right, I just made you edit and share on there on the lucid board.</v>
+
+00:00:27.881 --> 00:00:31.321
+<v Rob Forshier II>All right, I can see.</v>
+
+00:00:28.081 --> 00:00:28.321
+<v Pramod Kumar>Yap.</v>
+
+00:00:32.481 --> 00:00:35.081
+<v Rob Forshier II>Ryan, Matt, Nitish.</v>
+
+00:00:36.281 --> 00:00:39.801
+<v Rob Forshier II>John command, alright, let me one for.</v>
+
+00:00:45.001 --> 00:00:47.881
+<v Rob Forshier II>And that was, I think, Nitish said that.</v>
+
+00:00:59.961 --> 00:01:04.521
+<v Rob Forshier II>All right, I sent you a new request, Nitish. Hopefully that comes through.</v>
+
+00:01:07.841 --> 00:01:08.321
+<v Nitish Goyal>Okay.</v>
+
+00:01:08.281 --> 00:01:12.841
+<v Rob Forshier II>I now show you in the collaborators list, so this should give you edit.</v>
+
+00:01:14.641 --> 00:01:17.281
+<v Nitish Goyal>Yeah, I received an invitation. Let me just...</v>
+
+00:01:24.161 --> 00:01:32.121
+<v Rob Forshier II>And there's the board, which hopefully everybody's in the teams as well. We posted everything, all the links at the top of our teams board as well.</v>
+
+00:01:38.761 --> 00:01:57.641
+<v Pramod Kumar>Yeah, that's what, so I think we can start. So Pankaj has a bi-weekly conflict today, so he's going to join once that other call completes, but should be okay for other days. The other thing I think we'll probably discuss when we go through the...</v>
+
+00:01:39.441 --> 00:01:39.801
+<v Karuna Arshakota>Yeah.</v>
+
+00:01:58.041 --> 00:02:08.921
+<v Pramod Kumar>access and the PTO list. Neelesh had to be out this whole week due to an emergency. So that's going to be a problem.</v>
+
+00:02:11.081 --> 00:02:28.841
+<v Pramod Kumar>Because it's the iOS lane, right? So we do have another person that we are looking to onboard. So for the iOS part, it should happen either tomorrow or day after. So for...</v>
+
+00:02:29.441 --> 00:02:49.001
+<v Pramod Kumar>iOS, I think we'll need to model that similar to how you modeled the backend one with Pankaj.6 and Nitish full. I think we should probably do the same with iOS with Neelesh being.6 and the other iOS engineer as full.</v>
+
+00:02:51.281 --> 00:03:01.361
+<v Rob Forshier II>Okay, okay. So what you're saying is we're still going to have Neelesh, but we'll be getting another engineer in the temporary and they'll be.6. Okay.</v>
+
+00:03:00.041 --> 00:03:16.361
+<v Pramod Kumar>Yes, not yeah, so obviously given two or two months, I think the other engineer will definitely be for the course of the two months. Neelesh also will be there, but more at given the availability, I think it will be lesser.</v>
+
+00:03:17.441 --> 00:03:18.401
+<v Rob Forshier II>Okay, okay.</v>
+
+00:03:22.201 --> 00:03:31.321
+<v Pramod Kumar>Yeah, but other than that, I think we can get started. So one thing was the maybe the PTO tracker. I think we had not baked that into the...</v>
+
+00:03:35.321 --> 00:03:44.281
+<v Pramod Kumar>Into that plan, so that's something that we can probably you can do or include that so that the days.</v>
+
+00:03:46.641 --> 00:03:47.521
+<v Rob Forshier II>Yeah.</v>
+
+00:03:46.921 --> 00:03:47.881
+<v Pramod Kumar>Are more accurate.</v>
+
+00:03:49.041 --> 00:03:57.841
+<v Rob Forshier II>I mean, some of it we can only plan so well, and I mean, some of it's based on, you know, me just imagining what the team can actually do. So, I mean, yeah.</v>
+
+00:03:56.041 --> 00:03:56.361
+<v Pramod Kumar>Yeah.</v>
+
+00:03:59.681 --> 00:04:13.401
+<v Pramod Kumar>Of course, yeah. I don't think it's a lot. It's just maybe a couple of days is what you had already considered a couple of them. So it's along those lines.</v>
+
+00:04:02.241 --> 00:04:02.281
+<v Rob Forshier II>Uhh...</v>
+
+00:04:10.161 --> 00:04:10.721
+<v Rob Forshier II>Yeah, yeah.</v>
+
+00:04:14.361 --> 00:04:14.801
+<v Rob Forshier II>Okay.</v>
+
+00:04:15.801 --> 00:04:32.401
+<v Rob Forshier II>All right, so hopefully the whole team has seen we have now a Teams channel. There's A Team Scribble and a Scribble Dev Team channel that we can start doing all of our communications in at the top of the Scribble Dev Team channel, which let me grab a link to this.</v>
+
+00:04:34.401 --> 00:04:37.441
+<v Rob Forshier II>Copy link. I'll paste that right now into our chat.</v>
+
+00:04:38.961 --> 00:04:58.881
+<v Rob Forshier II>All right, it's posted right now in the chat. It's the Scribble Dev team. All of you should have access. If not, let me know and we can get you on there. At the top of that, I've posted links to all of our current resources that we have available. So we have the Lucid board, which we're trying to get everybody on.</v>
+
+00:04:59.601 --> 00:05:23.761
+<v Rob Forshier II>the current POC inside of Vercel, the three repos which working with Pramod, I spun up a new actual Scribble production repo. Now we have a Bitbucket repo Scribble that's in there now. We have the Scribble POC, the Scribble repo, and then the meta Scribble repo. We also have the Figma link which they send us, which right now the Figma only has</v>
+
+00:05:24.321 --> 00:05:46.321
+<v Rob Forshier II>a few wireframes for, I think, onboarding as well as what like the invite flow looks like. So that really didn't give us a whole lot. We're still needing to wait on the designer to kind of help out. I've also linked to a JIRA board. Currently it has nothing in it. I sent out an HTML to Pramod that hopefully we can go over at some point with the team.</v>
+
+00:05:47.281 --> 00:06:11.441
+<v Rob Forshier II>I put some spikes at the beginning of it, mainly for this team, especially like our QA, Karuna. Because a lot of the things that you'll need to do at the beginning is just kind of laying down, you know, what framework are you picking for your testing? Why are you picking that? You know, maybe even with some alternatives, just so that then like when we say, hey, this is why we chose it and this is why we have that kind of documented.</v>
+
+00:06:12.801 --> 00:06:23.441
+<v Rob Forshier II>Because remember, like, we are the experts here. They don't know anything. They're, you know, leaning on us to be the experts and like, you know, carry us into them, you know, carry this into them as well as train them.</v>
+
+00:06:21.561 --> 00:06:21.801
+<v Karuna Arshakota>Yap.</v>
+
+00:06:25.201 --> 00:06:40.561
+<v Rob Forshier II>Which I guessed on some of those spikes, so by all means, I just wanted to like get some examples out there. So please feel free to, if I missed a spike or change it or do whatever you need, because you guys are really the experts, I'm just trying to like get stuff out there so we can all like get coordinated and know where things are.</v>
+
+00:06:41.761 --> 00:06:44.761
+<v Rob Forshier II>I saw Pramod, if you wanted to say something, I saw you going off of mute.</v>
+
+00:06:46.121 --> 00:07:04.921
+<v Pramod Kumar>Yeah, so the team has seen the has been looking at that HTML. Karuna has picked up that the spike around the frameworks, so, and yeah, Pankaj also is looking at that, and I think he had a bunch of questions slash other spikes.</v>
+
+00:06:55.681 --> 00:06:55.881
+<v Karuna Arshakota>Yap.</v>
+
+00:07:05.001 --> 00:07:13.001
+<v Pramod Kumar>But which he was just sharing, but I think he will share it in the teams once, once he's off that meeting.</v>
+
+00:07:13.761 --> 00:07:16.721
+<v Rob Forshier II>Okay, perfect. Because I was going to start getting the...</v>
+
+00:07:17.681 --> 00:07:36.681
+<v Rob Forshier II>I was really wanted to get any feedback from y'all if those started to make sense. I mean, if anything, I can create the tickets and we can repurpose them if some of the spikes needed to. Because basically after this meeting, I'm going to start dumping stuff into JIRA and start getting JIRA set up. Because tomorrow at my time noon, I have</v>
+
+00:07:30.201 --> 00:07:31.001
+<v Pramod Kumar>Jim Yap.</v>
+
+00:07:36.921 --> 00:07:55.601
+<v Rob Forshier II>what I've called the feature prioritization workshop, which is mainly just honestly going to be a lot of like, here's where the POC is at, here's where our backlog is at, and just kind of like getting them caught up and getting them into the process, which also note team that starting Wednesday.</v>
+
+00:07:55.721 --> 00:08:15.361
+<v Rob Forshier II>they will be in the stand up meeting. And so we need to make sure that, you know, we get all of our questions, any like any solutioning we want to do in stand up out now, because once they show up, we need to, you know, all that needs to kind of be decided. We shouldn't be any solutioning. We shouldn't be arguing with each other. We should be as professional as we possibly can in front of them.</v>
+
+00:08:16.841 --> 00:08:34.721
+<v Rob Forshier II>and just kind of, you know, be the experts. And then also in that list, which thank you Pramod for doing, we have then the PTO tracker, which we're just going to do that in Excel. We're not going to go spin up a board or try and do calendars, stuff like that. Like we can just live in that Excel spreadsheet as long as we just, everybody's doing their due diligence on it.</v>
+
+00:08:35.201 --> 00:08:44.641
+<v Rob Forshier II>And then as well as the team access tracker. Thank you for spinning that one up as well. So we got the links to that and we'll just kind of like keep these links going. So if there are any changes.</v>
+
+00:08:46.321 --> 00:08:58.721
+<v Rob Forshier II>Now, what's new that I want to kind of start going over today, and then I'm going to kind of hand off more to the team. Right now, like it's just a lot of show and tell, and we'll kind of, you know, be going through our normal stand-ups as we start to actually have stand-ups, but...</v>
+
+00:09:00.481 --> 00:09:21.281
+<v Rob Forshier II>One thing I'm starting to do, the Lucid board, remember, is kind of like our all encompass space that we kind of have that we share with the client. They can access this at any point. And so having said that, I'm going to put up our, like our open questions to them. So like kind of like our ADRs. So I've started to do this on this board and all of you have access to this. So please help me fill this in so that then</v>
+
+00:09:22.361 --> 00:09:43.921
+<v Rob Forshier II>If there's questions that like for whatever reason you forgot to give me or I forgot to ask, they're up on this board so that, you know, the clients can see this, I can walk them through it. We can have decisions and then it all could be here so that, you know, devoid of, you know, what time zone we're in, everybody can kind of get into this board. So I had some old questions that were kind of up here, but this is the current one because the dynamic.</v>
+
+00:09:44.881 --> 00:10:03.241
+<v Rob Forshier II>like table. So please, please, please help me by start putting your questions in here. I started to fill in some of them. Like we had the, you know, are they going to be allowing us to deploy into their AWS environment? I know we had one for, you know, what does our output need to look like? What iOS versions, iPhone models? Are we doing the iPad?</v>
+
+00:10:04.081 --> 00:10:23.161
+<v Rob Forshier II>Is that in scope? So yeah, so start helping me fill in these questions. And then as I said, I can easily bring this in front of the client and then also get them on this board regularly too. I've also started to have like what the meetings that I'm starting to kick off and when I kick them off. So just have kind of running lists. And again, if you see that I'm missing something, by all means, help me do this.</v>
+
+00:10:23.561 --> 00:10:41.081
+<v Rob Forshier II>I'm playing our PM, engagement lead, building a POC, while also helping the company come up with what this new framework of AI looks like. I'm playing eight different roles, so I'm going to forget a lot, I'm going to miss a lot, so please help me out.</v>
+
+00:10:42.681 --> 00:10:43.481
+<v Rob Forshier II>Um...</v>
+
+00:10:43.161 --> 00:11:00.841
+<v Nitish Goyal>Rao, one quick question here. The sheet you just showed to us, if there are certain questions, are we not going to discuss within the team first or are we directly putting it to client? Are we directly going to ask client directly these questions?</v>
+
+00:11:01.881 --> 00:11:21.321
+<v Rob Forshier II>Well, I mean, you guys can always run them through the team. We can run them through the teams chat first. So like if it's a question that, you know, you just want to ask the team, by all means, just put it in the teams chat. But if it's a question that like, you know, that we're going to ask devoid of going through the team, so like similar to like what we put up here, then put it up here. But if you, if it's a question that you want to get run through the team first, by all means, use the teams chat.</v>
+
+00:11:01.961 --> 00:11:02.841
+<v Nitish Goyal>What is?</v>
+
+00:11:17.201 --> 00:11:17.721
+<v Nitish Goyal>Mhm.</v>
+
+00:11:21.801 --> 00:11:24.201
+<v Rob Forshier II>and ran through our channels first.</v>
+
+00:11:25.801 --> 00:11:26.201
+<v Nitish Goyal>Okay.</v>
+
+00:11:28.201 --> 00:11:45.241
+<v Rob Forshier II>I'm just trying to make it so just in case like I'm not available or I just missed that you guys have a way to like throw things at the client and we can do it on this board. So I'm just trying to make sure that, you know, I'm not always the blocker because as you can tell, I'm playing a couple of roles, so I want to make sure that I'm not always blocking.</v>
+
+00:11:47.001 --> 00:11:51.001
+<v Rob Forshier II>Yeah, by all means, run it through the team first if you need to. I have no problems with that.</v>
+
+00:11:47.401 --> 00:11:48.321
+<v Nitish Goyal>Go to a pointer.</v>
+
+00:11:50.521 --> 00:11:50.921
+<v Nitish Goyal>Yap.</v>
+
+00:11:53.641 --> 00:12:13.401
+<v Rob Forshier II>Cool. So I also got some other requests. So kind of as mentioned in what I'm also working on today, which I saw some of you have been playing with the POC. I've already started modifying it to do some of their new flows that they wanted. So I'll have this pushed up. I think right now I think I'm only running.</v>
+
+00:12:13.481 --> 00:12:33.361
+<v Rob Forshier II>The repo itself, I haven't pushed this into Vercel yet and updated it, because I did see some of you down in here having played with the app. So please feel free to come in here and play with it, because yeah, I'm just kind of, you know, getting this up to their standards of like what they were wanting it to look like right now.</v>
+
+00:12:34.561 --> 00:12:42.361
+<v Rob Forshier II>And the last thing I'll go over is I got asked about the meta repo. So the meta repo, remember, is this repo right here.</v>
+
+00:12:43.721 --> 00:13:02.681
+<v Rob Forshier II>I updated the read me, so now it kind of talks about what it is. So remember, this is a wiki as well as a brain repo. So when people say a brain repo, all that is is just a set of folders for just keeping track of, you know, various things. So in this case, like after this meeting,</v>
+
+00:13:02.841 --> 00:13:22.441
+<v Rob Forshier II>I'm going to ingest the meeting transcript from this. It'll go into this repo, and then we'll have that context for if we ever needed to query against it, it's available inside of this repo. All the workshops, same. All the transcripts go into here. Some of them I actually build new pages for. So I believe even in the wiki right now, if you go set it up,</v>
+
+00:13:22.761 --> 00:13:41.401
+<v Rob Forshier II>I believe we even have a section workshops where we talked about one of the workshops right here. And it was kind of like what the decisions with the North Star. I need to add one from our kickoff, so I had a page for that. But basically, if you spin up this repo, because as I said, it is also a...</v>
+
+00:13:43.001 --> 00:13:55.081
+<v Rob Forshier II>static website. So you can just spin it up here like the instructions down here. Basically, you just do an install, so it pulls down the proper packages, and then you can just run NPM run docs dev, and then it'll spin it up right there, like what I'm showing right here.</v>
+
+00:13:57.001 --> 00:14:00.041
+<v Rob Forshier II>This is kind of, as I said, like this is a brain as well as a wiki.</v>
+
+00:14:02.601 --> 00:14:23.721
+<v Rob Forshier II>I like doing these so that then you don't have to worry about like, you know, if you don't have enough time to create like a confluence where then you can have like all your, you know, definitions of done, I can actually spin these repos up along with the production repo at the same time and then have, you know, what is the definition of done? And we can tune this to our team's definition of done. What is the definition of ready? And so like,</v>
+
+00:14:23.961 --> 00:14:48.001
+<v Rob Forshier II>I've standardized a lot of what I like to call our sales to delivery pipeline into this repo when I built it. And so this is just one of those things where like it'll just be a growing repo as we go to use it. So all the stuff gets ingested into it. And then if say you ever need to, you know, we're going into a meeting and I want to use this, you can just use, there's custom slash commands built into this repo.</v>
+
+00:14:50.001 --> 00:15:09.921
+<v Rob Forshier II>which, you know, you're all cloud certified. So if you all come in here, you can see like we have, you know, query and like ingest and ingest stand ups. Here's the story work item for the JIRA. We've got custom agents for the various pieces, as well as I also did documentation when it was spinning up the various emulators and making sure how to actually like</v>
+
+00:15:10.041 --> 00:15:29.721
+<v Rob Forshier II>do various things when I was just working it myself. Yeah, and I think this is all the JIRA. So in the end, this repo, you'll be able to use it for the brain, for the wiki, as well as I'm going to bake all of our JIRA skills into this. So if you just CD into this, startup Claude,</v>
+
+00:15:29.801 --> 00:15:47.321
+<v Rob Forshier II>then you'll have all the skills that I use to do all of our JIRA ingestion, all of our editing of the users, epics, features, all that fun stuff. So this is just kind of like our repo where we can, you know, share all our purpose-specific skills, all our purpose-specific knowledge, and then have a beautiful wiki to see it all.</v>
+
+00:15:49.401 --> 00:16:07.801
+<v Rob Forshier II>There's also, besides this read me, I did just put this morning a index.html page in here, so this right here. So if you just come and pull just this one web page and run it, it kind of gives you the whole shebang about what this is, why it exists, how to use it.</v>
+
+00:16:08.841 --> 00:16:26.521
+<v Rob Forshier II>Because going forward, like, you know, I always spin this up on all my repos, and this is part of like the new format that we'd like to do. Because in the end, think about it, if we have merged in all of our transcripts, we have like all of our working knowledge in that repo, we then, you know, at the end, you know, let's capture our learnings from this project.</v>
+
+00:16:27.001 --> 00:16:34.121
+<v Rob Forshier II>then what we can do is actually just ingest this repo and then have all of our learnings for future projects that are similar to then reuse at a later date.</v>
+
+00:16:35.881 --> 00:16:47.241
+<v Rob Forshier II>And it's all been foldered and structured how we want to then ingest later. But yeah, so please go through this index if you have any questions. It even gives you like, hey, like how do I use the query command? What are some of the things that I can get out of it?</v>
+
+00:16:50.121 --> 00:16:50.441
+<v Rob Forshier II>Yeah.</v>
+
+00:16:57.401 --> 00:17:17.081
+<v Rob Forshier II>So, any questions? As I said, my day today is just going to be a lot of getting the JIRA built out, getting the POC up to date, and then prepping for that workshop tomorrow. So, by all means, please, you know, start looking at the stories, you know, start getting, you know, questions asked, start, you know...</v>
+
+00:17:17.201 --> 00:17:18.521
+<v Rob Forshier II>posting questions on the board.</v>
+
+00:17:28.201 --> 00:17:36.681
+<v Pramod Kumar>Makes sense. I think the the drain, the wiki thing would definitely be a very helpful for anyone onboarding into this.</v>
+
+00:17:38.761 --> 00:17:58.481
+<v Rob Forshier II>Yeah, yeah, I mean, that's the whole point is then it has, you know, everything baked into it. It even has, you know, how I built this repo or, you know, how I built the original scribble POC. Everything's in this because before I even started it, like I kicked off a bunch of research because I've never built a mobile app before. My wife, who is in the other room, is a senior architect in mobile development.</v>
+
+00:17:58.721 --> 00:18:17.481
+<v Rob Forshier II>But I personally have never done one. And so when I did the POC, so I had it do a whole bunch of research. Then when I built up the harness for it, so like what are the agents in each of the areas? So there was a ton of research just to figure out like AWS, what I want the back end to look like when I was building the prototype, because right now it has a real AWS back end.</v>
+
+00:18:16.161 --> 00:18:16.761
+<v Pramod Kumar>People.</v>
+
+00:18:19.761 --> 00:18:26.441
+<v Rob Forshier II>So everything is in this. And by all means, help me also clean this up too, because it said like, you know, this is just me doing everything.</v>
+
+00:18:28.361 --> 00:18:39.561
+<v Rob Forshier II>And is that I have templatized this, a skill actually builds this meta repo. So in the end, I'm going to tune this skill once this is done. So then going forward, then we can start using it on more projects.</v>
+
+00:18:41.161 --> 00:19:02.041
+<v Pramod Kumar>Makes sense, and do you mean fast forward a few couple of weeks, right? As we do development on stories, etcetera, is this something that would that we would make available to the to Claude, because a lot of decisions, etcetera, are also documented here?</v>
+
+00:19:02.321 --> 00:19:21.321
+<v Pramod Kumar>Any so asset based, or is that will this be separate? Will this will not feed into the implementation phase? You get what I'm saying? So, because the mobile repo right, we'll be doing all our development there, we prompting our...</v>
+
+00:19:21.801 --> 00:19:39.321
+<v Pramod Kumar>even directly going from a Jira story, generating the implementation plan. So I'm sure there's going to be tons of stuff in the brain from the workshops, from the discussions, et cetera, about a certain feature, something to be kept in mind. So.</v>
+
+00:19:39.721 --> 00:19:58.041
+<v Rob Forshier II>So typically, right, I actually, the meta repo is the repo that you would actually start in. So you would CD and start from that repo, and then it would basically sub-module to all your other repos. We can do that. I typically do that when usually I have a multi-repo.</v>
+
+00:19:59.001 --> 00:20:20.601
+<v Rob Forshier II>project because then it just makes it nice because there's a lot of the times where you're doing PRs across multiple projects and so having to CD into each and then have them, you can just spin up one session that has the ability to talk to all three repos. It just knows how to do it. That's where meta repos is the best at. Here we don't really need to do that because basically I'm going to bake</v>
+
+00:20:20.921 --> 00:20:41.801
+<v Rob Forshier II>all of the like Jira editing PRs, Jira ones into the meta repo itself and all the base knowledge, and then we'll pump that into all the stories. And then we can then make just the repo itself then just have the skills for the SLT LC pipeline. And then it'll basically, it'll just be then, you know, it'll have, it'll know enough about Jira to pull in the story and act upon it.</v>
+
+00:20:23.441 --> 00:20:24.201
+<v Pramod Kumar>Thank you.</v>
+
+00:20:30.441 --> 00:20:30.761
+<v Pramod Kumar>Oh.</v>
+
+00:20:42.041 --> 00:20:59.001
+<v Rob Forshier II>but not have enough to edit the Jira story because that you just go use the meta repo with all of its knowledge for. So if we want to do that, we can. I was kind of thinking of just leaving it separated so then we, you know, don't muddy the waters because also you can confuse clause if you have too many commands. So.</v>
+
+00:20:58.761 --> 00:20:59.241
+<v Pramod Kumar>Yap.</v>
+
+00:21:03.001 --> 00:21:03.561
+<v Pramod Kumar>Sense.</v>
+
+00:21:04.561 --> 00:21:06.921
+<v Rob Forshier II>And one of this, go ahead.</v>
+
+00:21:04.921 --> 00:21:06.521
+<v Nitish Goyal>Rob, I have one question.</v>
+
+00:21:12.481 --> 00:21:32.761
+<v Rob Forshier II>No, I was just going to say that one of my first spikes that I have is to build out our cloud code harness, which for that will be like, you know, laying down all of the commands in what order, some like cheat sheets on how to like to help you do it, as well as I'll be like working with the team and we'll do like a one hour session where I can train you guys on use it. Since you guys have all been like CCA certified, I don't have to.</v>
+
+00:21:12.681 --> 00:21:13.241
+<v Nitish Goyal>Shilaya.</v>
+
+00:21:33.041 --> 00:21:45.801
+<v Rob Forshier II>like actually go through the basics of it, but at least walk you through the actual harness and the parts and the pieces. Because also you guys will be tuning those agents and stuff to make sure that they're building the code in which the way in which you guys would build the code.</v>
+
+00:21:50.201 --> 00:21:55.321
+<v Nitish Goyal>Yeah, that actually would help us to learn how you're actually building things.</v>
+
+00:21:56.441 --> 00:21:57.241
+<v Rob Forshier II>Yeah, yeah.</v>
+
+00:21:59.401 --> 00:22:00.761
+<v Nitish Goyal>Um, I have, I have one.</v>
+
+00:21:59.601 --> 00:22:02.521
+<v Rob Forshier II>Which I don't know if you went to the last, go ahead, go ahead, ask your question.</v>
+
+00:22:03.161 --> 00:22:14.041
+<v Nitish Goyal>Sorry, yeah, I have one question in mind, because I was just thinking, like, if we after completing our building this app right now, or after four sprints, OK, so...</v>
+
+00:22:15.361 --> 00:22:23.721
+<v Nitish Goyal>What are the target audience? How many people we are targeting to show this app initially after completing this scribble app?</v>
+
+00:22:25.001 --> 00:22:26.521
+<v Nitish Goyal>I just want to understand that.</v>
+
+00:22:26.921 --> 00:22:27.561
+<v Rob Forshier II>So...</v>
+
+00:22:29.161 --> 00:22:50.201
+<v Rob Forshier II>Remember that, you know, right now we have enough funding for, you know, like the 100,000, and this is just only eight weeks, but really they're going to, you know, more money is going to come in. The target is the reinvent at the end of the year, and they want to, you know, be able to go up on stage,</v>
+
+00:22:50.361 --> 00:23:10.041
+<v Rob Forshier II>show like a QR code, people will download the app, and then, you know, we're going to have, you know, 800 users testing it out. At the beginning, it's just going to be very small and all of us, and then probably just some on the scribble team. And so it'll be a while because pretty much we'll be shooting towards that like bigger</v>
+
+00:23:10.241 --> 00:23:18.841
+<v Rob Forshier II>And there might be some, like, you know, as we go further along, they'll probably have, you know, more testers that we'll bring in, but for right now, it's, you know, kind of small.</v>
+
+00:23:19.801 --> 00:23:32.921
+<v Rob Forshier II>Hopefully that makes sense. Because yeah, we're going to be getting more money because the whole point is to like get this to keep going. And eventually, you know, we'll even like bring on some of their engineers and then be training them so that then we can do the handoff and they'll just be able to take it after that.</v>
+
+00:23:19.961 --> 00:23:20.521
+<v Nitish Goyal>Okay.</v>
+
+00:23:34.521 --> 00:23:53.761
+<v Nitish Goyal>Right, I understand it because it also depends the kind of architecture we will be using in AWS. If we want to keep it serverless, we will be using Lambda and everything. Otherwise, we need to go if we want it to be highly available every time, either we need to use some...</v>
+
+00:23:54.041 --> 00:23:56.121
+<v Nitish Goyal>Warm techniques to keep.</v>
+
+00:23:57.161 --> 00:24:12.521
+<v Nitish Goyal>our functions available, otherwise we need to use EKS or some other things to be highly available, but if it is the group of people that are going to use are very less, it totally depends on that also, right?</v>
+
+00:24:13.961 --> 00:24:14.361
+<v Rob Forshier II>Right.</v>
+
+00:24:16.121 --> 00:24:22.681
+<v Rob Forshier II>I remember my old company spending so much time on lambda warming. God, what a nightmare.</v>
+
+00:24:24.881 --> 00:24:28.361
+<v Nitish Goyal>We need to keep on hitting it and keep it up.</v>
+
+00:24:29.001 --> 00:24:34.841
+<v Rob Forshier II>Yeah, yeah. I mean, you could have taught like a like a workshop for a week on just like lambda warming.</v>
+
+00:24:37.081 --> 00:24:37.361
+<v Nitish Goyal>Yeah.</v>
+
+00:24:38.841 --> 00:24:43.001
+<v Nitish Goyal>And it would be only in the US region we are currently looking into.</v>
+
+00:24:44.721 --> 00:24:54.681
+<v Rob Forshier II>No, so I mean, well, so yeah, so we have, I think like US first, but like if you look in here, you know, eventually it is to, you know, go more global.</v>
+
+00:24:56.201 --> 00:25:05.801
+<v Rob Forshier II>Because like if you know of like this, like not Scribble, I'm thinking of like Wordle and they kind of like other apps like that. That's kind of like who they're kind of also competing with.</v>
+
+00:25:03.721 --> 00:25:04.201
+<v Nitish Goyal>Mhm.</v>
+
+00:25:07.761 --> 00:25:10.201
+<v Rob Forshier II>I see.</v>
+
+00:25:13.401 --> 00:25:26.761
+<v Rob Forshier II>Yeah, so sort of like, here is their marketing. So I think they listed like some of the other apps they were kind of like, like claiming to be, you know, competition with. Oops, sorry.</v>
+
+00:25:36.521 --> 00:25:47.721
+<v Rob Forshier II>Yeah, so Strava, Wordle, like, you know, they're trying to be that just like daily thing that everybody's going to want to do. So yeah, they're going to try and get this, you know, kind of world.</v>
+
+00:25:51.641 --> 00:25:52.121
+<v Nitish Goyal>Mhm.</v>
+
+00:25:57.161 --> 00:26:07.161
+<v Rob Forshier II>As I said, this was Jonathan McNam's like, you know, when he read the SOW and you know what they were wanting, this is how he wrote it. You know, obviously we can change this as we see it fit.</v>
+
+00:26:08.881 --> 00:26:13.081
+<v Rob Forshier II>Yeah, because to be truthfully honest, there really isn't a whole lot of claud in this thing now.</v>
+
+00:26:14.921 --> 00:26:16.521
+<v Rob Forshier II>Especially with the new version.</v>
+
+00:26:18.521 --> 00:26:34.361
+<v Rob Forshier II>Because they actually even got rid of the speech to text, or yeah, speech to text translation part. Because now you either can do text or you can do the like voice recording to say what the day looks like. So I believe I did that here.</v>
+
+00:26:36.521 --> 00:26:37.801
+<v Rob Forshier II>Well, this one's not going to show it.</v>
+
+00:26:41.561 --> 00:26:42.761
+<v Rob Forshier II>Folding laundry.</v>
+
+00:26:43.801 --> 00:26:54.281
+<v Rob Forshier II>Oh, this should have had the play button. I'll have to fix that. There should have been a play button there so you could actually hear what I said about it. Yeah, this one I did typing text, which here I'll show what I'm talking about.</v>
+
+00:26:57.321 --> 00:27:00.601
+<v Rob Forshier II>So now they've switched it to where now you can either pick between the two.</v>
+
+00:27:02.201 --> 00:27:11.161
+<v Rob Forshier II>So now I can talk for 30 seconds and then have an actual like voice recording of what I'm saying, which then I can play back, which you guys can't hear me.</v>
+
+00:27:12.841 --> 00:27:14.041
+<v Rob Forshier II>I don't think you guys can hear that.</v>
+
+00:27:16.041 --> 00:27:28.201
+<v Rob Forshier II>So now I can talk for 30 seconds and then have an actual like voice recording of what. But now that actually, when you come in here, you can then hit play button and then that will actually play what they're saying versus having the written text.</v>
+
+00:27:30.441 --> 00:27:33.161
+<v Rob Forshier II>So now really there's almost no AI in the app.</v>
+
+00:27:42.681 --> 00:27:45.161
+<v Rob Forshier II>But cool, so yeah, so I'll keep working on this.</v>
+
+00:27:46.601 --> 00:28:04.761
+<v Pramod Kumar>So one quick question while you are issuing the demo or the POC, just from an architecture perspective, right? Yeah, obviously the deployment in AWS, et cetera, would be a lot more, but from a code perspective, how closely does the...</v>
+
+00:27:47.481 --> 00:27:47.881
+<v Karuna Arshakota>Hello!</v>
+
+00:28:05.401 --> 00:28:16.601
+<v Pramod Kumar>POC architecture aligned, and was it still based on the same lambda, or was it or it is OK?</v>
+
+00:28:17.401 --> 00:28:35.241
+<v Rob Forshier II>It is, but it's me with no real AWS expertise doing it. So it's me saying, hey, here's Jonathan, who's an AWS expert. If I were to build this, here's the functionality that I need. And so it's stripped down so I can</v>
+
+00:28:35.721 --> 00:28:53.641
+<v Rob Forshier II>have Claude spin up or output what my backend looks like. So if we want to reuse it, I mean, all that's in the POC because I did it all with Terraform. It is all in Terraform. All that is baked into the POC app, the Scribble app right here.</v>
+
+00:28:57.401 --> 00:29:18.521
+<v Rob Forshier II>Yeah, so here's all the Terraform stuff, which I modeled all that because Jonathan worked with me on another project, so I stole all his Terraform agent and then used it as example to build all this, which he looked at it and like approved it. And Claude told me that I've only spent $28 on my AWS account for hosting Scribble, so I'm doing really good.</v>
+
+00:29:04.601 --> 00:29:05.241
+<v Pramod Kumar>Yes.</v>
+
+00:29:20.041 --> 00:29:20.681
+<v Pramod Kumar>Yeah, Yap.</v>
+
+00:29:21.801 --> 00:29:24.041
+<v Pramod Kumar>That's good, that's good too, you know.</v>
+
+00:29:25.201 --> 00:29:44.521
+<v Rob Forshier II>Yeah, I have Claude check my AWS spend for me every day and kind of like make sure that I'm not like spending too much. Because it did actually come back one morning and was like, I see $5,000 of spend on that account. And I'm like, yeah, that's not us, right? Like confirm that. And it had to go through, but it finally confirmed that it was only me spending like 25 bucks for the whole month.</v>
+
+00:29:44.681 --> 00:29:46.441
+<v Rob Forshier II>So, that was not me.</v>
+
+00:29:56.041 --> 00:30:02.121
+<v Rob Forshier II>Okay, yeah, I'll start getting stuff into JIRA, so yeah, please start updating JIRA. Go ahead, Karuna.</v>
+
+00:29:57.241 --> 00:29:57.641
+<v Karuna Arshakota>Yap.</v>
+
+00:30:02.841 --> 00:30:22.281
+<v Karuna Arshakota>Yeah, I have few things wanted to discuss. Yeah, I have similar question that Pramod asked, like, for the POC, are we also like looking at the architecture that you just showed us, right? Are we going to like kind of design all of it, or it is like partially like we propose it, but we may not be...</v>
+
+00:30:22.441 --> 00:30:23.481
+<v Karuna Arshakota>Like, implement.</v>
+
+00:30:25.161 --> 00:30:41.401
+<v Pramod Kumar>Hey, Karuna, before we go ahead, right, let's avoid using POC for the eight-week thing. Let's call it maybe MVP. So that there's no confusion with the earlier POC that Rob had. So, yeah.</v>
+
+00:30:25.481 --> 00:30:26.241
+<v Karuna Arshakota>This.</v>
+
+00:30:33.961 --> 00:30:35.881
+<v Karuna Arshakota>Okay, sure. Okay.</v>
+
+00:30:40.681 --> 00:30:43.001
+<v Karuna Arshakota>Sure, sure. Okay, got it.</v>
+
+00:30:42.921 --> 00:31:01.681
+<v Rob Forshier II>Right. This is the production environment that Jonathan drew up. So this is the design of what he drew up for, you know, just reading of what they wanted and what it should look like in AWS. Now, this is just a suggestion from Jonathan. So as we build this out for their production environment, this is just the suggestion. So we build it out to our best knowledge and what</v>
+
+00:30:46.401 --> 00:30:46.601
+<v Karuna Arshakota>Mm.</v>
+
+00:30:48.721 --> 00:30:49.001
+<v Karuna Arshakota>Mm.</v>
+
+00:30:55.161 --> 00:30:55.641
+<v Karuna Arshakota>Okay.</v>
+
+00:31:01.761 --> 00:31:02.681
+<v Rob Forshier II>the client wants.</v>
+
+00:31:03.961 --> 00:31:16.521
+<v Karuna Arshakota>Okay, so for MVP, like, see, I wanted to understand the build process and how it will be handed over to the QA. Is it just we have to pull the core run on the local or?</v>
+
+00:31:18.481 --> 00:31:19.881
+<v Karuna Arshakota>What is our target?</v>
+
+00:31:21.401 --> 00:31:23.721
+<v Karuna Arshakota>Like, once the changes are done, and...</v>
+
+00:31:25.481 --> 00:31:29.041
+<v Karuna Arshakota>How Q is going to pull or like test the changes?</v>
+
+00:31:30.441 --> 00:31:40.121
+<v Rob Forshier II>Yeah, you'll have to basically, you'll be, you'll have access to the repository, you'll have to build it, you'll have to run the app locally. Yeah, and then run it all locally, right?</v>
+
+00:31:34.281 --> 00:31:34.601
+<v Karuna Arshakota>Bye.</v>
+
+00:31:38.361 --> 00:31:38.761
+<v Karuna Arshakota>Okay.</v>
+
+00:31:39.921 --> 00:31:43.161
+<v Karuna Arshakota>Done locally only, okay, okay, sure.</v>
+
+00:31:41.401 --> 00:31:44.281
+<v Rob Forshier II>Right, right. Currently, we're using right. Go ahead.</v>
+
+00:31:42.441 --> 00:31:59.721
+<v Pramod Kumar>And I think it will be at different stages. It will probably mature over the course. Again, a lot of questions will depend on, I think, the answers we get about the Apple developer account as well. So Rob, one related question there is.</v>
+
+00:31:47.761 --> 00:31:47.961
+<v Karuna Arshakota>Mm.</v>
+
+00:31:59.801 --> 00:32:20.321
+<v Pramod Kumar>So I think, yeah, just to on your point, Karuna, I think at some point, ideally, we want something that can be handed over to QA, which you can install on a device that I'm checking on with our IT about devices. So I think that will obviously be needed, but to start with, I think you'll probably be doing like.</v>
+
+00:32:12.201 --> 00:32:16.281
+<v Karuna Arshakota>Correct, so when it comes to the correct, correct.</v>
+
+00:32:20.521 --> 00:32:40.881
+<v Pramod Kumar>Rob said, emulator or running the code locally on your, it's like you've already done for the POC app. So yeah, so just on the Apple developer and how we test, how we do that. So Rob, you're going to ask that question about.</v>
+
+00:32:21.401 --> 00:32:22.041
+<v Karuna Arshakota>On the loom.</v>
+
+00:32:25.481 --> 00:32:25.961
+<v Karuna Arshakota>Mmh.</v>
+
+00:32:34.361 --> 00:32:34.921
+<v Karuna Arshakota>Mhm.</v>
+
+00:32:41.041 --> 00:33:00.201
+<v Pramod Kumar>whether or not they have an Apple developer account tomorrow, right, in your call. That's one of the things you're going to check. So if, yeah, if we don't, if they don't have that, do you see us pivoting and seeing?</v>
+
+00:32:50.601 --> 00:32:51.801
+<v Rob Forshier II>Right, that's on the board, right?</v>
+
+00:33:00.601 --> 00:33:03.241
+<v Pramod Kumar>You might have to go with Android for.</v>
+
+00:33:04.441 --> 00:33:17.161
+<v Rob Forshier II>No, we want to do the iOS. I just don't know, can we do the iOS account and then later switch it over to them? This is going into my own ignorance about iOS. I've never, as I said, I've never had to actually do like the test flight stuff. So.</v>
+
+00:33:07.361 --> 00:33:07.801
+<v Pramod Kumar>Okay.</v>
+
+00:33:19.321 --> 00:33:23.001
+<v Rob Forshier II>I mean, do they have to do that? Can we set that up for them? You know.</v>
+
+00:33:26.201 --> 00:33:45.411
+<v Pramod Kumar>Yeah, yeah, again, yeah, I think we'll have Neelesh and the other developer also chip in. I think there are probably some middle parts that we can do, but what I heard from Pankaj and Neelesh was that, I mean, for to act, we would do a...</v>
+
+00:33:46.121 --> 00:34:04.371
+<v Pramod Kumar>distribute an APK right on the Android side for that to that level it will need a developer account is what I mean I'm only concerned that it may us getting a if we don't have one I'm checking on that as well if we have anything on the Bounteous side that that is used as a.</v>
+
+00:34:04.521 --> 00:34:25.881
+<v Pramod Kumar>umbrella thing for testing. But if we don't have that and if we have to pursue that, I think that that may, given Apple's processes, it may push it too long into the two week, two-month cycle. And so we'll probably have to see what interim things we can have this something.</v>
+
+00:34:26.081 --> 00:34:40.041
+<v Pramod Kumar>Around Expo Go that I saw, so we may have to explore some things that we can do in the meanwhile that that gives a similar thing for a similar experience for QA to run something on a device.</v>
+
+00:34:41.241 --> 00:34:55.321
+<v Rob Forshier II>Right, and that's actually why I chose Expo Go, and that's what the my POC that I built was in was Expo Go, which honestly was crazy easy to use. I mean, if we use that, that would be awesome, but you know, I'm going to leave that on the mobile team because they're the exports.</v>
+
+00:34:51.641 --> 00:34:52.121
+<v Pramod Kumar>Right.</v>
+
+00:34:57.721 --> 00:35:00.601
+<v Rob Forshier II>I mean, that would be nice if we used Expo Go for that exact same point.</v>
+
+00:34:57.761 --> 00:35:00.841
+<v Pramod Kumar>Got it, and so I think that's a good thing, because...</v>
+
+00:35:01.761 --> 00:35:03.001
+<v Rob Forshier II>Plus this app is so simple.</v>
+
+00:35:02.121 --> 00:35:21.041
+<v Pramod Kumar>Yeah, Expo Go, yeah, because Expo Go, I, I, from what I saw, it is limited in terms of modules that are natively published or distributed with, but I think if the POC ran with all the Skia rendering and the graphics, then I think we probably have.</v>
+
+00:35:21.161 --> 00:35:25.561
+<v Pramod Kumar>Enough in itsupportrockpointgscom to do a fair amount of testing, right?</v>
+
+00:35:26.201 --> 00:35:26.601
+<v Rob Forshier II>Yeah.</v>
+
+00:35:27.801 --> 00:35:28.201
+<v Pramod Kumar>Yap.</v>
+
+00:35:30.761 --> 00:35:40.161
+<v Rob Forshier II>Because, as I said, you know, Expo Go is what I built mine on, and then it has an AWS backend, so mine's actually is that, but I did some research, seems like it was pretty decent.</v>
+
+00:35:41.881 --> 00:35:42.641
+<v Pramod Kumar>And good.</v>
+
+00:35:43.481 --> 00:35:44.921
+<v Pramod Kumar>Karuna, go ahead, please, if you had.</v>
+
+00:35:46.441 --> 00:36:06.641
+<v Karuna Arshakota>Yeah, yes, yes. I have one more thing I wanted to discuss or brainstorm here about the test case documentation. In my experience, I don't see data seems to be like that user-friendly or feasible. I feel it is overburdened to the team.</v>
+
+00:36:07.801 --> 00:36:08.201
+<v Karuna Arshakota>Um...</v>
+
+00:36:10.401 --> 00:36:19.561
+<v Karuna Arshakota>The other options would be like, either we should go with Excel or something, but yeah, please suggest, Rob, if you have some suggestions on this.</v>
+
+00:36:20.921 --> 00:36:38.801
+<v Rob Forshier II>So usually when I see test cases, we're usually able to put them into the JIRA board. If that messes up your flow and you want to just use Excel, then you set the standards. You're the QA here. So if that's how you want to do it, then you tell me.</v>
+
+00:36:29.241 --> 00:36:29.561
+<v Karuna Arshakota>Right.</v>
+
+00:36:39.641 --> 00:36:50.681
+<v Rob Forshier II>I'm going to work in what's best for you, because remember, we're trying to go fast here. So if working on it in Excel is how you want to do it, as long as we can share that so the whole team has access to it and people, we can share it along, that works for me.</v>
+
+00:36:44.121 --> 00:36:44.601
+<v Karuna Arshakota>Right.</v>
+
+00:36:50.601 --> 00:36:50.921
+<v Karuna Arshakota>Mm.</v>
+
+00:36:52.521 --> 00:36:55.561
+<v Pramod Kumar>Yeah, yeah, so I think typically.</v>
+
+00:36:52.761 --> 00:36:54.681
+<v Karuna Arshakota>Right, but I think going forward.</v>
+
+00:36:56.601 --> 00:36:57.321
+<v Pramod Kumar>Go ahead, welcome.</v>
+
+00:36:56.761 --> 00:37:16.281
+<v Karuna Arshakota>Yeah, yeah, go ahead. So generally we go with SL, but that's a licensed one for the other products which we generally use. But if there is no option, probably Excel is where we can look at all of them at one shot. May not be like with JIRA, but yeah, it's of more kind of documented, but execution wise.</v>
+
+00:36:59.321 --> 00:37:00.201
+<v Pramod Kumar>No, complete, please.</v>
+
+00:37:16.761 --> 00:37:19.561
+<v Karuna Arshakota>I'm not pretty sure on that, like...</v>
+
+00:37:20.521 --> 00:37:24.441
+<v Karuna Arshakota>Yeah, we need to give it a try, but Pramod, if you have anything.</v>
+
+00:37:24.441 --> 00:37:42.441
+<v Pramod Kumar>Yeah, yeah, I think, no, I think it's Jira. With Jira, people often use something like an X-ray plugin, which, which, yeah, and we obviously have used other tools like Test Trail. In this case, the customer doesn't have any, so I think that's...</v>
+
+00:37:31.361 --> 00:37:35.081
+<v Karuna Arshakota>Correct, there is an integrated tools like they use, yeah.</v>
+
+00:37:44.281 --> 00:38:02.841
+<v Pramod Kumar>Maybe, Karuna, let's check, just like we have a bunch of Atlassian stuff, right? Bitbucket, all of that we have. Let's check internally with our QAs if there's anything on at the Bounteous level for any test management software that's licensed and available. If so, we can.</v>
+
+00:38:01.481 --> 00:38:01.961
+<v Karuna Arshakota>Mhm.</v>
+
+00:38:03.001 --> 00:38:03.801
+<v Pramod Kumar>Use that.</v>
+
+00:38:05.401 --> 00:38:11.921
+<v Pramod Kumar>We can obviously start with Excel, but I think at some point we want to put it in something that's more consumable.</v>
+
+00:38:05.721 --> 00:38:06.601
+<v Karuna Arshakota>Sure, sure.</v>
+
+00:38:10.521 --> 00:38:11.161
+<v Karuna Arshakota>Yeah.</v>
+
+00:38:12.161 --> 00:38:14.441
+<v Karuna Arshakota>Correct, correct, correct. Yeah, I completely agree.</v>
+
+00:38:15.241 --> 00:38:23.761
+<v Pramod Kumar>And, and for automation runs, etcetera, tying them together, tying the results together, all of that will be, etcetera.</v>
+
+00:38:22.161 --> 00:38:32.361
+<v Karuna Arshakota>Correct, yeah, of course, yeah, if it is Excel, we can't really integrate the results to the Excel, yeah, we need to find some other option to.</v>
+
+00:38:29.881 --> 00:38:30.601
+<v Pramod Kumar>Young.</v>
+
+00:38:33.561 --> 00:38:53.001
+<v Pramod Kumar>Yeah, so Rob, I think we probably know the answer that Scribble won't have anything, but maybe work because if we are putting it somewhere at handover time, it will, I mean, if they don't have anything, it will probably boil down to Excel or some form.</v>
+
+00:38:34.441 --> 00:38:34.761
+<v Karuna Arshakota>Suren.</v>
+
+00:38:53.641 --> 00:38:54.121
+<v Pramod Kumar>Ohh.</v>
+
+00:38:56.801 --> 00:39:05.401
+<v Karuna Arshakota>So Pramod, it may not be for MVP, right? Even going forward, once we get it, that is what we are going to use, right? Like we continue to use it, whatever we are doing now.</v>
+
+00:39:03.961 --> 00:39:04.761
+<v Pramod Kumar>Yes.</v>
+
+00:39:06.441 --> 00:39:07.561
+<v Karuna Arshakota>Yeah, OK.</v>
+
+00:39:06.521 --> 00:39:24.601
+<v Pramod Kumar>Yeah, I mean, at some point, obviously, a scribble that will want all of the IP on their side, so we don't know what form. So, if they don't have anything at the end of the eight weeks, no test management software at their end, we'll need to give them a dump or maybe Nexus or maybe.</v>
+
+00:39:15.401 --> 00:39:15.641
+<v Karuna Arshakota>Mm.</v>
+
+00:39:25.561 --> 00:39:27.161
+<v Pramod Kumar>Rob, you can just check if...</v>
+
+00:39:28.601 --> 00:39:28.961
+<v Pramod Kumar>Dave.</v>
+
+00:39:30.761 --> 00:39:40.121
+<v Pramod Kumar>They have had any, because they do have a system that's up and running, right? Like they do have the B2B1 if they have had anything for that.</v>
+
+00:39:41.401 --> 00:39:45.321
+<v Rob Forshier II>Okay, what am I checking for? I missed the words in there because we can put the question up on the board.</v>
+
+00:39:45.241 --> 00:39:52.041
+<v Pramod Kumar>Basically, if they have any test management software that they use for their existing system.</v>
+
+00:40:00.761 --> 00:40:01.001
+<v Rob Forshier II>Yap.</v>
+
+00:40:08.721 --> 00:40:22.521
+<v Rob Forshier II>Which, yeah, for tomorrow, that's y'all's homework. Well, what you can do tomorrow is just start prepping your questions, so then tomorrow stand up, hopefully then we can get on the board, so then I can get them out in front of the client tomorrow during the workshop.</v>
+
+00:40:27.561 --> 00:40:27.881
+<v Pankaj Aggarwal>Hello.</v>
+
+00:40:27.561 --> 00:40:30.441
+<v Pramod Kumar>I think Pankaj is right now, yeah, and here.</v>
+
+00:40:30.521 --> 00:40:31.321
+<v Pankaj Aggarwal>Ohh, sorry.</v>
+
+00:40:30.681 --> 00:40:31.081
+<v Pramod Kumar>Cool.</v>
+
+00:40:32.641 --> 00:40:40.041
+<v Rob Forshier II>Yeah, no worries. We recorded this so you can always rewatch it. Plus it'll also go into the meta repo, so.</v>
+
+00:40:41.961 --> 00:40:49.401
+<v Pankaj Aggarwal>Sure, Rob, yeah, and I've done some analysis based on your report that you have provided, and I've shared some questionnaire of some that.</v>
+
+00:40:53.681 --> 00:40:54.081
+<v Rob Forshier II>Okay.</v>
+
+00:40:56.761 --> 00:41:14.521
+<v Rob Forshier II>I was just telling them, and you'll get this in the transcript, I just added a new index.html, which is kind of like is a more bubblier, easier way to understand this meta-repo. If you have questions, so you can always spin that up along with reading the README. But then just, you know, remember it is just a project brain.</v>
+
+00:41:15.401 --> 00:41:30.201
+<v Rob Forshier II>Oh, this is actually what the index looks like. Just kind of like goes over, you know, what's all in here, what it all can do. And I'll be, as I said, testing out and working more with the JIRA skills this morning that I'll be baking into there, or that it did bake into there.</v>
+
+00:41:34.481 --> 00:41:37.801
+<v Pankaj Aggarwal>Can I share my screen for a second? I've generated a few things, maybe.</v>
+
+00:41:39.081 --> 00:41:40.761
+<v Pankaj Aggarwal>I know if we can put them somewhere.</v>
+
+00:41:43.241 --> 00:41:44.681
+<v Pankaj Aggarwal>I hope my screen is visible.</v>
+
+00:41:45.241 --> 00:41:45.561
+<v Rob Forshier II>Yap.</v>
+
+00:41:47.401 --> 00:42:05.161
+<v Pankaj Aggarwal>Okay, so I was actually trying to generate a scaffolding, you know, prompt and all so that we can cover everything. But to do that, I did some analysis. You know, I was also looking at the spice that needs to be done. So dev setup guide is already there. I'm working on preparing a script as well for this one.</v>
+
+00:42:07.641 --> 00:42:26.401
+<v Pankaj Aggarwal>Then, you know, there are like, there are tons of questions, but I took an assumption on a couple of these. I'll put this into chat, the refreshed one. So most of them, you know, I removed from here where there was a counter-related question, because we anyway know Apple account or any account which is needed would be owned by them.</v>
+
+00:42:27.961 --> 00:42:45.401
+<v Pankaj Aggarwal>But, yes, there are a couple of things which should be there, but specifically, if you, if you look at this under 13 and you know copa, they these things might be challenging in first phase, specifically copa, because that they'll require a physical signed, you know.</v>
+
+00:42:45.841 --> 00:42:47.801
+<v Pankaj Aggarwal>an agreement or approval or something.</v>
+
+00:42:50.121 --> 00:42:52.841
+<v Pankaj Aggarwal>I'll put this as well, so that we know that.</v>
+
+00:42:50.521 --> 00:42:50.841
+<v Rob Forshier II>Right.</v>
+
+00:42:53.121 --> 00:42:56.361
+<v Rob Forshier II>Which remember, Copa is, you know, way down the line.</v>
+
+00:42:58.491 --> 00:43:00.491
+<v Pankaj Aggarwal>Yeah, I'm just thinking in terms of...</v>
+
+00:42:58.921 --> 00:43:01.561
+<v Rob Forshier II>We just need to keep it in mind, but yeah, yeah.</v>
+
+00:43:01.721 --> 00:43:17.481
+<v Pankaj Aggarwal>First 8 week or something, right? And questionnaire, you know, I've already taken some answer, you know, so I think except one or two, there is no as such open questions. Everything is with the assumptions so that at least team can start on top of that and all.</v>
+
+00:43:20.601 --> 00:43:38.041
+<v Pankaj Aggarwal>So, yeah, pretty much that, and you know I was I was just trying to see that how can we start, what kind of things and all, what kind of features and all we can start building, you know, including the cognitive part and all. By the way, are we are we only looking for like invite-only onboarding or?</v>
+
+00:43:39.001 --> 00:43:41.401
+<v Pankaj Aggarwal>User would be able to self-sign right from level.</v>
+
+00:43:43.481 --> 00:43:45.961
+<v Rob Forshier II>So it's going to be invite, I think, only at the beginning.</v>
+
+00:43:47.721 --> 00:43:50.721
+<v Pankaj Aggarwal>OK, and we'll add a couple of default users to this.</v>
+
+00:43:52.281 --> 00:43:53.801
+<v Rob Forshier II>Sorry, my Wi-Fi just bounced.</v>
+
+00:43:55.321 --> 00:43:59.641
+<v Pankaj Aggarwal>I'm saying we will add a couple of default users to the system and they keep on inviting others.</v>
+
+00:44:00.761 --> 00:44:01.241
+<v Rob Forshier II>Right.</v>
+
+00:44:03.001 --> 00:44:03.241
+<v Pankaj Aggarwal>Okay.</v>
+
+00:44:04.121 --> 00:44:16.521
+<v Pankaj Aggarwal>Fine, I'll share this document with you, which has, you know, few details with terms of overall architectures and all some ideas and all. And maybe we can discuss it tomorrow and see. By the time I'll do some more review.</v>
+
+00:44:18.921 --> 00:44:28.361
+<v Rob Forshier II>You can also build this into the wiki, because remember the wiki, the meta-repo has a lot of this into there. I would actually just build this as one of the wiki pages.</v>
+
+00:44:19.041 --> 00:44:20.921
+<v Pankaj Aggarwal>Again, nothing started, just go for it.</v>
+
+00:44:29.881 --> 00:44:34.721
+<v Pankaj Aggarwal>Yeah, I think that that will work. I'll try to put it through the meta. Yeah, that's fine.</v>
+
+00:44:36.761 --> 00:44:38.121
+<v Pankaj Aggarwal>Then we'll put it there, that's right.</v>
+
+00:44:39.601 --> 00:44:53.561
+<v Rob Forshier II>Okay. I mean, that's where I'm trying to bake everything. I have usually like HTML outputs, which are just usually intermediary stuff, and then everything should be solidified and baked into the wiki itself. So then we just kind of can spin up the web pages and see, you know.</v>
+
+00:44:54.521 --> 00:44:55.561
+<v Rob Forshier II>all the content that we need.</v>
+
+00:45:04.321 --> 00:45:07.801
+<v Rob Forshier II>Well, we went a little over and that's fine. These first couple we can do that.</v>
+
+00:45:09.561 --> 00:45:20.521
+<v Rob Forshier II>So yeah, so feel free to reach out in the Teams channel that we have spun up. And yeah, please get your questions on the board and just get everything ready for tomorrow. Oh, beautiful. I see your post in there.</v>
+
+00:45:24.521 --> 00:45:25.561
+<v Karuna Arshakota>Sure. Thank you.</v>
+
+00:45:24.921 --> 00:45:25.321
+<v Pankaj Aggarwal>Hello.</v>
+
+00:45:25.561 --> 00:45:27.081
+<v Pramod Kumar>Thanks. Thanks, Rob. Thanks, all.</v>
+
+00:45:26.081 --> 00:45:28.281
+<v Nitish Goyal>Okay, thank you. Bye, bye.</v>
+
+00:45:26.641 --> 00:45:28.441
+<v Rob Forshier II>All right. Thank you, everybody.</v>
+
+00:45:27.561 --> 00:45:28.361
+<v Karuna Arshakota>Thanks, bye bye.</v>
+
+00:45:30.201 --> 00:45:30.761
+<v Pankaj Aggarwal>Excellent.</v>
+

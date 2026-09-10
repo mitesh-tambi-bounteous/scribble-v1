@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scribl access runbooks, 2026-08-26</title>
+<style>
+  :root {
+    /* Bounteous brand, the same tokens index.html and the board assets use */
+    --midnight: #0B111C;
+    --indigo: #33139F;
+    --violet: #693AF4;
+    --purple: #853EFF;
+    --eblue: #34B4FF;
+    --paper: #FAFAFC;
+    --card: #FFFFFF;
+    --gray-50: #F4F5F8;
+    --gray-100: #EAECF2;
+    --gray-500: #636B82;
+
+    --ink: var(--midnight);
+    --muted: var(--gray-500);
+    --line: var(--gray-100);
+    --accent: var(--violet);
+    --accent-soft: var(--gray-50);
+    --code-bg: var(--gray-50);
+    --bad: #DB0632;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 1.25rem 5rem;
+    font: 16px/1.6 "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+  }
+  .wrap { max-width: 58rem; margin: 0 auto; }
+  .masthead { background: linear-gradient(90deg, var(--eblue) 0%, var(--purple) 100%); height: 6px; }
+  header { padding: 2.5rem 0 1.25rem; border-bottom: 2px solid var(--ink); }
+  h1 { font-size: 2rem; margin: 0 0 .35rem; letter-spacing: -0.02em; }
+  .tagline { color: var(--muted); margin: 0; font-size: 1.05rem; }
+  .meta { color: var(--muted); font-size: .85rem; margin: .6rem 0 0; }
+
+  /* Tabs */
+  nav.tabs {
+    display: flex; flex-wrap: wrap; gap: .25rem;
+    margin: 1.25rem 0 0; border-bottom: 1px solid var(--line);
+  }
+  nav.tabs button {
+    font: inherit; font-size: .92rem; font-weight: 700;
+    background: none; border: 0; border-bottom: 3px solid transparent;
+    color: var(--muted); padding: .6rem .85rem; cursor: pointer;
+  }
+  nav.tabs button:hover { color: var(--ink); }
+  nav.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  nav.tabs button:focus-visible { outline: 2px solid var(--eblue); outline-offset: 2px; }
+  section[role="tabpanel"] { display: none; }
+  section[role="tabpanel"].on { display: block; }
+
+  h2 {
+    font-size: 1.3rem;
+    margin: 2rem 0 .75rem;
+    padding-bottom: .3rem;
+    border-bottom: 3px solid var(--accent);
+    font-weight: 700;
+  }
+  h3 { font-size: 1.02rem; margin: 1.75rem 0 .4rem; }
+  p { margin: .7rem 0; }
+  ul, ol { margin: .7rem 0; padding-left: 1.3rem; }
+  li { margin: .35rem 0; }
+  ol li { margin: .5rem 0; }
+  code, pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .89em;
+  }
+  code { background: var(--code-bg); padding: .1em .35em; border-radius: 3px; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .92rem; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .callout {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: .85rem 1rem;
+    margin: 1.25rem 0;
+  }
+  .callout p:first-child { margin-top: 0; }
+  .callout p:last-child { margin-bottom: 0; }
+  .say { border-left: 3px solid var(--ink); padding-left: 1rem; margin: 1rem 0; }
+  .say p { font-size: 1.05rem; }
+  .tag { display: inline-block; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+         letter-spacing: .06em; padding: .12rem .45rem; border-radius: 3px; }
+  .tag.theirs { background: #FDE9EC; color: var(--bad); }
+  footer { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="masthead"></div>
+<div class="wrap">
+
+<header>
+  <h1>Scribl access runbooks</h1>
+  <p class="tagline">Three access asks in the order their lead times demand, plus who to add and at what level.</p>
+  <p class="meta">Prepared 2026-08-26. Apple enrolment detail checked against Apple's own account help pages on 2026-08-26. AWS and GitHub detail comes from the Scribl B2B source Eric sent (<code>.github/workflows/deploy.yml</code>, <code>.github/workflows/pr.yml</code>) and from the 2026-08-25 Scribl Shape kickoff, with timestamp cues.</p>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Runbooks">
+  <button role="tab" aria-selected="true"  aria-controls="p1" id="t1">1. Apple</button>
+  <button role="tab" aria-selected="false" aria-controls="p2" id="t2">2. AWS</button>
+  <button role="tab" aria-selected="false" aria-controls="p3" id="t3">3. GitHub</button>
+  <button role="tab" aria-selected="false" aria-controls="p4" id="t4">4. The three asks</button>
+  <button role="tab" aria-selected="false" aria-controls="p5" id="t5">5. Who to add</button>
+</nav>
+
+<!-- ============ 1 ============ -->
+<section role="tabpanel" id="p1" aria-labelledby="t1" class="on">
+
+<h2>Apple: the longest lead time, so it starts today</h2>
+
+<p>Scribl has no Apple accounts. Eric Rice, 00:48:15: "We don't have anything."
+Eric offered to do the work himself if we point the way (01:02:47). This is the
+pointing.</p>
+
+<div class="callout"><p>The order matters. Step 1 can take up to five business days
+on its own, and nothing else can start until it lands. Everything after it is
+hours, not weeks.</p></div>
+
+<h3>Step 1. Get a D-U-N-S number for Scribl</h3>
+
+<ol>
+<li>A D-U-N-S number is a nine-digit business identifier issued by Dun and
+Bradstreet. Apple uses it to confirm Scribl is a real legal entity. Apple
+requires one for any organisation enrolment.</li>
+<li>Scribl may already have one. Check first with Apple's own lookup at
+developer.apple.com/enroll/duns-lookup before applying for a new one.</li>
+<li>If there is none, Apple's lookup offers to submit the request to Dun and
+Bradstreet at no cost. Apple's guidance: allow up to five business days to
+receive the number.</li>
+<li>Three things must match the legal entity, not the brand. Legal entity name,
+legal address, and a contact who can confirm both. A DBA, trade name, fictitious
+business name or branch is not accepted.</li>
+<li>The person who enrols must have legal authority to bind Scribl to
+agreements: owner, founder, executive team member, senior project lead, or an
+employee given that authority in writing by a senior employee.</li>
+</ol>
+
+<h3>Step 2. Enrol in the Apple Developer Program as an organisation</h3>
+
+<ol>
+<li>Enrol as an organisation, not as an individual. An individual account cannot
+carry Scribl's name on the App Store listing and cannot hold team members under
+one entity.</li>
+<li>Apple asks for: the D-U-N-S number, the legal entity name and address, a
+website on Scribl's own domain, and confirmation of the enroller's authority.
+Apple may call the listed number to verify.</li>
+<li>Enrolment runs either on the Apple Developer app on an iPhone or iPad, or on
+the web. The app route is generally faster because identity verification happens
+on-device.</li>
+<li>The account must sit under a Scribl-owned Apple Account, not a personal one.
+Use a shared mailbox Scribl controls, for example an alias that survives any one
+person leaving.</li>
+</ol>
+
+<h3>Step 3. Who holds what, and what can move later</h3>
+
+<table>
+<tr><th>Role</th><th>Who</th><th>Notes</th></tr>
+<tr><td>Account Holder</td><td>Scribl</td><td>One person only. Signs agreements. Cannot be delegated away.</td></tr>
+<tr><td>Admin</td><td>Bounteous lead plus a Scribl admin</td><td>Manages users, certificates, app records, TestFlight. This is the role we need.</td></tr>
+<tr><td>App Manager / Developer</td><td>Bounteous delivery team</td><td>Day-to-day builds and TestFlight distribution.</td></tr>
+</table>
+
+<p>Transfers later. Admin, App Manager and Developer seats can be added and
+removed by Scribl at any time, with no Apple involvement. Changing the Account
+Holder is a self-service transfer inside Scribl's own account. Moving the
+membership to a different legal entity, or recovering an account whose Account
+Holder has left with no successor, needs Apple support and is slow. That is the
+case worth avoiding by choosing the right holder now.</p>
+
+<h3>Step 4. What blocks what</h3>
+
+<table>
+<tr><th>We want to</th><th>Blocked until</th></tr>
+<tr><td>Build and run on a simulator</td><td>Nothing. Available today.</td></tr>
+<tr><td>Install a debug build on a physical iPhone</td><td>Nothing, for our own devices. A free Apple Account signs a seven-day build.</td></tr>
+<tr><td>Distribute to Scribl testers over TestFlight</td><td>Step 2 complete, and a Bounteous Admin or App Manager seat issued. This is the first real gate.</td></tr>
+<tr><td>Reserve the app name and bundle id <code>co.scribl.app</code></td><td>Step 2 complete.</td></tr>
+<tr><td>Submit to the App Store</td><td>Step 2 complete, plus the paid membership active, plus App Store Connect metadata, privacy answers and review. Out of scope this phase, but the gate is the same account.</td></tr>
+</table>
+
+<h3>Step 5. What we do in parallel while it is pending</h3>
+
+<p>"This takes up to two weeks" does not mean we stop. None of the following
+needs an Apple account.</p>
+
+<ul>
+<li>Full app build and iteration on the iOS simulator and on Android.</li>
+<li>Internal device testing through Expo Go and development builds signed with a
+free personal team.</li>
+<li>Every backend and data task, including the prompt-of-the-day pipeline and
+stroke storage.</li>
+<li>CI wiring up to the archive step. The signing step is the only part that
+needs Apple, and it can be stubbed and enabled later.</li>
+<li>Design work, the Figma screens, and the share-card composite.</li>
+<li>App Store assets: icon, screenshots, description, privacy answers. These can
+be written before the account exists and pasted in after.</li>
+</ul>
+
+<h3>The ask</h3>
+
+<div class="callout">
+<p><strong>From Scribl, this week.</strong> One named person with authority to bind the
+company, who starts the D-U-N-S check today. Then the organisation enrolment in
+their name, and an Admin seat issued to the Bounteous lead.</p>
+<p><strong>By when.</strong> D-U-N-S check started today. Enrolment submitted within two
+business days of the number arriving. That keeps TestFlight off the critical
+path.</p>
+</div>
+
+<p class="meta">Sources checked on the web on 2026-08-26: Apple Developer account
+help, "D-U-N-S Number", "Enrollment", and "Enrolling, verifying, and renewing
+with the Apple Developer app". Nothing on this tab was written from memory.</p>
+
+</section>
+
+<!-- ============ 2 ============ -->
+<section role="tabpanel" id="p2" aria-labelledby="t2" class="">
+
+<h2>AWS: they have an account, we need a structure we can grow into</h2>
+
+<div class="callout">
+<p>Read this tab as our architecture ask, not as a copy of what Scribl runs
+today. Their B2B deployment tells us an AWS account exists and who might own it.
+It is not the design we build against. We are asking for a structure that starts
+small this phase and takes more environments later without being rebuilt.</p>
+</div>
+
+<h3>What exists today, as context only</h3>
+
+<p>Eric Rice confirmed at kickoff that Scribl has an AWS account hosting the B2B
+game (00:45:38). The source Eric sent shows that product deploying two stacks to
+<code>us-east-1</code> from GitHub Actions, with credentials from an assumed role
+rather than stored keys (<code>.github/workflows/deploy.yml:26,41,49</code>).</p>
+
+<p>Three things we take from that and nothing more. An account exists, so this is
+a question of access rather than of standing something up from zero. Their region
+is <code>us-east-1</code>, which our region choice has to reconcile. And the
+credentials that reach that account live as GitHub secrets in a GitHub
+organisation whose owner we have not confirmed, which is why the GitHub tab is
+part of this ask. We are not adopting their stack layout, their environment
+names, or their pipeline.</p>
+
+<div class="callout">
+<p><strong>The thing to be careful about.</strong> We cannot tell from the source
+whether <code>QA</code> and <code>Stg</code> are two AWS accounts or two stacks
+in one account, and no account id appears anywhere in the repository. So do not
+assume Scribl already has environment separation at the account level. Ask.</p>
+</div>
+
+<h3>What we need the account structure to do</h3>
+
+<p>This phase is dev only, agreed at kickoff (Rob Forshier II, 00:54:17). QA and
+production come later. So the structure has to be right for one environment now
+and for three or four later, without a migration in the middle.</p>
+
+<ol>
+<li><strong>One environment per boundary, not one account with everything in
+it.</strong> Dev, QA and production each need their own isolated set of resources.
+A change in dev must not be able to reach production data, and a production
+incident must not be debugged by someone with a dev credential.</li>
+<li><strong>Sized independently.</strong> Dev is small and slow on purpose:
+minimum instance sizes, no multi-AZ, short backup retention, no read replicas.
+Production is sized for real load and real recovery targets. The environment
+definition has to carry its own sizing rather than inherit a single default, so
+turning up production is a config change and not a rewrite.</li>
+<li><strong>Repeatable from code.</strong> One infrastructure definition,
+parameterised by environment, so adding QA later is a new parameter set rather
+than new hand-built resources.</li>
+<li><strong>Separate credentials per environment.</strong> One assumable role per
+environment, so access to dev never implies access to production, and revoking
+one does not touch the others.</li>
+<li><strong>Cost visible per environment.</strong> Whoever pays needs to see dev
+and production separately from day one.</li>
+</ol>
+
+<h3>How access gets granted, and what each option does to the above</h3>
+
+<table>
+<tr><th>Option</th><th>What it means</th><th>Against the five points</th></tr>
+<tr><td><strong>A. Separate accounts inside Scribl's AWS organisation</strong></td><td>One account per environment, created under their organisation, each with a role we assume.</td><td>Meets all five cleanly. Isolation is the account boundary, which is the strongest one AWS has. Cost splits itself. Scribl owns the asset from day one, so nothing migrates at handover. Slowest to approve, because it needs organisation-level rights.</td></tr>
+<tr><td><strong>B. One new account, environments separated inside it</strong></td><td>A single account we work in, with per-environment stacks, networks and roles.</td><td>Workable, and faster to grant. Isolation is policy rather than an account boundary, so it depends on discipline. Cost needs tagging to split. Acceptable for dev now, weaker once production data exists.</td></tr>
+<tr><td><strong>C. A role inside their existing B2B account</strong></td><td>Scribl issues a scoped role in the account that already runs the B2B game.</td><td>Fastest to get moving. Puts our workloads next to a live product, which is the one thing we would rather not do, and it gives us no path to a separate production environment later. A short-term unblock, not the destination.</td></tr>
+<tr><td><strong>D. A Bounteous-owned account</strong></td><td>We stand it up ourselves this week.</td><td>Zero waiting and zero risk to their estate. The cost is a real migration at handover, including data. Use it only if their approval runs long.</td></tr>
+</table>
+
+<div class="callout">
+<p><strong>Our recommendation: A, with D as the unblock.</strong> Separate accounts
+per environment under Scribl's organisation is the structure we would design for
+this application regardless of what exists today. Start with one account, dev,
+created in that pattern so QA and production are additions rather than a
+redesign. If organisation-level approval takes more than a week, we start in a
+Bounteous-owned account so the build does not wait, and we plan the move.</p>
+</div>
+
+<h3>Region</h3>
+
+<p>Decide it with the account, not after. Our POC database is in
+<code>us-east-2</code> and Scribl's B2B stack is in <code>us-east-1</code>. That
+matters for latency between anything the two products ever share, for
+cross-region data transfer charges, and because infrastructure code pins a region
+and is not trivially moved once data lives there. Our recommendation is
+<code>us-east-1</code>, matching Scribl, and we move our POC data.</p>
+
+<h3>The open question, and who resolves it</h3>
+
+<table>
+<tr><th>Who</th><th>Their part</th></tr>
+<tr><td>James</td><td>Scribl's AWS contact. Eric is re-asking him, alongside the Apple question (01:03:00).</td></tr>
+<tr><td>Bhasin</td><td>The technical contact James loops in. The person who would actually grant access.</td></tr>
+<tr><td>Rob Forshier II</td><td>Taking the structure above to Bounteous's AWS side so we arrive with a recommendation rather than a question (00:46:48 to 00:47:39).</td></tr>
+</table>
+
+<h3>The ask</h3>
+
+<div class="callout">
+<p><strong>From Scribl.</strong> A named owner for the AWS decision and a date they
+will answer by. Not a yes in principle.</p>
+<p><strong>The question to put to them.</strong> Who can create accounts inside your
+AWS organisation, and can we have one for dev now, on the understanding that QA
+and production follow as separate accounts later?</p>
+<p><strong>What we need with it.</strong> The account id, the region, and one role per
+environment that our CI can assume.</p>
+</div>
+
+</section>
+
+<!-- ============ 3 ============ -->
+<section role="tabpanel" id="p3" aria-labelledby="t3" class="">
+
+<h2>GitHub: we may be looking at someone else's organisation</h2>
+
+<h3>What the .github folder actually tells us</h3>
+
+<p>We read every file in the B2B repo's <code>.github</code> folder. It is the
+best evidence we have on both the GitHub question and the AWS question, because
+the two turn out to be the same question.</p>
+
+<table>
+<tr><th>File</th><th>What it says</th></tr>
+<tr><td><code>PULL_REQUEST_TEMPLATE.MD</code></td><td>Jira tickets link to <code>whitespectre.atlassian.net</code>, with the ticket prefix <code>SCR</code>.</td></tr>
+<tr><td><code>workflows/pr.yml</code></td><td>Gates every pull request on a label, an assignee, and a title prefixed <code>SCR</code> or <code>DISCO</code>. A working team process, not a template.</td></tr>
+<tr><td><code>workflows/deploy.yml</code></td><td>Assumes AWS roles by GitHub OIDC. Named secrets: <code>AWS_QA_ROLE_ARN</code>, <code>AWS_STG_ROLE_ARN</code>, <code>QA_CLIENT_BUCKET</code>, <code>STG_CLIENT_BUCKET</code>, <code>QA_CLOUDFRONT_DIST</code>, <code>STG_CLOUDFRONT_DIST</code>. Session names <code>GithubQaInfrastructure</code>, <code>GithubStgClient</code> and so on.</td></tr>
+<tr><td><code>dependabot.yml</code></td><td>Weekly updates for GitHub Actions and two npm trees. Dependabot runs on GitHub and nowhere else.</td></tr>
+</table>
+
+<h3>The finding, hedged</h3>
+
+<p>Whitespectre is not a Scribl domain. Eric referred to the original build
+vendor on the kickoff call by name (00:55:50), and the Jira host in the pull
+request template is that vendor's. So the GitHub organisation that runs these
+workflows may belong to the previous build vendor rather than to Scribl.</p>
+
+<div class="callout">
+<p>This is the question to ask, not a fact we have established. Two readings both
+fit the files. The organisation is the vendor's, and Scribl has never had access.
+Or the repository is Scribl's and only the Jira instance was the vendor's, which
+is a normal thing to find after a vendor engagement. The files cannot separate
+those, and our copy of the history is a single import commit, so it tells us
+nothing about origin.</p>
+</div>
+
+<h3>Why this matters more than repository access</h3>
+
+<p>Those AWS role ARNs are stored as GitHub secrets in that organisation, and
+<code>deploy.yml</code> uses no GitHub Environment protection, so they are
+repository-level secrets. Read plainly, whoever administers that GitHub
+organisation holds the credentials that deploy to Scribl's AWS account, and
+anyone who can trigger the workflow can deploy to Staging.</p>
+
+<p>If the organisation is the previous vendor's, then a third party currently
+holds the deploy path to Scribl's live B2B product. That is worth raising with
+Scribl regardless of what it means for our project. It is also the reason we are
+not asking to reuse their trust: we would be asking someone else for it.</p>
+
+<p>One more thing the files cannot tell us. Whether <code>QA</code> and
+<code>Stg</code> are two AWS accounts or two stacks in one account. There are two
+role ARNs, which is good practice either way, but nothing in the repository names
+an account id. That question belongs to the AWS tab.</p>
+
+<h3>The three outcomes</h3>
+
+<table>
+<tr><th>Outcome</th><th>What it means for us</th></tr>
+<tr><td><strong>1. The organisation is Scribl's</strong></td><td>Best case. Their CI history, their OIDC trust, their Dependabot alerts. We can be invited in, read the deploy path that actually runs, and reuse the OIDC pattern instead of inventing one.</td></tr>
+<tr><td><strong>2. It belongs to the previous build vendor</strong></td><td>We cannot work in it and should not ask to. It also means a third party holds the GitHub secrets that deploy to Scribl's AWS account, which Scribl should want to recover whatever happens on our project.</td></tr>
+<tr><td><strong>3. Nobody knows</strong></td><td>The most likely answer. Someone at Scribl has to find out. That is an owner and a date, not a discussion.</td></tr>
+</table>
+
+<h3>What we would need if it is available</h3>
+
+<ul>
+<li>Organisation membership for the delivery team.</li>
+<li>Repository creation rights, or a repository created for us.</li>
+<li>The name of whoever administers the AWS OIDC trust that
+<code>deploy.yml</code> relies on. That person matters to the AWS tab too.</li>
+</ul>
+
+<h3>Nothing here blocks this week</h3>
+
+<div class="callout">
+<p>Our code starts in Bounteous repositories and moves to Scribl's toward the end
+of the engagement. Matthew Kaplan, 00:59:44: "it probably makes sense for you
+guys to own everything now and then it's a handoff at some point." So the GitHub
+answer changes the handover, not the start. We build either way.</p>
+</div>
+
+<h3>The ask</h3>
+
+<div class="callout">
+<p><strong>From Scribl.</strong> Three questions for one named person, answered inside
+a week.</p>
+<ul>
+<li>Does Scribl have its own GitHub organisation, and who administers it?</li>
+<li>Do the B2B app's workflows still run, and in whose organisation?</li>
+<li>Who holds the GitHub secrets that carry the AWS role ARNs, and does Scribl
+have access to them today?</li>
+</ul>
+<p>"We did not know we had one" is a comfortable answer and the likely one. The
+third question is the one that matters most, and it is worth five minutes with
+whoever set up the B2B build.</p>
+</div>
+
+</section>
+
+<!-- ============ 4 ============ -->
+<section role="tabpanel" id="p4" aria-labelledby="t4" class="">
+
+<h2>The three asks, on one page</h2>
+
+<p>The short version, written to be pasted into an email to Scribl.</p>
+
+<h3>1. Apple, this week</h3>
+
+<p>Scribl has no Apple accounts. The first step has a lead time we cannot
+compress, so it starts now.</p>
+
+<ul>
+<li><strong>Do today.</strong> Check whether Scribl already has a D-U-N-S number at
+developer.apple.com/enroll/duns-lookup. If not, request one there. Apple says
+allow up to five business days.</li>
+<li><strong>Then.</strong> Enrol in the Apple Developer Program as an organisation, in
+Scribl's legal entity name, under a Scribl-owned Apple Account. The enroller must
+have authority to bind the company.</li>
+<li><strong>Then.</strong> Issue an Admin seat to the Bounteous lead.</li>
+<li><strong>Who we need.</strong> One named person with signing authority.</li>
+<li><strong>What it blocks.</strong> TestFlight distribution to Scribl testers. It does not
+block the build, which starts now on simulators and Android.</li>
+</ul>
+
+<h3>2. AWS, a decision and a date</h3>
+
+<ul>
+<li><strong>The question.</strong> Can we have an AWS account inside Scribl's
+organisation for this application, or do we go into the existing one?</li>
+<li><strong>Our recommendation.</strong> A separate account per environment under
+Scribl's organisation, starting with dev. This phase is dev only; QA and
+production come later, and we want them to be additions rather than a redesign.
+Each environment gets its own resources, its own sizing, and its own role.
+Dev stays deliberately small; production gets sized for real load.</li>
+<li><strong>Why not the existing account.</strong> It runs a live product. We would
+rather not put a new build next to it, and it gives us no path to a separate
+production environment later.</li>
+<li><strong>If approval is slow.</strong> We start in a Bounteous-owned account so
+the build does not wait, and we plan the move.</li>
+<li><strong>Region.</strong> Decide it with the account. Scribl's B2B stack is
+<code>us-east-1</code>; our POC database is <code>us-east-2</code>. We suggest
+standardising on <code>us-east-1</code>.</li>
+<li><strong>Who we need.</strong> A named owner and a date. James and Bhasin were
+the names raised at kickoff.</li>
+</ul>
+
+<h3>3. GitHub, a question to answer</h3>
+
+<ul>
+<li><strong>The question.</strong> Does Scribl have its own GitHub organisation, who
+administers it, and do the B2B app's GitHub Actions workflows still run in
+it?</li>
+<li><strong>Why we ask.</strong> The B2B source deploys to AWS from GitHub Actions,
+using AWS role ARNs held as GitHub secrets. But the repository we received is on
+Bitbucket, and its pull request template links tickets to the previous build
+vendor's Atlassian domain. We cannot tell from the source whose GitHub
+organisation holds those secrets.</li>
+<li><strong>Why it matters beyond our project.</strong> If that organisation is the
+vendor's, a third party holds the deploy path to Scribl's live B2B product.
+Worth confirming either way.</li>
+<li><strong>What we need if it is Scribl's.</strong> Organisation membership, repository
+creation rights, and the name of whoever administers the AWS trust.</li>
+<li><strong>Timing.</strong> This blocks nothing this week. Our code starts in Bounteous
+repositories and moves across later. An answer inside a week is enough.</li>
+</ul>
+
+<h3>Summary</h3>
+
+<table>
+<tr><th>Ask</th><th>Owner needed</th><th>By when</th><th>Blocks</th></tr>
+<tr><td>D-U-N-S check and Apple organisation enrolment</td><td>Scribl, signing authority</td><td>Start today</td><td>TestFlight</td></tr>
+<tr><td>An AWS account for dev, in a structure that takes QA and prod later</td><td>Scribl, plus Bounteous AWS input</td><td>This week</td><td>Backend deploys</td></tr>
+<tr><td>GitHub organisation answer</td><td>Scribl</td><td>Inside a week</td><td>Nothing yet</td></tr>
+</table>
+
+<p>Tab 5 has the roster and the exact seat each person needs, so the invitations
+can go out the moment an account exists.</p>
+
+</section>
+
+<!-- ============ 5 ============ -->
+<section role="tabpanel" id="p5" aria-labelledby="t5" class="">
+
+<h2>Who to add, and to what</h2>
+
+<p>The Bounteous delivery team, with the access each person actually needs. This
+is the list to work from when the accounts exist. Anyone not on it does not need
+a credential.</p>
+
+<h3>The roster</h3>
+
+<table>
+<tr><th>Person</th><th>Role</th><th>Email</th></tr>
+<tr><td>Rob Forshier II</td><td>Engagement Lead</td><td><code>robert.forshier@bounteous.com</code></td></tr>
+<tr><td>Pankaj Aggarwal</td><td>Engineering Lead and Architect, AWS</td><td><code>pankaj.aggarwal@bounteous.com</code></td></tr>
+<tr><td>Nitish Goyal</td><td>Backend and AWS</td><td><code>nitish.goyal@bounteous.com</code></td></tr>
+<tr><td>Neelesh Aggarwal</td><td>iOS</td><td><code>neelesh.aggarwal@bounteous.com</code></td></tr>
+<tr><td>Shubhankar Bhavsar</td><td>iOS</td><td><code>shubhankar.bhavsar@bounteous.com</code></td></tr>
+<tr><td>Karuna Arshakota</td><td>QA</td><td><code>karuna.arshakota@bounteous.com</code></td></tr>
+<tr><td>Pramod Kumar</td><td>Delivery management</td><td><code>pramod.kumar@bounteous.com</code></td></tr>
+</table>
+
+<h3>Who needs what</h3>
+
+<p>The App Store Connect seat and the TestFlight tester flag are two separate
+things. A Developer seat lets a person upload a build. It does not deliver the
+build back to them. Everyone who needs to install a build has to be added to an
+internal testing group as well.</p>
+
+<table>
+<tr><th>Person</th><th>App Store Connect seat</th><th>Internal TestFlight</th><th>AWS</th><th>GitHub, if it applies</th></tr>
+<tr><td>Rob Forshier II</td><td>Admin</td><td>Yes</td><td>Read only</td><td>Member</td></tr>
+<tr><td>Pankaj Aggarwal</td><td>App Manager</td><td>Yes</td><td>Yes, full on the dev environment</td><td>Member, with repo creation rights</td></tr>
+<tr><td>Nitish Goyal</td><td>Developer</td><td>Yes</td><td>Yes, full on the dev environment</td><td>Member</td></tr>
+<tr><td>Neelesh Aggarwal</td><td>Developer</td><td>Yes</td><td>No</td><td>Member</td></tr>
+<tr><td>Shubhankar Bhavsar</td><td>Developer</td><td>Yes</td><td>No</td><td>Member</td></tr>
+<tr><td>Karuna Arshakota</td><td>Developer</td><td>Yes</td><td>No</td><td>Member</td></tr>
+<tr><td>Pramod Kumar</td><td>Developer</td><td>Yes</td><td>No</td><td>No</td></tr>
+</table>
+
+<p>So every one of the seven goes into the internal testing group. That is the
+simplest thing to ask for and it costs nothing: internal testers are capped at
+100, they get builds within minutes of upload, and no Apple review is
+involved.</p>
+
+<div class="callout">
+<p><strong>Why the engineers need it too, not only QA.</strong> Day to day they test on
+their own devices with development builds, which needs no Apple account at all.
+But the artifact QA signs off is the signed release build, and the only way an
+engineer checks that artifact before handing it over is to install it from
+TestFlight. Without the tester flag, an engineer can upload a build they cannot
+open.</p>
+</div>
+
+<h3>Notes on the roles</h3>
+
+<ul>
+<li><strong>Apple.</strong> Scribl keeps the Account Holder. One Admin seat on our
+side is the minimum that works, because an App Manager cannot manage certificates
+and users. Developer seats build and upload; they cannot change the team. Any of
+these roles can hold the internal tester flag.</li>
+<li><strong>AWS.</strong> Two people need real access on the dev environment, the
+engineering lead and the backend engineer. Everyone else works through the
+pipeline. Keep the list this short on purpose.</li>
+<li><strong>GitHub.</strong> Only relevant if a Scribl organisation exists and the
+work starts there. Until then our code is in Bounteous repositories and no
+invitations are needed.</li>
+<li><strong>TestFlight groups.</strong> Two groups. One internal, holding the seven
+above plus any Scribl team members who want early builds. One external, for the
+wider beta, which triggers Beta App Review and so needs lead time. Send us the
+Scribl names and we will set both up.</li>
+</ul>
+
+<div class="callout">
+<p><strong>The ask.</strong> Nothing to do until the accounts exist. When they do,
+invite the seven above at the seats above, and add all seven to the internal
+TestFlight group. Send the invitations to the Bounteous addresses listed, not to
+personal accounts, because seats have to follow the company.</p>
+</div>
+
+</section>
+
+<footer>
+  <p>One file, no network calls, opens from disk. Apple enrolment detail was checked on the web on 2026-08-26; AWS and GitHub detail cites the file it came from.</p>
+</footer>
+
+</div>
+<script>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('nav.tabs button'));
+    var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+
+    function show(i) {
+      for (var k = 0; k < tabs.length; k++) {
+        var on = k === i;
+        tabs[k].setAttribute('aria-selected', on ? 'true' : 'false');
+        panels[k].classList.toggle('on', on);
+      }
+      if (history.replaceState) history.replaceState(null, '', '#' + tabs[i].getAttribute('aria-controls'));
+      window.scrollTo(0, 0);
+    }
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { show(i); });
+      t.addEventListener('keydown', function (e) {
+        var next = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : -1;
+        if (next < 0 || next >= tabs.length) return;
+        tabs[next].focus();
+        show(next);
+      });
+    });
+
+    var hash = window.location.hash.replace('#', '');
+    var start = panels.findIndex ? panels.findIndex(function (p) { return p.id === hash; }) : -1;
+    show(start > 0 ? start : 0);
+  })();
+</script>
+</body></html>

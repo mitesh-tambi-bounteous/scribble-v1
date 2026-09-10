@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>scribl -- Client priority to delivery week</title>
+<style>
+
+:root {
+  --ink: #1D1A34;
+  --accent: #D51668;
+  --paper: #F8F8FA;
+  --card: #FFFFFF;
+  --peach: #FEF2E6;
+  --line: #DDDCE6;
+  --muted: #6B6880;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --green: #18864A;
+  --orange: #B4530A;
+  --gray: #55606E;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.wrap { max-width: 1000px; margin: 0 auto; padding: 32px 20px 64px; }
+h1 { font-size: 26px; margin: 0 0 8px; letter-spacing: -0.01em; }
+h1, h2, h3, h4 { color: var(--ink); }
+h2 { font-size: 20px; margin: 44px 0 12px; border-bottom: 3px solid var(--accent); padding-bottom: 8px; }
+h3 { font-size: 16px; margin: 22px 0 8px; }
+p { margin: 0 0 12px; }
+a { color: var(--accent); }
+.meta-line { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+.intro p, .note { max-width: 78ch; }
+.note { color: var(--muted); font-size: 13px; margin: 8px 0 16px; }
+.caption { font-size: 13px; color: var(--ink); background: var(--peach); border-radius: 10px; padding: 8px 12px; margin: 0 0 14px; max-width: 78ch; }
+
+.panel { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin: 10px 0 18px; }
+
+table.tbl { width: 100%; border-collapse: collapse; font-size: 13.5px; background: var(--card); border: 1px solid var(--line); margin: 10px 0 18px; border-radius: 12px; overflow: hidden; }
+table.tbl th, table.tbl td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.tbl th { background: var(--peach); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink); }
+table.tbl tr:last-child td { border-bottom: none; }
+table.tbl td.num { font-family: var(--mono); white-space: nowrap; }
+table.tbl td.band { font-weight: 700; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.03em; }
+
+code { font-family: var(--mono); background: var(--peach); border-radius: 4px; padding: 1px 5px; font-size: 12.5px; }
+
+/* buttons / controls, matches scribl-backlog-epics.html */
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 18px 0 20px; padding: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+.controls .grp { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.controls .lbl { font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px; }
+button {
+  font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+  padding: 6px 14px; border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+  border-radius: 999px;
+}
+button.on { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+
+/* band filter: table rows carry data-band, body[data-bandfilter] hides rows not matching */
+body[data-bandfilter="GREEN"]  tr[data-band]:not([data-band="GREEN"])  { display: none; }
+body[data-bandfilter="ORANGE"] tr[data-band]:not([data-band="ORANGE"]) { display: none; }
+body[data-bandfilter="GRAY"]   tr[data-band]:not([data-band="GRAY"])   { display: none; }
+
+.chart { display: block; width: 100%; height: auto; }
+.readblock { max-width: 78ch; }
+
+footer { margin-top: 44px; border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-size: 12.5px; }
+
+@media print {
+  body { background: #ffffff; }
+  h2, .panel, table.tbl { break-inside: avoid; }
+  a { color: var(--ink); text-decoration: underline; }
+  body[data-bandfilter] tr[data-band] { display: table-row !important; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #F2F1F7;
+    --accent: #FF6FA3;
+    --paper: #17162A;
+    --card: #201E38;
+    --peach: #2C2545;
+    --line: #3B3856;
+    --muted: #A9A5BF;
+    --green: #3FA96C;
+    --orange: #D98436;
+    --gray: #8B96A6;
+  }
+  table.tbl td.band[data-bandcell="GREEN"] { color: #12111F; }
+  table.tbl td.band[data-bandcell="ORANGE"] { color: #12111F; }
+  table.tbl td.band[data-bandcell="GRAY"] { color: #12111F; }
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Client priority to delivery week</h1>
+<div class="meta-line">Every card from the client's three prioritization bands on the kickoff Lucid board, against the delivery week it lands in. Read on 2026-08-24.</div>
+</header>
+
+<!-- PART 1: burn-up -->
+<h2>1. The burn-up</h2>
+<p class="caption">A burn-up, not a burn-down. The board carried 12 cards at the kickoff and carries 17 now, so scope is drawn as a rising line rather than a fixed total counting down to zero.</p>
+
+<div class="panel">
+<svg class="chart" viewBox="0 0 720 380" role="img" aria-label="Burn-up chart, cards on the board 17, demonstrable or better cumulative 0 4 5 6, complete cumulative 0 1 4 5, across four demos M0 M1 M2 M3">
+
+  <!-- plot area: x 70..680, y 20..320, y axis 0..18 cards, inverted -->
+  <!-- gridlines, y = 0,3,6,9,12,15,18 -->
+  <line x1="70" y1="320" x2="680" y2="320" stroke="#DDDCE6" stroke-width="1"/>
+  <line x1="70" y1="270" x2="680" y2="270" stroke="#ECEBF1" stroke-width="1"/>
+  <line x1="70" y1="220" x2="680" y2="220" stroke="#ECEBF1" stroke-width="1"/>
+  <line x1="70" y1="170" x2="680" y2="170" stroke="#ECEBF1" stroke-width="1"/>
+  <line x1="70" y1="120" x2="680" y2="120" stroke="#ECEBF1" stroke-width="1"/>
+  <line x1="70" y1="70"  x2="680" y2="70"  stroke="#ECEBF1" stroke-width="1"/>
+  <line x1="70" y1="20"  x2="680" y2="20"  stroke="#ECEBF1" stroke-width="1"/>
+
+  <text x="62" y="324" text-anchor="end" font-size="11" fill="#6B6880">0</text>
+  <text x="62" y="274" text-anchor="end" font-size="11" fill="#6B6880">3</text>
+  <text x="62" y="224" text-anchor="end" font-size="11" fill="#6B6880">6</text>
+  <text x="62" y="174" text-anchor="end" font-size="11" fill="#6B6880">9</text>
+  <text x="62" y="124" text-anchor="end" font-size="11" fill="#6B6880">12</text>
+  <text x="62" y="74"  text-anchor="end" font-size="11" fill="#6B6880">15</text>
+  <text x="62" y="24"  text-anchor="end" font-size="11" fill="#6B6880">18</text>
+
+  <!-- x axis -->
+  <line x1="70" y1="320" x2="680" y2="320" stroke="#1D1A34" stroke-width="1.5"/>
+  <text x="70"  y="345" text-anchor="middle" font-size="12" fill="#1D1A34" font-weight="700">M0</text>
+  <text x="70"  y="360" text-anchor="middle" font-size="10.5" fill="#6B6880">2026-09-02</text>
+  <text x="273" y="345" text-anchor="middle" font-size="12" fill="#1D1A34" font-weight="700">M1</text>
+  <text x="273" y="360" text-anchor="middle" font-size="10.5" fill="#6B6880">2026-09-16</text>
+  <text x="477" y="345" text-anchor="middle" font-size="12" fill="#1D1A34" font-weight="700">M2</text>
+  <text x="477" y="360" text-anchor="middle" font-size="10.5" fill="#6B6880">2026-09-30</text>
+  <text x="680" y="345" text-anchor="middle" font-size="12" fill="#1D1A34" font-weight="700">M3</text>
+  <text x="680" y="360" text-anchor="middle" font-size="10.5" fill="#6B6880">2026-10-14</text>
+
+  <!-- Scope, flat at 17. y = 320 - (17/18*300) = 36.67 -->
+  <polyline points="70,36.7 273,36.7 477,36.7 680,36.7" fill="none" stroke="#1D1A34" stroke-width="3.5"/>
+  <text x="580" y="30" font-size="12" fill="#1D1A34" font-weight="700">Cards on the board: 17</text>
+
+  <!-- Demonstrable or better cumulative: 0,4,5,6 -> y = 320-(v/18*300) -->
+  <polyline points="70,320 273,253.3 477,236.7 680,220" fill="none" stroke="#D51668" stroke-width="3"/>
+  <circle cx="70" cy="320" r="4" fill="#D51668"/>
+  <circle cx="273" cy="253.3" r="4" fill="#D51668"/>
+  <circle cx="477" cy="236.7" r="4" fill="#D51668"/>
+  <circle cx="680" cy="220" r="4" fill="#D51668"/>
+  <text x="500" y="207" font-size="12" fill="#D51668" font-weight="700">Demonstrable or better: 6</text>
+
+  <!-- Complete cumulative: 0,1,4,5 -> y = 320-(v/18*300) -->
+  <polyline points="70,320 273,303.3 477,253.3 680,236.7" fill="none" stroke="#18864A" stroke-width="3"/>
+  <circle cx="70" cy="320" r="4" fill="#18864A"/>
+  <circle cx="273" cy="303.3" r="4" fill="#18864A"/>
+  <circle cx="477" cy="253.3" r="4" fill="#18864A"/>
+  <circle cx="680" cy="236.7" r="4" fill="#18864A"/>
+  <text x="540" y="250" font-size="12" fill="#18864A" font-weight="700">Complete: 5</text>
+
+</svg>
+</div>
+<p class="caption">The board carried 12 cards at the kickoff and carries 17 now. That is why the report is a burn-up. Scope is not fixed, so the line goes up as cards are added and never down to zero.</p>
+
+<!-- PART 2: card table -->
+<h2>2. Every card, by band</h2>
+<p class="note">Colour matches the client's own band colours on the Lucid board: green, orange, gray.</p>
+
+<div class="controls">
+  <div class="grp">
+    <span class="lbl">Band</span>
+    <button type="button" class="bfbtn on" data-band="ALL" aria-pressed="true">All</button>
+    <button type="button" class="bfbtn" data-band="GREEN" aria-pressed="false">Green</button>
+    <button type="button" class="bfbtn" data-band="ORANGE" aria-pressed="false">Orange</button>
+    <button type="button" class="bfbtn" data-band="GRAY" aria-pressed="false">Gray</button>
+  </div>
+</div>
+
+<table class="tbl">
+<thead><tr><th>Rank</th><th>Card</th><th>Band</th><th>Epic</th><th>Jira epic</th><th>Underway</th><th>Demonstrable</th><th>Complete</th></tr></thead>
+<tbody>
+
+<tr data-band="GREEN"><td class="num">1</td><td>Drawing + submit, with submit-to-unlock</td><td class="band" data-bandcell="GREEN" style="background:#a5e8b0">GREEN</td><td>E04</td><td>SCRIBL-40</td><td>Week 2</td><td>Week 4</td><td>Week 6</td></tr>
+<tr data-band="GREEN"><td class="num">2</td><td>Daily prompt - curated (Claude)</td><td class="band" data-bandcell="GREEN" style="background:#a5e8b0">GREEN</td><td>E03</td><td>SCRIBL-34</td><td></td><td>Week 4</td><td>Week 6</td></tr>
+<tr data-band="GREEN"><td class="num">3</td><td>Auth</td><td class="band" data-bandcell="GREEN" style="background:#a5e8b0">GREEN</td><td>E02, the auth half</td><td>SCRIBL-27</td><td></td><td>Week 4</td><td>Week 4</td></tr>
+<tr data-band="GREEN"><td class="num">4</td><td>Walls + channels</td><td class="band" data-bandcell="GREEN" style="background:#a5e8b0">GREEN</td><td>E05</td><td>SCRIBL-47</td><td>Week 6</td><td>Week 8</td><td>Week 8</td></tr>
+<tr data-band="GREEN"><td class="num">5</td><td>Cloud foundation (AWS, CI/CD, data model)</td><td class="band" data-bandcell="GREEN" style="background:#a5e8b0">GREEN</td><td>E01</td><td>SCRIBL-1</td><td>Week 2</td><td>Week 4</td><td>Week 6</td></tr>
+<tr data-band="GREEN"><td class="num">6</td><td>Onboarding + Invited/New user</td><td class="band" data-bandcell="GREEN" style="background:#a5e8b0">GREEN</td><td>E02, the onboarding half</td><td>SCRIBL-27</td><td></td><td>Week 6</td><td>Not inside the eight weeks</td></tr>
+<tr data-band="GREEN"><td class="num">7</td><td>Analytics instrumentation (instrument now, report later)</td><td class="band" data-bandcell="GREEN" style="background:#a5e8b0">GREEN</td><td>E11</td><td>SCRIBL-68</td><td></td><td>Not inside the eight weeks</td><td></td></tr>
+
+<tr data-band="ORANGE"><td class="num">1</td><td>Push notifications (the daily nudge)</td><td class="band" data-bandcell="ORANGE" style="background:#ffd0a1">ORANGE</td><td>E08</td><td></td><td></td><td>Not inside the eight weeks</td><td></td></tr>
+<tr data-band="ORANGE"><td class="num">2</td><td>Moderation (fail-safe)</td><td class="band" data-bandcell="ORANGE" style="background:#ffd0a1">ORANGE</td><td>E09</td><td></td><td></td><td>Not inside the eight weeks</td><td></td></tr>
+<tr data-band="ORANGE"><td class="num">3</td><td>Streaks + progression</td><td class="band" data-bandcell="ORANGE" style="background:#ffd0a1">ORANGE</td><td>E10</td><td></td><td></td><td>Not inside the eight weeks</td><td></td></tr>
+<tr data-band="ORANGE"><td class="num">4</td><td>Sharing personal</td><td class="band" data-bandcell="ORANGE" style="background:#ffd0a1">ORANGE</td><td>Not recorded</td><td></td><td></td><td>Not sourced</td><td></td></tr>
+<tr data-band="ORANGE"><td class="num">5</td><td>Reactions</td><td class="band" data-bandcell="ORANGE" style="background:#ffd0a1">ORANGE</td><td>E05-F6, reactions post-unlock only</td><td>SCRIBL-47, the parent epic</td><td></td><td>Not stated</td><td></td></tr>
+
+<tr data-band="GRAY"><td class="num">1</td><td>App Store readiness + compliance -&gt; release phase</td><td class="band" data-bandcell="GRAY" style="background:#d9d9de">GRAY</td><td>E12</td><td></td><td></td><td></td><td>Later home: the release phase after sprint 3, gated on Q56</td></tr>
+<tr data-band="GRAY"><td class="num">2</td><td>re:Invent event wall -&gt; its own scope + funding call</td><td class="band" data-bandcell="GRAY" style="background:#d9d9de">GRAY</td><td>E13</td><td></td><td></td><td></td><td>Later home: its own scope and funding call, tracked as Q21</td></tr>
+<tr data-band="GRAY"><td class="num">3</td><td>Under-13 / COPPA Family edition -&gt; after launch planning</td><td class="band" data-bandcell="GRAY" style="background:#d9d9de">GRAY</td><td>E14</td><td></td><td></td><td></td><td>Later home: post-launch planning, tracked as Q32</td></tr>
+<tr data-band="GRAY"><td class="num">4</td><td>picking multiple pictures and grouping them</td><td class="band" data-bandcell="GRAY" style="background:#d9d9de">GRAY</td><td>Not recorded</td><td></td><td></td><td></td><td>Not sourced</td></tr>
+<tr data-band="GRAY"><td class="num">5</td><td>comments? Add toggles for Wall Creators, possible ai moderation of comments</td><td class="band" data-bandcell="GRAY" style="background:#d9d9de">GRAY</td><td>Not recorded</td><td></td><td></td><td></td><td>Not sourced</td></tr>
+
+</tbody>
+</table>
+
+<!-- PART 3: how to read this -->
+<h2>3. How to read this</h2>
+<div class="readblock">
+<p>Rank is the card's left-to-right position inside its band rectangle on the live board. The client did not number the cards, so rank is reading order, not a stack rank they signed.</p>
+<p>Three states. Underway means work has started and there is nothing to use. Demonstrable means it works at a demo and is not finished. Complete means done as the client wrote it.</p>
+<p>Blank Jira cells mean the epic was not filed when this was written. No key here is predicted.</p>
+<p>Blank Epic cells mean no backlog item names that card. It needs a definition before it can be ranked.</p>
+<p>Every delivery week comes from the milestone statements on the Timeline and Milestones page. Sprint 3 has no feature-level assignment anywhere, so nothing here claims one.</p>
+<p>"Not stated" is not the same as "not inside the eight weeks". Reactions is the only row that reads it. The sprint 2 milestone says there are no reactions at week 6 and the sprint 3 milestone does not mention them either way, so the plan of record neither schedules them nor rules them out.</p>
+<p>Two cards sit in a different band on the board than in the backlog. Analytics instrumentation is GREEN on the board and ORANGE in the backlog, which does not change its answer. Reactions is ORANGE on the board and GREEN in the backlog inside an epic that completes in week 8, which does change its answer. Both need settling in the room.</p>
+</div>
+
+<footer>
+scribl priority to delivery week. Sources: the kickoff Lucid board's three prioritization bands, the backlog epics page, and the Timeline and Milestones page. Jira keys above were read back on 2026-08-24 from project SCRIBL, which is the same project the repo records as SCRIBL. Board 13809: <a href="https://bounteous.jira.com/jira/software/projects/SCRIBL/boards/13809/backlog">https://bounteous.jira.com/jira/software/projects/SCRIBL/boards/13809/backlog</a>.
+</footer>
+</div>
+
+<script>
+(function () {
+  var bandButtons = document.querySelectorAll('.bfbtn');
+  var maxButtons = 20;
+  var n = Math.min(bandButtons.length, maxButtons);
+  for (var b = 0; b < n; b++) {
+    bandButtons[b].addEventListener('click', function () {
+      var band = this.getAttribute('data-band');
+      for (var j = 0; j < n; j++) {
+        bandButtons[j].classList.remove('on');
+        bandButtons[j].setAttribute('aria-pressed', 'false');
+      }
+      this.classList.add('on');
+      this.setAttribute('aria-pressed', 'true');
+      if (band === 'ALL') {
+        document.body.removeAttribute('data-bandfilter');
+      } else {
+        document.body.setAttribute('data-bandfilter', band);
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

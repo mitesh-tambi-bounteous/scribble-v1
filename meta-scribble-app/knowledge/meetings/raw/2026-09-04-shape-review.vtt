@@ -1,0 +1,839 @@
+WEBVTT
+
+00:00:17.437 --> 00:00:18.517
+<v Pankaj Aggarwal>Get up, mind.</v>
+
+00:00:19.357 --> 00:00:28.117
+<v Rob Forshier II>Hey, Pankaj, good morning, good evening. I honestly didn't think you were going to be here. I was more just so it had it on your calendar if you guys wanted to watch the follow up. You didn't actually have to show up.</v>
+
+00:00:30.677 --> 00:00:33.877
+<v Pankaj Aggarwal>I thought it's better that I join this meeting.</v>
+
+00:00:34.837 --> 00:00:53.597
+<v Rob Forshier II>Okay, no worries. Well, good. Then do you want to do any talking in it? Because I mean, the whole point of it, like the 1st 20 minutes, I was just going to basically praise the team and just kind of walk through all of, you know, everyone's accomplishments and kind of show some of the things off. While I have you, though, I do have one question because I spun up the demo.</v>
+
+00:00:53.797 --> 00:00:59.797
+<v Rob Forshier II>And it does a lot of things more than what I thought it was going to do. I didn't realize how much you baked into this already.</v>
+
+00:01:01.717 --> 00:01:04.837
+<v Rob Forshier II>Is all this going to be redesigned?</v>
+
+00:01:09.957 --> 00:01:15.637
+<v Rob Forshier II>How much of this is like official like heart, you know, like production ready or yeah.</v>
+
+00:01:15.997 --> 00:01:36.997
+<v Pankaj Aggarwal>Yes, it is production ready. I did several runs. It is quite ready. In fact, yesterday we boot up, but whatever you are seeing so far, that's all working with the mock server. No backend API because it's not deployed yet or something. But yes, on the front end side, it's pretty much production ready, you know, in terms of security, code quality, everything, it's top notch.</v>
+
+00:01:26.277 --> 00:01:26.997
+<v Rob Forshier II>Right, right, right.</v>
+
+00:01:37.877 --> 00:01:39.877
+<v Rob Forshier II>Nice, great work, great work.</v>
+
+00:01:39.197 --> 00:01:50.997
+<v Pankaj Aggarwal>Back end is also getting baked in. We are very close on back end also now, but back end would require AWS and all to be properly able to tie up everything, but yeah, we we are we are kind of a way ahead of.</v>
+
+00:01:52.437 --> 00:01:52.837
+<v Rob Forshier II>Yeah.</v>
+
+00:01:56.037 --> 00:01:56.277
+<v Pankaj Aggarwal>Oh.</v>
+
+00:01:57.477 --> 00:01:58.357
+<v Rob Forshier II>Hey, Eric.</v>
+
+00:01:59.637 --> 00:02:00.197
+<v Pankaj Aggarwal>Eric.</v>
+
+00:02:08.437 --> 00:02:09.637
+<v Rob Forshier II>I think Pankaj was going to show.</v>
+
+00:02:10.143 --> 00:02:12.903
+<v Rob Forshier II>Showed up, so it's good, so we got him him here as well.</v>
+
+00:02:15.863 --> 00:02:22.983
+<v Rob Forshier II>So kind of as mentioned, we're just going to kind of wait to see who shows up. I don't know how much of the team will show up because I said it's super late for them.</v>
+
+00:02:23.703 --> 00:02:24.023
+<v Rob Forshier II>Um...</v>
+
+00:02:25.143 --> 00:02:29.943
+<v Rob Forshier II>The first 20 minutes, as I said, is just going to be more about just kind of sharing what accomplishments the team had. Hey, Matt.</v>
+
+00:02:30.863 --> 00:02:31.223
+<v Matthew Kaplan>Hey, Rob.</v>
+
+00:02:33.063 --> 00:02:51.583
+<v Rob Forshier II>Oh, and I got your e-mail, Eric, on the adding my Bounteous e-mail to the Jira or to the Figma. Sorry, I keep saying Jira instead of Figma. So yeah, so I'm already there and I checked and Claude has access. So whenever I get Christina's designs, I can get that kicked off on the filling in the middle. So.</v>
+
+00:02:46.503 --> 00:02:46.903
+<v Eric Rice>Possage.</v>
+
+00:02:53.543 --> 00:02:54.343
+<v Rob Forshier II>Cool.</v>
+
+00:02:53.623 --> 00:03:04.103
+<v Eric Rice>We can go over those quickly tonight. It should only take 5 minutes, and then I'll have her deliver exactly what you need. I want to make sure that it's like the highest quality and all that, and then we should be good.</v>
+
+00:03:05.063 --> 00:03:06.103
+<v Rob Forshier II>Okay, perfect, perfect.</v>
+
+00:03:07.143 --> 00:03:26.983
+<v Rob Forshier II>Well, I had planned about 20 minutes of discussion there, but as I said, you know, we can kind of play this one by ear because I said we have we have a lot, we have a little, then we're just kind of going to be jumping around. I didn't create any documents for you guys or like any fancy lucid diagrams. Sorry, this one is more just going to be kind of a show and tell slash talk, which feel free to ask questions as we go.</v>
+
+00:03:24.503 --> 00:03:24.903
+<v Eric Rice>Awesome.</v>
+
+00:03:27.623 --> 00:03:28.183
+<v Matthew Kaplan>Greg.</v>
+
+00:03:27.943 --> 00:03:28.343
+<v Eric Rice>Great.</v>
+
+00:03:29.343 --> 00:03:48.183
+<v Rob Forshier II>All right. Well, I think this is pretty much everybody that we're going to have, so I might as well kick it off. And I mean, really, this was just for y'all. And if anybody else, like Angie or anyone else, saw my team shows up, you know, just a bonus for them. But yeah, so let's go ahead and get started. So yeah, so I'm just going to kind of walk through and just kind of talk about some of the accomplishments the team had.</v>
+
+00:03:48.383 --> 00:04:07.143
+<v Rob Forshier II>So, I'm going to start with Pramod. So, Pramod is the delivery manager on the India side. He's been basically the one running the entire team, bringing people on and off. That was where we had, you know, one of our best iOS engineers had just some family issues, so he had to, you know, kind of be...</v>
+
+00:04:07.943 --> 00:04:26.823
+<v Rob Forshier II>Tapered off of this project, and then we had to bring another iOS on, so he's been like managing all that. He's also been working with Pankaj here a lot, and I know he's been also a lot very heavy in the emails with you, Eric, and getting up, you know, getting us set up with AWS and the Apple, and you know, all the things that we needed from your side as well, GitHub.</v>
+
+00:04:27.103 --> 00:04:44.983
+<v Rob Forshier II>which I know Pankaj is also going to be doing, which I'll let him actually share some of his things too, because he said I was going to share his, which he's actually next, which Pankaj, feel free to chime in as I like talk about your accomplishments. But for Pankaj, some of the first things that he's been laying down real heavy, and I'll start sharing my screen for this.</v>
+
+00:04:46.263 --> 00:05:07.543
+<v Rob Forshier II>which perfect. I should be sharing my screen, and I think my fonts are big enough. If not, just let me know I can blow these up a bit more. As mentioned, we got access to your GitHub, and so now we have two repos inside of your GitHub. We have the Scribble mobile app, which is the production-ready application that we're building right now.</v>
+
+00:04:57.303 --> 00:04:57.463
+<v Eric Rice>Yap.</v>
+
+00:05:07.903 --> 00:05:26.663
+<v Rob Forshier II>Then the Meta Scribble mobile app, which was best the complementary wiki brain repo, where we keep all of our assets and basically all of our knowledge around what the production app is. This meta app, as I said, it has a built-in wiki.</v>
+
+00:05:28.423 --> 00:05:46.743
+<v Rob Forshier II>One of the things that Pankaj has been doing is down in our engineering practice here, he's been laying down, you know, the what is the architectural layers, boundaries, what are the rules for the different things, how should things be laid down into there? Because, you know, with AI,</v>
+
+00:05:47.143 --> 00:06:08.183
+<v Rob Forshier II>you know, you always want to give these examples because you know it knows how to lay out these things, but like it can lay it out in like 8000 different ways. And so like it doesn't know your way. And so with this, like he's laying out like, no, no, we want these specific folders in this specific fashion to do this specific purposes. And so he has been going and laying down all of these best engineering practices.</v>
+
+00:06:08.423 --> 00:06:22.343
+<v Rob Forshier II>for, you know, front end architectures, dependency rules, the layers, our CICD and GitHub actions. I mean, this entire whole set here was spun up and produced by Pankaj here.</v>
+
+00:06:24.583 --> 00:06:43.143
+<v Rob Forshier II>So yes, very good on all that documentation is that and all of this as well as we've been building this out on your side. There's also now he is built out. Yes. So if you go to the scribble mobile app side and you click on your little wiki here, he's also even ratified. And this is more of like our tightly scoped like</v>
+
+00:06:46.103 --> 00:07:06.743
+<v Rob Forshier II>core packages and core instructions and information. For the most part, the, you know, our wiki, our meta repo has the majority of these things baked into this. This is just like laying down a lot of like the big standards, a lot of the setup procedures and stuff like that. So we have built this wiki out inside of your VitHub as well. So feel free to peruse all of this. As you can see, you know, we've been kind of</v>
+
+00:07:07.023 --> 00:07:12.023
+<v Rob Forshier II>You know, updating here as well as the meta repo, um, so yeah, so this is going really good.</v>
+
+00:07:13.823 --> 00:07:23.383
+<v Eric Rice>So when I imagine this will play heavily into, you know, when we bring on that internal dev that's required at the end of this project, they're going to be able to really do some damage with this.</v>
+
+00:07:23.863 --> 00:07:42.183
+<v Rob Forshier II>Oh, yes, yes, exactly. In fact, then we'll start building on, and I think we also do have some onboarding pages on here, and in fact, Pankaj, I know, has been building these onboarding pages out as well. So that, yes, we can, you know, what access do they need, what tools they need, you know, what software do they need, and then they can just hit the ground running the second they get, you know, run through their checklist of things.</v>
+
+00:07:42.823 --> 00:07:45.143
+<v Rob Forshier II>So I believe we even have like an onboarding set in here.</v>
+
+00:07:42.903 --> 00:07:43.303
+<v Eric Rice>Awesome.</v>
+
+00:07:45.863 --> 00:07:46.423
+<v Matthew Kaplan>Rupal.</v>
+
+00:07:47.143 --> 00:08:04.343
+<v Pankaj Aggarwal>Not only that, we are also building scripts. So there is a, maybe, I don't know, Rob, you might have tried or not something, but there is a PNPM command, bootstep command. As soon as you run this command, it will install all the dependencies and all. Couple of things cannot be automatically installed like Xcode or something if somebody wants to set up a machine, but.</v>
+
+00:07:47.423 --> 00:07:47.703
+<v Rob Forshier II>Yeah.</v>
+
+00:08:04.983 --> 00:08:08.823
+<v Pankaj Aggarwal>Other than that, every package or something that needs to be installed, it will automatically install.</v>
+
+00:08:09.703 --> 00:08:18.423
+<v Pankaj Aggarwal>There is, there is a document called developer setup document. If you go to wiki, yeah, that bootstrap command that you were seeing, this one, this will set up everything, yeah.</v>
+
+00:08:10.103 --> 00:08:10.663
+<v Matthew Kaplan>Very cool.</v>
+
+00:08:19.343 --> 00:08:20.903
+<v Rob Forshier II>Alright, what page are you talking on here?</v>
+
+00:08:22.263 --> 00:08:25.383
+<v Pankaj Aggarwal>There is a, there's a local setup, yeah.</v>
+
+00:08:23.583 --> 00:08:24.623
+<v Rob Forshier II>Local setup, probably.</v>
+
+00:08:29.223 --> 00:08:33.383
+<v Pankaj Aggarwal>That that'll explain everything what you need and all, plus there are a couple of scripts are there.</v>
+
+00:08:38.943 --> 00:08:40.103
+<v Rob Forshier II>Beautiful, great work.</v>
+
+00:08:43.463 --> 00:09:02.023
+<v Rob Forshier II>So, all right, so, and then Nitish has been knocking out all of our API contracts. He has a PR that's been merged into our back end as well. He's even been ratifying that with the prototype because since the prototype had all the functionality that we wanted, though it did have, you know, some things here and there left over from like challenges and things like that.</v>
+
+00:09:02.743 --> 00:09:15.303
+<v Rob Forshier II>He's been like kind of weeding through it and then figuring out like, okay, here's what the prototype did, but here's what we need for production. So he's been kind of rejiggering all of our API endpoints to match what we need for production. So he's been laying all that down.</v>
+
+00:09:18.183 --> 00:09:37.303
+<v Rob Forshier II>Karuna, as we know, has been our QA. She's trying to figure out, like, you know, testing approaches. She's been trying to lay down a lot of her new testing patterns. She's still trying to figure out exactly like all the testing frameworks that we want to use, but she's been doing a really good job getting all that stuff going. And in fact, in the future, we're going to work with her because...</v>
+
+00:09:37.543 --> 00:09:56.663
+<v Rob Forshier II>Once she figures out the test patterns that she wants and what good tests look like for her, we can bake that into our SLT process. So as the team is developing, it will just write tests as if it was based on how, you know, how she would write them. So we can start actually baking a lot of that into like our actual skills themselves.</v>
+
+00:09:52.663 --> 00:09:52.983
+<v Matthew Kaplan>Yeah.</v>
+
+00:09:57.023 --> 00:10:18.103
+<v Rob Forshier II>Even when we start to create users, or if we need to create new stories or we just want to go back and just add, say, the test cases to existing feature or stories that we already have in the backlog, we can just update our scripts to then just use the templates that she lays down and then we can just go back over and it'll just start hammering out and just knocking out all the test cases. So then when the devs then go back over the Jira backlog,</v>
+
+00:10:18.343 --> 00:10:23.063
+<v Rob Forshier II>Those have all the test cases right there, and then they can be built out as a part of the SLT process.</v>
+
+00:10:29.463 --> 00:10:51.623
+<v Rob Forshier II>Shubh has been working a lot on like the playbooks, so a lot of like the iOS side and getting everything laid down. I know he's been working a lot with Punkin Jon this. And so, I mean, you know, he's been kind of doing things here and there, so it's not like as easy to show some of his work, but as I said, he's been like the one kind of helping a lot with a lot of like the deep iOS understanding and knowledge out there.</v>
+
+00:10:54.383 --> 00:11:12.263
+<v Rob Forshier II>So other things to talk about inside of the wiki that I just want to highlight. So kind of as mentioned, which is that this is inside of your repo now, so you can actually just come pull this down, do like 2 commands, just install, which will just pull down all the packages, and then run it, which then will just display this as it is.</v>
+
+00:11:13.623 --> 00:11:34.423
+<v Rob Forshier II>So kind of as mentioned, every day, all of our stand-ups get ingested, any workshops, all those get ingested, which we ingest because this is a brain repo too. It keeps it, we pull in the transcript themselves, so we have the raw transcript. So if say we later on need to mine it for some other information, because this is just mining it for a specific template,</v>
+
+00:11:34.903 --> 00:11:55.903
+<v Rob Forshier II>We have all that raw data available to mine later if we need to, but it does generate summary pages as well. And that's sort of like what you're seeing here is we kind of get like an overall, like, you know, what happened in that stand up? What's a summary? What are some of the action items that came out of it? And then some of the questions, which I mean, we even used this the other day to just like, oh yeah, what were the follow-ups we needed? And so this is, you know,</v>
+
+00:11:55.983 --> 00:12:15.863
+<v Rob Forshier II>Just a great thing to just have, just kind of like keep us recorded. And all this is now auto set up to where it just automatically, we automatically record now. And then there's a script just built into the repo that's just called ingest standup that anyone can run and it'll just create these pages from now on. And if they have the Office 365.</v>
+
+00:12:16.183 --> 00:12:34.663
+<v Rob Forshier II>skill incorporated with their Claude code. It'll even pull the transcripts automatically for them to, like, sort of like how I do it now. I actually just tell Claude, hey, we had the stand up. It'll go check and see if this transcript's available. If it is, then it just pulls it in and just, you know, runs the skill. And then I just have a PR to approve and merge and then we have a new page and everything's all in there.</v>
+
+00:12:35.183 --> 00:12:36.103
+<v Rob Forshier II>which is pretty cool.</v>
+
+00:12:39.663 --> 00:12:58.343
+<v Rob Forshier II>And then, so some of the things, and for me, this is, you know, some of the work that I did. So one thing that I actually did during the sprint, I kind of forgot that I did it too, was we had the original prototype, which hadn't been touched in a while. And, you know, Eric had gone through and created, you know,</v>
+
+00:12:59.463 --> 00:13:21.463
+<v Rob Forshier II>our onboarding, our invite flow. And then we had kind of redesigned some of the screens. And so one of the big tickets that I did, which took me about 3 days of this sprint, was just rejiggering the prototype to match exactly the functionality that we wanted. And then additionally to that, there was even the time where I was even able to</v>
+
+00:13:22.343 --> 00:13:41.623
+<v Rob Forshier II>add our compose screen now, because again, remember that was completely brand new and I just made that one up on the spot, which, you know, Eric did a great job of demoing what that was to me, because I think even Pankaj, like, or maybe it was Pramod, like, watched the recording of our session, Eric.</v>
+
+00:13:41.943 --> 00:14:00.983
+<v Rob Forshier II>And he was like, that was exactly like how Eric defined, or you know, said that he wanted it. So, I mean, like, as I said, like, if you could just say how you want things, a lot of times it's like, if you just make it come into, you know, you can just magically make it happen. And so, like, as example, you know, we can kind of pick a couple, actually, let me pick, so we can kind of part pick some of these now.</v>
+
+00:13:47.183 --> 00:13:48.103
+<v Pankaj Aggarwal>So, but.</v>
+
+00:13:47.383 --> 00:13:47.543
+<v Matthew Kaplan>Yes.</v>
+
+00:14:01.543 --> 00:14:20.023
+<v Rob Forshier II>Here you can see we already was playing with composition now, so these are compositions of compositions. Now we actually have all this, and since now we're doing all just the shape data, we can actually have all this. I'm not going to lie, I was pretty proud that this first pass, it did this, and I was just like, wow, that's awesome.</v>
+
+00:14:20.143 --> 00:14:24.263
+<v Rob Forshier II>Awesome. And it does, it looks exactly how you demoed it, Eric. I couldn't believe it.</v>
+
+00:14:21.223 --> 00:14:21.623
+<v Matthew Kaplan>Yeah.</v>
+
+00:14:25.383 --> 00:14:41.863
+<v Eric Rice>No, I mentioned to you, thank you for bringing this to life because it's been something I've been trying to get off the ground for probably years now. And then also seeing people play with it in real time in the demo and like how we're already getting shares of people doing it and like people getting excited about it and saying that it's fun. So it's really cool.</v>
+
+00:14:31.303 --> 00:14:31.783
+<v Rob Forshier II>Yeah.</v>
+
+00:14:42.663 --> 00:14:55.863
+<v Rob Forshier II>Nice, nice. Yeah, I periodically will come in here and then log out and then go look at like Christina's just to see, because I know that she has like a group with scribble in here. I think we've got it set on this.</v>
+
+00:15:00.343 --> 00:15:01.383
+<v Rob Forshier II>That's my Claude.</v>
+
+00:15:05.063 --> 00:15:24.423
+<v Rob Forshier II>Yeah, I occasionally come in here just to see like what, you know, what everybody's been drawing or doing on here. Maybe it's the scribble family one has more in it. Oh, yeah, the scribble family. Yeah, yeah. Oh, and Matt, that was something I've been actually meaning to tell you. So if you wanted to experience my version of the what happens when you miss a day,</v>
+
+00:15:12.743 --> 00:15:14.423
+<v Eric Rice>Yeah, scribble family is pretty active.</v>
+
+00:15:25.063 --> 00:15:25.463
+<v Matthew Kaplan>Yap.</v>
+
+00:15:25.383 --> 00:15:43.463
+<v Rob Forshier II>If you just go ahead and like, you know, in one of your walls, have one person do their picture and then one person not, and then just wait one day later and you'll get this, where it's like, it's that like, you know, you want to view the wall, but tell me like, why did you miss this and why you want to reflect? And then the second you enter in your message,</v>
+
+00:15:43.503 --> 00:16:03.303
+<v Rob Forshier II>and then say save reflection, then it shows you that day. So kind of to that point of like, you know, grandma forgot to, you know, do her day, but she wants to see what the kids did. You know, she'd come in here and be like, oh, I was just busy getting groceries and just didn't get a chance to scribble for the day, you know, but I want to see what the kids did. And so now they can come in and see what the kids did.</v>
+
+00:16:03.543 --> 00:16:16.743
+<v Rob Forshier II>As I said, I think we need to tune that experience, but yeah, as I said, I mean, that was my vision of it. I know we wanted to tune that a little bit, but yeah, that's there. Was that a composite one? That has to be. Yeah, that's cool.</v>
+
+00:16:18.663 --> 00:16:24.583
+<v Eric Rice>Wasn't Abby probably drew all those, honestly. She probably sat there and did that because she throws big parties like that. Yep.</v>
+
+00:16:19.063 --> 00:16:19.463
+<v Rob Forshier II>OK.</v>
+
+00:16:22.023 --> 00:16:22.663
+<v Rob Forshier II>Ha ha.</v>
+
+00:16:25.943 --> 00:16:26.423
+<v Rob Forshier II>Nice.</v>
+
+00:16:31.463 --> 00:16:49.943
+<v Rob Forshier II>Very cool. So yeah, so as I said, got that up to date with what we were thinking of the MVP. And then as I said, once the designs come and once I see the designs, I get them filled in, I'll even finish the prototype off so that then it's kind of as close to our production MVP view as what we want as well.</v>
+
+00:16:54.583 --> 00:17:15.463
+<v Rob Forshier II>Then while I'm still talking about me, some other accomplishments were our backlog, which in all of our backlog is also can be found inside of the wiki. Sorry, I'm trying to find the wiki. Here's the wiki. I built actually everything first starting off inside of the meta repo.</v>
+
+00:17:15.703 --> 00:17:35.943
+<v Rob Forshier II>The meta repo has skills built into it for knowing how to interact with the Jira board, how to, it has templates for what user story should look like, it has templates for what features should look like, spikes, etc. And so since this has all of the team's knowledge in it, this has our future designs in it,</v>
+
+00:17:36.183 --> 00:17:56.183
+<v Rob Forshier II>This just kind of makes it like just one easy, nice spot to just kind of collect and build out our thoughts. So like if you come in here, you can kind of see, you know, here's the epics and this will match to the epic list that you'll see on the Jira side as well. And yeah, and as I said, and I took from our Lucid board, remember all of this matches to</v>
+
+00:17:56.423 --> 00:18:04.103
+<v Rob Forshier II>this design board that we had done during our workshop, where we took out, you know, here are the parts and the pieces, and then it kind of prioritized them.</v>
+
+00:18:05.943 --> 00:18:10.743
+<v Rob Forshier II>I have a feeling with how fast some of the things are going that we're going to get a lot further on this.</v>
+
+00:18:12.743 --> 00:18:36.823
+<v Rob Forshier II>Really starting with the prototype, I feel like really helps a lot because we're not having to discover this constantly. The team can see the final version. I think coming from the prototype, this really helps speed up things. We got about 4 minutes. The last thing I'm going to show before we go over to, I want to have Eric do the designs is,</v>
+
+00:18:28.663 --> 00:18:29.863
+<v Matthew Kaplan>That's amazing.</v>
+
+00:18:37.423 --> 00:19:01.863
+<v Rob Forshier II>I spun up what Punkage has already built, and this is locally built inside of the Scribble repos. So this is Scribble mobile app right here. I took the time this morning to spin it up to just kind of see where it was, because I was like, I was just honestly expecting like a login screen and maybe like one page, which in fact, that's why when you came on this morning, Eric, I was talking with him about this, because I didn't realize how far he had gotten this already.</v>
+
+00:19:02.183 --> 00:19:25.783
+<v Rob Forshier II>This is already production ready. This is the front-end only, so this has a mock back-end. Obviously, this isn't connected to AWS yet. Still very impressive. I couldn't believe how far it is already. I'm going to go ahead and sign in right now. We already have our prompt for the day. I think there was even, when I had originally signed in, like a first sign-in screen set, but</v>
+
+00:19:25.903 --> 00:19:46.263
+<v Rob Forshier II>As I said, like, you know, we'll figure all that out. But so we got, let's see, let's go ahead and draw today again. So we've got, you know, a prompt at the top. And again, you know, this is as much as it's gotten. So we'll go ahead and, you know, we got undo, so that seems to be working. So just kind of demoing that. So we undo, all right, so that's all seem to working.</v>
+
+00:19:49.143 --> 00:19:59.463
+<v Rob Forshier II>Clear, oh yeah, and we got a nice little picture, clears it all out. That's cool. All right, I'll go ahead and go with that. All right, tell the story, so...</v>
+
+00:20:01.943 --> 00:20:08.183
+<v Rob Forshier II>Circle, OK, always, and oh, I guess I can pick some other ones to put it into.</v>
+
+00:20:10.023 --> 00:20:11.463
+<v Rob Forshier II>Alright, share it.</v>
+
+00:20:12.743 --> 00:20:25.863
+<v Rob Forshier II>We have already our stats. We'll have to see how much these, it actually kind of looks like it's been working. I'll have to double check to see how far it goes. As you can see, we already have some walls.</v>
+
+00:20:27.703 --> 00:20:39.783
+<v Rob Forshier II>So let's see. So we can click on these. It looks like we have some bubbles down here of pics that we can do. And so we'll have to maybe figure out, kind of see what that does. I don't know if that saves. Let me see if that saves.</v>
+
+00:20:40.983 --> 00:20:52.743
+<v Rob Forshier II>Okay, so, you know, obviously, as this says, like, this is, this is, you know, this is what it is. But yeah, okay, awesome. So we got a share screen. Let's see how far this goes. Okay, so that's about as far as that goes.</v>
+
+00:20:53.943 --> 00:20:54.103
+<v Rob Forshier II>Yap.</v>
+
+00:20:56.383 --> 00:21:15.463
+<v Rob Forshier II>Sorry, I didn't want to do that. There we go. Okay, sorry, let me click out of here. All right, let's go into a regular wall. So this one's got some individuals in it other than me. So okay, so they haven't drawn yet. So it says that I've unlocked for the day. And let's see, I can create a new wall. So XDF.</v>
+
+00:21:16.943 --> 00:21:23.183
+<v Rob Forshier II>And so that works. So let me double check. So now we should see an ASDF wall. Oops.</v>
+
+00:21:26.023 --> 00:21:32.423
+<v Rob Forshier II>Sorry, my scroll's not working now. I did too much and now my scrolling's not working. But yeah, so looks like we already have like a good chunk of set. Go ahead.</v>
+
+00:21:30.823 --> 00:21:31.463
+<v Pankaj Aggarwal>You can.</v>
+
+00:21:33.383 --> 00:21:51.503
+<v Pankaj Aggarwal>You should probably see this application is primarily built for IS, but I've added support for web also so that we can at least locally we can run and try, you know, a couple of things firsthand to speed up the development and all, but you are probably not able to scroll because you can tap anywhere on screen and just.</v>
+
+00:21:52.103 --> 00:21:55.303
+<v Pankaj Aggarwal>Don't wait for scrollbar, tap anywhere on screen and try to scroll up.</v>
+
+00:21:57.223 --> 00:22:11.143
+<v Rob Forshier II>So I'm using the web form. I'm using the web one. I tried to do the iOS this morning, but since I didn't set up all the iOS stuff yet, or the Apple account, it wouldn't let me. It got hard blocked out some things. So that's why I just did the web view this morning.</v>
+
+00:21:57.423 --> 00:21:58.103
+<v Pankaj Aggarwal>Like, like.</v>
+
+00:22:11.543 --> 00:22:30.743
+<v Pankaj Aggarwal>By the way, I have full setup, not right now running because today was holiday, so I was, I'm taking it from another machine, but yeah, maybe somewhere next week, Monday or Tuesday, I can show it on a real iPhone device because I have everything, you know, locally set up. It's perfectly working fine on a iPhone or something else.</v>
+
+00:22:32.183 --> 00:22:33.143
+<v Eric Rice>So that's incredible.</v>
+
+00:22:34.063 --> 00:22:47.623
+<v Rob Forshier II>So yeah, so I mean, this is our first week. I honestly, I didn't expect it to get this far, but as I said, it helps when the prototype is using like almost the same framework, so we can steal so much from it. As I said, this is going to be a real fun one to deliver.</v>
+
+00:22:50.703 --> 00:22:53.063
+<v Rob Forshier II>All right, and then yeah, sorry, go ahead.</v>
+
+00:22:51.383 --> 00:22:55.543
+<v Eric Rice>I've got a couple quick questions about, oh, I'm so sorry, go ahead. I can wait.</v>
+
+00:22:56.583 --> 00:23:19.063
+<v Rob Forshier II>Oh, and then basically I was just going to kind of go and show like, you know, we're still working on the JIRA board. And as I mentioned, I'll bring Eric in probably middle of next week. We're starting to lay down. And this is, you know, we brought Rajeev in to help our PM. And so he's been helping on the India side. And he just got access on, I think, Thursday or Friday. So he's still working on this.</v>
+
+00:23:19.543 --> 00:23:38.903
+<v Rob Forshier II>But we have, as I said, all the ethics and features are laid down, and the team is just now starting to do it, starting to get in here and kind of like tweak and tune things. But yeah, so we're starting to get this knocked out. And so this sprint ends today, and so we'll start on our sprint two, which is then, you know, the next one next week. And there's when we really start getting like...</v>
+
+00:23:39.023 --> 00:23:53.383
+<v Rob Forshier II>You know, our AWS spun up and start getting actual, like, the real back end going, and really just like laying down the rest of the foundation to then really support the Scribble app, the Scribble front end. Go ahead, Eric, what were your questions?</v>
+
+00:23:54.423 --> 00:24:12.423
+<v Eric Rice>So real quick, back to the wiki. I haven't delved too much into it. We've got two things coming up that I could very much help with. One is we, after a lot of work and a whole lot of luck, have the patent for a lot of this. And so we need to update the patent people.</v>
+
+00:24:13.143 --> 00:24:34.343
+<v Eric Rice>and our lawyers with the D to C goings on. And so one of the things they're going to ask for is, where is this? How is it built? What's the framework? Give us a snapshot of exactly what's going on behind the scenes. And so is there a spot in the wiki that just kind of, literally just a screenshot I can share with them or a paragraph?</v>
+
+00:24:34.583 --> 00:24:40.903
+<v Eric Rice>or even a list of that can explain that very quickly. Architecture diagrams, something similar to that.</v>
+
+00:24:44.583 --> 00:25:03.423
+<v Rob Forshier II>So I would say we have kind of everything would be in kind of spawned across different areas inside of here. So what I would say is if you want a very specific, if you can get me that outline, I will create a specific page for you. All the details in here. So if you actually spin up Claude and then gave it the list of things that you want, it would find everything and build you a composite page of what you want.</v>
+
+00:25:03.703 --> 00:25:10.423
+<v Rob Forshier II>But right now I don't have the exact one. But is that if you send me the full list of everything that you want, I can easily make the patent page.</v>
+
+00:25:10.983 --> 00:25:14.343
+<v Eric Rice>Awesome. Yeah, that would just be helpful. Go ahead.</v>
+
+00:25:12.263 --> 00:25:12.583
+<v Matthew Kaplan>Yap.</v>
+
+00:25:14.943 --> 00:25:28.103
+<v Matthew Kaplan>Yeah, I was just gonna say the other thing, Rob, and I don't know, you know, I don't know the inner workings as far as, you know, your agentic engineering platform, you know, what's proprietary versus what is not, but my guess is, you know...</v>
+
+00:25:30.103 --> 00:25:48.103
+<v Matthew Kaplan>they will probably ask about that. And, you know, certainly there's proprietary things to you. I assume there's proprietary things to anthropic. So we'll just have to, we'll just have to, you know, and maybe that's something I can ping Marty about because he's, him and I have been talking about kind of the IP and that was,</v>
+
+00:25:48.503 --> 00:26:02.583
+<v Matthew Kaplan>That was one of the things that we had worked through kind of in the SOW and the MSA. So if it's easier for me to lean on him for that, I can also, you know, feed that to him and maybe he can feed it to you. I'm just not sure how that's going to work.</v>
+
+00:26:03.623 --> 00:26:04.263
+<v Rob Forshier II>Yes, it.</v>
+
+00:26:05.903 --> 00:26:26.903
+<v Rob Forshier II>You can start with me, that's fine. I don't mind supporting that. So one thing to note, so everything that's been built here has been, so we have Arc. Arc is something that is our internal platform. This is something that we're going to be bringing in to start using, and that's where our Arc IP comes in.</v>
+
+00:26:07.623 --> 00:26:08.023
+<v Matthew Kaplan>Okay, cool.</v>
+
+00:26:27.383 --> 00:26:45.623
+<v Rob Forshier II>But nothing that was actually built here actually was from that ARC IP. It's from custom harnesses that just I know how to build because I'm one of the experts in that area and building clod harnesses. So this was all just literally just me building it out based on like how we do all of our clod and stuff like that inside of Bounteous.</v>
+
+00:26:37.383 --> 00:26:38.943
+<v Matthew Kaplan>Sure, OK.</v>
+
+00:26:47.223 --> 00:26:48.823
+<v Matthew Kaplan>Yeah, and and if a pro...</v>
+
+00:26:47.303 --> 00:26:49.183
+<v Eric Rice>We want to have a better idea of what we need within that.</v>
+
+00:26:50.023 --> 00:27:09.783
+<v Matthew Kaplan>I was going to say, if appropriate, you know, obviously, if you have the time, our RIP attorney is a dear friend of mine, and he's a sharp guy. He might just ask, hey, is Rob available, you know, for a quick chat? He's a very tech savvy guy. This is what he specializes in. So versus us trying to communicate, you know,</v>
+
+00:27:09.983 --> 00:27:16.823
+<v Matthew Kaplan>play the telephone game, it might just be easier to get you and Ed and Nidhi on the phone for 1/2 hour or 20 minutes.</v>
+
+00:27:17.223 --> 00:27:17.943
+<v Rob Forshier II>That works.</v>
+
+00:27:18.343 --> 00:27:19.703
+<v Matthew Kaplan>Awesome. Okay, I appreciate that.</v>
+
+00:27:19.303 --> 00:27:25.943
+<v Rob Forshier II>Yeah. And especially if he can come with the list ahead of time to give to me so that I can show up better prepared, that works better.</v>
+
+00:27:26.503 --> 00:27:27.063
+<v Matthew Kaplan>Absolutely.</v>
+
+00:27:27.703 --> 00:27:30.903
+<v Rob Forshier II>I'm a military vet, so I'm always trying to be prepared for things.</v>
+
+00:27:31.303 --> 00:27:31.423
+<v Matthew Kaplan>Yeah.</v>
+
+00:27:32.103 --> 00:27:40.423
+<v Rob Forshier II>That's I even have like a cheat sheet that even opens up like pages for me and like has a talking time thing at the top. So yes, I always have to be prepared. Yes.</v>
+
+00:27:43.223 --> 00:27:43.623
+<v Rob Forshier II>Um...</v>
+
+00:27:43.383 --> 00:28:02.263
+<v Eric Rice>I guess in that same vein, you know, Marty and Sanju and some friends over at AWS, they're going to help us kind of identify this internal dev we're going to bring on. So a snapshot for capabilities or something similar for them might be super helpful. Like what would they need to be versed in and understand in order to fully</v>
+
+00:28:02.903 --> 00:28:05.543
+<v Eric Rice>grasp what you're handing them and onboard quickly.</v>
+
+00:28:06.463 --> 00:28:10.503
+<v Rob Forshier II>Okay, is that just one engineer that you're looking to bring on or?</v>
+
+00:28:12.103 --> 00:28:13.543
+<v Matthew Kaplan>We're thinking it's an individual.</v>
+
+00:28:12.383 --> 00:28:12.903
+<v Eric Rice>What was that?</v>
+
+00:28:14.063 --> 00:28:14.343
+<v Eric Rice>Yeah.</v>
+
+00:28:15.303 --> 00:28:34.023
+<v Rob Forshier II>Okay, okay, yeah, we can we can help you do a write up, because that's the nice part is we have all the tech stack and everything in here, so we can use that as then, oh, well, they need to know this exactly. So, yeah, so we can easily build you out on something like that too. And again, that's the nice part about the meta the meta repo is everything's in one spot, so you can just...</v>
+
+00:28:34.183 --> 00:28:39.863
+<v Rob Forshier II>do cloud queries off of it. And there's built-in query commands in this brain repo for querying.</v>
+
+00:28:36.343 --> 00:28:36.743
+<v Matthew Kaplan>Bhasin.</v>
+
+00:28:41.703 --> 00:28:44.903
+<v Eric Rice>Yeah, that's why I asked. I was like, I think everything we need is probably in there.</v>
+
+00:28:45.303 --> 00:28:46.103
+<v Matthew Kaplan>Just.</v>
+
+00:28:45.383 --> 00:28:46.183
+<v Rob Forshier II>Yeah, yeah.</v>
+
+00:28:46.063 --> 00:28:46.263
+<v Eric Rice>Greg.</v>
+
+00:28:47.143 --> 00:28:48.423
+<v Matthew Kaplan>Spit out the job description.</v>
+
+00:28:49.863 --> 00:28:58.823
+<v Rob Forshier II>Yeah, I mean, to be truthfully honest, if you just said like, hey, you know, create me a job description, here are the things that I'm looking for, and spend it up off this meta repo, it would just produce it for you.</v>
+
+00:28:59.623 --> 00:29:00.583
+<v Matthew Kaplan>Yeah, amazing.</v>
+
+00:29:02.343 --> 00:29:02.583
+<v Rob Forshier II>Yeah.</v>
+
+00:29:05.063 --> 00:29:12.663
+<v Rob Forshier II>Right, Pankaj, is there anything else that you'd like to share while we're talking? Because then next, I'm going to switch over and then have Eric show us then the designs.</v>
+
+00:29:14.183 --> 00:29:16.583
+<v Pankaj Aggarwal>No, I think we are good. You already should.</v>
+
+00:29:16.543 --> 00:29:17.383
+<v Rob Forshier II>Okay, awesome.</v>
+
+00:29:19.463 --> 00:29:21.623
+<v Rob Forshier II>Eric, if you want to take over.</v>
+
+00:29:23.543 --> 00:29:24.703
+<v Eric Rice>In cycles.</v>
+
+00:29:29.383 --> 00:29:35.623
+<v Eric Rice>So as I mentioned yesterday, you know, these are Christina's initials, but they're done. She just needs to, you know.</v>
+
+00:29:37.063 --> 00:29:41.543
+<v Eric Rice>Basically, remove a couple of things and then export them in the best way possible, and we'll have them ready to go.</v>
+
+00:29:42.143 --> 00:29:42.583
+<v Rob Forshier II>Perfect.</v>
+
+00:29:50.423 --> 00:29:52.023
+<v Eric Rice>Yeah, but you guys are alright, cool.</v>
+
+00:29:54.983 --> 00:29:55.943
+<v Eric Rice>Oh.</v>
+
+00:29:58.263 --> 00:30:17.743
+<v Eric Rice>So she went through those four or five screens that I had tasked her with. These are, like I said, they're mock-ups. So I think anything beyond these that we would need for resolution sizes, we can definitely talk about that. Like what's the best size for her to deliver this to you so that it can be used across.</v>
+
+00:30:17.863 --> 00:30:19.063
+<v Eric Rice>All Apple devices.</v>
+
+00:30:20.183 --> 00:30:41.703
+<v Eric Rice>Couple quick changes. So we're going with this second one here for the main screen. And then essentially this is like a Goldilocks between the prototype you created and our B2B game. It's a little less intense than the B2B game. It's got a little bit more flair than the prototype and everything font-wise, sizing, hierarchy.</v>
+
+00:30:42.503 --> 00:30:45.463
+<v Eric Rice>Logos, all of that is correct, and I am by our brand book.</v>
+
+00:30:47.063 --> 00:31:04.503
+<v Eric Rice>So for, it's all kind of splashed together, but I'll do my best to kind of isolate things. We actually really like this middle one here for the login screen. It does have a gradient, and we weren't sure if that was possible or how it could be handled, but if it is possible, we would love that.</v>
+
+00:31:06.543 --> 00:31:11.783
+<v Eric Rice>And then going from there over to the home screen, we actually...</v>
+
+00:31:12.943 --> 00:31:35.143
+<v Eric Rice>What would this one here? A couple things she took liberties with that we can definitely roll back. One is that she had the stats in the wall, like the home in the walls on different pages that you would swipe over. We can definitely just continue the way we're doing it with the walls being underneath the stats. And I think that might actually be better for the MVP to keep this page as simple as possible.</v>
+
+00:31:37.143 --> 00:31:57.143
+<v Eric Rice>One thing I did like is the icons in the space given for the walls is actually the same dimensions as the drawing canvas. So in the future, we could let people, similar to how they do the avatars, draw the mascot or the logo or whatever it is for their wall.</v>
+
+00:31:56.263 --> 00:31:56.983
+<v Rob Forshier II>I like that.</v>
+
+00:31:59.223 --> 00:32:12.183
+<v Eric Rice>She also, there's definitely a few things added in, and I can have her remove them if needed. She put like these little indicators here, so there's seven new drawings on the scribble wall, there's three new drawings on the baseball team, so you can kind of see what is active.</v>
+
+00:32:14.263 --> 00:32:35.303
+<v Eric Rice>Back over here, again, the two page thing, but we can definitely just do it in one if that works easier. She added a see more here, which I thought was interesting. So for the future, could people dive deeper into their stats and possibly even like, say, share them out similar to how you would do a Spotify wrapped or, you know, here's my current scribble standings, that kind of thing.</v>
+
+00:32:35.863 --> 00:32:55.263
+<v Eric Rice>Obviously not in the MVP. And then this one here was trending. So what's, I think she took this from possibly a health app that she uses, but it kind of like if she continues better each week, it gives you, you know, affirmations like, oh, you're doing that much better than last week. You're up two days from last week, that kind of thing.</v>
+
+00:32:55.703 --> 00:32:59.063
+<v Eric Rice>again, at the data point that we could figure out and add later on.</v>
+
+00:33:00.223 --> 00:33:17.383
+<v Eric Rice>And then only other thing major on this page was she wanted to take down the draw button to match the other two. Right now it's kind of like big down there. And I think she has a reasoning for it. She explains it at length. She just wanted to have it more like this.</v>
+
+00:33:18.903 --> 00:33:37.543
+<v Eric Rice>So that was that. We'll go over to the shares. Again, we'll go with this blue for the shares. And this one we preferred better. We'll put the logo a little bit bigger, probably in the lower right, similar to the current share. And then we're going to remove the date.</v>
+
+00:33:38.823 --> 00:33:47.943
+<v Eric Rice>I think the date was originally identified, like which prompt it was and which day it came out. People could share at any point, so it seems kind of unneeded, so we'll remove that.</v>
+
+00:33:50.503 --> 00:34:07.223
+<v Eric Rice>And I think the last thing was, oh, canvas. So we went with this middle one. If it's problematic to have it on 2 lines, we can definitely go back to the one line. The reason we liked this was even in the B2B game,</v>
+
+00:34:08.383 --> 00:34:22.423
+<v Eric Rice>Our fat fingers are constantly picking the wrong color because they're incredibly small. So she liked this compromise with the two lines and then stretching out the undo and the trash and then having that bottom line just be the single action of I'm done.</v>
+
+00:34:25.943 --> 00:34:33.623
+<v Eric Rice>Obviously, space, taking space into consideration if it's possible. If not, we can definitely work something out with a single leg.</v>
+
+00:34:37.823 --> 00:34:39.343
+<v Eric Rice>So this is what she has.</v>
+
+00:34:41.063 --> 00:34:59.663
+<v Eric Rice>Would you think that's enough to feed that into what you have and create anything else you need to create? Do you need additional assets? Do you need additional just raw assets, shapes and colors and things like that? Basically, I'm going to meet with her one more time, isolate what we chose, and then she's going to deliver the...</v>
+
+00:35:00.143 --> 00:35:01.783
+<v Eric Rice>You know, the full AI files.</v>
+
+00:35:02.623 --> 00:35:03.623
+<v Rob Forshier II>Okay, perfect.</v>
+
+00:35:07.863 --> 00:35:25.463
+<v Rob Forshier II>I mean, I think there's enough. I definitely, the colors would definitely help. So I mean, if she was like defining like a design system, which I think I already have your scribble icon. I remember someone reminding me that to also get the icon, which I know you gave me the icon before, but you gave it to me on like a...</v>
+
+00:35:26.983 --> 00:35:34.503
+<v Rob Forshier II>a grid where it was like on an iPhone or like, you know, a grid of a phone. So yeah, so yeah, so as long as we have the logo.</v>
+
+00:35:33.223 --> 00:35:35.103
+<v Eric Rice>Yeah, we can definitely put all those together.</v>
+
+00:35:35.623 --> 00:35:44.583
+<v Rob Forshier II>The color system, yeah, and I think, and then yeah, if you just give me then just the screens that are the approved ones, that would be great.</v>
+
+00:35:46.223 --> 00:35:48.423
+<v Rob Forshier II>And yeah, I should be able to easily fill that in.</v>
+
+00:35:46.943 --> 00:35:47.063
+<v Eric Rice>Yeah.</v>
+
+00:35:50.183 --> 00:35:58.263
+<v Eric Rice>And then anything additional, if you're like, hey, we really need some work on this screen, I think she could turn something around really quick with what she has.</v>
+
+00:35:58.903 --> 00:36:13.303
+<v Rob Forshier II>Yeah, basically, once I re-render them, I'll push them off to you before I like then try and implement them. And then we can be like, hey, how did this screen that I came up with come out? Like, does, you know, does this need to be rejiggered at all? So yeah, maybe we do something like that.</v>
+
+00:36:14.263 --> 00:36:23.623
+<v Eric Rice>Yap, she also agreed, she's like, you know, when those screens come back, I'm happy to look at them, even if it's in, you know, during a live meeting and just yes, no, yes, no, right down the right down the wall, so.</v>
+
+00:36:22.343 --> 00:36:22.823
+<v Rob Forshier II>Mhm.</v>
+
+00:36:24.143 --> 00:36:24.823
+<v Rob Forshier II>Okay, perfect.</v>
+
+00:36:25.463 --> 00:36:25.703
+<v Eric Rice>Yap.</v>
+
+00:36:28.183 --> 00:36:36.023
+<v Eric Rice>All right, I'll get those over to you. I'm going to write her right now. If she gets them to me before the holiday weekend, fingers crossed. Otherwise, they'll probably be in your inbox Tuesday morning.</v>
+
+00:36:36.743 --> 00:36:42.063
+<v Rob Forshier II>Okay, perfect. Yeah, and that works for Tuesday. So yeah, so I mean...</v>
+
+00:36:43.703 --> 00:36:53.863
+<v Rob Forshier II>That's pretty much all I have right now is that if we want to, we can go through next room's backlog, but is that I feel like we don't really need to do that because we pretty much we have your outline of what we want. This is a small MVP.</v>
+
+00:36:56.103 --> 00:36:59.863
+<v Rob Forshier II>Yeah, so I guess questions.</v>
+
+00:36:58.423 --> 00:37:09.943
+<v Matthew Kaplan>Rob, you, you, yeah, just real quick, you had mentioned, you know, we're probably ahead of ahead of the timeline at this point. Do you have any, just curious, like...</v>
+
+00:37:10.703 --> 00:37:16.823
+<v Matthew Kaplan>where we are against the current timeline. Just, I'm not going to hold you to it, but I'm just curious.</v>
+
+00:37:19.663 --> 00:37:39.143
+<v Rob Forshier II>So as I said, so I produced the backlog like yesterday or the day before, and so we're still kind of going through and like updating it to where we are. So I will know better, I would say, by the end of next week, which I'm giving it a whole week just because it's going to take us a while to go through the backlog, because I mean, as you saw in the demo.</v>
+
+00:37:20.143 --> 00:37:20.343
+<v Matthew Kaplan>This.</v>
+
+00:37:28.823 --> 00:37:29.303
+<v Matthew Kaplan>Yap.</v>
+
+00:37:32.983 --> 00:37:33.503
+<v Matthew Kaplan>Okay.</v>
+
+00:37:39.543 --> 00:37:47.703
+<v Rob Forshier II>We are way ahead on the front end. So yeah, so we're going to be way ahead on there. And so a lot of it's just going to be like building out the supporting framework for a bit.</v>
+
+00:37:48.423 --> 00:37:49.343
+<v Matthew Kaplan>Awesome. Okay.</v>
+
+00:37:49.303 --> 00:38:00.983
+<v Rob Forshier II>So, plus also once the team starts actually developing too, because I mean right now that was just pretty much all Pankaj doing that one. And the team really hasn't been developing. So once we really get their velocity, we'll really know more, but yeah, we will be ahead.</v>
+
+00:37:50.823 --> 00:37:51.063
+<v Matthew Kaplan>Ohh.</v>
+
+00:38:09.783 --> 00:38:11.703
+<v Rob Forshier II>And then, go ahead.</v>
+
+00:38:09.983 --> 00:38:10.823
+<v Eric Rice>Anyone else real?</v>
+
+00:38:12.343 --> 00:38:14.103
+<v Eric Rice>I was just asking Matt if you had anything else.</v>
+
+00:38:14.983 --> 00:38:36.663
+<v Matthew Kaplan>The only other question, Eric, would be, you know, depending on what comes, you know, what Allison comes back to us with, you know, at what point in this phase would we introduce a potential product owner? We, you know, we've been trying to identify that person. We've got a couple very warm leads as to a person that we would bring in to</v>
+
+00:38:15.223 --> 00:38:16.023
+<v Eric Rice>Any other updates?</v>
+
+00:38:37.943 --> 00:38:54.743
+<v Matthew Kaplan>you know, kind of act as that chief product owner. This would be a fractional person to start, really with a focus on, you know, the beta and making sure that this beta test is like uber successful. So at what point would you envision bringing that person in if we had that person available?</v>
+
+00:38:56.743 --> 00:39:02.823
+<v Matthew Kaplan>Or I guess at what point have you guys invited that person in, you know, as you've done some of these sprints?</v>
+
+00:39:04.183 --> 00:39:04.823
+<v Rob Forshier II>Um...</v>
+
+00:39:09.143 --> 00:39:29.023
+<v Rob Forshier II>I mean, I feel like the individual could be brought in maybe when we get into like the later sprints. I feel like right now there's not enough for them unless, you know, we want to get them up to speed. I feel like there's a lot of learning that we want them to do to kind of get up to speed. So I mean, a lot of that I would say is like, how much onboarding time do you feel like they'll need to get onboarded?</v>
+
+00:39:29.463 --> 00:39:30.263
+<v Rob Forshier II>Um...</v>
+
+00:39:31.343 --> 00:39:39.943
+<v Rob Forshier II>But I mean, typically I would say we wouldn't bring them on until, you know, once we get into maybe the latter 2 sprints of the beta, but even then it still might be a little early.</v>
+
+00:39:37.623 --> 00:39:38.143
+<v Matthew Kaplan>Okay.</v>
+
+00:39:40.903 --> 00:39:50.103
+<v Matthew Kaplan>That's helpful. Makes sense. And this person would require very little, if no onboarding is my guess, Eric, if it were Allison. Yeah.</v>
+
+00:39:50.263 --> 00:39:50.543
+<v Eric Rice>Yeah.</v>
+
+00:39:52.383 --> 00:39:52.823
+<v Matthew Kaplan>Okay.</v>
+
+00:39:56.663 --> 00:40:15.543
+<v Rob Forshier II>And then now the rest of this now, I just want to use like, you know, what questions do you have? What things do you feel like were missing? What would make this better? And really knit the process too. I don't mind knits at all. I'm a big process guy, if you can't tell. So I love to redesign processes, you know,</v>
+
+00:40:15.863 --> 00:40:31.943
+<v Rob Forshier II>Like, that's why I love retros. I love listening to my team and hearing like, hey, what are their bottlenecks? What are their problems? What are things like slowing them down? And then just improving their process. So, you know, what have we been doing? Like, is there anything you want improvements on? Is there things missing in what we're doing?</v>
+
+00:40:35.743 --> 00:40:54.023
+<v Eric Rice>I think overall the process has been great. It's, I'll be honest, it's very different than the last two builds and dev groups that I worked with. But I'm actually learning a lot more and feel more involved. So it's nice not to just be looking at a screen and moving a button and saying, go do this, that kind of thing. So it's been good for me.</v>
+
+00:40:57.303 --> 00:41:02.183
+<v Rob Forshier II>Matt, do you have any feedback or is there anything you feel? Sorry, go ahead, Pankaj. I saw you go off comment.</v>
+
+00:41:03.023 --> 00:41:04.263
+<v Pankaj Aggarwal>No, no, that's fine, that's fine.</v>
+
+00:41:06.183 --> 00:41:27.703
+<v Matthew Kaplan>No, I think, listen, I think we're very excited and feels like things are moving very fast, which is good for us. The only piece of feedback that I had shared with Marty is that like in those early stages when we had met, it would have been really nice for our team to have been prepared for what those activities were going to be.</v>
+
+00:41:28.023 --> 00:41:46.343
+<v Matthew Kaplan>Because I feel like when you're doing sticky notes in real time and you're dropping and dragging, there's a lot of group think and you don't have the opportunity to sit with it. And, you know, but that's, that was early on, you know, had we been prepared for, okay, this is what we are going to tackle and this is what we want you guys to be thinking about.</v>
+
+00:41:47.223 --> 00:41:54.183
+<v Matthew Kaplan>I think we could have been a little bit more prepared on our end, but I mean, I feel like this is so dialed in that we're in great shape.</v>
+
+00:41:55.023 --> 00:42:04.823
+<v Rob Forshier II>Okay, perfect. Yeah, next time we do any form of like sessions on the board, I'll make sure that I send out the link early enough to give you guys a little bit more time to prepare. I can easily do that.</v>
+
+00:42:04.183 --> 00:42:04.983
+<v Eric Rice>Yeah, that'd be awesome.</v>
+
+00:42:05.583 --> 00:42:09.463
+<v Matthew Kaplan>Cool. OK. Other than that, it's been it's been fantastic.</v>
+
+00:42:10.623 --> 00:42:11.623
+<v Rob Forshier II>Great, so I like to hear.</v>
+
+00:42:13.863 --> 00:42:15.383
+<v Rob Forshier II>Pankaj, do you have something you wanted to add?</v>
+
+00:42:18.423 --> 00:42:37.783
+<v Pankaj Aggarwal>No, I think I would. I think you already covered most of the things, but I would say yes, we are going great. Things are very structured from, you know, what the way you build meta repo to, you know, capture everything and all. And similar thing we are trying to achieve on the coding side as well.</v>
+
+00:42:37.823 --> 00:42:56.343
+<v Pankaj Aggarwal>Where we are trying to put everything in an automated way, from not only development, you know, there will be harness prompt as well for Claude to to be able to generate consistent code wherever required, as well as we are trying to automate everything so that we we we just, you know, we could achieve a very high quality code and.</v>
+
+00:42:57.543 --> 00:43:01.383
+<v Pankaj Aggarwal>In fact, we are adding guardrails as well, everything we are trying to take care of.</v>
+
+00:43:03.623 --> 00:43:25.143
+<v Rob Forshier II>Right, with all of our automation, our skills, all of these are baked into the repos like they are so that everyone is doing the exact same thing every time. So if I run the skill and you run the skill, they're doing the exact same way because we're using the exact same skill files and the same repos. And so that's one of the other reasons why we always put all this automation out there, make sure everybody knows about the skills, knows how to use things.</v>
+
+00:43:03.783 --> 00:43:04.663
+<v Eric Rice>That's good news.</v>
+
+00:43:25.783 --> 00:43:28.983
+<v Rob Forshier II>So then they can just, you know, everybody can do everything the same way consistently.</v>
+
+00:43:31.463 --> 00:43:52.503
+<v Eric Rice>I'll say in the past, these builds have felt like we're doing exactly what we need to do just to get this to the finish line, get it to the MVP, whereas this feels like a strong foundation is being built for growth. And between the repositories and how the code's being done, everything feels a lot better, a lot more structured, a lot more well done and cleaner.</v>
+
+00:43:52.743 --> 00:43:59.303
+<v Eric Rice>And so that's exciting because obviously we want to build this much, much bigger and having a great starting place is very comforting.</v>
+
+00:44:01.543 --> 00:44:19.863
+<v Rob Forshier II>Yeah, and with AI, you know, because the cost to build is so easy and cheap and fast now, you spend a good chunk of your time on the left, on the planning side, and that's where like making sure you lay down like Pankaj did, like what folders you want, the order of the folders, you know, laying all these hard rules down.</v>
+
+00:44:20.143 --> 00:44:27.703
+<v Rob Forshier II>That's how we make sure everything gets laid down, gets built properly, and then as I said, then we have all that redundancy, and then we have the skills, and so yes, this should be really good.</v>
+
+00:44:28.583 --> 00:44:28.983
+<v Eric Rice>Awesome.</v>
+
+00:44:29.863 --> 00:44:30.343
+<v Matthew Kaplan>Right.</v>
+
+00:44:31.703 --> 00:44:36.423
+<v Rob Forshier II>All right, well, I think I'll let everybody go a little early unless we have anything else we'd like to talk about.</v>
+
+00:44:37.463 --> 00:44:40.863
+<v Rob Forshier II>Outstanding. Well, everybody in, yep, enjoy your long break, everybody.</v>
+
+00:44:37.703 --> 00:44:46.103
+<v Matthew Kaplan>I think we're great. Yeah, Pankaj. Thank you very much. Have a great weekend, Rob. Enjoy the holiday. Take care, guys. Be well.</v>
+
+00:44:37.783 --> 00:44:38.263
+<v Eric Rice>They come good.</v>
+
+00:44:41.943 --> 00:44:43.863
+<v Eric Rice>Thank you, Pankaj. Thanks, Rob.</v>
+
+00:44:42.863 --> 00:44:46.503
+<v Rob Forshier II>Yes, yes, thank you, Pankaj. Alright, thank you. Bye.</v>
+
+00:44:45.783 --> 00:44:47.063
+<v Pankaj Aggarwal>Thank you. Thank you.</v>
+

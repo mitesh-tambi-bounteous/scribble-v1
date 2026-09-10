@@ -1,0 +1,1421 @@
+WEBVTT
+
+00:00:08.950 --> 00:00:09.910
+<v Rob Forshier II>Good evening.</v>
+
+00:00:10.790 --> 00:00:13.670
+<v Rajeev Kumar>Hey, hello, very good morning.</v>
+
+00:00:12.230 --> 00:00:12.710
+<v Karuna Arshakota>Feeling.</v>
+
+00:00:14.350 --> 00:00:15.030
+<v Rob Forshier II>Hello.</v>
+
+00:00:17.990 --> 00:00:20.750
+<v Rajeev Kumar>Hey, hi, Shubhang, good. Hi, Karuna.</v>
+
+00:00:23.590 --> 00:00:26.230
+<v Shubhankar Bhavsar>Hi, hi, Rajeev. Hi, Karuna. Hi, Rob.</v>
+
+00:00:35.110 --> 00:00:41.350
+<v Rajeev Kumar>Rob, do you want me to record this meeting or only transcribing is good enough?</v>
+
+00:00:35.350 --> 00:00:36.310
+<v Nitish Goyal>Hey, hi, everyone.</v>
+
+00:00:44.070 --> 00:00:50.550
+<v Rob Forshier II>I mean, as long as we transcribe, that's fine. I mean, if we want to record, we record. But I think transcription is at least enough.</v>
+
+00:00:50.390 --> 00:00:58.750
+<v Rajeev Kumar>Yeah, that that's my opinion also, Rob. Transcription would be good enough, rather than recording.</v>
+
+00:00:59.990 --> 00:01:00.470
+<v Rajeev Kumar>Okay.</v>
+
+00:01:06.390 --> 00:01:15.510
+<v Rajeev Kumar>Hope everyone in India had a good day and we are couple of more meetings and will be done with the day.</v>
+
+00:01:27.350 --> 00:01:35.910
+<v Rajeev Kumar>Okay, I guess Pankaj, you mentioned earlier, there is a conflict he may not be able to join. Shall we get going, everyone?</v>
+
+00:01:41.190 --> 00:01:42.790
+<v Rajeev Kumar>Okay, let me share my screen.</v>
+
+00:01:42.110 --> 00:01:42.990
+<v Karuna Arshakota>Yes, yes.</v>
+
+00:01:42.150 --> 00:01:42.390
+<v Nitish Goyal>Yap.</v>
+
+00:01:47.270 --> 00:01:49.670
+<v Rajeev Kumar>Let me know once you are able to see my screen.</v>
+
+00:01:57.590 --> 00:01:59.990
+<v Rajeev Kumar>Yeah, Team, are you all able to see my screen?</v>
+
+00:02:04.310 --> 00:02:04.870
+<v Nitish Goyal>Yes, Rajeev.</v>
+
+00:02:05.470 --> 00:02:05.990
+<v Karuna Arshakota>Yes, Rajeev.</v>
+
+00:02:05.510 --> 00:02:24.390
+<v Rajeev Kumar>Okay, great, wonderful. So I am at the summary page as of now, but we will go through in details, right? So we have six stories in progress, two are done, and we still have 144 which are.</v>
+
+00:02:25.190 --> 00:02:32.470
+<v Rajeev Kumar>there in the backlog and there can be more additions in the due course.</v>
+
+00:02:33.990 --> 00:02:34.710
+<v Rajeev Kumar>Thanks.</v>
+
+00:02:37.910 --> 00:02:40.070
+<v Rajeev Kumar>Let me jump onto the boat.</v>
+
+00:02:46.950 --> 00:02:56.870
+<v Rajeev Kumar>Yeah, this is the current ongoing sprint zero, which is sprint one as such in the data.</v>
+
+00:02:58.470 --> 00:03:07.190
+<v Rajeev Kumar>The current status is 3 are done, 3 in progress and one to two. So let's look into that in details and see.</v>
+
+00:03:08.390 --> 00:03:08.710
+<v Rajeev Kumar>Yap.</v>
+
+00:03:10.830 --> 00:03:14.390
+<v Rajeev Kumar>Are you able to see this screen? This view?</v>
+
+00:03:11.350 --> 00:03:11.670
+<v Rob Forshier II>It.</v>
+
+00:03:14.710 --> 00:03:15.110
+<v Karuna Arshakota>Yap.</v>
+
+00:03:15.990 --> 00:03:17.910
+<v Rajeev Kumar>OK, so three.</v>
+
+00:03:19.030 --> 00:03:25.910
+<v Rajeev Kumar>Tickets which are done is number 4, number 75, and number 78.</v>
+
+00:03:27.110 --> 00:03:31.910
+<v Rajeev Kumar>So, lay down the cloud code harness in the new repo.</v>
+
+00:03:32.870 --> 00:03:33.830
+<v Rajeev Kumar>This is done.</v>
+
+00:03:35.750 --> 00:03:37.190
+<v Rajeev Kumar>Get the POC in.</v>
+
+00:03:36.070 --> 00:03:37.430
+<v Rob Forshier II>It just merged that this morning.</v>
+
+00:03:39.670 --> 00:03:44.550
+<v Rajeev Kumar>Get the POC in line is also done and the GitHub access.</v>
+
+00:03:46.310 --> 00:04:05.670
+<v Rajeev Kumar>So we can go through the rest of this open tickets and see which all can be marked on and which all will be rolled over into the next spring, which will be spring 2 starting from 7 September till 18 September. And then we will go through the backlog. We can.</v>
+
+00:04:06.150 --> 00:04:11.910
+<v Rajeev Kumar>You know, detail out the story or the ethics as a necessity.</v>
+
+00:04:12.790 --> 00:04:20.470
+<v Rajeev Kumar>with subtasks if required and pull them into the Sprint 2 for our focus area.</v>
+
+00:04:23.030 --> 00:04:41.910
+<v Rob Forshier II>So one thing I want you to know is this is using like the default Jira profile. So right now, if you go into like the settings, ethics are above and are appearance to spikes, features, as well as user stories. I didn't know how to make the change to add like another level so that</v>
+
+00:04:42.150 --> 00:05:03.270
+<v Rob Forshier II>That's to say like an epic is a parent of a feature, which is then a parent of a user story. So if you want to go, if you know how to make those changes, by all means, please do that. And then also just note that I only did epics and features here. So if we want to start using either user stories or subtasks then for the actual work, you know, I'll leave that up to you on how you want to run the board, but I'm just</v>
+
+00:04:51.070 --> 00:04:52.230
+<v Rajeev Kumar>Two, yeah.</v>
+
+00:05:03.390 --> 00:05:09.350
+<v Rob Forshier II>You know, I just want to call it all the things from, you know, my bad PM management and setting up this, just so you know.</v>
+
+00:05:11.150 --> 00:05:20.550
+<v Rajeev Kumar>Right, see, we already have like, you know, if you see this scribble 75 is a feature, right?</v>
+
+00:05:22.590 --> 00:05:38.470
+<v Rob Forshier II>Yeah, that's what I'm saying. Like, I have, I created a feature in a user story. I just didn't set up the hierarchy right. So right now you can't set, create a user story and have its parent be a feature because I didn't configure Jira to do that and I didn't know how to do that. So I'm just letting you know that if you want to set that up, you'll have to set that up.</v>
+
+00:05:22.710 --> 00:05:23.430
+<v Rajeev Kumar>And.</v>
+
+00:05:33.590 --> 00:05:34.150
+<v Rajeev Kumar>Okay.</v>
+
+00:05:39.750 --> 00:05:46.070
+<v Rajeev Kumar>So, I guess it means if I go back into the, you know...</v>
+
+00:05:47.510 --> 00:05:50.230
+<v Rajeev Kumar>Standard view, but...</v>
+
+00:05:53.990 --> 00:06:00.990
+<v Rajeev Kumar>See, here we all are, we are having all these epics and within epics we are having these stories, right?</v>
+
+00:06:04.070 --> 00:06:22.790
+<v Rajeev Kumar>Yeah, this view, right? And if you see, you know, feature is also as a work item. You know, epic is the parent and feature, story, task, bug item are the work items. So, you know.</v>
+
+00:06:23.270 --> 00:06:41.830
+<v Rajeev Kumar>We can create in between features if required and then make stories or tasks as part of the feature, right? That will become three level or it can become four level, like epic, then feature, then story, and then under story we can have tasks.</v>
+
+00:06:42.230 --> 00:06:47.430
+<v Rajeev Kumar>or subtasks. Let me show you another view.</v>
+
+00:06:51.830 --> 00:06:52.070
+<v Rajeev Kumar>Yes.</v>
+
+00:06:52.350 --> 00:07:06.550
+<v Rob Forshier II>Yeah, so typically when good PMs that know what they're doing set that up for me, then yes, we have that structure. I'm just letting you know that I didn't know how to set that up when I got this board built, so that's just why it is the way that it is. So you'll just have to make those changes. So I'm just letting you know.</v>
+
+00:07:02.790 --> 00:07:03.430
+<v Rajeev Kumar>No, wait.</v>
+
+00:07:05.190 --> 00:07:22.230
+<v Rajeev Kumar>But, see, we, see, we should be good as of now to move forward with Epic and stories. Actually, stories, the work item as of now for us, and here, if you see, here is the, you know, example I was going through to...</v>
+
+00:07:23.470 --> 00:07:42.150
+<v Rajeev Kumar>Initiative at the very top level, which is like project or our the whole, you know, scribble is our initiative, then we have epics and within epics we are having the stories, even this one, right? Yeah, this one.</v>
+
+00:07:49.990 --> 00:08:10.550
+<v Rajeev Kumar>See, if we need, we can introduce features in between, between epics and user story, right? But as we already started, we are in the middle, let's move forward. And it will be like some more work for us to do, but you have already done a lot of things.</v>
+
+00:08:11.030 --> 00:08:15.910
+<v Rajeev Kumar>So, we can move forward with it, Rob. It, it, it should not impact us.</v>
+
+00:08:18.910 --> 00:08:22.630
+<v Rajeev Kumar>OK, OK, then coming back here, right to...</v>
+
+00:08:19.510 --> 00:08:19.830
+<v Rob Forshier II>Cook.</v>
+
+00:08:25.430 --> 00:08:28.950
+<v Rajeev Kumar>Yeah, Shubhankar, I guess you are working on this one.</v>
+
+00:08:30.710 --> 00:08:32.310
+<v Rajeev Kumar>Where did you just start? Yeah.</v>
+
+00:08:30.750 --> 00:08:31.590
+<v Shubhankar Bhavsar>Eighteen minutes.</v>
+
+00:08:33.590 --> 00:08:33.670
+<v Rajeev Kumar>The.</v>
+
+00:08:34.990 --> 00:08:55.110
+<v Shubhankar Bhavsar>So, I, yeah, I have not put comment here, just so summary in the internal to review in within Team First. In summary, I was trying to figure out which devices we should introduce in our development and testing environments, so that we cover majority of performance and...</v>
+
+00:08:35.190 --> 00:08:36.550
+<v Rajeev Kumar>Will, will this be wrapped up?</v>
+
+00:08:43.230 --> 00:08:43.510
+<v Rajeev Kumar>And.</v>
+
+00:08:56.310 --> 00:09:04.150
+<v Shubhankar Bhavsar>and application coverage over different OS versions. So my summary tells that.</v>
+
+00:09:05.270 --> 00:09:26.310
+<v Shubhankar Bhavsar>We can go ahead with OIOS 16 as the base version because it covers 88% of the market as of now and majority of users are already using this OS version. Now coming to various devices, I would categorise these devices as form factors. So we have this small form factor like SE.</v>
+
+00:09:26.550 --> 00:09:45.110
+<v Shubhankar Bhavsar>second generation iPhone, which is smaller, 4.5, 4.7 inch of screen, so that if anybody wants to use that device and draw, they should have a good visual experience while using this scribble application. And considering the regular devices like 14, 15, 16, 17.</v>
+
+00:10:03.230 --> 00:10:03.430
+<v Rajeev Kumar>Up.</v>
+
+00:10:03.470 --> 00:10:14.470
+<v Shubhankar Bhavsar>all three variants and hence I have, you know, put in a summary in the channel. Once we all are aligned to that, I'll just put the comment in the ticket for review.</v>
+
+00:10:07.430 --> 00:10:09.630
+<v Rajeev Kumar>Songs: Yamadhi Shivani.</v>
+
+00:10:13.270 --> 00:10:13.550
+<v Rajeev Kumar>See you.</v>
+
+00:10:19.990 --> 00:10:22.230
+<v Shubhankar Bhavsar>It, it just a proposal state right now, like...</v>
+
+00:10:23.270 --> 00:10:23.390
+<v Rajeev Kumar>Play.</v>
+
+00:10:33.910 --> 00:10:36.470
+<v Rajeev Kumar>Okay, so Shubhankar, yeah.</v>
+
+00:10:34.470 --> 00:10:35.990
+<v Karuna Arshakota>So, Pramod for...</v>
+
+00:10:36.630 --> 00:10:37.030
+<v Shubhankar Bhavsar>Yes.</v>
+
+00:10:37.150 --> 00:10:37.430
+<v Karuna Arshakota>Sorry.</v>
+
+00:10:38.390 --> 00:10:43.750
+<v Karuna Arshakota>No, I just wanted to, like, should we should we for this MVP should we stick to like?</v>
+
+00:10:38.750 --> 00:10:39.030
+<v Rajeev Kumar>Right.</v>
+
+00:10:41.390 --> 00:10:41.870
+<v Rajeev Kumar>Else.</v>
+
+00:10:44.950 --> 00:10:46.550
+<v Karuna Arshakota>Like one version or...</v>
+
+00:10:47.270 --> 00:10:47.510
+<v Shubhankar Bhavsar>Mm.</v>
+
+00:10:48.390 --> 00:10:50.310
+<v Karuna Arshakota>Is what I wanted to ask.</v>
+
+00:10:49.350 --> 00:10:49.870
+<v Shubhankar Bhavsar>Soap.</v>
+
+00:10:50.670 --> 00:11:10.350
+<v Shubhankar Bhavsar>Yeah, yeah, sure, sure. So that's a good question, like which version we should target first. So as I mentioned, like 16, we can set as a minimum version. So anything about running about 16, we can target. Like if we have a device running 16, that is fine because we can cheque how our application is behaving in that particular environment.</v>
+
+00:11:10.710 --> 00:11:29.990
+<v Shubhankar Bhavsar>In general, I think more than 60% of the devices are already upgraded to 26. So that is like our go-to platform once we have like backward testing with 16. So the target would be the latest version which is running across majority of devices, that's 26.</v>
+
+00:11:30.230 --> 00:11:49.190
+<v Shubhankar Bhavsar>But for backward compatibility, we target from 16, and that should be our ratio in that. And why I'm considering device form factor, because of our nature of application, like we have to draw something. So the visible space for end user, that should be properly usable for that, like.</v>
+
+00:11:49.430 --> 00:11:52.470
+<v Shubhankar Bhavsar>Our application should render in that closed spaces as well.</v>
+
+00:11:53.750 --> 00:11:59.350
+<v Shubhankar Bhavsar>So there are two different things now, like device size and the version support.</v>
+
+00:12:01.350 --> 00:12:03.910
+<v Shubhankar Bhavsar>I hope that answers your question.</v>
+
+00:12:05.310 --> 00:12:11.910
+<v Karuna Arshakota>Yeah, I agree, but yeah, he wanted to hear from Rob and Pramod thoughts on this, yeah, yeah.</v>
+
+00:12:09.670 --> 00:12:28.230
+<v Shubhankar Bhavsar>Surely, surely. Yeah, I think one more thing that just I missed. I think we can share the devices as one for each team, like as a developer may have a regular type of device like 14, 15, or 13 maybe. And the QA can have the lower version of the device to cheque all the bottlenecks or performance issues or...</v>
+
+00:12:28.790 --> 00:12:47.350
+<v Shubhankar Bhavsar>do rigorous testing on that. And maybe we can have a higher end of device just to cheque how it is behaving with larger stream, the application. So I think that strategy we can follow, but it's up to conclude by all like what we should do. So that's all my proposal about it.</v>
+
+00:12:51.430 --> 00:13:12.550
+<v Pramod Kumar>Yeah, so I think we probably don't want to get this into too much of A per item discussion because Rajeev, the intent was more on the board, but I think this one's good. Yeah, this one's an important one. So Rob, I think based on what Shubhankar has found, and I think he's probably also put it on the channel.</v>
+
+00:12:58.390 --> 00:12:58.630
+<v Rajeev Kumar>Yap.</v>
+
+00:13:00.230 --> 00:13:00.710
+<v Rajeev Kumar>Dave.</v>
+
+00:13:02.470 --> 00:13:03.510
+<v Rajeev Kumar>Exactly.</v>
+
+00:13:10.310 --> 00:13:10.630
+<v Rajeev Kumar>Leads.</v>
+
+00:13:12.950 --> 00:13:34.710
+<v Pramod Kumar>Maybe we can make that recommendation of like base version, latest version, and basically setting the expectations that these will be the ones that we'll be focusing our testing on, maybe 3, 4 versions across this base to latest. And then we share it with Erik and group. That should be okay, right?</v>
+
+00:13:35.030 --> 00:13:35.390
+<v Pramod Kumar>Proofs.</v>
+
+00:13:36.030 --> 00:13:48.310
+<v Rob Forshier II>Yep, exactly. Let's get that in the meta repo as well. We'll have that documented on, you know, like create a page for it in the wiki. And then, yeah, we can get that in front of the client and then make sure they're approved, which they basically, they kind of do the same thing. So, yeah, no, sounds good.</v>
+
+00:13:51.510 --> 00:14:08.790
+<v Rajeev Kumar>Yeah, Shubhankar, actually this is not a technical discussion. We should stick at the high level status approach. Otherwise, we will always be short of time to conclude this meeting. Right. So my take is this will be.</v>
+
+00:14:07.350 --> 00:14:08.950
+<v Pramod Kumar>Hey, uh, just sorry.</v>
+
+00:14:10.390 --> 00:14:29.230
+<v Pramod Kumar>Sorry, I was a few minutes late. I just wanted to cheque whether we discussed the timelines, because there was that slight aberration, Rob, that where we had that seven day shape and the three sprints. Do we?</v>
+
+00:14:29.350 --> 00:14:29.670
+<v Rajeev Kumar>Hey.</v>
+
+00:14:30.150 --> 00:14:32.630
+<v Pramod Kumar>Still keep that, or are we?</v>
+
+00:14:34.790 --> 00:14:42.710
+<v Pramod Kumar>Given that you also scheduled the shape review tomorrow, are we still okay with the...</v>
+
+00:14:45.870 --> 00:14:58.870
+<v Pramod Kumar>What was what was the timeline which was 7 and 10, 10 days or do we make it 10, 10, 10 by ending the sprint one on Friday? I don't know if you already discussed this, Rajeev.</v>
+
+00:14:59.910 --> 00:15:01.670
+<v Rajeev Kumar>No, I did not dis.</v>
+
+00:15:00.230 --> 00:15:08.270
+<v Pramod Kumar>Because Jira, I think currently shows Jira currently shows September 4th as the sprint end.</v>
+
+00:15:00.670 --> 00:15:00.870
+<v Rob Forshier II>Yap.</v>
+
+00:15:03.190 --> 00:15:03.350
+<v Rajeev Kumar>Mm.</v>
+
+00:15:09.670 --> 00:15:28.190
+<v Rajeev Kumar>Right, right, Pramod, I did not discuss on that, but as if we go with this plan, like complete sprint zero or sprint one in Jira by tomorrow, then the next sprint will go till late in September and and the.</v>
+
+00:15:28.550 --> 00:15:31.670
+<v Rajeev Kumar>For this printer, #3.</v>
+
+00:15:32.870 --> 00:15:43.310
+<v Rajeev Kumar>from Jira point of view will go till 2nd of October and the last sprint, so print #4 will be on 16th of October.</v>
+
+00:15:45.830 --> 00:15:47.430
+<v Rajeev Kumar>Right, what?</v>
+
+00:15:49.830 --> 00:15:54.150
+<v Pramod Kumar>Yeah, so Rob, thoughts on that, ohh, about...</v>
+
+00:15:55.350 --> 00:16:07.350
+<v Pramod Kumar>I think there was some rationale around having the first sprint zero at 7, maybe to align with reinvent timeline or something like that.</v>
+
+00:16:11.270 --> 00:16:29.670
+<v Rob Forshier II>So remember, we're just on our first like 8 weeks and that's all we have the money for currently, even though they're raising more money so that then we can extend this out to like through reinvent and possibly past. So I mean, we can kind of make this however we want. The shape review, I'm literally just going to</v>
+
+00:16:18.990 --> 00:16:19.110
+<v Pramod Kumar>Yeah.</v>
+
+00:16:30.870 --> 00:16:30.990
+<v Shubhankar Bhavsar>Yes.</v>
+
+00:16:31.110 --> 00:16:42.630
+<v Rob Forshier II>accumulate all of everything that you all have done in these last two weeks and just show that in front of the client and then just talk about what's next. So I mean, whether we schedule that next week or this week, it's up to us. I mean,</v>
+
+00:16:39.030 --> 00:16:39.350
+<v Rajeev Kumar>Yap.</v>
+
+00:16:44.830 --> 00:16:44.950
+<v Rob Forshier II>And.</v>
+
+00:16:45.670 --> 00:17:03.990
+<v Pramod Kumar>Got it. Yeah, but I was thinking, yeah, the other point that was there is given, like you said, 8 weeks is what this one is scheduled for, right? So I'm just thinking if on the boards, if we have it as seven and seven days print followed by.</v>
+
+00:16:45.750 --> 00:16:47.910
+<v Rajeev Kumar>Right, see, promote, yeah.</v>
+
+00:17:04.070 --> 00:17:15.190
+<v Pramod Kumar>three, two weeks sprints. We may be a bit short of what the client was entitled for, even though we were working, we did the...</v>
+
+00:17:16.550 --> 00:17:28.150
+<v Pramod Kumar>kick off on a Monday itself, but do you think from that perspective it makes sense to just have it as a full two-week sprint for shape?</v>
+
+00:17:29.350 --> 00:17:43.030
+<v Rob Forshier II>Yeah, I mean, if we want, just adjust the date, let me know and we'll just call it out in the stand up and I'll move the shape review. Is that I'm perfectly fine. I'm just, you know, I was throwing this stuff out there, waiting for everybody else to help me adjust this. So thank you for helping me adjust this.</v>
+
+00:17:44.310 --> 00:17:45.430
+<v Pramod Kumar>Yeah, yeah, I think...</v>
+
+00:17:44.390 --> 00:18:04.950
+<v Rajeev Kumar>See, if we, yeah, Pramod, if we go like this way, right, from 24th August to two weeks each, then we are ending on 16th of October, our spring #4, from Jira point of view, and that will be culmination of the project and</v>
+
+00:17:47.830 --> 00:17:48.150
+<v Pramod Kumar>But...</v>
+
+00:18:05.390 --> 00:18:09.630
+<v Rajeev Kumar>So, you know, logical conclusion of eight weeks project.</v>
+
+00:18:12.070 --> 00:18:12.470
+<v Rajeev Kumar>Good.</v>
+
+00:18:13.710 --> 00:18:26.710
+<v Rajeev Kumar>When we can adjust, if you want, we can shorten this, you know, but in that case, we can't shorten it to before before today, we can we can complete this by today.</v>
+
+00:18:27.670 --> 00:18:30.710
+<v Rajeev Kumar>Then it will give us one day before.</v>
+
+00:18:30.670 --> 00:18:30.790
+<v Pramod Kumar>Play.</v>
+
+00:18:35.830 --> 00:18:51.910
+<v Rob Forshier II>So with everybody being out, or with some individuals being out tomorrow, I would actually lean towards, if we want to, I can move the shape review till later on next week. Just let me know when we want to end this first shape sprint, and then we can adjust all of our timelines.</v>
+
+00:18:40.870 --> 00:18:41.350
+<v Rajeev Kumar>Right.</v>
+
+00:18:56.630 --> 00:19:03.310
+<v Rob Forshier II>I said a lot of this, you know, I was just throwing stuff down and just waiting for people to help me like correct these things. So yeah.</v>
+
+00:19:05.870 --> 00:19:12.950
+<v Rob Forshier II>So I have no problems if we adjust these dates if we want to add and change that from being the end tomorrow to what ending next Tuesday.</v>
+
+00:19:15.190 --> 00:19:17.510
+<v Rajeev Kumar>No, that that will.</v>
+
+00:19:17.270 --> 00:19:35.590
+<v Pramod Kumar>Yeah, I think tomorrow, yeah, tomorrow seems like a logical this thing. Maybe some of these items like the devices recommendation, et cetera, can also be got got into the some of these tickets and.</v>
+
+00:19:36.070 --> 00:19:43.030
+<v Pramod Kumar>Updated, and we can probably so Rajeev, does that sound like a good plan? Yes, yeah.</v>
+
+00:19:41.430 --> 00:19:41.910
+<v Rajeev Kumar>Yap.</v>
+
+00:19:43.110 --> 00:20:02.990
+<v Rajeev Kumar>Yeah, yeah, Pramod, that is that is what I was understanding. If by tomorrow we can conclude these four open items, right? They do finalising on the device, right? And then Apple developer account setup is majority done, except maybe one or two individuals.</v>
+
+00:20:04.230 --> 00:20:08.030
+<v Rajeev Kumar>Which, Karuna, I guess you also have got it done today, right?</v>
+
+00:20:08.550 --> 00:20:09.310
+<v Karuna Arshakota>Yes, yes, that.</v>
+
+00:20:10.190 --> 00:20:29.070
+<v Rajeev Kumar>Okay, so this will also be done then the AWS access and cloud dev environment with the client. I guess this was also very close, so we can work with cheque with Pankaj and and this if this also gets done then the team.</v>
+
+00:20:29.190 --> 00:20:38.350
+<v Rajeev Kumar>Readiness, right, so, so we can complete this separate by tomorrow, logically conclude, right, whatever we want to.</v>
+
+00:20:40.830 --> 00:20:43.070
+<v Rajeev Kumar>share it with the client, we can.</v>
+
+00:20:45.630 --> 00:20:56.030
+<v Rajeev Kumar>Make it happen by tomorrow and then for Monday we can get going with so print 2 for which we will put all the items as we plan today.</v>
+
+00:21:00.910 --> 00:21:01.550
+<v Rajeev Kumar>Type T.</v>
+
+00:21:01.110 --> 00:21:05.790
+<v Rob Forshier II>Which please feel free to create more of these planning sessions as you need them, or as we need them.</v>
+
+00:21:05.470 --> 00:21:26.830
+<v Rajeev Kumar>I will, yep, I will drop. I guess we might need a couple of more sessions. Only like one session for every separate will not suffice. We can have some, you know, technical sessions also as needed, but that I guess either Pankaj or yourself will have to drive it.</v>
+
+00:21:27.150 --> 00:21:28.910
+<v Rajeev Kumar>but I can help coordinating it.</v>
+
+00:21:32.150 --> 00:21:39.150
+<v Rajeev Kumar>Okay, okay team, let's then get going. Let's go look into the backlog and pull the items.</v>
+
+00:21:43.030 --> 00:21:46.110
+<v Rajeev Kumar>OK, so what? Let's start with this one.</v>
+
+00:21:47.110 --> 00:21:59.310
+<v Rajeev Kumar>AWS account and three environments. Can this go into the sprint number two, which we will be starting on Monday, and who to assign this?</v>
+
+00:22:04.150 --> 00:22:23.270
+<v Pramod Kumar>Yeah, this is technically with the customer, Eric. So he was expecting at least the one environment, the development environment yesterday, but we still haven't got that. So hopefully we'll get an update today. But I think, yeah, part of it will flow into next trend, the setup of the QA and.</v>
+
+00:22:18.110 --> 00:22:18.430
+<v Rajeev Kumar>Yap.</v>
+
+00:22:23.470 --> 00:22:28.350
+<v Pramod Kumar>broad environmental. I think we can have that continuing to the next.</v>
+
+00:22:27.710 --> 00:22:28.030
+<v Rajeev Kumar>Yeah.</v>
+
+00:22:29.230 --> 00:22:32.110
+<v Rajeev Kumar>OK, I'm moving it on placement.</v>
+
+00:22:41.150 --> 00:22:41.470
+<v Rajeev Kumar>Yes.</v>
+
+00:22:50.990 --> 00:23:01.710
+<v Rajeev Kumar>OK, the next two are already in progress, right? Karuna, you are working on this automation framework. It will it will go into sprint two.</v>
+
+00:22:59.070 --> 00:22:59.870
+<v Karuna Arshakota>Yes, yes.</v>
+
+00:23:02.350 --> 00:23:02.910
+<v Karuna Arshakota>Yes, yes.</v>
+
+00:23:02.910 --> 00:23:08.750
+<v Rajeev Kumar>Feel free to discuss if you have any question or any grooming is required.</v>
+
+00:23:09.630 --> 00:23:09.990
+<v Karuna Arshakota>Shah.</v>
+
+00:23:11.230 --> 00:23:14.270
+<v Rob Forshier II>Do we want to throw that in sprint two or sprint one if it's in progress?</v>
+
+00:23:14.990 --> 00:23:16.430
+<v Rajeev Kumar>Oh, sprint one is.</v>
+
+00:23:15.190 --> 00:23:19.230
+<v Rob Forshier II>Because we can always roll it if she needs longer. Oh, oh, right, right, right, sorry.</v>
+
+00:23:17.310 --> 00:23:21.310
+<v Rajeev Kumar>So, see, Sprint one is, I'm adding.</v>
+
+00:23:20.430 --> 00:23:22.430
+<v Rob Forshier II>I was thinking it was a sprint zero, my bad.</v>
+
+00:23:23.150 --> 00:23:39.950
+<v Rajeev Kumar>Okay, so from today onwards, let's talk about Suprint one, two, three, and four. Let's forget about Suprint zero. I know in our SOW, it is a print zero, but we will stick with Jira nomenclature, right, to avoid any confusion.</v>
+
+00:23:42.190 --> 00:23:44.590
+<v Rajeev Kumar>Let me move this, so I can...</v>
+
+00:23:46.350 --> 00:23:46.830
+<v Rajeev Kumar>Mhm.</v>
+
+00:23:47.910 --> 00:23:56.030
+<v Rajeev Kumar>Okay, so Shubhankar, you are working on this, right? Client architecture and how it stays portable.</v>
+
+00:23:56.910 --> 00:23:57.310
+<v Shubhankar Bhavsar>Yeah.</v>
+
+00:23:58.430 --> 00:24:00.670
+<v Rajeev Kumar>I'm moving this into stream two.</v>
+
+00:24:02.270 --> 00:24:06.990
+<v Rajeev Kumar>OK, and I know couple of items, Nitish, you are already assigned.</v>
+
+00:24:08.630 --> 00:24:09.310
+<v Rajeev Kumar>So.</v>
+
+00:24:10.510 --> 00:24:18.990
+<v Rajeev Kumar>If the status is, yeah, if the status is near closer, we can move them into sprint one, otherwise into sprint.</v>
+
+00:24:10.830 --> 00:24:11.550
+<v Nitish Goyal>Yes, Rajeev.</v>
+
+00:24:16.670 --> 00:24:31.550
+<v Nitish Goyal>So, Rajeev, these are actually from the decisions, and these are epics actually, and these just need like the scribble number 14, need certain command to close this one.</v>
+
+00:24:23.910 --> 00:24:24.190
+<v Rajeev Kumar>Mm.</v>
+
+00:24:33.070 --> 00:24:36.750
+<v Rajeev Kumar>So, these are spike tickets, right? This is spike tickets.</v>
+
+00:24:33.390 --> 00:24:50.350
+<v Nitish Goyal>Well, it said, yeah, yeah, these are spike tickets currently that we are looking into, and this is something that decision is already made in the documentation, like scribble #14 requires a command, and I think we can close this one after that.</v>
+
+00:24:37.990 --> 00:24:38.270
+<v Rajeev Kumar>Yeah.</v>
+
+00:24:51.470 --> 00:24:56.590
+<v Rajeev Kumar>So can it happen by tomorrow? If yes, then we it will go into sprint one.</v>
+
+00:24:57.870 --> 00:25:10.430
+<v Nitish Goyal>Let me just check, I think this is, I will cheque the description once more. I think this is all about the DynamoDB versus the Arora focus request that has already been decided.</v>
+
+00:25:11.710 --> 00:25:12.990
+<v Nitish Goyal>And we can close it, yeah.</v>
+
+00:25:14.270 --> 00:25:15.790
+<v Nitish Goyal>OK, we can move.</v>
+
+00:25:14.750 --> 00:25:30.790
+<v Rajeev Kumar>Let me then move it into sprint one, and once it you mark it close, it will be done. It will be, you know, completed with sprint one, otherwise it will roll over to sprint two. OK.</v>
+
+00:25:30.590 --> 00:25:30.950
+<v Nitish Goyal>Suren.</v>
+
+00:25:32.430 --> 00:25:35.550
+<v Rajeev Kumar>Next one, this moderation, yeah.</v>
+
+00:25:32.990 --> 00:25:54.270
+<v Rob Forshier II>Yeah, I know, I know Pankaj put a lot of, I know Pankaj put a lot of the documentation into the wiki already, so I think some of these might have already been closed. So yeah, Nitish, yeah, go through them and yeah, let's get all the ones closed so we can get those added to our sprint. Because yeah, I know our sprint, like we did way more than the six tickets that are showing up in there. We just weren't using the board. So yeah, so let's get that updated because he said, I'm going to be giving that to the client and being like, hey,</v>
+
+00:25:39.950 --> 00:25:40.430
+<v Nitish Goyal>Right.</v>
+
+00:25:41.710 --> 00:25:42.110
+<v Rajeev Kumar>Yap.</v>
+
+00:25:49.550 --> 00:25:50.950
+<v Rajeev Kumar>Exactly, exactly.</v>
+
+00:25:51.550 --> 00:25:51.790
+<v Nitish Goyal>Right.</v>
+
+00:25:54.510 --> 00:25:57.950
+<v Rob Forshier II>We did all this awesome work, so yeah, let's make sure we can get, you know...</v>
+
+00:25:56.750 --> 00:26:04.190
+<v Rajeev Kumar>Actually, actually, if we look at all these spike tickets, originally they were planned for sprint zero, right?</v>
+
+00:25:57.630 --> 00:25:57.830
+<v Nitish Goyal>Yeah.</v>
+
+00:26:10.110 --> 00:26:22.950
+<v Rajeev Kumar>But it is still there in the backlog. All these items from scribble 7 till scribble 17, right? They are part of E00, so print 0 as the tag.</v>
+
+00:26:24.750 --> 00:26:28.030
+<v Rajeev Kumar>Okay, Nitish covered this one, moderation fail policy.</v>
+
+00:26:28.790 --> 00:26:32.350
+<v Nitish Goyal>So yeah, this one we actually discussed day before yesterday.</v>
+
+00:26:32.830 --> 00:26:33.310
+<v Rajeev Kumar>Mhm.</v>
+
+00:26:34.510 --> 00:26:41.950
+<v Nitish Goyal>This would also require some comments over the ticket. We actually decided not to have the moderation policy.</v>
+
+00:26:43.870 --> 00:26:44.670
+<v Nitish Goyal>Uh, but...</v>
+
+00:26:46.070 --> 00:27:05.070
+<v Nitish Goyal>When today I was working on something, moderation is something been required by the Apple itself for application to go live on the Apple as discussed with Pankaj. So I just need to discuss one, this ticket again with Pankaj once before closing it.</v>
+
+00:27:06.750 --> 00:27:11.710
+<v Rajeev Kumar>OK, so you have time for that, by today or today, Babbar.</v>
+
+00:27:14.910 --> 00:27:15.230
+<v Rajeev Kumar>Yap.</v>
+
+00:27:17.070 --> 00:27:20.510
+<v Rajeev Kumar>This one relational data model Nitish.</v>
+
+00:27:21.310 --> 00:27:26.110
+<v Nitish Goyal>Yes, this one I am working on, you can put it on a sprint too.</v>
+
+00:27:33.390 --> 00:27:34.030
+<v Rajeev Kumar>No.</v>
+
+00:27:34.910 --> 00:27:37.710
+<v Rajeev Kumar>How about this one back-end architectures find?</v>
+
+00:27:39.310 --> 00:27:39.790
+<v Rajeev Kumar>Yap.</v>
+
+00:27:44.670 --> 00:28:02.270
+<v Rob Forshier II>I feel like Pankaj has already like done that one too. For right now, why don't we just skip the spikes and just focus on the getting things added to sprint two and then just have Pankaj review these spikes when he has a minute and then have him like update these because I feel like he's done the majority of these or we have documentation for them already.</v>
+
+00:27:47.950 --> 00:27:48.510
+<v Rajeev Kumar>Yeah.</v>
+
+00:27:51.230 --> 00:27:51.630
+<v Rajeev Kumar>Okay.</v>
+
+00:28:02.910 --> 00:28:05.150
+<v Rajeev Kumar>Okay, I will then then.</v>
+
+00:28:03.630 --> 00:28:11.070
+<v Rob Forshier II>And some of them I just created just to, you know, flush out like, hey, we might need this, we might need this, and some of these we might not have needed. So just an FYI there too.</v>
+
+00:28:11.870 --> 00:28:16.430
+<v Rajeev Kumar>OK, how would this one CDK stack skeleton?</v>
+
+00:28:20.990 --> 00:28:24.590
+<v Rajeev Kumar>Who will take this up, Pankaj?</v>
+
+00:28:26.590 --> 00:28:29.470
+<v Nitish Goyal>I think that this one will go to the DevOps.</v>
+
+00:28:31.230 --> 00:28:34.190
+<v Rajeev Kumar>Who is the DevOps person? It is.</v>
+
+00:28:31.790 --> 00:28:32.430
+<v Nitish Goyal>One over.</v>
+
+00:28:34.550 --> 00:28:35.550
+<v Nitish Goyal>Pramod, I think.</v>
+
+00:28:35.470 --> 00:28:37.550
+<v Pramod Kumar>Mohamed. Mohamed.</v>
+
+00:28:40.430 --> 00:28:44.350
+<v Rajeev Kumar>Mohit is from our side.</v>
+
+00:28:43.470 --> 00:28:43.950
+<v Pramod Kumar>Yeah.</v>
+
+00:28:45.150 --> 00:28:45.870
+<v Pramod Kumar>Yes, yes.</v>
+
+00:28:47.590 --> 00:28:48.350
+<v Rajeev Kumar>Is not it?</v>
+
+00:28:48.190 --> 00:29:06.990
+<v Pramod Kumar>He may not have been, so yeah, I think you can leave it unassigned. I think we might have to pull him in because he's been involved in the with Pankaj in discussing this, but I think with Sprint 2 we will he will he will be jumping on AWS and doing a lot of stuff, so.</v>
+
+00:28:59.870 --> 00:29:00.430
+<v Rajeev Kumar>With it.</v>
+
+00:29:06.110 --> 00:29:14.350
+<v Rajeev Kumar>OK, I move that item into this one. OK, let's go further.</v>
+
+00:29:15.430 --> 00:29:16.190
+<v Rajeev Kumar>Twenty-one.</v>
+
+00:29:18.670 --> 00:29:21.630
+<v Rajeev Kumar>Serverless API surface.</v>
+
+00:29:25.470 --> 00:29:28.990
+<v Nitish Goyal>Can you just open it once, Rajeev? No, let me just click.</v>
+
+00:29:39.070 --> 00:29:51.950
+<v Rob Forshier II>So I think this one needs to be updated because I could have swear Pankaj said that we're going to be using like some like a microservices for our API or I forget what he said we were using for our APIs and we're not going to use serverless. So I think this should need to be updated as well.</v>
+
+00:29:55.070 --> 00:29:55.470
+<v Rajeev Kumar>P.</v>
+
+00:29:56.430 --> 00:30:05.310
+<v Rajeev Kumar>So, can I assign this to Pankaj and move it into Sprint Two? We can update and either cancel it or...</v>
+
+00:30:07.510 --> 00:30:11.390
+<v Rajeev Kumar>Make the comments as necessity, right?</v>
+
+00:30:18.430 --> 00:30:20.910
+<v Rajeev Kumar>API contract and mog server.</v>
+
+00:30:26.310 --> 00:30:26.510
+<v Nitish Goyal>Hi.</v>
+
+00:30:30.590 --> 00:30:48.430
+<v Nitish Goyal>API contracts, there is one part that I am working on the API contract, but mock server I just saw today, it was created by Pankaj, but it was not today. I think some of the endpoints are still remaining. I think we can move it to spin too.</v>
+
+00:30:51.950 --> 00:30:54.350
+<v Rajeev Kumar>Will you take this up or Pankaj?</v>
+
+00:30:57.390 --> 00:31:00.590
+<v Nitish Goyal>Yeah, you can assign it to me for right now.</v>
+
+00:31:01.390 --> 00:31:01.790
+<v Rajeev Kumar>Yap.</v>
+
+00:31:08.110 --> 00:31:09.950
+<v Rajeev Kumar>Media storage and delivery.</v>
+
+00:31:30.550 --> 00:31:31.390
+<v Rajeev Kumar>Nitish.</v>
+
+00:31:32.830 --> 00:31:38.590
+<v Nitish Goyal>These are all part of backend work, but Rajeev, the point is...</v>
+
+00:31:42.150 --> 00:31:42.630
+<v Rajeev Kumar>Mmh.</v>
+
+00:31:42.510 --> 00:32:04.270
+<v Nitish Goyal>How much we are going to take in the sprint, I am not sure about it. And there would be some sequential flow as well for the kind of work we will be doing. We can just pick something in between and start working on. They need to be API. I think that these are not in a sequence right now, the tickets.</v>
+
+00:31:59.310 --> 00:31:59.950
+<v Rajeev Kumar>Okay.</v>
+
+00:32:02.270 --> 00:32:02.830
+<v Rajeev Kumar>So.</v>
+
+00:32:04.750 --> 00:32:17.230
+<v Nitish Goyal>because we might need to 1st create all the APIs and point it to be there only then these tickets should come up. Otherwise, randomly picking tickets would not work.</v>
+
+00:32:18.870 --> 00:32:29.790
+<v Rajeev Kumar>No, but Nitish, no matter what, you know, we majority of the work is going to happen through accelerator, right? Is NTKI.</v>
+
+00:32:30.750 --> 00:32:33.630
+<v Rajeev Kumar>OK, and in that way, you know.</v>
+
+00:32:34.990 --> 00:32:45.070
+<v Rajeev Kumar>We can look, we can look into this view right and see at epic level which epic we want, which which epic we want to do.</v>
+
+00:32:46.030 --> 00:32:53.150
+<v Rajeev Kumar>In this print one, sorry, so print two, and include all the all the stories belonging to that.</v>
+
+00:32:55.950 --> 00:33:03.870
+<v Rajeev Kumar>For example, if we are trying to do this one, this app big cloud foundation and app shell, so it means all these.</v>
+
+00:33:06.430 --> 00:33:09.950
+<v Rajeev Kumar>will go through. We can go into this way and update from here.</v>
+
+00:33:10.990 --> 00:33:12.590
+<v Rajeev Kumar>I'm okay with this approach.</v>
+
+00:33:16.990 --> 00:33:21.790
+<v Rajeev Kumar>Like, for example, this scribble 3 was meant for our shape.</v>
+
+00:33:22.670 --> 00:33:24.110
+<v Rajeev Kumar>Window, right?</v>
+
+00:33:35.710 --> 00:33:42.590
+<v Rajeev Kumar>Okay, let's talk about this auth and onboarding. Can it happen in this sprint? Sprint #2?</v>
+
+00:33:53.310 --> 00:34:07.910
+<v Rajeev Kumar>See, Nitish and everyone, we need to go with collective approach, right? I mean, whatever we are doing as of now was traditional approach method, but looking at the...</v>
+
+00:34:09.550 --> 00:34:11.630
+<v Rajeev Kumar>Uses of agentic AI.</v>
+
+00:34:12.790 --> 00:34:16.590
+<v Rajeev Kumar>We should go at high level. Here, we will try to complete this epic.</v>
+
+00:34:17.630 --> 00:34:18.910
+<v Rajeev Kumar>All together in.</v>
+
+00:34:20.190 --> 00:34:23.630
+<v Rajeev Kumar>Superint 2 or superint 3, right?</v>
+
+00:34:26.230 --> 00:34:28.190
+<v Rajeev Kumar>Otherwise, we have a long list.</v>
+
+00:34:30.830 --> 00:34:40.590
+<v Rajeev Kumar>And if we fail, you know, any of the epic, we should not be part of the MVP, right? It is optional or it is not.</v>
+
+00:34:41.430 --> 00:34:46.790
+<v Rajeev Kumar>So, mandatory, we can we can park it outside that will remain in the backlog.</v>
+
+00:34:52.830 --> 00:35:01.390
+<v Rajeev Kumar>See, otherwise time will fly away and we will not even realise what we are doing and where we are ending up in the sprint.</v>
+
+00:35:10.310 --> 00:35:19.150
+<v Nitish Goyal>So I think there was some initial document Rob, right? I think that was initially about authentication that auth and...</v>
+
+00:35:20.510 --> 00:35:21.310
+<v Nitish Goyal>Onboarding.</v>
+
+00:35:22.430 --> 00:35:26.030
+<v Nitish Goyal>That was the initial document, if I remember correctly.</v>
+
+00:35:32.750 --> 00:35:37.470
+<v Rob Forshier II>So I mean everything the wiki correlates with this Jira board because I built it all together.</v>
+
+00:35:39.270 --> 00:35:44.830
+<v Rob Forshier II>One thing to remember is we still need to go through the epic one at the top there and make sure we get through all the epic one stuff. Yeah, yeah.</v>
+
+00:35:43.390 --> 00:35:47.790
+<v Rajeev Kumar>Yep, yep, yep, let's look into this.</v>
+
+00:35:50.750 --> 00:36:01.790
+<v Rob Forshier II>I mean, these epics I did lay down in kind of an order where, I mean, like this first one is literally just laying down the ground, which is the app shell, the backend, the AWS surface.</v>
+
+00:36:04.590 --> 00:36:09.870
+<v Rajeev Kumar>I guess we should target all of it in our sprint #2, right?</v>
+
+00:36:11.470 --> 00:36:18.030
+<v Nitish Goyal>Yeah, I think we already covered most of them, I think, except we were discussing scribble number 23 right now.</v>
+
+00:36:20.510 --> 00:36:21.070
+<v Nitish Goyal>And.</v>
+
+00:36:21.950 --> 00:36:39.950
+<v Rajeev Kumar>That see, then that that that is what I'm saying. Like, if we decide this entire all, you know, this scribble one, right? We are we are doing it in Sprint 2, right? It doesn't mean it has to end within Sprint 2, right? There will be.</v>
+
+00:36:23.750 --> 00:36:24.310
+<v Nitish Goyal>Mhm.</v>
+
+00:36:40.190 --> 00:36:43.870
+<v Rajeev Kumar>something which might left open which will roll over.</v>
+
+00:36:43.550 --> 00:36:43.710
+<v Nitish Goyal>Mm.</v>
+
+00:36:45.710 --> 00:36:46.030
+<v Nitish Goyal>Yap.</v>
+
+00:36:47.750 --> 00:36:59.630
+<v Rajeev Kumar>And then can we say that at this epic level, right? This one, right? If this is back end, then it is it is under your ownership, then Nitish, right?</v>
+
+00:36:54.270 --> 00:36:54.750
+<v Nitish Goyal>Mhm.</v>
+
+00:37:00.510 --> 00:37:00.910
+<v Nitish Goyal>Yap.</v>
+
+00:37:01.870 --> 00:37:09.550
+<v Rajeev Kumar>OK, OK, then we we are taking a call. This scribble one is going entirely right and.</v>
+
+00:37:02.550 --> 00:37:02.750
+<v Nitish Goyal>No.</v>
+
+00:37:09.630 --> 00:37:11.870
+<v Nitish Goyal>Yeah, it also contains.</v>
+
+00:37:13.150 --> 00:37:20.670
+<v Nitish Goyal>The QA part as well, like the deploy automation, some other part of some contains the...</v>
+
+00:37:19.990 --> 00:37:20.430
+<v Rajeev Kumar>Play.</v>
+
+00:37:22.430 --> 00:37:23.910
+<v Nitish Goyal>I will spa desert.</v>
+
+00:37:26.110 --> 00:37:30.750
+<v Rajeev Kumar>See, we we we can go through one by one, right? How about this one?</v>
+
+00:37:29.190 --> 00:37:29.550
+<v Nitish Goyal>Mm.</v>
+
+00:37:31.670 --> 00:37:38.110
+<v Rajeev Kumar>AWS account and three environment. I guess we discussed this was an assigned to or this one.</v>
+
+00:37:39.550 --> 00:37:41.790
+<v Rajeev Kumar>Was with Client, right?</v>
+
+00:37:43.470 --> 00:37:44.510
+<v Rajeev Kumar>This can.</v>
+
+00:37:45.950 --> 00:37:52.670
+<v Rajeev Kumar>Give me on this file, look at CDK stack skeleton. We also discussed this was.</v>
+
+00:37:54.350 --> 00:37:55.070
+<v Nitish Goyal>Mohamed.</v>
+
+00:37:55.870 --> 00:38:04.510
+<v Rajeev Kumar>Right, Mohamed, right? This, you are already working service server less API surface, right?</v>
+
+00:38:02.990 --> 00:38:03.110
+<v Nitish Goyal>Yeah.</v>
+
+00:38:05.310 --> 00:38:08.910
+<v Nitish Goyal>Yeah, this this needs updation of the.</v>
+
+00:38:05.430 --> 00:38:06.190
+<v Rajeev Kumar>Hello.</v>
+
+00:38:11.310 --> 00:38:16.270
+<v Nitish Goyal>The content is not correct right now, and this ticket right, we need to update it.</v>
+
+00:38:17.630 --> 00:38:19.070
+<v Rajeev Kumar>So who will update that?</v>
+
+00:38:20.990 --> 00:38:22.830
+<v Rajeev Kumar>Now, you will update our Pankaj.</v>
+
+00:38:21.390 --> 00:38:22.270
+<v Nitish Goyal>Initially.</v>
+
+00:38:27.310 --> 00:38:27.870
+<v Rajeev Kumar>Natixis.</v>
+
+00:38:28.350 --> 00:38:37.230
+<v Nitish Goyal>Yeah, Rob initially created this, but now I, I'm not sure if I think Pankaj or Rob can update it, yeah.</v>
+
+00:38:38.270 --> 00:38:39.070
+<v Nitish Goyal>I'm just gonna do that.</v>
+
+00:38:38.270 --> 00:38:47.950
+<v Rob Forshier II>I think Pankaj, because right, I laid this down to the best of my abilities, but remember this is based off the prototype of my knowledge. You are the real experts that are laying down the real stack. So yeah.</v>
+
+00:38:50.990 --> 00:38:56.590
+<v Rajeev Kumar>Let me sign this to OK. How about this one? API contact and mock server.</v>
+
+00:38:58.270 --> 00:39:07.230
+<v Nitish Goyal>I think this is already somewhere been done. You can assign it to Pankaj right now because this is, I think, been created what I saw today.</v>
+
+00:39:08.430 --> 00:39:14.350
+<v Nitish Goyal>Otherwise, we can reassign to me the Pankaj as the Pankaj.</v>
+
+00:39:12.510 --> 00:39:13.070
+<v Rajeev Kumar>Okay.</v>
+
+00:39:14.030 --> 00:39:16.670
+<v Rajeev Kumar>Media and store media storage and delivery.</v>
+
+00:39:17.390 --> 00:39:18.390
+<v Nitish Goyal>You can assign it to me.</v>
+
+00:39:25.630 --> 00:39:26.910
+<v Rajeev Kumar>Deploy automation.</v>
+
+00:39:29.630 --> 00:39:33.790
+<v Nitish Goyal>I'm not sure. Again, can you just open the ticket once? What is in there?</v>
+
+00:39:35.950 --> 00:39:50.070
+<v Pramod Kumar>I think it will be the DevOps. Yeah, CICD. So this also will be assigned to Mohit. So Rajeev, after the call, I think we can invite Mohit into the board and then assign to him.</v>
+
+00:39:51.230 --> 00:39:51.630
+<v Rajeev Kumar>Shibu.</v>
+
+00:39:54.350 --> 00:39:54.670
+<v Rajeev Kumar>Yap.</v>
+
+00:39:54.910 --> 00:39:57.230
+<v Rob Forshier II>If you can send me the e-mail, I'll get it managed to the board.</v>
+
+00:39:55.710 --> 00:39:56.110
+<v Rajeev Kumar>We.</v>
+
+00:40:00.990 --> 00:40:03.630
+<v Pramod Kumar>Yeah, I'll just message you.</v>
+
+00:40:04.510 --> 00:40:10.830
+<v Rajeev Kumar>I guess before that he might need to request for the Jira access.</v>
+
+00:40:11.950 --> 00:40:15.190
+<v Pramod Kumar>Yeah, we need to see whether we already, yeah, yeah.</v>
+
+00:40:15.270 --> 00:40:15.910
+<v Rajeev Kumar>Yes.</v>
+
+00:40:16.870 --> 00:40:20.790
+<v Rajeev Kumar>OK, baseline observability about this Nitish.</v>
+
+00:40:23.350 --> 00:40:25.270
+<v Nitish Goyal>Can you just open the ticket once?</v>
+
+00:41:11.110 --> 00:41:11.510
+<v Rajeev Kumar>Yeah.</v>
+
+00:41:17.070 --> 00:41:18.310
+<v Rajeev Kumar>I don't know why it is.</v>
+
+00:41:22.870 --> 00:41:28.470
+<v Rob Forshier II>You probably just have to fly through this real quick just to get rid of it. Probably like your first initial, yeah.</v>
+
+00:41:27.190 --> 00:41:27.430
+<v Rajeev Kumar>Play.</v>
+
+00:41:30.630 --> 00:41:32.550
+<v Rajeev Kumar>OK, here we are, Natixis.</v>
+
+00:41:33.510 --> 00:41:35.110
+<v Nitish Goyal>OK, let me just have a look.</v>
+
+00:41:43.670 --> 00:41:47.430
+<v Nitish Goyal>Okay, I think this is all about logging.</v>
+
+00:41:48.790 --> 00:41:53.110
+<v Nitish Goyal>Logs and observe will be on the back end.</v>
+
+00:41:57.910 --> 00:41:59.990
+<v Nitish Goyal>Okay, you can assign it to me.</v>
+
+00:42:01.270 --> 00:42:01.510
+<v Rajeev Kumar>Okay.</v>
+
+00:42:12.750 --> 00:42:17.190
+<v Rajeev Kumar>OK, app shell routing and single brand thing.</v>
+
+00:42:29.110 --> 00:42:32.710
+<v Nitish Goyal>I think this includes ROS changes.</v>
+
+00:42:30.230 --> 00:42:30.710
+<v Shubhankar Bhavsar>You.</v>
+
+00:42:33.790 --> 00:42:34.630
+<v Nitish Goyal>On the same thing.</v>
+
+00:42:33.910 --> 00:42:38.150
+<v Shubhankar Bhavsar>Yeah, more of a application-related ticket.</v>
+
+00:42:39.910 --> 00:42:42.310
+<v Rajeev Kumar>So, who will take this up? You, Shubhankar?</v>
+
+00:42:42.710 --> 00:42:44.710
+<v Shubhankar Bhavsar>Yes, please assign this to me.</v>
+
+00:42:52.230 --> 00:42:58.710
+<v Rajeev Kumar>OK, so this will go entirely. I will, you know, move them into...</v>
+
+00:42:59.990 --> 00:43:04.630
+<v Rajeev Kumar>OK, this we already talked about. Let's start with this on and onboarding.</v>
+
+00:43:07.110 --> 00:43:08.550
+<v Rajeev Kumar>And this going?</v>
+
+00:43:11.110 --> 00:43:11.990
+<v Rajeev Kumar>Sprint 2.</v>
+
+00:43:20.790 --> 00:43:40.470
+<v Pramod Kumar>I think it will. Already Pankaj was doing research about the design and tools. So I think you can pull it in and then obviously, like you said, Pankaj can review it. He couldn't make it to the call right here. I think he'll review it and he can.</v>
+
+00:43:21.230 --> 00:43:21.710
+<v Nitish Goyal>Mhm.</v>
+
+00:43:28.950 --> 00:43:29.430
+<v Rajeev Kumar>Mhm.</v>
+
+00:43:39.910 --> 00:43:51.270
+<v Rajeev Kumar>Right, we'll have to discuss with Pankaj separately, right? But like everything will go to Pankaj or in between there are things which will go to...</v>
+
+00:43:40.710 --> 00:43:41.230
+<v Pramod Kumar>Justin.</v>
+
+00:43:43.670 --> 00:43:44.070
+<v Pramod Kumar>Yap.</v>
+
+00:43:53.190 --> 00:43:54.150
+<v Rajeev Kumar>Different people.</v>
+
+00:43:56.390 --> 00:44:08.710
+<v Pramod Kumar>I think this will be one that will be worked on as a course-grained item, one course-grained item. I don't think it will be piecemeal. So let's start with that and if Pankaj needs to, he can reassign.</v>
+
+00:44:09.550 --> 00:44:11.590
+<v Rajeev Kumar>OK, let me sign and get this.</v>
+
+00:44:12.070 --> 00:44:12.310
+<v Pramod Kumar>Yap.</v>
+
+00:44:16.310 --> 00:44:26.790
+<v Rob Forshier II>So while he's doing that, did we align on the end of our shape sprint? Are we saying shape ends tomorrow like I have it currently set, or are we wanting to extend that into next week?</v>
+
+00:44:17.790 --> 00:44:17.910
+<v Pramod Kumar>Yap.</v>
+
+00:44:27.430 --> 00:44:27.630
+<v Pramod Kumar>Bhasin.</v>
+
+00:44:28.870 --> 00:44:34.430
+<v Pramod Kumar>No, tomorrow was what we said, ending tomorrow, Rajeev. Yeah, yeah.</v>
+
+00:44:31.670 --> 00:44:33.910
+<v Rob Forshier II>Okay, cool. I just want to double check. Okay.</v>
+
+00:44:37.670 --> 00:44:38.070
+<v Rajeev Kumar>Yeah.</v>
+
+00:44:45.030 --> 00:44:49.870
+<v Rajeev Kumar>OK, this question, then the next one is this daily prompt.</v>
+
+00:45:07.750 --> 00:45:27.270
+<v Rajeev Kumar>Can it happen? We can see if this is becoming a little heavy. We can circle back. It doesn't mean we need to complete or plan everything today. We can circle back on Monday again and go through, right? Even though we will start Sprint 2 with whatever we have.</v>
+
+00:45:27.750 --> 00:45:37.590
+<v Rajeev Kumar>Decided or planned already, so we can we can meet in between, you know, Monday or Tuesday, Wednesday, whenever.</v>
+
+00:45:38.630 --> 00:45:41.590
+<v Rajeev Kumar>Comfortable, we can, you know.</v>
+
+00:45:42.870 --> 00:45:45.350
+<v Rajeev Kumar>Along with Pankaj, we can reiterate.</v>
+
+00:45:47.830 --> 00:45:49.430
+<v Pramod Kumar>Yap, I think that makes sense.</v>
+
+00:45:51.990 --> 00:46:01.990
+<v Rajeev Kumar>Looks like it is becoming a little heavy as of now and Pankaj is not there in the meeting and that is creating a gap also.</v>
+
+00:46:05.190 --> 00:46:08.950
+<v Nitish Goyal>Yes, and uh, what I think some of this, this like...</v>
+
+00:46:09.790 --> 00:46:10.270
+<v Rajeev Kumar>Mmh.</v>
+
+00:46:10.230 --> 00:46:19.270
+<v Nitish Goyal>This epic daily prompt, this would be something where developer and back end and the front end would be.</v>
+
+00:46:12.350 --> 00:46:12.830
+<v Rajeev Kumar>Mmh.</v>
+
+00:46:21.510 --> 00:46:27.750
+<v Nitish Goyal>We both need to be worked on a similar ticket or separate tickets need to be graded.</v>
+
+00:46:29.110 --> 00:46:30.230
+<v Nitish Goyal>Somehow, somewhere.</v>
+
+00:46:29.750 --> 00:46:30.070
+<v Rob Forshier II>Hey.</v>
+
+00:46:31.150 --> 00:46:38.470
+<v Rob Forshier II>Well, we can create subtasks on them. So I just create subtasks for that and at that point then just to sign up the subtasks then to the individual roles.</v>
+
+00:46:31.430 --> 00:46:32.470
+<v Nitish Goyal>On some of these.</v>
+
+00:46:42.150 --> 00:46:47.830
+<v Nitish Goyal>So, in this story, you are saying there are some tasks present right now, and it's like scribble number thirty-five.</v>
+
+00:46:47.510 --> 00:46:49.350
+<v Rajeev Kumar>No, see this, this is.</v>
+
+00:46:47.990 --> 00:46:54.630
+<v Rob Forshier II>No, I'm saying you'll have to create them. I only created it at an epic and a feature level or epic and user story, feature, whatever.</v>
+
+00:46:50.110 --> 00:46:51.110
+<v Nitish Goyal>OKOK, fine.</v>
+
+00:46:50.550 --> 00:46:51.030
+<v Rajeev Kumar>Right.</v>
+
+00:46:53.510 --> 00:46:54.070
+<v Nitish Goyal>Toth.</v>
+
+00:46:55.870 --> 00:47:04.470
+<v Rajeev Kumar>Right, right, within story, like you know, if it is assigned to you, Nitish, and you need somebody else to work partly on that.</v>
+
+00:46:56.550 --> 00:46:56.950
+<v Nitish Goyal>Good.</v>
+
+00:47:04.950 --> 00:47:05.110
+<v Nitish Goyal>MM.</v>
+
+00:47:05.350 --> 00:47:08.790
+<v Rajeev Kumar>Stars or sub-tasks can be created and assigned.</v>
+
+00:47:10.310 --> 00:47:10.790
+<v Nitish Goyal>Yap.</v>
+
+00:47:13.590 --> 00:47:26.310
+<v Rajeev Kumar>And actually, you know, let me be very frank here. We may not focus too much on, you know, what we are doing in data versus what we are doing actually on the...</v>
+
+00:47:28.310 --> 00:47:46.510
+<v Rajeev Kumar>Work front, right? Jira can be here and there. Jira can remain at high level when we will not go into the details. We will rely more upon code base and how we are moving forward with the PR and doing some automation such a way that.</v>
+
+00:47:46.950 --> 00:47:54.670
+<v Rajeev Kumar>When the code is getting updated, PR is getting moved, the Jira should move its status from in progress to done.</v>
+
+00:47:59.990 --> 00:48:00.310
+<v Nitish Goyal>Yap.</v>
+
+00:48:01.430 --> 00:48:01.670
+<v Rajeev Kumar>Okay.</v>
+
+00:48:02.630 --> 00:48:10.790
+<v Rajeev Kumar>But, but look at this and take take this as a high level, you know, a direction for us to move forward collectively, right?</v>
+
+00:48:13.350 --> 00:48:31.870
+<v Rajeev Kumar>And Rob, I guess if you haven't heard me, in case you were on break, we were discussing if it is becoming a little heavy as of now for us to plan and decide everything for sprint two. We will circle back again, maybe early next week.</v>
+
+00:48:32.230 --> 00:48:35.190
+<v Rajeev Kumar>Along with Pankaj and reiterate.</v>
+
+00:48:37.590 --> 00:48:42.390
+<v Rob Forshier II>Yeah, go ahead. Yeah, please put the please put a follow-up meeting on our calendars for that. Yeah.</v>
+
+00:48:37.750 --> 00:48:39.110
+<v Rajeev Kumar>We will, we.</v>
+
+00:48:41.590 --> 00:48:49.910
+<v Rajeev Kumar>Exactly, I will do that. I will do that after checking availability from Pankaj, because he is must to be there in this meeting.</v>
+
+00:48:53.990 --> 00:48:54.870
+<v Rajeev Kumar>How do you do?</v>
+
+00:48:53.990 --> 00:49:08.950
+<v Rob Forshier II>I think once the team starts looking at the current set of stories that we put out there, I think they'll realise that some of this work has already been done. And so a lot of it will just be like, oh, we just need to do this little part and this little piece. And so yeah, I think we're a lot further. It's just right now, we're just throwing the whole backlog at you and it just, it's overwhelming.</v>
+
+00:48:58.630 --> 00:48:59.030
+<v Rajeev Kumar>Yap.</v>
+
+00:49:01.270 --> 00:49:02.310
+<v Rajeev Kumar>Yes, yes.</v>
+
+00:49:05.030 --> 00:49:05.430
+<v Rajeev Kumar>Good.</v>
+
+00:49:09.510 --> 00:49:27.750
+<v Rajeev Kumar>Exactly, exactly. That's what I'm feeling. It is becoming a little heavy as of now, but once we start moving, you know, we will try moving big, big things together. You know, like at the epic level, we will try to make the progress.</v>
+
+00:49:28.070 --> 00:49:33.190
+<v Rajeev Kumar>Using agentic AI rather than individual and detail level.</v>
+
+00:49:38.470 --> 00:49:55.190
+<v Karuna Arshakota>Rob, one request I asked from my end. So actually I was going through the some of the user stories and epics as well. The terminology when I go through it is little, I seem to be.</v>
+
+00:49:56.630 --> 00:50:14.670
+<v Karuna Arshakota>Not able to make it or tough to understand. Is there a way we can simplify this information we have in this user stories or epic, say example, like one which is like pure specific, sorry, Rajeev, I just.</v>
+
+00:50:20.710 --> 00:50:21.350
+<v Rajeev Kumar>Shibu.</v>
+
+00:50:21.590 --> 00:50:40.630
+<v Karuna Arshakota>We have scribble 54 which I was going through for the QA foundation standards and like there is a lot of information and we are also have some interlinks with the other information as well. So yeah, like this is one example, but there are a few other also I see.</v>
+
+00:50:41.190 --> 00:50:46.710
+<v Karuna Arshakota>If there is a way we can have these requirements more simplified version.</v>
+
+00:50:48.630 --> 00:51:07.430
+<v Rob Forshier II>I mean, you can feel free to break these down, like, you know, use Claude, you know, hey, this, you know, let's break this story down or, well, I think this epic, that's the epic. So I was trying to put as much detail in the epic, right, and then break that out into multiple like lower level tasks that then can be more easily accomplished and more.</v>
+
+00:50:58.950 --> 00:51:00.150
+<v Karuna Arshakota>Yeah, this is epic.</v>
+
+00:51:01.150 --> 00:51:01.510
+<v Karuna Arshakota>Yeah.</v>
+
+00:51:08.150 --> 00:51:19.030
+<v Rob Forshier II>Yeah, smaller thing. So is that feel free, is that I laid down what I could, and that's where unfortunately y'all will have to go back over it and then adjust it to y'all's desires in months.</v>
+
+00:51:09.830 --> 00:51:09.990
+<v Karuna Arshakota>Mm.</v>
+
+00:51:13.350 --> 00:51:13.590
+<v Karuna Arshakota>Mm.</v>
+
+00:51:19.990 --> 00:51:27.830
+<v Karuna Arshakota>Like, should we do this like manually individual or we have to use meta report to do this, like update the details with it?</v>
+
+00:51:21.110 --> 00:51:21.590
+<v Rajeev Kumar>Sleep.</v>
+
+00:51:24.310 --> 00:51:24.950
+<v Rajeev Kumar>Really.</v>
+
+00:51:26.390 --> 00:51:27.510
+<v Rajeev Kumar>See, we already...</v>
+
+00:51:27.670 --> 00:51:45.590
+<v Rob Forshier II>If you want to do it with Claude, use the meta repo because it has the built-in commands in there and it's also everything that's backed in here is tied to the wiki. So like when you click on them and you go to like the bottom of them, it should have like links. It'll take you directly into the wiki where either pointed at</v>
+
+00:51:34.190 --> 00:51:34.470
+<v Karuna Arshakota>Mm.</v>
+
+00:51:45.830 --> 00:52:09.190
+<v Rob Forshier II>pajunks like architecture, like documentation or as references, or we're pointing to a specific screen where, you know, I just showed you like the prototype, where I have the prototype and all the screens laid out and then all the documentation, because I didn't want to like copy everything out and then have two sources of truth. So there's a lot of pointing back to the meta repo. So I would highly recommend using the meta repo when you're editing and playing with Jira, because a lot of the details in.</v>
+
+00:51:50.230 --> 00:51:50.390
+<v Karuna Arshakota>Mm.</v>
+
+00:51:55.750 --> 00:51:55.910
+<v Karuna Arshakota>Mm.</v>
+
+00:52:03.830 --> 00:52:04.790
+<v Karuna Arshakota>Correct, correct.</v>
+
+00:52:09.310 --> 00:52:09.830
+<v Rob Forshier II>The wiki.</v>
+
+00:52:11.110 --> 00:52:12.630
+<v Karuna Arshakota>Okay. Okay.</v>
+
+00:52:15.270 --> 00:52:34.790
+<v Karuna Arshakota>Sure, I like I could see there are sub tasks, but Rajeev, there is like not only this, but I was looking through the epic that we talked about, auth and onboarding. I did go through only a couple of them today to like understand. I'm trying to relate with the workflows also that we have.</v>
+
+00:52:16.470 --> 00:52:17.110
+<v Rajeev Kumar>Yap.</v>
+
+00:52:35.590 --> 00:52:43.110
+<v Karuna Arshakota>in the meta repo, but yeah, I see this like little challenge to make it out.</v>
+
+00:52:45.990 --> 00:53:04.550
+<v Rob Forshier II>Yeah, as I said, feel free to take those and rewrite them. As I said, I mean, I even make assumptions on, you know, from my viewpoint of what QE should be doing. So by all means, as I said, make these your own. If it's not worded correctly, word it how you want it to be corrected. As I said, I was trying to play everybody's role and, you know, I'm only so good.</v>
+
+00:52:56.670 --> 00:52:56.870
+<v Karuna Arshakota>Mm.</v>
+
+00:53:03.990 --> 00:53:21.670
+<v Karuna Arshakota>No, I understand. No, no, that's where I wanted to bring this up and then take your suggestion. Yeah, so that like we have, I mean, like this is all again a base, even whatever we want to drive for the, whether it's a development or testing, it drives from here.</v>
+
+00:53:22.230 --> 00:53:33.030
+<v Karuna Arshakota>Right, so I wanted to cheque with you and take your suggestion. But yeah, whatever information here, it is definitely helpful. That is a direction. We have direction from here. Thank you.</v>
+
+00:53:34.550 --> 00:53:34.950
+<v Rob Forshier II>Pardon.</v>
+
+00:53:40.310 --> 00:53:46.950
+<v Rajeev Kumar>Okay, anything else, team? We still have 5, 7 minutes before our stand up.</v>
+
+00:53:58.230 --> 00:54:06.470
+<v Rajeev Kumar>Okay, then, Team, we can wrap up this meeting, take a short break, a couple of minutes, and circle back for the standard.</v>
+
+00:54:10.230 --> 00:54:18.070
+<v Rob Forshier II>And for the stand-up, can we show the, when you're running, can you show the board so we can use that as like our, I don't know, how are we going to do it?</v>
+
+00:54:11.270 --> 00:54:11.510
+<v Nitish Goyal>Rick.</v>
+
+00:54:17.750 --> 00:54:36.670
+<v Rajeev Kumar>Yeah, yeah, sure, right? We we can we can refer the board and go through, you know, the updates using board that will be, you know, much better way to understand things and it will enhance our communication and collaboration.</v>
+
+00:54:19.150 --> 00:54:19.670
+<v Rob Forshier II>Perfect.</v>
+
+00:54:38.270 --> 00:54:40.710
+<v Rob Forshier II>Perfect. Awesome. See everybody in 5 minutes.</v>
+
+00:54:41.350 --> 00:54:43.830
+<v Rajeev Kumar>Okay, then. Thanks. Thanks, everyone.</v>
+
+00:54:44.270 --> 00:54:45.070
+<v Nitish Goyal>Thanks, bye.</v>
+
+00:54:44.390 --> 00:54:45.430
+<v Pramod Kumar>Thanks, all. Bye.</v>
+
+00:54:45.430 --> 00:54:45.990
+<v Rob Forshier II>Thank you.</v>
+
+00:54:45.990 --> 00:54:46.950
+<v Rajeev Kumar>Cheers, bye bye.</v>
+
+00:54:46.190 --> 00:54:46.630
+<v Karuna Arshakota>Thank you.</v>
+
+00:54:47.110 --> 00:54:47.670
+<v Shubhankar Bhavsar>Thank you.</v>
+

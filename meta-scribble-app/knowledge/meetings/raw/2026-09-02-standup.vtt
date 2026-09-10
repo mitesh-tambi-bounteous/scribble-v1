@@ -1,0 +1,457 @@
+WEBVTT
+
+00:00:22.673 --> 00:00:23.553
+<v Nitish Goyal>Hey, hi, Evan.</v>
+
+00:00:24.433 --> 00:00:25.393
+<v Rob Forshier II>Good morning.</v>
+
+00:00:33.873 --> 00:00:35.393
+<v Rajeev Kumar>Hey, hi everyone.</v>
+
+00:00:37.233 --> 00:00:38.353
+<v Rob Forshier II>Hey, morning, Rajeev.</v>
+
+00:00:42.673 --> 00:00:49.073
+<v Rob Forshier II>Oh, you should have just gotten a e-mail from Jira. I made you an admin on the Jira board for Jeeves.</v>
+
+00:00:49.953 --> 00:00:51.873
+<v Rajeev Kumar>Okay, let me check on that.</v>
+
+00:01:02.753 --> 00:01:07.233
+<v Rob Forshier II>Nice, it looks like the meeting is automatically recording, so that's good. It's all set.</v>
+
+00:01:10.993 --> 00:01:11.793
+<v Rob Forshier II>Beautiful.</v>
+
+00:01:21.052 --> 00:01:27.052
+<v Rob Forshier II>Alright, I guess if we want to start, looks like more people are rolling in, but yeah, we can go ahead and get a get a start for this today.</v>
+
+00:01:27.292 --> 00:01:27.852
+<v Rob Forshier II>Um...</v>
+
+00:01:29.292 --> 00:01:50.772
+<v Rob Forshier II>So while I've got the horn, I guess I'll go ahead and give my update. So yesterday, as I mentioned, I'm starting to work on the backlog and kind of as a prerequisite, I was kind of having all, now that we have the prototype kind of matching the features and functionality that Scribble wants, I created a prototype section inside of the wiki.</v>
+
+00:01:52.012 --> 00:02:09.932
+<v Rob Forshier II>So now we have all of the content kind of laid out in here of, you know, what the prototype contains. So, you know, what is like the, and I did all the flows too. So we actually have a flows section where like here's like the invite and join where it talks about all the sections, what screens are involved.</v>
+
+00:02:10.612 --> 00:02:32.412
+<v Rob Forshier II>what the flow of it is, if there's any like issues or thoughts it had. And then we also then have like the individual screens then, which then each of the individual screens then have like kind of like an added glance. The screenshot, the iOS renders, which, you know, once we get the updated, because how I have all these laid out, we can easily swap in the new updated once we get them.</v>
+
+00:02:33.212 --> 00:02:51.612
+<v Rob Forshier II>You know what features they had, because that was the other thing is making sure that we had all the features for each screen, data calls, components, everything for it. So, basically, now I have kind of everything ready for building out the backlog, and I started to kind of like build that out now, and my goal today is to read through all that and start to...</v>
+
+00:02:51.772 --> 00:03:08.492
+<v Rob Forshier II>pump that into JIRA. Now note, as I said, I'm going to be creating the epics and the features. So obviously we'll need to create the user stories after that, but at least we'll have all the epics and features laid down into set as much as the prototype is laid in there as much as possible too. And then also I'm feeding off of.</v>
+
+00:03:10.212 --> 00:03:30.572
+<v Rob Forshier II>all the architecture designs as well. So this is all being updated to what the latest tech stack is as well, and what we're targeting. Now that all that's actually in here as well. With that, I'll be working on the backlog and trying to get that into JIRA today, and that's pretty much my day. Oh, and then just a side note, I did put this into the Scribble Dev team channel.</v>
+
+00:03:31.532 --> 00:03:56.292
+<v Rob Forshier II>So when I used to run Teams, one of the things I used to always do is anytime I wasn't in a meeting, I would sit in a Teams channel that I would always have open that I usually call my office hours. And so every morning when I log on, I'll try and get into that. I've shared that with you. That channel's always open. And so I'll just be sitting in there. So feel free to pop in there, ask questions, work on things, do whatever you need to. I'll just try and be in there so you guys</v>
+
+00:03:56.292 --> 00:04:01.932
+<v Rob Forshier II>Always have access to me while I'm on, so, and that's about it. I'll go ahead and hand off to...</v>
+
+00:04:03.412 --> 00:04:04.412
+<v Rob Forshier II>Whoever wants to go next?</v>
+
+00:04:10.652 --> 00:04:31.612
+<v Pramod Kumar>Yeah, I think yeah, quick updates on the access stuff. So Eric, thanks for setting up the GitHub so that everyone has got their invites and accepting it and Apple as well. We have got the invites to the Apple developer account that has been set up.</v>
+
+00:04:31.932 --> 00:04:52.812
+<v Pramod Kumar>So I think we are good on those. We'll look through and see if there's anything additional we need on those, but I think we should be good there. On the AWS front, I think we are yet to get any notifications, just thought I'll check.</v>
+
+00:04:52.892 --> 00:04:55.372
+<v Pramod Kumar>if you had any update on that one.</v>
+
+00:04:56.412 --> 00:05:03.132
+<v Eric Rice>AWS should be finishing up today. Yesterday was getting the Apple up and running. We were approved fairly quickly, so that was nice.</v>
+
+00:05:04.252 --> 00:05:04.572
+<v Pramod Kumar>Yap.</v>
+
+00:05:05.692 --> 00:05:09.132
+<v Pramod Kumar>Sounds good. Yeah, we'll look for the AWS ones as well.</v>
+
+00:05:13.452 --> 00:05:14.172
+<v Pramod Kumar>Thanks.</v>
+
+00:05:15.812 --> 00:05:16.652
+<v Pramod Kumar>Pankaj.</v>
+
+00:05:18.092 --> 00:05:36.172
+<v Pankaj Aggarwal>Ohh, thanks. So, basically, I was pretty much working with GitHub today. You can go and see now I've set up a scribble mobile app repo. We we already had another repo, Bounteous or something, but I I prefer creating another repo without Bounteous named or something.</v>
+
+00:05:36.492 --> 00:05:58.012
+<v Pankaj Aggarwal>which eventually can become a production repo. So you can see the history and all. I've committed a lot of things in there based on the code that we had generated earlier. Now, I was also going through the repo structure, how the final repo should look like. Yesterday we were discussing about mono repo and all. So confirmed all that thing, set up BNBM, you know, everything, whatever is related or.</v>
+
+00:05:58.172 --> 00:06:17.292
+<v Pankaj Aggarwal>needed for the real development work and all. So I've set up everything, including porting the code that I've written for mobile repo in the older one into this one. So this is pretty much on a stable state now. I'm now trying to set up the best vectors in engineering vectors should be a practice in this one.</v>
+
+00:06:17.772 --> 00:06:37.972
+<v Pankaj Aggarwal>I realized that we are still on free plan, so I was not able to set up all the protection rules and all on GitHub, but at least I've created, you know, a couple of branches. Download will be the main branch now, everything, so it's planning the entire CI/CD process as well as the overall development cycle and the baseline code that we have already done.</v>
+
+00:06:39.852 --> 00:06:44.732
+<v Pankaj Aggarwal>That's pretty much I've done. Maybe I'll hand over to Nitish.</v>
+
+00:06:46.972 --> 00:06:49.692
+<v Nitish Goyal>Yeah, thanks. Hi, everyone. Yadav.</v>
+
+00:06:49.892 --> 00:07:02.332
+<v Rob Forshier II>Well, I was just going to ask, I was just thinking about this, because you just created that new repo. Do we want to move the meta repo into the scribble GitHub as well? Just so then everything is just kind of located over there?</v>
+
+00:07:04.972 --> 00:07:09.532
+<v Pankaj Aggarwal>I would say yes, it's better. In fact, the Bounteous report, we can probably.</v>
+
+00:07:10.412 --> 00:07:19.292
+<v Pankaj Aggarwal>I know we can rename that to meta or something and move everything in there or like it would it would definitely make sense to move everything in this one.</v>
+
+00:07:19.852 --> 00:07:31.692
+<v Rob Forshier II>Okay, yeah, yeah. So how about, yeah, I'll rename that GitHub the Bounteous one on their side, and I'll make that the new meta repo, and then I'll push the meta repo over to there as well as a part of my task today. Okay, cool.</v>
+
+00:07:32.532 --> 00:07:33.212
+<v Pankaj Aggarwal>Network.</v>
+
+00:07:35.932 --> 00:07:36.572
+<v Pankaj Aggarwal>In this.</v>
+
+00:07:36.172 --> 00:07:54.492
+<v Nitish Goyal>Okay, yeah, so as discussed yesterday, after the discussion we had over the call related to the question we asked, so I updated the schema, currently the schema is updated, and I'm currently updating the API contracts right now.</v>
+
+00:07:55.132 --> 00:08:05.612
+<v Nitish Goyal>So, yeah, after completing it, I will just commit the changes and probably give it for review to Rob and Pankaj so they can have a final look over the.</v>
+
+00:08:06.972 --> 00:08:09.132
+<v Nitish Goyal>Yeah, that's what I'm doing right now.</v>
+
+00:08:21.132 --> 00:08:22.892
+<v Karuna Arshakota>Hi everyone, this is Vikash.</v>
+
+00:08:21.772 --> 00:08:22.172
+<v Rajeev Kumar>OK.</v>
+
+00:08:23.972 --> 00:08:44.652
+<v Karuna Arshakota>Yeah, so I have been working with the automation framework. Like there was one query about like, do we wanted to have a separate report, single report? So had some analysis and internal discussions like today, so we are going with the single repository for everything.</v>
+
+00:08:45.692 --> 00:09:06.892
+<v Karuna Arshakota>Coming to the mock screens that's been uploaded to the Lucid board. So I was like trying to generate initial set of test cases today, but yeah, I need to go through what plot generated and I need to review it. So I'll be continue working on that further. Yeah, and I will also go through the workflows.</v>
+
+00:09:07.012 --> 00:09:18.492
+<v Karuna Arshakota>So that's been updated to the wiki page today. Yeah, probably I'll go with the each workflow as an individual and then try to generate the test cases out of it. Yeah, thank you.</v>
+
+00:09:22.492 --> 00:09:33.772
+<v Rob Forshier II>Yeah, we'll have to get together because at some point I'll bake into the JIRA workflow your test case process so that we can generate the test cases with the user stories.</v>
+
+00:09:31.852 --> 00:09:32.012
+<v Karuna Arshakota>Mm.</v>
+
+00:09:34.732 --> 00:09:34.892
+<v Karuna Arshakota>Mm.</v>
+
+00:09:36.172 --> 00:09:37.052
+<v Karuna Arshakota>Yeah, I agree.</v>
+
+00:09:43.692 --> 00:09:45.052
+<v Shubhankar Bhavsar>Okay, I can go next.</v>
+
+00:09:47.052 --> 00:10:06.172
+<v Shubhankar Bhavsar>Hi everyone, good morning. Yesterday, early morning, I got the access to the admin right so that I can set up the development tools at my system. Now, most of the time I have like doing the setup and all, including the code review as well. So right now I have a high level understanding of whatever has been done by Pankaj.</v>
+
+00:10:06.732 --> 00:10:26.732
+<v Shubhankar Bhavsar>And I was trying to compare this with the Lucid board and the Vikram I have been provided with. I have a bit of queries that I have posted for Rajeev, like I need some requirement related details. What is the actual requirement, immediate requirement versus what to have in MVP? So those I have raised a request for.</v>
+
+00:10:27.132 --> 00:10:42.492
+<v Shubhankar Bhavsar>Once those are clear, I can move ahead with the further development part. One more thing, I've received the GitHub access and I also received the app app developer access, so that too I have registered now.</v>
+
+00:10:43.372 --> 00:10:45.612
+<v Shubhankar Bhavsar>So yeah, that's pretty much all from my site.</v>
+
+00:10:56.892 --> 00:11:02.252
+<v Rajeev Kumar>Okay, does we have any questions for clarification from anyone?</v>
+
+00:11:05.492 --> 00:11:16.252
+<v Eric Rice>About the GitHub, Pankaj mentioned it being a free account. We do have payments set up in there. Is there something, an additional step that I would need to take to open some things up for you?</v>
+
+00:11:21.212 --> 00:11:25.852
+<v Pankaj Aggarwal>Maybe I'll check and confirm because I was trying to set up.</v>
+
+00:11:27.372 --> 00:11:28.092
+<v Pankaj Aggarwal>Ohh.</v>
+
+00:11:32.452 --> 00:11:36.252
+<v Pankaj Aggarwal>And I'll see, maybe I'll confirm because I know we we.</v>
+
+00:11:37.132 --> 00:11:38.652
+<v Pankaj Aggarwal>Now I can see problems.</v>
+
+00:11:43.292 --> 00:12:00.492
+<v Pankaj Aggarwal>Oh, I think, let me share my screen and show something. It is giving an error. Probably, I bad, I think they're on paid account, but something needs to be done because I was trying to set up the branch protection rule and it says that you would need to upgrade this organizations to GitHub team.</v>
+
+00:12:06.732 --> 00:12:14.412
+<v Eric Rice>Okay, if you want to e-mail me any instructions, I'm happy to go through and do whatever I need to do. I'll make that work for you. Bye.</v>
+
+00:12:07.612 --> 00:12:08.172
+<v Pankaj Aggarwal>I can.</v>
+
+00:12:12.412 --> 00:12:13.452
+<v Pankaj Aggarwal>I, I will do that.</v>
+
+00:12:15.372 --> 00:12:16.412
+<v Pankaj Aggarwal>I'll do that after call.</v>
+
+00:12:19.692 --> 00:12:27.532
+<v Rajeev Kumar>And Pankaj, we had few items from yesterday which we decided we will follow up and take it up today.</v>
+
+00:12:30.332 --> 00:12:39.612
+<v Eric Rice>I believe one of them was the draft idea for the drawings. Is that correct if someone got distracted and had to exit out of the app?</v>
+
+00:12:40.972 --> 00:13:00.652
+<v Eric Rice>We talked about it internally. Having a draft isn't necessary at this point. A state change or a state save would be nice. It's similar to when you like close out of Instagram, you go back in, it's in the same spot. But if that's something that's increasingly difficult and pushes the dev end event, we can just kind of.</v>
+
+00:13:00.772 --> 00:13:01.452
+<v Eric Rice>Letter restart.</v>
+
+00:13:04.492 --> 00:13:04.652
+<v Pankaj Aggarwal>Yeah.</v>
+
+00:13:08.012 --> 00:13:09.372
+<v Pankaj Aggarwal>But I think that's fine.</v>
+
+00:13:13.212 --> 00:13:17.772
+<v Rajeev Kumar>Nitish, are we all good to whatever we had discussed yesterday?</v>
+
+00:13:20.172 --> 00:13:20.732
+<v Nitish Goyal>Yeah, Rajeev.</v>
+
+00:13:23.572 --> 00:13:31.132
+<v Pankaj Aggarwal>Yeah, we are good. I think one of the item was on me, which was more or less related to, you know.</v>
+
+00:13:23.692 --> 00:13:24.092
+<v Rajeev Kumar>Yap.</v>
+
+00:13:32.572 --> 00:13:39.772
+<v Pankaj Aggarwal>The repo set up, you know, are we going with Mono Rupal, so I've already confirmed that we will be with the Mono Rupal set up for that.</v>
+
+00:13:37.292 --> 00:13:37.692
+<v Rajeev Kumar>Right.</v>
+
+00:13:40.972 --> 00:13:48.492
+<v Nitish Goyal>And Pankaj, one more thing about the multi tenancy, what I think that was another, that is the other thing that.</v>
+
+00:13:45.532 --> 00:13:56.572
+<v Pankaj Aggarwal>Ohh yeah, that was yeah, that was that was one more thing, but on on that I had shared a document. Rob, did you get the chance to?</v>
+
+00:13:58.252 --> 00:13:59.052
+<v Pankaj Aggarwal>Look through that.</v>
+
+00:14:00.572 --> 00:14:21.092
+<v Pankaj Aggarwal>So, Cognito works well, unless we don't want to support multi-tenancy at some point. That was that was also a product question to see whether we really want, you know, enterprise SSO to be included in this one. If yes, then then the another next best choice is work OS.</v>
+
+00:14:23.012 --> 00:14:30.412
+<v Rob Forshier II>Which then, I mean, once we're on work OS, that sets us up then for a whole bunch, and we're just basically we're good to go for any enterprise SSO, right?</v>
+
+00:14:23.332 --> 00:14:23.852
+<v Pankaj Aggarwal>But then...</v>
+
+00:14:31.132 --> 00:14:31.612
+<v Pankaj Aggarwal>Yes.</v>
+
+00:14:35.052 --> 00:14:40.572
+<v Rob Forshier II>And how hard is it if we went with Cognito 1st and then switched to, what was it, work OS?</v>
+
+00:14:48.252 --> 00:15:01.692
+<v Pankaj Aggarwal>I think we can plan for that. It shouldn't be that hard because the only thing we should plan is that we generate our own user IDs, which can, you know, the entire system can work with a custom user ID instead of the one generated by Cognito sub.</v>
+
+00:15:02.812 --> 00:15:09.372
+<v Pankaj Aggarwal>If we go with that approach, probably we are good because the only concern comes is e-mail you can always vote, but the cognitive sub.</v>
+
+00:15:03.132 --> 00:15:03.532
+<v Rob Forshier II>Okay.</v>
+
+00:15:10.572 --> 00:15:16.092
+<v Pankaj Aggarwal>The UUID, basically, which will generate that cannot be ported over to the other systems, and also.</v>
+
+00:15:17.412 --> 00:15:33.852
+<v Pankaj Aggarwal>If we work with e-mail ID, you know, assuming a unique e-mail ID per user as the ID identifier or something, that will work. Or we can create an internal mapping ID which will map to a cognitive user for now, later on, work OS user or something. That should work. We can work around that, yes.</v>
+
+00:15:35.052 --> 00:15:56.572
+<v Rob Forshier II>So I guess going between Work OS and Cognito, if we started out with Work OS, would it be any more difficult to set up versus Cognito? Like I'm just asking like, so if we just went with Work OS right off the bat, does that add any extra overhead or shift any of our timelines? Or is it like relatively straightforward like Cognito would be maybe just a couple extra steps?</v>
+
+00:15:57.452 --> 00:16:16.172
+<v Pankaj Aggarwal>Yeah, maybe a little extra stuff, not very significant, but yeah, it would require separating a, you know, creating an account, managing users and all in there as well, but anyway, that that everything will, because we are going with the invitation-based system, so there is no step to create users manually or something, so...</v>
+
+00:16:17.052 --> 00:16:36.532
+<v Pankaj Aggarwal>It will be like initial setup, which might take one or two days or something, and maybe another one or two days of extra development effort, I would say. So not very hard, I would say. Let's, if we don't think about enterprise SSO for now, let's go with Cognito. We'll keep the support added that.</v>
+
+00:16:36.812 --> 00:16:41.532
+<v Pankaj Aggarwal>In future, if required, we can shift over to, you know, work OS or any other system.</v>
+
+00:16:42.532 --> 00:17:00.932
+<v Rob Forshier II>Okay. Does that sound good to you, Eric? So we'll go with Cognito, which is a simpler case right now. Obviously, that won't give us enterprise right out of the gate, but we can later on, as long as we build it right, shift into that later one. If we want to go enterprise, then we'll just have to do some migrations of the enterprise, the auth basically, so that it can do it from Cognito to work OS or some other one.</v>
+
+00:17:01.692 --> 00:17:02.412
+<v Rob Forshier II>Sound good to you?</v>
+
+00:17:02.372 --> 00:17:03.452
+<v Eric Rice>That's all, that's all fine.</v>
+
+00:17:03.932 --> 00:17:14.012
+<v Rob Forshier II>Okay, but going to Cogniolo would just be a little bit quicker now for us, so we can go a little bit faster. And I know the team knows it, whereas the other one we would have to like, you know, do some learning and it probably would add a little bit of extra overhead.</v>
+
+00:17:15.212 --> 00:17:21.932
+<v Eric Rice>No, I agree. We're not sure when and if you know those two products eventually coalesce, so it's fine for now.</v>
+
+00:17:22.492 --> 00:17:31.212
+<v Rob Forshier II>Okay. Perfect. Okay. Cognito it is. And then as our point, let's just make sure that we're future-proofing it for a later shift if we need to.</v>
+
+00:17:32.972 --> 00:17:33.612
+<v Eric Rice>I should not.</v>
+
+00:17:36.172 --> 00:17:40.732
+<v Rob Forshier II>I posted the list on the side, so Erik, you had a couple, and then...</v>
+
+00:17:42.012 --> 00:17:48.892
+<v Rob Forshier II>I think we just handled the Cognito one, we handled the monorepo, so I think that one's good. Eric, you had...</v>
+
+00:17:51.092 --> 00:18:02.012
+<v Rob Forshier II>In progress drawings, you already said. I mean, if we can save the state while they're just like temporarily like, I don't know, switching screens, that would be great. But we're not going to have like a save come back to it later. There's the.</v>
+
+00:18:01.372 --> 00:18:01.612
+<v Eric Rice>Right.</v>
+
+00:18:04.892 --> 00:18:06.892
+<v Rob Forshier II>Oh, whether story text is mandatory.</v>
+
+00:18:05.132 --> 00:18:05.692
+<v Eric Rice>The.</v>
+
+00:18:07.612 --> 00:18:22.092
+<v Eric Rice>We can have it be mandatory for now. If somebody really doesn't want to type something, they can just put a character or whatever, and they just move on. So I think the decision there was no minimum. For text.</v>
+
+00:18:22.972 --> 00:18:23.372
+<v Rob Forshier II>Okay.</v>
+
+00:18:31.332 --> 00:18:33.132
+<v Rob Forshier II>Okay, if you can search.</v>
+
+00:18:38.092 --> 00:18:58.252
+<v Rob Forshier II>I think we went through all the ones and I just pulled this off of, so remember in the wiki, I also ingest all of our stand ups. There's a command built into the wiki, just like there's commands for querying, just like there's commands for updating JIRA. There's one that's just called ingest stand up. If you have Office 365,</v>
+
+00:18:59.372 --> 00:19:17.452
+<v Rob Forshier II>It'll go pull the transcript automagically and then create a page for you. And I've already structured out what a page template should look like. But all that just ends up in the follow up section at the bottom. So and now that we're recording everything, hopefully this just keeps going. So if I'm ever just not here, please just ingest that. And if not, I can just get it the next day as long as the meeting was recorded, which I have all this set up.</v>
+
+00:19:17.612 --> 00:19:17.932
+<v Rob Forshier II>So...</v>
+
+00:19:25.452 --> 00:19:26.252
+<v Rob Forshier II>Do we have any?</v>
+
+00:19:25.532 --> 00:19:31.932
+<v Karuna Arshakota>Uh, Rob, we had one, uh, we had one questionnaire on the the number of walls, um...</v>
+
+00:19:32.972 --> 00:19:35.452
+<v Karuna Arshakota>Should we limit to some number?</v>
+
+00:19:37.452 --> 00:19:57.852
+<v Rob Forshier II>Right, so Eric, so we have like the personal wall, we have then like your family wall, and we were trying to think of ways of monetizing the app. And I remember in there we were thinking, oh, maybe limiting the number of walls being able to be created. Do we want to at the beginning here have any limit or do we want to leave it unlimited for right now?</v>
+
+00:19:48.772 --> 00:19:49.132
+<v Eric Rice>Yes.</v>
+
+00:20:00.252 --> 00:20:19.212
+<v Eric Rice>I believe, and let me just take this back to the team real quick, I'll have you answer by end of day. I believe it is limiting it to one wall, but for the, that's for the MVP, but let me just double check with them and that's what they want. They're working out pricing right now and all the monetization strategies, so I want to make sure that we're building it correctly for whenever we do that.</v>
+
+00:20:21.132 --> 00:20:24.652
+<v Rob Forshier II>Okay, so that would be like personal and then like one group wall.</v>
+
+00:20:25.212 --> 00:20:36.172
+<v Eric Rice>Correct, and it could be friends, it could be, it could be whomever you wanted it to be, and then host a premium subscription. It could be unlimited, for lack of a better term.</v>
+
+00:20:40.612 --> 00:20:41.932
+<v Eric Rice>But I'll confirm that.</v>
+
+00:20:42.732 --> 00:20:45.132
+<v Rob Forshier II>Awesome. So that'll be a follow-up for tomorrow.</v>
+
+00:20:48.732 --> 00:20:49.132
+<v Karuna Arshakota>Thank you.</v>
+
+00:20:50.372 --> 00:20:50.852
+<v Rob Forshier II>Cute.</v>
+
+00:20:51.692 --> 00:20:52.412
+<v Nitish Goyal>Thank you, Aman.</v>
+
+00:20:53.012 --> 00:20:54.252
+<v Rob Forshier II>All right, go ahead.</v>
+
+00:20:53.532 --> 00:20:55.772
+<v Rajeev Kumar>Okay, I guess then that's all for today.</v>
+
+00:20:54.332 --> 00:20:54.652
+<v Eric Rice>Awesome.</v>
+
+00:20:56.252 --> 00:20:57.292
+<v Rob Forshier II>I saw a hand.</v>
+
+00:20:56.852 --> 00:20:57.932
+<v Pramod Kumar>Thanks, Alexandra.</v>
+
+00:20:58.252 --> 00:21:17.212
+<v Shubhankar Bhavsar>Yeah, I based one. I just point. We need to create this app in the Apple developer account so that we can set up the certificates and provisioning profiles. So and also the test flight setup for build distribution internally. Oh, should I do that or like how should we do it?</v>
+
+00:20:58.572 --> 00:20:59.132
+<v Pankaj Aggarwal>Excellent.</v>
+
+00:21:22.012 --> 00:21:22.972
+<v Pramod Kumar>Yeah, so...</v>
+
+00:21:23.372 --> 00:21:24.412
+<v Eric Rice>Oh, go ahead, Pramod. Sorry.</v>
+
+00:21:24.812 --> 00:21:43.372
+<v Pramod Kumar>Yeah, yeah, so I think on the we have got the access to Shubhankar, so I think we can internally decide. We have both all the roles, the admin role, the app manager, et cetera, so we can iterate over it internally, and if we need something from Erik, we'll ask him, but yeah.</v>
+
+00:21:34.492 --> 00:21:35.132
+<v Shubhankar Bhavsar>Yeah, yeah.</v>
+
+00:21:43.532 --> 00:21:52.892
+<v Pramod Kumar>I think between you, Pankaj and Mohamed will handle the certificates, etc. for now.</v>
+
+00:21:53.932 --> 00:21:57.052
+<v Shubhankar Bhavsar>Okay, thanks Pramod. Yeah, we'll do that then. Thank you.</v>
+
+00:22:00.492 --> 00:22:07.932
+<v Pramod Kumar>And yeah, test flight, I think Pankaj has already shared instructions to enable that. So I think Erik, you'll take a look at that.</v>
+
+00:22:08.492 --> 00:22:08.892
+<v Eric Rice>Yes.</v>
+
+00:22:13.372 --> 00:22:17.572
+<v Rajeev Kumar>Okay, then I guess if that's all we can wind up this meeting.</v>
+
+00:22:18.772 --> 00:22:19.692
+<v Pramod Kumar>Thanks, thanks, all.</v>
+
+00:22:20.252 --> 00:22:23.332
+<v Rob Forshier II>Thank you, everybody. Have a great evening and great day.</v>
+
+00:22:21.132 --> 00:22:21.692
+<v Rajeev Kumar>Thank you.</v>
+
+00:22:23.172 --> 00:22:23.372
+<v Karuna Arshakota>You.</v>
+
+00:22:25.052 --> 00:22:26.012
+<v Rajeev Kumar>Cheers, goodbye.</v>
+
+00:22:25.132 --> 00:22:25.692
+<v Shubhankar Bhavsar>Thank you.</v>
+
+00:22:26.412 --> 00:22:26.892
+<v Pankaj Aggarwal>Seven.</v>
+
+00:22:27.532 --> 00:22:28.012
+<v Nitish Goyal>Bhuvan.</v>

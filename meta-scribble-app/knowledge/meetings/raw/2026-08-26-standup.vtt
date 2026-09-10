@@ -1,0 +1,265 @@
+WEBVTT
+
+00:00:05.088 --> 00:00:05.688
+<v Pramod Kumar>That's great, yeah.</v>
+
+00:00:08.168 --> 00:00:11.448
+<v Rob Forshier II>I have to figure out how to set that to record in all future ones.</v>
+
+00:00:12.728 --> 00:00:13.608
+<v Rob Forshier II>But could call out.</v>
+
+00:00:15.808 --> 00:00:40.368
+<v Rob Forshier II>Okay, so yeah, so typically, obviously, in future stand-ups, once the backlog gets rolling, you know, more of this will be more just, you know, the team coming on, you know, talking about their progress, where they are on the board, what their tickets are working on, are they blockers, things like that, a typical stand-up. Obviously, since we're in the Shape Week right now, we're, you know, getting access, working with all of you, getting things defined. So these are going to be more of like a smorgasbord of just like, what are we working on?</v>
+
+00:00:40.448 --> 00:00:59.048
+<v Rob Forshier II>what's hot right now. And so for the team, I want to go over kind of some of the things that came out yesterday. So we did get access to the B2B repository. Eric sent that over. I've already updated both of our team's channels. We're at the top now. You can see the B2B repo.</v>
+
+00:00:59.608 --> 00:01:06.408
+<v Rob Forshier II>Pramod, I made you an admin, so please start adding everyone on there. So yeah, so that's there so we can start scanning through it.</v>
+
+00:01:08.248 --> 00:01:29.528
+<v Rob Forshier II>I went through yesterday with Eric and Matt, and we had kind of what I call the scribble shape kickoff. We kind of went through our board and all the questions, which again, thank you team for putting your questions on the board. We started answering those, which from that, there are three like huge big ones on there that we need kind of like right now. And so that's kind of what I built a document for, and I'll get this out at some point.</v>
+
+00:01:30.328 --> 00:01:48.728
+<v Rob Forshier II>But those three big questions are Apple, AWS, and I put GitHub up in here because, Eric, when you shared the B2B repo, that had a GitHub folder in it. So I know you guys that pulled out of GitHub. So if we could actually get access to your GitHub,</v>
+
+00:01:44.328 --> 00:01:44.968
+<v Eric Rice>Okay.</v>
+
+00:01:49.688 --> 00:02:07.848
+<v Rob Forshier II>to start building the application out in it, that would be the best thing because this kind of goes back to one of the questions on the board where it was talking about the pipeline. If we build it in Bitbucket, Bitbucket's pipeline versus GitHub pipeline, apples and oranges. So we would have to do like when we go to move that over, we'd have to do like a migration to basically rewrite the entire pipeline.</v>
+
+00:01:52.408 --> 00:01:52.648
+<v Eric Rice>Yap.</v>
+
+00:02:08.128 --> 00:02:32.168
+<v Rob Forshier II>Whereas this way we can get it all set up from first pass. So on this sheet, which in fact, I'll give this to you, I want to have the team first go through and edit the specific parts, because I just kind of threw this together. But this will be like a runbook of, you know, what do you need to request on your side. And maybe today we spin up like 3 emails, one for GitHub, one for AWS, and one with Apple.</v>
+
+00:02:33.448 --> 00:02:53.088
+<v Rob Forshier II>So the Apple one's more going to be us working with you, Eric, giving you like the playbook of what to do, what to say, what to sign up for, and then what to give us access to. AWS, similar thing. Maybe Eric, you can start that with who we need on your side, the e-mail chain to start with, and then we can start adding our people into it so then they can start.</v>
+
+00:02:53.168 --> 00:03:14.888
+<v Rob Forshier II>Going through the e-mail chains, working back and forth to get that access, and then similarly, as I said, like the GitHub, and so I've started to build this out, and I don't know if we want to do that in this right now as a team, like walk through this, and then we can basically then get all this flushed out and then mail this or send this over in the e-mail and then start getting those chains done today.</v>
+
+00:03:14.968 --> 00:03:22.568
+<v Rob Forshier II>These are the three biggest blockers that really determine A lot. Pramod, team, my, those are the three biggest ones, right?</v>
+
+00:03:24.568 --> 00:03:24.888
+<v Rob Forshier II>Okay.</v>
+
+00:03:25.208 --> 00:03:35.048
+<v Eric Rice>I'll send a message right after this over to the former dev team and get the GitHub access. And then I'll dive into this Apple stuff and we'll get signed up there.</v>
+
+00:03:35.688 --> 00:03:48.168
+<v Rob Forshier II>Okay, perfect. Yeah, just start the e-mail chains with me and then I'll bring on Pramod and then he'll start bringing in everybody or, you know, the specific parts and people who needs to be brought on for where. And then as I said, then we can, you know, get this sent out and start getting going. Perfect.</v>
+
+00:03:49.928 --> 00:04:08.808
+<v Rob Forshier II>Cool. Well, I guess that was a lot easier because it said, like, I prepared all this stuff. We could have gone through it, but now it's just kind of like e-mail chains and just passing this information off. So with that, I'm going to go ahead and just kind of carry on. So let me go back to the board. I'm just going to show this real quick for the team. So on the board, I had</v>
+
+00:04:09.288 --> 00:04:27.928
+<v Rob Forshier II>gone back through this. So AWS environment, that's what we're working on right now. Apple accounts, similarly. iOS versions, models, iPad, and scope. So yesterday we determined that it will be iPhones first. iPad will be down the line, but we don't need to work on that now. All these decisions should be showing up right here.</v>
+
+00:04:28.408 --> 00:04:33.208
+<v Rob Forshier II>These were all came out of the transcript as well, which also got ingested in the meta repo, so you all know.</v>
+
+00:04:35.208 --> 00:04:53.928
+<v Rob Forshier II>Test management software. So I know that we started filling in some of what we wanted. I also got the B2B app, so I would say go look through the B2B app and see what you can dig out of there, Karuna, to see if there was anything that you can notice out of there. But other than that, they didn't know. And so</v>
+
+00:04:54.088 --> 00:04:56.248
+<v Rob Forshier II>more likely will have to recommend unless you see that in there.</v>
+
+00:04:57.528 --> 00:04:57.688
+<v Karuna Arshakota>Shah.</v>
+
+00:05:02.168 --> 00:05:14.808
+<v Rob Forshier II>The QA walkthrough, is that something, Karuna, would you want to like see how the B2B QA goes through and like go through their process on that side? Or when you say QA walkthrough, what are you talking about here? I just want to get.</v>
+
+00:05:16.488 --> 00:05:41.088
+<v Karuna Arshakota>Yeah, this is actually all about the understanding the workflows, so that that will help us, and when we validate, like we know the end-to-end flows of the product, how the user will use this application, like there will be some unknown areas we do explore and play around with the application, but there will be some unknowns to us, right? Like when we before we wanted to.</v>
+
+00:05:41.168 --> 00:05:57.688
+<v Karuna Arshakota>like say certify something, so we should know what are the business workflows, how user will use this application, so that like we can document those in case if they are not there in the existing B2B documentation, and then we can test.</v>
+
+00:05:58.408 --> 00:06:17.128
+<v Rob Forshier II>Okay, so something like this, where it tells you from button to button. Is this what you're talking about? Okay, perfect. Because in fact, in my POC right now this morning, I'm having it build a script because it already has a script to generate all the screenshots from every screen, but then it'll also generate the text to then tell from what button goes to where.</v>
+
+00:06:04.808 --> 00:06:06.168
+<v Karuna Arshakota>Yes, yes, yes, yes.</v>
+
+00:06:17.448 --> 00:06:35.448
+<v Rob Forshier II>So then I can have it spin these up on the fly as well as not just this, but also then do the major flows too. So it would look like sort of like this where we would have where then it would also know to spin up a screen flow where it shows like, hey, this is what the onboarding looks like, this is what the daily prompt looks like, this is like the wall the dashboard looks like.</v>
+
+00:06:36.408 --> 00:06:40.168
+<v Rob Forshier II>So I can spend those up on the fly. So OK, cool. So I know what that one asks. OK.</v>
+
+00:06:44.368 --> 00:07:05.768
+<v Rob Forshier II>Okay, so for the environments, which as I said, we'll be working with Eric and their team to get the AWS deployed, for right now, as I said, we can start with dev and build that out as far as we need. Because I think in this first shape phase, as well as going into the first eight weeks, I mean, we're pretty much just mainly beginning dev, maybe get QA stood up, but we'll just have to remedy that if we can get that far.</v>
+
+00:07:07.448 --> 00:07:11.768
+<v Rob Forshier II>Any questions which please stop me as I've been running through this with any questions.</v>
+
+00:07:17.128 --> 00:07:24.168
+<v Rob Forshier II>Do we ever let users edit and already submit a drawing? I believe we already got the no on that one. Yeah, so that was a no.</v>
+
+00:07:27.368 --> 00:07:46.568
+<v Rob Forshier II>One thing that I had to change, and I just want to kind of be aware that the team's aware of this. I think the team might have already thought of it or already had this in their minds. So when you're doing the drawing app, you were recording all the strokes. In the POC, I was flattening that into an image and only saving the image. But we actually have to save all the individual strokes.</v>
+
+00:07:46.608 --> 00:08:01.608
+<v Rob Forshier II>as then like a vector array. And so I've actually updated the POC to do that now. And why that's important is later on, there will be some additional AI we can do to that if we can record their steps or their...</v>
+
+00:08:04.088 --> 00:08:23.288
+<v Rob Forshier II>their drawing strokes, then we can do things, and Eric brought this up yesterday during the meeting, so if you guys watch that, you'll hear him say that, to where say like somebody, they go and they record the story of why they drew the image that they drew. What we could do is as it's playing, we could have like a little gif go off that then just does all the strokes.</v>
+
+00:08:23.528 --> 00:08:42.728
+<v Rob Forshier II>in the timeline of the person's story. So like you can basically like as they're telling the story, you can see it basically be drawn during that timeline and then have it finished like a little before it's done or whatever. And so there's some ideas around that as well as there's some other things we can do later on. So that's kind of like why that got split up. So just kind of making the team aware of that. And that's also documented in the meta repo.</v>
+
+00:08:42.888 --> 00:08:45.368
+<v Rob Forshier II>as well as the JIRA is all backed up from that too.</v>
+
+00:08:47.448 --> 00:08:48.888
+<v Rob Forshier II>Any questions on that?</v>
+
+00:08:51.928 --> 00:08:54.088
+<v Rob Forshier II>The crash analytics tool.</v>
+
+00:08:53.048 --> 00:09:04.408
+<v Pramod Kumar>So, Rob, sorry, one question on that you mentioned about serializing the strokes, right? So, so that would take care of like odd shapes, curves, all of that.</v>
+
+00:09:06.088 --> 00:09:06.488
+<v Pramod Kumar>Okay.</v>
+
+00:09:06.328 --> 00:09:27.168
+<v Rob Forshier II>Yes, yes. That's built into the Skia package, which is like the drawing package. It keeps it like the brush stroke length, like what the brush stroke looks like, the starting and the end. I mean, it's more fancy than what I was saying, and I just used the word vector, because I mean, that's typically what kind of is, only this one has a little bit more information since it's not a straight line.</v>
+
+00:09:33.368 --> 00:09:56.248
+<v Rob Forshier II>Crash analytics. So right, so right now they've said that they don't have anything. So that's on us. So, you know, like we had said, you know, Firebase crash analytics or one of those. So I think we're just going to make the recommendation based on the app of what we're trying to build, and then the metrics and things that they're trying to collect that we make sure that we give them then the proper, like, this is why we're choosing this, and so this is what we should go with.</v>
+
+00:10:04.928 --> 00:10:25.368
+<v Rob Forshier II>Where does the code live? This one, as I said, like we had actually determined during this meeting that it was going to be in Bitbucket, but as I said, like just happened when I saw the code that there was GitHub in there and I was like, no, no, no, if they have a GitHub, we're going to try and work with them to get into GitHub because that kind of solves the whole, like I think two questions on here. So yeah, so we're going to be working on that today. So I will correct this one right now.</v>
+
+00:10:26.248 --> 00:10:26.888
+<v Rob Forshier II>Um...</v>
+
+00:10:42.408 --> 00:10:44.408
+<v Rob Forshier II>Oh, perfect. So now I think...</v>
+
+00:10:46.208 --> 00:11:04.728
+<v Rob Forshier II>I forget who asked this question, but so, because we are using the Expo framework similar to what the POC is using, so that gives us then kind of for free Android, iOS, and then a web app, the B2B and the...</v>
+
+00:11:05.048 --> 00:11:12.328
+<v Rob Forshier II>B2C will be two distinct products, so we do not want to try and make a version where we're</v>
+
+00:11:14.368 --> 00:11:23.928
+<v Rob Forshier II>It'll be nice that we have the web view, but we won't be using it. That can be then just for our own testing. This is really just only the mobile version only.</v>
+
+00:11:26.488 --> 00:11:32.328
+<v Rob Forshier II>So, and that was all, yep, no web version, B2B. I don't know why it did D.</v>
+
+00:11:33.408 --> 00:11:34.968
+<v Rob Forshier II>Need to see, here we go.</v>
+
+00:11:40.088 --> 00:11:58.688
+<v Rob Forshier II>Then this iOS only and iOS plus Android. As mentioned, Eric, we're going to be working with him to make sure we get all the Apple account stuff going sooner rather than later, so that we can, again, our focus is iOS primarily. What we can do though,</v>
+
+00:11:59.208 --> 00:12:19.568
+<v Rob Forshier II>We're not going to put any extra time to it, but since it is such an easy artifact that we can generate on the side, occasionally, if we add the process, we'll also spin off some Android deployments as well, because we can just make the APKs and just hand them off. We won't do much past that, but we'll have that so that if we have other testers that just want to see what it looks like on Android or just play with it,</v>
+
+00:12:19.648 --> 00:12:22.808
+<v Rob Forshier II>We'll just have that available, but as I said, our focus is iOS right now.</v>
+
+00:12:30.448 --> 00:12:33.048
+<v Rob Forshier II>That was the current set of questions.</v>
+
+00:12:34.328 --> 00:12:35.928
+<v Rob Forshier II>Okay, I need to clean this up.</v>
+
+00:12:48.648 --> 00:12:52.088
+<v Rob Forshier II>So I think that's all of the show and tell that I had for right now.</v>
+
+00:12:56.088 --> 00:13:00.488
+<v Rob Forshier II>See, is there anything that I'm missing that anybody wants to shout on either side?</v>
+
+00:13:05.688 --> 00:13:07.768
+<v Rob Forshier II>Because I'm A conduit, but I only have so much.</v>
+
+00:13:06.168 --> 00:13:13.608
+<v Eric Rice>Nothing from our end. I'll just, I'll start those emails and get you access, start giving us access to all that stuff and hopefully we can wrap it up to that.</v>
+
+00:13:14.848 --> 00:13:37.688
+<v Rob Forshier II>Beautiful. I have a session running on what's called Eric's changes. Hopefully, I'll have all those ready before our design session today, which for the team I set up after chatting with Eric yesterday and Christina by e-mail, I've set up a first pass design session where basically we're going to put all of the POC screens down.</v>
+
+00:13:38.008 --> 00:13:56.168
+<v Rob Forshier II>and then go talk about the features that we want for MVP. Also try and make the POC as close to the MVP design as we want. You know, if I have more features, but we'll make it as close to the MVP as we can. So then we have that as then, you know, what to build off of and use as example.</v>
+
+00:14:03.608 --> 00:14:04.088
+<v Eric Rice>Exactly.</v>
+
+00:14:08.248 --> 00:14:08.448
+<v Rob Forshier II>Yap.</v>
+
+00:14:09.688 --> 00:14:15.448
+<v Eric Rice>I'm actually going to hop on with Christina shortly and kind of fill it around on some of this. And is it 1 o'clock? We'll see you.</v>
+
+00:14:09.848 --> 00:14:10.408
+<v Rob Forshier II>Well, I...</v>
+
+00:14:10.208 --> 00:14:11.608
+<v Pramod Kumar>Take, go.</v>
+
+00:14:16.408 --> 00:14:19.448
+<v Rob Forshier II>Yeah, yeah, I think it's 1:00 your time, noon my time, yeah.</v>
+
+00:14:20.168 --> 00:14:20.608
+<v Eric Rice>Awesome.</v>
+
+00:14:21.608 --> 00:14:40.408
+<v Pramod Kumar>Yeah, hey, one quick request I think for Eric, Matt. Not sure, Rob, if you have already discussed. So, given that the guiding goal is some kind of launch at AWS reinvent, if you have thoughts around what the script around that.</v>
+
+00:14:40.848 --> 00:14:56.088
+<v Pramod Kumar>is going to be on that day or how you intend to. I think that that will help QA think about that in terms of users, etc. and have that in the back of our minds when we are building it.</v>
+
+00:14:57.048 --> 00:15:16.808
+<v Matthew Kaplan>Yeah, that makes sense. We do not this morning, but I know that we only have two weeks to put our submission in. That submission, the deadline I think is 2 weeks from this Thursday, two weeks from tomorrow. So we would need to get that done ASAP. I know that between Marty, Ellen, who's our counterpart at AWS, you know, we're...</v>
+
+00:15:16.968 --> 00:15:20.328
+<v Matthew Kaplan>thinking it through and yeah, hopefully we can share that with you guys shortly.</v>
+
+00:15:21.288 --> 00:15:22.568
+<v Pramod Kumar>That would be great. Thanks.</v>
+
+00:15:25.208 --> 00:15:44.288
+<v Rob Forshier II>Yeah, because that the size of how big in the region and stuff like that, that'll just make sure that also we have the AWS spun up. Because the last thing we want is like, like the first pokémon Go event that I went to where like I showed up and like they even brought in like extra like cellular towers, but it wasn't enough to like even keep up with like half of it. So like only like half the crowd work.</v>
+
+00:15:44.368 --> 00:15:47.848
+<v Rob Forshier II>Didn't, yeah, it was not let the greatest fun pokémon Go event.</v>
+
+00:15:48.768 --> 00:15:49.288
+<v Eric Rice>That makes sense.</v>
+
+00:15:52.328 --> 00:15:58.968
+<v Rob Forshier II>But great. Unless anyone has anything else, I guess we can call it a little early and start getting those e-mail chains going.</v>
+
+00:16:00.888 --> 00:16:02.488
+<v Eric Rice>Sounds good. I'll be in touch.</v>
+
+00:16:01.928 --> 00:16:05.208
+<v Matthew Kaplan>Sounds good. Pleasure to meet everybody. Look forward to working with you guys.</v>
+
+00:16:02.168 --> 00:16:02.648
+<v Rob Forshier II>Awesome!</v>
+
+00:16:03.288 --> 00:16:09.608
+<v Pramod Kumar>Thanks. Thanks all. Same music. Thanks. Thanks. Bye. Bye.</v>
+
+00:16:05.368 --> 00:16:06.488
+<v Eric Rice>Thank you all. Great to meet you.</v>
+
+00:16:07.008 --> 00:16:07.608
+<v Rob Forshier II>Thank you, everybody.</v>
+
+00:16:07.528 --> 00:16:08.728
+<v Matthew Kaplan>Have a good day. Have a good evening.</v>
+
+00:16:07.568 --> 00:16:08.568
+<v Nitish Goyal>Thanks, Aman.</v>

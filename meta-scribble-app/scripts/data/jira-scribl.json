@@ -1,0 +1,583 @@
+{
+  "query": "project = SCRIBL ORDER BY key ASC",
+  "fetched": "2026-08-25",
+  "site": "https://bounteous.jira.com",
+  "issues": [
+    {
+      "key": "SCRIBL-1",
+      "summary": "E01 Cloud foundation and app shell",
+      "type": "Epic",
+      "status": "To Do",
+      "parent": null,
+      "url": "https://bounteous.jira.com/browse/SCRIBL-1"
+    },
+    {
+      "key": "SCRIBL-2",
+      "summary": "E01-F1 AWS accounts and three environments",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-1",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-2"
+    },
+    {
+      "key": "SCRIBL-3",
+      "summary": "E00 Sprint 0, the Shape window",
+      "type": "Epic",
+      "status": "To Do",
+      "parent": null,
+      "url": "https://bounteous.jira.com/browse/SCRIBL-3"
+    },
+    {
+      "key": "SCRIBL-4",
+      "summary": "E00-F1 Lay down the Claude Code harness in the new repo",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-4"
+    },
+    {
+      "key": "SCRIBL-5",
+      "summary": "E00-F2 Arc in the delivery flow",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-5"
+    },
+    {
+      "key": "SCRIBL-6",
+      "summary": "E00-F3 Automation framework choice, with the reasoning",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-6"
+    },
+    {
+      "key": "SCRIBL-7",
+      "summary": "E00-F4 Backend architecture, signed",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-7"
+    },
+    {
+      "key": "SCRIBL-8",
+      "summary": "E00-F5 Client architecture, and how it stays portable",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-8"
+    },
+    {
+      "key": "SCRIBL-9",
+      "summary": "E00-F6 Dev environment",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-9"
+    },
+    {
+      "key": "SCRIBL-10",
+      "summary": "E00-F7 Design token handoff",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-10"
+    },
+    {
+      "key": "SCRIBL-11",
+      "summary": "E00-F8 Security and privacy review",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-11"
+    },
+    {
+      "key": "SCRIBL-12",
+      "summary": "E00-F9 Team readiness",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-12"
+    },
+    {
+      "key": "SCRIBL-13",
+      "summary": "E00-F10 Mock-to-real contract drift guard",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-13"
+    },
+    {
+      "key": "SCRIBL-14",
+      "summary": "E00-F11 Close the Aurora gate",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-14"
+    },
+    {
+      "key": "SCRIBL-15",
+      "summary": "E00-F12 Channel model",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-15"
+    },
+    {
+      "key": "SCRIBL-16",
+      "summary": "E00-F13 Moderation fail policy",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-16"
+    },
+    {
+      "key": "SCRIBL-17",
+      "summary": "E00-F14 Distribution path to testers",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-17"
+    },
+    {
+      "key": "SCRIBL-18",
+      "summary": "E00-F15 Device and OS matrix",
+      "type": "Spike",
+      "status": "To Do",
+      "parent": "SCRIBL-3",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-18"
+    },
+    {
+      "key": "SCRIBL-19",
+      "summary": "E01-F2 CDK stack skeleton",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-1",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-19"
+    },
+    {
+      "key": "SCRIBL-20",
+      "summary": "E01-F3 Relational data model",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-1",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-20"
+    },
+    {
+      "key": "SCRIBL-21",
+      "summary": "E01-F4 Serverless API surface",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-1",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-21"
+    },
+    {
+      "key": "SCRIBL-22",
+      "summary": "E01-F5 API contract and mock server",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-1",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-22"
+    },
+    {
+      "key": "SCRIBL-23",
+      "summary": "E01-F6 Media storage and delivery",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-1",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-23"
+    },
+    {
+      "key": "SCRIBL-24",
+      "summary": "E01-F7 Deploy automation",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-1",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-24"
+    },
+    {
+      "key": "SCRIBL-25",
+      "summary": "E01-F8 Baseline observability",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-1",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-25"
+    },
+    {
+      "key": "SCRIBL-26",
+      "summary": "E01-F9 App shell, routing and the single brand theme",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-1",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-26"
+    },
+    {
+      "key": "SCRIBL-27",
+      "summary": "E02 Auth and onboarding",
+      "type": "Epic",
+      "status": "To Do",
+      "parent": null,
+      "url": "https://bounteous.jira.com/browse/SCRIBL-27"
+    },
+    {
+      "key": "SCRIBL-28",
+      "summary": "E02-F1 Email and password accounts",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-27",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-28"
+    },
+    {
+      "key": "SCRIBL-29",
+      "summary": "E02-F2 Token issuance and native secure storage",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-27",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-29"
+    },
+    {
+      "key": "SCRIBL-30",
+      "summary": "E02-F3 Invite token backend",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-27",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-30"
+    },
+    {
+      "key": "SCRIBL-31",
+      "summary": "E02-F4 Guided onboarding, screens 1 to 8",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-27",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-31"
+    },
+    {
+      "key": "SCRIBL-32",
+      "summary": "E02-F5 Invite redemption and the invite-code fallback",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-27",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-32"
+    },
+    {
+      "key": "SCRIBL-33",
+      "summary": "E02-F6 Account deletion and data export",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-27",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-33"
+    },
+    {
+      "key": "SCRIBL-34",
+      "summary": "E03 Daily prompt",
+      "type": "Epic",
+      "status": "To Do",
+      "parent": null,
+      "url": "https://bounteous.jira.com/browse/SCRIBL-34"
+    },
+    {
+      "key": "SCRIBL-35",
+      "summary": "E03-F1 Seeded prompt set and fetch contract",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-34",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-35"
+    },
+    {
+      "key": "SCRIBL-36",
+      "summary": "E03-F2 Today's prompt screen",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-34",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-36"
+    },
+    {
+      "key": "SCRIBL-37",
+      "summary": "E03-F3 Submitted-state read",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-34",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-37"
+    },
+    {
+      "key": "SCRIBL-38",
+      "summary": "E03-F4 Claude-assisted prompt drafting for editorial review",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-34",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-38"
+    },
+    {
+      "key": "SCRIBL-39",
+      "summary": "E03-F5 Local daily reminder",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-34",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-39"
+    },
+    {
+      "key": "SCRIBL-40",
+      "summary": "E04 Drawing and submit, with submit-to-unlock",
+      "type": "Epic",
+      "status": "To Do",
+      "parent": null,
+      "url": "https://bounteous.jira.com/browse/SCRIBL-40"
+    },
+    {
+      "key": "SCRIBL-41",
+      "summary": "E04-F1 Skia canvas with the six-ink reduced tool set",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-40",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-41"
+    },
+    {
+      "key": "SCRIBL-42",
+      "summary": "E04-F2 Stroke serialization and artwork capture",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-40",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-42"
+    },
+    {
+      "key": "SCRIBL-43",
+      "summary": "E04-F3 Story input at 280 characters",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-40",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-43"
+    },
+    {
+      "key": "SCRIBL-44",
+      "summary": "E04-F4 Submit endpoint and presigned upload",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-40",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-44"
+    },
+    {
+      "key": "SCRIBL-45",
+      "summary": "E04-F5 Submit-to-unlock at the data layer, with its bypass test",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-40",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-45"
+    },
+    {
+      "key": "SCRIBL-46",
+      "summary": "E04-F6 Canvas performance on the device matrix",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-40",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-46"
+    },
+    {
+      "key": "SCRIBL-47",
+      "summary": "E05 Walls and channels",
+      "type": "Epic",
+      "status": "To Do",
+      "parent": null,
+      "url": "https://bounteous.jira.com/browse/SCRIBL-47"
+    },
+    {
+      "key": "SCRIBL-48",
+      "summary": "E05-F1 Channel model and membership",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-47",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-48"
+    },
+    {
+      "key": "SCRIBL-49",
+      "summary": "E05-F2 Server-side channel isolation and its regression gate",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-47",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-49"
+    },
+    {
+      "key": "SCRIBL-50",
+      "summary": "E05-F3 Multi-channel share on submit",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-47",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-50"
+    },
+    {
+      "key": "SCRIBL-51",
+      "summary": "E05-F4 Wall grid and response detail",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-47",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-51"
+    },
+    {
+      "key": "SCRIBL-52",
+      "summary": "E05-F5 Dashboard with Your Walls and the stats card",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-47",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-52"
+    },
+    {
+      "key": "SCRIBL-53",
+      "summary": "E05-F6 Reactions, post-unlock only",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-47",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-53"
+    },
+    {
+      "key": "SCRIBL-54",
+      "summary": "E06 QA foundation and standards",
+      "type": "Epic",
+      "status": "To Do",
+      "parent": null,
+      "url": "https://bounteous.jira.com/browse/SCRIBL-54"
+    },
+    {
+      "key": "SCRIBL-55",
+      "summary": "E06-F1 QA process standard for this engagement",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-54",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-55"
+    },
+    {
+      "key": "SCRIBL-56",
+      "summary": "E06-F2 Tooling recommendation with the alternatives written down",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-54",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-56"
+    },
+    {
+      "key": "SCRIBL-57",
+      "summary": "E06-F3 Test strategy and a priced coverage commitment",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-54",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-57"
+    },
+    {
+      "key": "SCRIBL-58",
+      "summary": "E06-F4 Requirements review and traceability",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-54",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-58"
+    },
+    {
+      "key": "SCRIBL-59",
+      "summary": "E06-F5 Automation harness build",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-54",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-59"
+    },
+    {
+      "key": "SCRIBL-60",
+      "summary": "E06-F6 Release gate, definition of ready, definition of done",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-54",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-60"
+    },
+    {
+      "key": "SCRIBL-61",
+      "summary": "E06-F7 Device matrix and the test-device request",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-54",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-61"
+    },
+    {
+      "key": "SCRIBL-62",
+      "summary": "E07 Build, signing and tester distribution",
+      "type": "Epic",
+      "status": "To Do",
+      "parent": null,
+      "url": "https://bounteous.jira.com/browse/SCRIBL-62"
+    },
+    {
+      "key": "SCRIBL-63",
+      "summary": "E07-F1 Apple Developer account and signing identity",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-62",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-63"
+    },
+    {
+      "key": "SCRIBL-64",
+      "summary": "E07-F2 Build host and pipeline decision",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-62",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-64"
+    },
+    {
+      "key": "SCRIBL-65",
+      "summary": "E07-F3 Automated iOS build",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-62",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-65"
+    },
+    {
+      "key": "SCRIBL-66",
+      "summary": "E07-F4 TestFlight distribution process, written for Scribl",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-62",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-66"
+    },
+    {
+      "key": "SCRIBL-67",
+      "summary": "E07-F5 Crash reporting and build traceability",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-62",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-67"
+    },
+    {
+      "key": "SCRIBL-68",
+      "summary": "E08 Analytics instrumentation, instrument now, report later",
+      "type": "Epic",
+      "status": "To Do",
+      "parent": null,
+      "url": "https://bounteous.jira.com/browse/SCRIBL-68"
+    },
+    {
+      "key": "SCRIBL-69",
+      "summary": "E08-F1 Versioned event taxonomy",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-68",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-69"
+    },
+    {
+      "key": "SCRIBL-70",
+      "summary": "E08-F2 Client instrumentation",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-68",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-70"
+    },
+    {
+      "key": "SCRIBL-71",
+      "summary": "E08-F3 Event pipeline",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-68",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-71"
+    },
+    {
+      "key": "SCRIBL-72",
+      "summary": "E08-F4 AI and infrastructure cost telemetry",
+      "type": "Story",
+      "status": "To Do",
+      "parent": "SCRIBL-68",
+      "url": "https://bounteous.jira.com/browse/SCRIBL-72"
+    }
+  ]
+}

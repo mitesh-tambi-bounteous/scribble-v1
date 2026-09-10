@@ -1,0 +1,154 @@
+---
+project: scribl
+updated: 2026-09-01
+---
+
+# /onboarding/canvas
+
+Step 3 of 7 in first-run onboarding, and the only step that produces anything.
+A person draws their answer to today's prompt here; the three screens after it
+refuse to render until they have.
+
+## At a glance
+
+| Property | Value |
+|----------|-------|
+| Route | `/onboarding/canvas` |
+| Router file | `app/onboarding/canvas.tsx` |
+| Flows | F2 First-run onboarding, F3 Invite and join |
+| Position in flow | step 3 of 7, the draft producer |
+| Data calls | one read, `getTodayPrompt`. No write call. The drawing is written to a local store |
+| Shared surface | the `DrawPad` canvas, also used by `/draw` and `/avatar` |
+
+Cited to hs2studio/scribl-app at `c1b3c2d` on `main`, clean tree.
+
+## The capture
+
+<figure class="tile-single"><a href="/assets/prototype/04-onboarding-canvas.png"><img src="/assets/prototype/04-onboarding-canvas.png" alt="Onboarding canvas: the prompt 'Draw what your name would look like as a creature' above a white drawing area holding a drawn creature in navy, pink and yellow; below it a row of nine colour swatches with orange selected, then an undo button, a trash button, and a pink Done Drawing button"></a><figcaption>Open the tile. From <code>npm run capture:board</code> at scribl-app <code>72c3ab8</code>, captured 2026-08-31.</figcaption></figure>
+
+Two things to know about this tile. It is a good one: the seeded draft means the
+canvas shows a real drawing and a real selected colour rather than an empty box.
+And `72c3ab8` is not on `main` -- it is the unmerged flow-map branch that seeds
+the draft. On `main`, this route captures fine, but the three routes after it
+capture as copies of this one.
+
+The "tap + drag to draw" hint is clipped at the left edge of the drawing area.
+Cosmetic, and it is in the capture rather than obviously in the app, so it is
+recorded and not diagnosed.
+
+## Features
+
+One row per thing a person can do.
+
+| Feature | Where it lives |
+|---------|----------------|
+| Read today's prompt, shown above the canvas | `app/onboarding/canvas.tsx:67-81` |
+| Retry the prompt load when it fails, via a "Try again" button | `app/onboarding/canvas.tsx:76-78` |
+| Draw freehand on a Skia canvas | `components/canvas/DrawPad.tsx:447-457` |
+| Pick a colour from a reduced palette, narrower than the one `/draw` offers | `app/onboarding/canvas.tsx:94`, rendered `components/canvas/DrawPad.tsx:630-671` |
+| Undo the last stroke | `components/canvas/DrawPad.tsx:319-323`, control at `:701-708` |
+| Clear the canvas, behind a confirmation modal | `components/canvas/DrawPad.tsx:290-317`, modal at `:528-577` |
+| Finish, exporting the drawing and advancing to the story fork | `app/onboarding/canvas.tsx:38-50`, export at `components/canvas/DrawPad.tsx:325-357` |
+
+Two capabilities `DrawPad` has that this screen does not expose: the brush-size
+selector, which only renders when the active toolset offers more than one size
+(`components/canvas/DrawPad.tsx:235`, `377-398`), and the fill bucket
+(`:710-726`). Neither shows in the capture, and neither is a decision this
+screen made.
+
+`DrawPad` defaults its toolset to `activeToolset()`
+(`components/canvas/DrawPad.tsx:223`), which reads the `FULL_TOOLSET` flag,
+`false` unless `EXPO_PUBLIC_FULL_TOOLSET=1` (`src/config/features.ts:24`,
+`:27`). The flag is off by default, so brush styles and sizes are hidden
+app-wide, on `/draw` as much as here. The only narrowing that is actually
+specific to onboarding is the palette, via `allowedColors`
+(`app/onboarding/canvas.tsx:94`).
+
+There is no back button and no skip. Not an omission in this write-up; the
+affordance is absent from `app/onboarding/canvas.tsx`.
+
+## Data calls
+
+**One read.**
+
+| Client method | Endpoint | Handler |
+|---------------|----------|---------|
+| `getTodayPrompt()` | `GET /prompt/today` | `backend/lambda/handlers/today-prompt.ts` |
+
+The client method is `src/data/http.ts:115-119`. The screen does not call it
+directly; it calls `load()` off `usePromptStore`
+(`app/onboarding/canvas.tsx:32`) inside an effect that fires only when there is
+no prompt cached yet (`app/onboarding/canvas.tsx:34-36`).
+
+**No write call.** Finishing the drawing does not hit the API. It writes the
+export to a local store:
+
+```
+useDraftStore.getState().setDraft({ imageRef, promptId, strokes })
+```
+
+at `app/onboarding/canvas.tsx:44-48`, then pushes to
+`/onboarding/story-select` (`:49`).
+
+The drawing does not travel as a route param, and that is on purpose: a data URI
+is too large and too unreliable to pass through the router, which the store
+says in its own comment (`src/stores/useDraftStore.ts:23-25`). So the next three
+screens read the store, not their params. That is what makes the draft guard
+possible, and it is why "no API call here" is a fact about the architecture
+rather than a hole.
+
+## State in, state out
+
+**Reads on entry.** `usePromptStore`'s `data` and `error`
+(`app/onboarding/canvas.tsx:32`), loading the prompt if absent.
+
+**Writes on mount.** `useOnboardingStep("canvas")`
+(`app/onboarding/canvas.tsx:30`) persists the step name to AsyncStorage under a
+per-user key (`src/lib/useOnboardingStep.ts:16-18`,
+`src/stores/useOnboardingStore.ts:220`). This is what makes resume land here.
+
+**Writes on exit.** `imageRef`, `promptId` and `strokes` into `useDraftStore`
+(`app/onboarding/canvas.tsx:44-48`). `strokes` is best-effort; the PNG is the
+thing the rest of the flow relies on.
+
+## Components
+
+| Component | Path |
+|-----------|------|
+| `DrawPad`, the shared canvas and its tool row | `components/canvas/DrawPad.tsx`, imported at `app/onboarding/canvas.tsx:14` |
+| `DrawingCanvas`, the Skia surface, platform-resolved | `components/canvas/DrawingCanvas.tsx` for web, `.native.tsx` for native |
+| `PaperSurface`, the canvas card chrome | `components/canvas/DrawPad.tsx:436-441` |
+| `ScribbleUndoIcon`, `ScribbleTrashIcon` | `components/canvas/DrawPad.tsx:7` |
+
+`DrawPad` is shared with `/draw` and `/avatar`, stated in its own doc comment at
+`components/canvas/DrawPad.tsx:210-212`. `/avatar` reuses it with a circular
+mask so a person draws their own avatar rather than picking one. Any change to
+`DrawPad` lands on three screens across three flows, F2, F4 and F8.
+
+## Notes for planning
+
+Authored here, not read out of the app.
+
+### The prompt is a hard dependency on a live endpoint
+
+First-run onboarding cannot proceed past step 2 without a successful
+`GET /prompt/today`. The failure path is a "Try again" button, so a new person
+whose first request fails sees a retry loop rather than the app. There is no
+cached or bundled fallback prompt. For a first-run experience that is the highest
+consequence network call in the product, and it is currently the least defended.
+
+### One canvas, three screens, three different intents
+
+`DrawPad` serves a tutorial canvas, the daily drawing surface, and an avatar
+editor, differing by `allowedColors` and a mask. That reuse is why the POC got
+built quickly and it is also the widest blast radius in the app. Worth deciding
+whether the toolset variations become explicit named presets before anyone
+extends it, rather than three call sites each passing a different subset of
+props.
+
+### The reduced palette is unexplained
+
+Onboarding gets a narrower palette than `/draw`. Sensible as a first-run
+simplification, but the reason is not written down anywhere, so the next person
+to touch it cannot tell a deliberate constraint from a leftover. A one-line
+comment at the call site would settle it.
