@@ -1,0 +1,180 @@
+/* Prototype utility & component classes.
+   Every value below is a var() reference to a token rendered in tokens.css.
+   Component classes prefer their own component-scoped alias var
+   (e.g. --button-primary-background) over the base token it points at. */
+
+/* ---------- base ---------- */
+
+.type-body {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--color-fg);
+}
+
+.type-heading {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-fg);
+}
+
+/* ---------- spacing utilities ---------- */
+
+.u-p-1 { padding: var(--space-1); }
+.u-p-2 { padding: var(--space-2); }
+.u-p-3 { padding: var(--space-3); }
+.u-p-4 { padding: var(--space-4); }
+.u-p-5 { padding: var(--space-5); }
+.u-p-6 { padding: var(--space-6); }
+
+.u-gap-1 { gap: var(--space-1); }
+.u-gap-2 { gap: var(--space-2); }
+.u-gap-3 { gap: var(--space-3); }
+.u-gap-4 { gap: var(--space-4); }
+.u-gap-5 { gap: var(--space-5); }
+.u-gap-6 { gap: var(--space-6); }
+
+/* ---------- text utilities ---------- */
+
+.u-text-sm { font-size: var(--font-size-sm); }
+.u-text-md { font-size: var(--font-size-md); }
+.u-text-lg { font-size: var(--font-size-lg); }
+.u-text-xl { font-size: var(--font-size-xl); }
+
+.u-text-fg { color: var(--color-fg); }
+.u-text-muted { color: var(--color-fg-muted); }
+.u-text-primary { color: var(--color-primary); }
+.u-text-on-primary { color: var(--color-on-primary); }
+
+/* ---------- surface / layout utilities ---------- */
+
+.u-bg { background-color: var(--color-bg); }
+.u-bg-subtle { background-color: var(--color-bg-subtle); }
+.u-bg-primary { background-color: var(--color-primary); }
+
+.u-radius-sm { border-radius: var(--radius-sm); }
+.u-radius-md { border-radius: var(--radius-md); }
+.u-radius-lg { border-radius: var(--radius-lg); }
+.u-radius-full { border-radius: var(--radius-full); }
+
+.u-flex { display: flex; }
+.u-flex-col { display: flex; flex-direction: column; }
+.u-grid { display: grid; }
+.u-items-center { align-items: center; }
+
+.u-container {
+  max-width: var(--layout-container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+.u-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--layout-swatch-min-width), 1fr));
+  gap: var(--space-4);
+}
+
+/* ---------- button ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+  background-color: var(--button-primary-background);
+  color: var(--button-primary-color);
+  border-radius: var(--button-primary-radius);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--button-secondary-background);
+  color: var(--button-secondary-color);
+  border: var(--button-secondary-border);
+  border-radius: var(--button-secondary-radius);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ---------- card ---------- */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background-color: var(--card-default-background);
+  border: var(--card-default-border);
+  border-radius: var(--card-default-radius);
+  box-shadow: var(--card-default-shadow);
+  padding: var(--space-4);
+}
+
+/* ---------- chip ---------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  background-color: var(--chip-default-background);
+  color: var(--chip-default-color);
+  border: var(--chip-default-border);
+  border-radius: var(--chip-default-radius);
+  padding: var(--space-1) var(--space-3);
+}
+
+/* ---------- form controls ---------- */
+
+.input {
+  display: block;
+  width: 100%;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-md);
+  background-color: var(--input-default-background);
+  color: var(--input-default-color);
+  border: var(--input-default-border);
+  border-radius: var(--input-default-radius);
+  padding: var(--space-2) var(--space-3);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.input::placeholder {
+  color: var(--color-fg-muted);
+}
+
+.label {
+  display: block;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-fg);
+  margin-bottom: var(--space-1);
+}
