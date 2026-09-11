@@ -1,0 +1,59 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --color-bg: [object Object]; /** Primary app background, used for full-screen surfaces and default component backgrounds. */
+  --color-bg-subtle: [object Object]; /** Recessed surface background for cards, chips, and grouped content. */
+  --color-fg: [object Object]; /** Primary text and icon color on color-bg. Meets WCAG AA (4.5:1) on color-bg. */
+  --color-fg-muted: [object Object]; /** Secondary text, timestamps, helper copy. */
+  --color-primary: [object Object]; /** Brand accent used for primary actions and highlights. */
+  --color-primary-hover: [object Object]; /** Hover/active state for primary-colored surfaces. */
+  --color-on-primary: [object Object]; /** Text/icon color placed on top of color-primary. */
+  --color-border: [object Object]; /** Hairline border for cards, inputs, and dividers. */
+  --color-shadow: [object Object]; /** Base color for soft elevation shadows. */
+  --space-1: [object Object]; /** Smallest spacing unit: tight gaps, icon padding. */
+  --space-2: [object Object]; /** Compact spacing: control padding, small gaps. */
+  --space-3: [object Object]; /** Default spacing: component padding, stack gaps. */
+  --space-4: [object Object]; /** Roomy spacing: card padding, section gaps. */
+  --space-5: [object Object]; /** Section spacing: gaps between grouped content blocks. */
+  --space-6: [object Object]; /** Page-level spacing: top-level layout gutters. */
+  --radius-sm: [object Object]; /** Subtle rounding for inputs and small controls. */
+  --radius-md: [object Object]; /** Standard rounding for buttons and controls. */
+  --radius-lg: [object Object]; /** Generous rounding for cards and modals. */
+  --radius-full: [object Object]; /** Pill rounding for chips and tags. */
+  --border-width-thin: [object Object]; /** Hairline border thickness. */
+  --font-size-sm: [object Object]; /** Small text: captions, chip labels, metadata. */
+  --font-size-md: [object Object]; /** Body copy default size. */
+  --font-size-lg: [object Object]; /** Emphasized copy, card titles. */
+  --font-size-xl: [object Object]; /** Page and section headings. */
+  --layout-container-max-width: [object Object]; /** Max width for centered page containers (e.g. the style guide itself). */
+  --layout-swatch-min-width: [object Object]; /** Minimum tile width for auto-filling swatch/sample grids. */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; /** Primary UI typeface: clean, modern, highly legible at small sizes. */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 1.2; /** Line height for headings. */
+  --line-height-normal: 1.5; /** Line height for body copy. */
+  --shadow-sm: var(--color-shadow) [object Object] [object Object] [object Object] [object Object]; /** Soft elevation for cards. */
+  --border-hairline: var(--color-border) solid var(--border-width-thin); /** Standard 1px hairline border used across cards, chips, and inputs. */
+  --button-primary-background: var(--color-primary); /** Primary button fill. */
+  --button-primary-color: var(--color-on-primary); /** Primary button text/icon color. */
+  --button-primary-radius: var(--radius-md); /** Primary button corner radius. */
+  --button-secondary-background: var(--color-bg); /** Secondary (outline) button fill. */
+  --button-secondary-color: var(--color-fg); /** Secondary button text/icon color. */
+  --button-secondary-radius: var(--radius-md); /** Secondary button corner radius. */
+  --card-default-background: var(--color-bg-subtle); /** Card surface fill. */
+  --card-default-radius: var(--radius-lg); /** Card corner radius. */
+  --chip-default-background: var(--color-bg-subtle); /** Chip fill. */
+  --chip-default-color: var(--color-fg); /** Chip text color. */
+  --chip-default-radius: var(--radius-full); /** Chip corner radius (pill). */
+  --input-default-background: var(--color-bg); /** Form control fill. */
+  --input-default-radius: var(--radius-sm); /** Form control corner radius. */
+  --input-default-color: var(--color-fg); /** Form control text color. */
+  --button-secondary-border: var(--border-hairline); /** Secondary button border. */
+  --card-default-border: var(--border-hairline); /** Card border. */
+  --card-default-shadow: var(--shadow-sm); /** Card elevation. */
+  --chip-default-border: var(--border-hairline); /** Chip border. */
+  --input-default-border: var(--border-hairline); /** Form control border. */
+}

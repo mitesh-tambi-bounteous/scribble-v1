@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design System — Style Guide</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="prototype-utils.css">
+<style>
+  body {
+    background-color: var(--color-bg);
+    margin: 0;
+  }
+  section {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+    border-bottom: var(--border-hairline);
+  }
+  section:last-child {
+    border-bottom: none;
+  }
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .swatch-fill {
+    height: var(--space-6);
+    border-radius: var(--radius-md);
+    border: var(--border-hairline);
+  }
+  .swatch-meta {
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-sm);
+  }
+  .swatch-name {
+    color: var(--color-fg);
+    font-weight: var(--font-weight-medium);
+  }
+  .swatch-hex {
+    color: var(--color-fg-muted);
+  }
+  .dim-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  .dim-bar {
+    background-color: var(--color-primary);
+    height: var(--space-2);
+    border-radius: var(--radius-sm);
+  }
+  .dim-label {
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-sm);
+    color: var(--color-fg-muted);
+    min-width: calc(var(--layout-swatch-min-width) * 0.6);
+  }
+  .component-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  code {
+    font-size: var(--font-size-sm);
+    background-color: var(--color-bg-subtle);
+    border-radius: var(--radius-sm);
+    padding: 0 var(--space-1);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    text-align: left;
+    padding: var(--space-2) var(--space-3);
+    border-bottom: var(--border-hairline);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-sm);
+  }
+  th {
+    color: var(--color-fg-muted);
+    font-weight: var(--font-weight-medium);
+  }
+  td {
+    color: var(--color-fg);
+  }
+</style>
+</head>
+<body>
+
+<header class="u-container" style="padding-top: var(--space-6); padding-bottom: var(--space-4);">
+  <p class="type-body u-text-muted" style="margin: 0 0 var(--space-1) 0;">Daily Creative — Design System</p>
+  <h1 class="type-heading" style="margin: 0;">Style Guide</h1>
+  <p class="type-body u-text-muted" style="margin-top: var(--space-2); max-width: 60ch;">
+    Minimal, modern tokens and components for the daily prompt, submission, and shared wall
+    experiences. Every color, spacing, radius, and type value below is a live CSS custom
+    property rendered from <code>tokens.json</code>.
+  </p>
+</header>
+
+<section class="u-container">
+  <h2 class="type-heading" style="font-size: var(--font-size-lg);">Color</h2>
+  <div class="u-swatch-grid" style="margin-top: var(--space-4);">
+    <div class="swatch"><div class="swatch-fill" style="background-color: var(--color-bg);"></div><div class="swatch-meta"><div class="swatch-name">color-bg</div><div class="swatch-hex">#ffffff</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background-color: var(--color-bg-subtle);"></div><div class="swatch-meta"><div class="swatch-name">color-bg-subtle</div><div class="swatch-hex">#f4f4f5</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background-color: var(--color-fg);"></div><div class="swatch-meta"><div class="swatch-name">color-fg</div><div class="swatch-hex">#18181b</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background-color: var(--color-fg-muted);"></div><div class="swatch-meta"><div class="swatch-name">color-fg-muted</div><div class="swatch-hex">#71717a</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background-color: var(--color-primary);"></div><div class="swatch-meta"><div class="swatch-name">color-primary</div><div class="swatch-hex">#2563eb</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background-color: var(--color-primary-hover);"></div><div class="swatch-meta"><div class="swatch-name">color-primary-hover</div><div class="swatch-hex">#1d4ed8</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background-color: var(--color-on-primary); border: var(--border-hairline);"></div><div class="swatch-meta"><div class="swatch-name">color-on-primary</div><div class="swatch-hex">#ffffff</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background-color: var(--color-border);"></div><div class="swatch-meta"><div class="swatch-name">color-border</div><div class="swatch-hex">#e4e4e7</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="background-color: var(--color-shadow);"></div><div class="swatch-meta"><div class="swatch-name">color-shadow</div><div class="swatch-hex">#d4d4d8</div></div></div>
+  </div>
+  <p class="type-body u-text-muted" style="margin-top: var(--space-3);">
+    <strong class="u-text-fg">color-fg</strong> on <strong class="u-text-fg">color-bg</strong> passes WCAG AA (4.5:1) for normal text.
+  </p>
+</section>
+
+<section class="u-container">
+  <h2 class="type-heading" style="font-size: var(--font-size-lg);">Spacing</h2>
+  <div class="u-flex-col u-gap-2" style="margin-top: var(--space-4);">
+    <div class="dim-row"><span class="dim-label">space-1 · 4px</span><div class="dim-bar" style="width: var(--space-1);"></div></div>
+    <div class="dim-row"><span class="dim-label">space-2 · 8px</span><div class="dim-bar" style="width: var(--space-2);"></div></div>
+    <div class="dim-row"><span class="dim-label">space-3 · 16px</span><div class="dim-bar" style="width: var(--space-3);"></div></div>
+    <div class="dim-row"><span class="dim-label">space-4 · 24px</span><div class="dim-bar" style="width: var(--space-4);"></div></div>
+    <div class="dim-row"><span class="dim-label">space-5 · 32px</span><div class="dim-bar" style="width: var(--space-5);"></div></div>
+    <div class="dim-row"><span class="dim-label">space-6 · 48px</span><div class="dim-bar" style="width: var(--space-6);"></div></div>
+  </div>
+</section>
+
+<section class="u-container">
+  <h2 class="type-heading" style="font-size: var(--font-size-lg);">Radius</h2>
+  <div class="component-row u-gap-4" style="margin-top: var(--space-4);">
+    <div class="swatch"><div class="swatch-fill" style="width: var(--space-6); background-color: var(--color-bg-subtle); border-radius: var(--radius-sm);"></div><div class="swatch-meta"><div class="swatch-name">radius-sm</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="width: var(--space-6); background-color: var(--color-bg-subtle); border-radius: var(--radius-md);"></div><div class="swatch-meta"><div class="swatch-name">radius-md</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="width: var(--space-6); background-color: var(--color-bg-subtle); border-radius: var(--radius-lg);"></div><div class="swatch-meta"><div class="swatch-name">radius-lg</div></div></div>
+    <div class="swatch"><div class="swatch-fill" style="width: var(--space-6); background-color: var(--color-bg-subtle); border-radius: var(--radius-full);"></div><div class="swatch-meta"><div class="swatch-name">radius-full</div></div></div>
+  </div>
+</section>
+
+<section class="u-container">
+  <h2 class="type-heading" style="font-size: var(--font-size-lg);">Type scale</h2>
+  <div class="u-flex-col u-gap-3" style="margin-top: var(--space-4);">
+    <p style="font-family: var(--font-family-sans); font-size: var(--font-size-sm); color: var(--color-fg); margin: 0;">font-size-sm — Today's prompt: sketch your morning.</p>
+    <p style="font-family: var(--font-family-sans); font-size: var(--font-size-md); color: var(--color-fg); margin: 0;">font-size-md — Today's prompt: sketch your morning.</p>
+    <p style="font-family: var(--font-family-sans); font-size: var(--font-size-lg); color: var(--color-fg); margin: 0;">font-size-lg — Today's prompt: sketch your morning.</p>
+    <p style="font-family: var(--font-family-sans); font-size: var(--font-size-xl); font-weight: var(--font-weight-bold); color: var(--color-fg); margin: 0;">font-size-xl — Today's prompt</p>
+  </div>
+  <div class="u-flex-col u-gap-2" style="margin-top: var(--space-4);">
+    <p class="type-body" style="margin: 0;">.type-body — font-family-sans / font-size-md / font-weight-regular / line-height-normal</p>
+    <p class="type-heading" style="margin: 0;">.type-heading</p>
+  </div>
+  <table style="margin-top: var(--space-4);">
+    <thead><tr><th>Token</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>font-family-sans</td><td>'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif</td></tr>
+      <tr><td>font-weight-regular</td><td>400</td></tr>
+      <tr><td>font-weight-medium</td><td>500</td></tr>
+      <tr><td>font-weight-bold</td><td>700</td></tr>
+      <tr><td>line-height-tight</td><td>1.2</td></tr>
+      <tr><td>line-height-normal</td><td>1.5</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="u-container">
+  <h2 class="type-heading" style="font-size: var(--font-size-lg);">Composites</h2>
+  <div class="component-row u-gap-4" style="margin-top: var(--space-4);">
+    <div class="swatch">
+      <div style="width: calc(var(--layout-swatch-min-width)); height: var(--space-6); background-color: var(--color-bg); box-shadow: var(--shadow-sm); border-radius: var(--radius-md);"></div>
+      <div class="swatch-meta"><div class="swatch-name">shadow-sm</div></div>
+    </div>
+    <div class="swatch">
+      <div style="width: calc(var(--layout-swatch-min-width)); height: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md);"></div>
+      <div class="swatch-meta"><div class="swatch-name">border-hairline</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="u-container">
+  <h2 class="type-heading" style="font-size: var(--font-size-lg);">Buttons</h2>
+  <div class="component-row u-gap-3" style="margin-top: var(--space-4);">
+    <button class="btn btn-primary">Submit today's response</button>
+    <button class="btn btn-secondary">See the wall</button>
+  </div>
+</section>
+
+<section class="u-container">
+  <h2 class="type-heading" style="font-size: var(--font-size-lg);">Card</h2>
+  <div style="margin-top: var(--space-4); max-width: 22rem;">
+    <div class="card">
+      <span class="chip">Today's prompt</span>
+      <p class="type-body" style="margin: 0;">"Draw the sound your morning made."</p>
+      <div class="component-row u-gap-2" style="margin-top: var(--space-2);">
+        <button class="btn btn-primary">React</button>
+        <button class="btn btn-secondary">Reply</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="u-container">
+  <h2 class="type-heading" style="font-size: var(--font-size-lg);">Chips</h2>
+  <div class="component-row u-gap-2" style="margin-top: var(--space-4);">
+    <span class="chip">Drawing</span>
+    <span class="chip">Writing</span>
+    <span class="chip">Voice note</span>
+  </div>
+</section>
+
+<section class="u-container">
+  <h2 class="type-heading" style="font-size: var(--font-size-lg);">Form controls</h2>
+  <div style="margin-top: var(--space-4); max-width: 22rem;">
+    <label class="label" for="caption">Caption</label>
+    <input class="input" id="caption" type="text" placeholder="Add a caption before you submit">
+  </div>
+</section>
+
+<section class="u-container">
+  <h2 class="type-heading" style="font-size: var(--font-size-lg);">Utility classes</h2>
+  <p class="type-body u-text-muted" style="margin-top: var(--space-2);">
+    Spacing (<code>.u-p-1</code>–<code>.u-p-6</code>, <code>.u-gap-1</code>–<code>.u-gap-6</code>),
+    text size (<code>.u-text-sm</code>, <code>.u-text-md</code>, <code>.u-text-lg</code>, <code>.u-text-xl</code>),
+    text color (<code>.u-text-fg</code>, <code>.u-text-muted</code>, <code>.u-text-primary</code>, <code>.u-text-on-primary</code>),
+    surfaces (<code>.u-bg</code>, <code>.u-bg-subtle</code>, <code>.u-bg-primary</code>),
+    radius (<code>.u-radius-sm</code>, <code>.u-radius-md</code>, <code>.u-radius-lg</code>, <code>.u-radius-full</code>),
+    and layout (<code>.u-flex</code>, <code>.u-flex-col</code>, <code>.u-grid</code>, <code>.u-items-center</code>, <code>.u-container</code>, <code>.u-swatch-grid</code>).
+  </p>
+  <div class="u-swatch-grid" style="margin-top: var(--space-4);">
+    <div class="u-bg-subtle u-p-3 u-radius-md"><span class="u-text-sm u-text-muted">u-text-sm / u-text-muted</span></div>
+    <div class="u-bg-subtle u-p-3 u-radius-md"><span class="u-text-md u-text-fg">u-text-md / u-text-fg</span></div>
+    <div class="u-bg-subtle u-p-3 u-radius-md"><span class="u-text-lg u-text-primary">u-text-lg / u-text-primary</span></div>
+    <div class="u-bg-primary u-p-3 u-radius-md"><span class="u-text-sm u-text-on-primary">u-bg-primary / u-text-on-primary</span></div>
+  </div>
+</section>
+
+<section class="u-container">
+  <h2 class="type-heading" style="font-size: var(--font-size-lg);">Component aliases</h2>
+  <p class="type-body u-text-muted" style="margin-top: var(--space-2);">
+    Component-scoped tokens alias base tokens above and resolve to their own CSS custom
+    properties, e.g. <code>--button-primary-background</code>.
+  </p>
+  <table style="margin-top: var(--space-3);">
+    <thead><tr><th>Alias token</th><th>Aliases</th></tr></thead>
+    <tbody>
+      <tr><td>button-primary-background</td><td>color-primary</td></tr>
+      <tr><td>button-primary-color</td><td>color-on-primary</td></tr>
+      <tr><td>button-primary-radius</td><td>radius-md</td></tr>
+      <tr><td>button-secondary-background</td><td>color-bg</td></tr>
+      <tr><td>button-secondary-color</td><td>color-fg</td></tr>
+      <tr><td>button-secondary-border</td><td>border-hairline</td></tr>
+      <tr><td>button-secondary-radius</td><td>radius-md</td></tr>
+      <tr><td>card-default-background</td><td>color-bg-subtle</td></tr>
+      <tr><td>card-default-border</td><td>border-hairline</td></tr>
+      <tr><td>card-default-radius</td><td>radius-lg</td></tr>
+      <tr><td>card-default-shadow</td><td>shadow-sm</td></tr>
+      <tr><td>chip-default-background</td><td>color-bg-subtle</td></tr>
+      <tr><td>chip-default-color</td><td>color-fg</td></tr>
+      <tr><td>chip-default-border</td><td>border-hairline</td></tr>
+      <tr><td>chip-default-radius</td><td>radius-full</td></tr>
+      <tr><td>input-default-background</td><td>color-bg</td></tr>
+      <tr><td>input-default-border</td><td>border-hairline</td></tr>
+      <tr><td>input-default-radius</td><td>radius-sm</td></tr>
+      <tr><td>input-default-color</td><td>color-fg</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</body>
+</html>
