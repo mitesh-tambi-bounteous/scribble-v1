@@ -39,6 +39,21 @@ test("signUp: minor dateOfBirth returns parental_consent_required (AC2)", async 
   }
 });
 
+test("signUp: an implausibly old dateOfBirth (classifies as 'unknown') normalizes to accountClass 'minor', per ADR-0012", async () => {
+  const adapter = new LocalAuthAdapter();
+  const result = await signUp(
+    { ...minorBody, email: "ancient@example.com", dateOfBirth: "1400-01-01" },
+    { adapter, appEnv: "dev" },
+  );
+  assert.equal(result.ok, true);
+  if (result.ok) {
+    assert.equal(result.value.kind, "parental_consent_required");
+    if (result.value.kind === "parental_consent_required") {
+      assert.equal(result.value.accountClass, "minor");
+    }
+  }
+});
+
 test("signUp: a minor never reaches account creation, even forcing prod's posture (AC3)", async () => {
   const adapter = new LocalAuthAdapter();
   const createUserCalls: unknown[] = [];

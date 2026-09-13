@@ -66,7 +66,7 @@ export async function signUp(
     ok: true,
     value: {
       kind: "parental_consent_required",
-      accountClass: accountClass === "adult" ? "minor" : accountClass,
+      accountClass: accountClass === "unknown" ? "minor" : accountClass,
       consentRequestId,
     },
   };
