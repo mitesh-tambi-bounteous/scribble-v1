@@ -51,6 +51,15 @@ test("signUp: a non-2xx response throws an AuthApiError carrying code/field/mess
   );
 });
 
+test("confirmEmail: returns the session credentials from the response instead of discarding them", async () => {
+  const { fetchFn } = fakeFetchOnce(200, { sessionId: "session-1", accessToken: "token-1" });
+  const adapter = new LocalAuthAdapter({ baseUrl: "http://api.test", fetchFn });
+
+  const result = await adapter.confirmEmail({ email: "a@example.com", code: "482913" });
+
+  assert.deepEqual(result, { sessionId: "session-1", accessToken: "token-1" });
+});
+
 test("confirmEmail: never calls the sign-in-time challenge endpoint (AC7)", async () => {
   const calledUrls: string[] = [];
   const fetchFn = async (url: string) => {

@@ -10,7 +10,7 @@ function makeAdapter(overrides: Partial<AuthAdapter> = {}): AuthAdapter {
     signUp: async () => {
       throw new Error("not used");
     },
-    confirmEmail: async () => {},
+    confirmEmail: async () => ({ sessionId: "session-1", accessToken: "token-1" }),
     resendConfirmation: async () => {},
     answerChallenge: async () => {
       throw new Error("not used");
@@ -28,12 +28,17 @@ test("default state has no banner and nothing disabled", () => {
   assert.equal(state.authenticated, false);
 });
 
-test("correct code establishes an authenticated session (AC5)", async () => {
-  const controller = createVerifyEmailFormController(makeAdapter({ confirmEmail: async () => {} }), EMAIL);
+test("correct code establishes an authenticated session and exposes its credentials (AC5)", async () => {
+  const controller = createVerifyEmailFormController(
+    makeAdapter({ confirmEmail: async () => ({ sessionId: "session-1", accessToken: "token-1" }) }),
+    EMAIL,
+  );
   controller.setCode("482913");
   await controller.confirm();
-  assert.equal(controller.getState().authenticated, true);
-  assert.equal(controller.getState().bannerState, "none");
+  const state = controller.getState();
+  assert.equal(state.authenticated, true);
+  assert.equal(state.bannerState, "none");
+  assert.deepEqual(state.session, { sessionId: "session-1", accessToken: "token-1" });
 });
 
 test("incorrect code surfaces the wrong-code banner and creates no session (AC6)", async () => {

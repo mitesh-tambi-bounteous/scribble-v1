@@ -120,6 +120,72 @@ test("POST /auth/sign-in: a phoneNumber payload is rejected as unsupported_auth_
   });
 });
 
+test("POST /auth/sign-in: a verified user signing in with correct credentials gets an authenticated session with a token", async () => {
+  const adapter = new LocalAuthAdapter();
+  await withServer(adapter, async (baseUrl) => {
+    await postJson(baseUrl, "/auth/sign-up", adultBody);
+    const code = adapter.getLastSentCodeForTesting(adultBody.email)!;
+    await postJson(baseUrl, "/auth/confirm-email", { email: adultBody.email, code });
+
+    const { status, json } = await postJson(baseUrl, "/auth/sign-in", {
+      email: adultBody.email,
+      password: adultBody.password,
+    });
+    assert.equal(status, 200);
+    assert.equal(json.kind, "authenticated");
+    assert.equal(typeof json.sessionId, "string");
+    assert.equal(typeof json.accessToken, "string");
+    assert.ok(adapter.hasSessionForTesting(json.sessionId));
+  });
+});
+
+test("POST /auth/sign-in: an unverified user gets a challenge, answerable via POST /auth/challenge (not /auth/confirm-email)", async () => {
+  const adapter = new LocalAuthAdapter();
+  await withServer(adapter, async (baseUrl) => {
+    await postJson(baseUrl, "/auth/sign-up", adultBody);
+
+    const signIn = await postJson(baseUrl, "/auth/sign-in", {
+      email: adultBody.email,
+      password: adultBody.password,
+    });
+    assert.equal(signIn.status, 200);
+    assert.equal(signIn.json.kind, "challenge");
+    assert.equal(signIn.json.challenge.kind, "email_verification");
+    assert.equal(typeof signIn.json.challengeToken, "string");
+
+    const code = adapter.getLastSentCodeForTesting(adultBody.email)!;
+    const answered = await postJson(baseUrl, "/auth/challenge", {
+      challengeToken: signIn.json.challengeToken,
+      kind: "email_verification",
+      answer: code,
+    });
+    assert.equal(answered.status, 200);
+    assert.equal(answered.json.kind, "authenticated");
+    assert.equal(typeof answered.json.sessionId, "string");
+    assert.equal(typeof answered.json.accessToken, "string");
+    assert.ok(adapter.hasSessionForTesting(answered.json.sessionId));
+  });
+});
+
+test("POST /auth/challenge: an incorrect answer authenticates nobody", async () => {
+  const adapter = new LocalAuthAdapter();
+  await withServer(adapter, async (baseUrl) => {
+    await postJson(baseUrl, "/auth/sign-up", adultBody);
+    const signIn = await postJson(baseUrl, "/auth/sign-in", {
+      email: adultBody.email,
+      password: adultBody.password,
+    });
+
+    const answered = await postJson(baseUrl, "/auth/challenge", {
+      challengeToken: signIn.json.challengeToken,
+      kind: "email_verification",
+      answer: "000000",
+    });
+    assert.notEqual(answered.status, 200);
+    assert.equal(answered.json.sessionId, undefined);
+  });
+});
+
 test("POST /auth/sign-up: an already-registered email is rejected (AC11)", async () => {
   const adapter = new LocalAuthAdapter();
   await withServer(adapter, async (baseUrl) => {
@@ -190,6 +256,25 @@ test("POST /auth/confirm-email/resend: rejects before the cooldown elapses (AC16
     const { status, json } = await postJson(baseUrl, "/auth/confirm-email/resend", { email: adultBody.email });
     assert.equal(status, 429);
     assert.equal(json.code, "resend_cooldown");
+  });
+});
+
+test("POST /auth/sign-up: an oversized request body is rejected rather than buffered into memory", async () => {
+  const adapter = new LocalAuthAdapter();
+  await withServer(adapter, async (baseUrl) => {
+    const oversizedPassword = "a".repeat(2_000_000);
+    const res = await fetch(`${baseUrl}/auth/sign-up`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ ...adultBody, password: oversizedPassword }),
+    });
+    assert.equal(res.status, 413);
+    const json = await res.json();
+    assert.equal(json.code, "payload_too_large");
+
+    // The server must still be usable afterward -- proof it didn't crash.
+    const followUp = await postJson(baseUrl, "/auth/sign-up", { ...adultBody, email: "after-oversized@example.com" });
+    assert.equal(followUp.status, 200);
   });
 });
 

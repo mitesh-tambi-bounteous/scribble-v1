@@ -5,7 +5,7 @@ import type {
   ChallengeAnswerRequest,
   SignInResult,
 } from "../../../../../../packages/contracts/src/api/auth.ts";
-import { AuthApiError, type AuthAdapter } from "../types.ts";
+import { AuthApiError, type AuthAdapter, type AuthenticatedSession } from "../types.ts";
 
 type FetchFn = (url: string, init?: RequestInit) => Promise<Response>;
 
@@ -45,8 +45,8 @@ export class LocalAuthAdapter implements AuthAdapter {
     return postJson<SignUpResult>(this.fetchFn, `${this.baseUrl}/auth/sign-up`, input);
   }
 
-  async confirmEmail(input: ConfirmEmailRequest): Promise<void> {
-    await postJson(this.fetchFn, `${this.baseUrl}/auth/confirm-email`, input);
+  async confirmEmail(input: ConfirmEmailRequest): Promise<AuthenticatedSession> {
+    return postJson<AuthenticatedSession>(this.fetchFn, `${this.baseUrl}/auth/confirm-email`, input);
   }
 
   async resendConfirmation(input: { email: string }): Promise<void> {

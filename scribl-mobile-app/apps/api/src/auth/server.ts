@@ -11,11 +11,43 @@ import { signUp, confirmEmail, resendConfirmation, type AuthServiceDeps } from "
  * same contract, same error envelope; swapping this for a real Nest
  * controller later is a routing-layer change, not a service-layer one.
  */
+
+// Caps in-memory body buffering so a client can't exhaust server memory by
+// streaming an unbounded payload at any auth endpoint (security_review
+// finding). Every auth request body is a small JSON object; 1MB is
+// generous headroom over the largest legitimate body here.
+const MAX_BODY_BYTES = 1_000_000;
+
+class PayloadTooLargeError extends Error {
+  constructor() {
+    super("Request body is too large.");
+    this.name = "PayloadTooLargeError";
+  }
+}
+
 function readJsonBody(req: IncomingMessage): Promise<unknown> {
   return new Promise((resolve, reject) => {
     let raw = "";
-    req.on("data", (chunk) => (raw += chunk));
+    let bytes = 0;
+    let settled = false;
+
+    req.on("data", (chunk: Buffer) => {
+      if (settled) return;
+      bytes += chunk.length;
+      if (bytes > MAX_BODY_BYTES) {
+        settled = true;
+        // Deliberately don't destroy the request/socket here: the response
+        // still needs to go out over the same connection. Once `settled`,
+        // every further chunk is dropped without being appended to `raw`,
+        // so memory stays bounded regardless of how much more is sent.
+        reject(new PayloadTooLargeError());
+        return;
+      }
+      raw += chunk;
+    });
     req.on("end", () => {
+      if (settled) return;
+      settled = true;
       if (raw.length === 0) return resolve({});
       try {
         resolve(JSON.parse(raw));
@@ -23,7 +55,11 @@ function readJsonBody(req: IncomingMessage): Promise<unknown> {
         reject(new Error("invalid_json"));
       }
     });
-    req.on("error", reject);
+    req.on("error", (error) => {
+      if (settled) return;
+      settled = true;
+      reject(error);
+    });
   });
 }
 
@@ -63,6 +99,8 @@ export function createAuthServer(deps: AuthServiceDeps): Server {
           return writeJson(res, 200, {
             kind: "authenticated",
             user: outcome.user,
+            sessionId: outcome.sessionId,
+            accessToken: outcome.accessToken,
             capabilities: { canSubmit: false, canReact: false, canInvite: false, requiresParentalConsent: false },
           });
         }
@@ -74,6 +112,35 @@ export function createAuthServer(deps: AuthServiceDeps): Server {
           });
         }
         return writeError(res, "unauthenticated", "Incorrect email or password.");
+      }
+
+      if (method === "POST" && path === "/auth/challenge") {
+        const body = await readJsonBody(req);
+        if (
+          typeof body !== "object" ||
+          body === null ||
+          typeof (body as Record<string, unknown>).challengeToken !== "string" ||
+          typeof (body as Record<string, unknown>).kind !== "string" ||
+          typeof (body as Record<string, unknown>).answer !== "string"
+        ) {
+          return writeError(res, "validation_failed", "challengeToken, kind and answer are required.");
+        }
+        const { challengeToken, kind, answer } = body as { challengeToken: string; kind: string; answer: string };
+        const outcome = await deps.adapter.answerChallenge({
+          challengeToken,
+          kind: kind as Parameters<typeof deps.adapter.answerChallenge>[0]["kind"],
+          answer,
+        });
+        if (outcome.outcome === "authenticated") {
+          return writeJson(res, 200, {
+            kind: "authenticated",
+            user: outcome.user,
+            sessionId: outcome.sessionId,
+            accessToken: outcome.accessToken,
+            capabilities: { canSubmit: false, canReact: false, canInvite: false, requiresParentalConsent: false },
+          });
+        }
+        return writeError(res, "unauthenticated", "That challenge answer isn't valid.");
       }
 
       if (method === "POST" && path === "/auth/confirm-email") {
@@ -94,7 +161,10 @@ export function createAuthServer(deps: AuthServiceDeps): Server {
       // (AC9): every other path, including /auth/federated/* and
       // /auth/sign-up/phone, falls through to the same not_found envelope.
       return writeError(res, "not_found", "Not found.");
-    } catch {
+    } catch (error) {
+      if (error instanceof PayloadTooLargeError) {
+        return writeError(res, "payload_too_large", error.message);
+      }
       return writeError(res, "internal", "Unexpected server error.");
     }
   });

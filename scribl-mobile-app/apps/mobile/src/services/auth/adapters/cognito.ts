@@ -5,7 +5,7 @@ import type {
   ChallengeAnswerRequest,
   SignInResult,
 } from "../../../../../../packages/contracts/src/api/auth.ts";
-import type { AuthAdapter } from "../types.ts";
+import type { AuthAdapter, AuthenticatedSession } from "../types.ts";
 
 class NotImplementedError extends Error {
   constructor(method: string) {
@@ -25,7 +25,7 @@ export class CognitoAuthAdapter implements AuthAdapter {
     throw new NotImplementedError("CognitoAuthAdapter.signUp");
   }
 
-  async confirmEmail(_input: ConfirmEmailRequest): Promise<void> {
+  async confirmEmail(_input: ConfirmEmailRequest): Promise<AuthenticatedSession> {
     throw new NotImplementedError("CognitoAuthAdapter.confirmEmail");
   }
 

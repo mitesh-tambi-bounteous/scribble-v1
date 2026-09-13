@@ -21,6 +21,7 @@ export const ERROR_CODES = [
   "confirm_email_locked",
   "resend_cooldown",
   "resend_limit_reached",
+  "payload_too_large",
 ] as const;
 
 export type ErrorCode = (typeof ERROR_CODES)[number];
@@ -45,6 +46,7 @@ export const ERROR_STATUS: Record<ErrorCode, number> = {
   confirm_email_locked: 429,
   resend_cooldown: 429,
   resend_limit_reached: 429,
+  payload_too_large: 413,
 };
 
 export interface ErrorEnvelope {

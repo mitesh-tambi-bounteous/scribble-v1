@@ -25,9 +25,14 @@ export class AuthApiError extends Error {
  * so AC7 is a cheap, precise spy test: assert the mock `answerChallenge` is
  * never called during a `confirmEmail` flow.
  */
+export interface AuthenticatedSession {
+  sessionId: string;
+  accessToken: string;
+}
+
 export interface AuthAdapter {
   signUp(input: SignUpRequest): Promise<SignUpResult>;
-  confirmEmail(input: ConfirmEmailRequest): Promise<void>;
+  confirmEmail(input: ConfirmEmailRequest): Promise<AuthenticatedSession>;
   resendConfirmation(input: { email: string }): Promise<void>;
   answerChallenge(input: ChallengeAnswerRequest): Promise<SignInResult>;
 }

@@ -26,6 +26,7 @@ test("ERROR_CODES adds this story's distinguishable codes (contract gap, see api
     "confirm_email_locked",
     "resend_cooldown",
     "resend_limit_reached",
+    "payload_too_large",
   ]) {
     assert.ok(ERROR_CODES.includes(code as (typeof ERROR_CODES)[number]), code);
   }
@@ -47,4 +48,5 @@ test("every error code has a mapped HTTP status", () => {
   assert.equal(ERROR_STATUS.conflict, 409);
   assert.equal(ERROR_STATUS.validation_failed, 422);
   assert.equal(ERROR_STATUS.not_found, 404);
+  assert.equal(ERROR_STATUS.payload_too_large, 413);
 });

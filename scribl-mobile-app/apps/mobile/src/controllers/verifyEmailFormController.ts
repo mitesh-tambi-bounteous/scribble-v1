@@ -1,4 +1,4 @@
-import { AuthApiError, type AuthAdapter } from "../services/auth/types.ts";
+import { AuthApiError, type AuthAdapter, type AuthenticatedSession } from "../services/auth/types.ts";
 
 export type VerifyBannerState = "none" | "wrong" | "locked" | "resend-cooldown" | "resend-limit";
 
@@ -11,6 +11,7 @@ export interface VerifyEmailFormState {
   submitting: boolean;
   resending: boolean;
   authenticated: boolean;
+  session: AuthenticatedSession | null;
 }
 
 /**
@@ -30,6 +31,7 @@ export function createVerifyEmailFormController(adapter: AuthAdapter, email: str
     submitting: false,
     resending: false,
     authenticated: false,
+    session: null,
   };
 
   return {
@@ -42,8 +44,8 @@ export function createVerifyEmailFormController(adapter: AuthAdapter, email: str
     async confirm(): Promise<void> {
       state = { ...state, submitting: true };
       try {
-        await adapter.confirmEmail({ email, code: state.code });
-        state = { ...state, submitting: false, authenticated: true, bannerState: "none" };
+        const session = await adapter.confirmEmail({ email, code: state.code });
+        state = { ...state, submitting: false, authenticated: true, bannerState: "none", session };
       } catch (error) {
         if (error instanceof AuthApiError && error.code === "confirm_email_locked") {
           state = {
