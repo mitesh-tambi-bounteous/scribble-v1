@@ -1,0 +1,10 @@
+{
+  "name": "scribl-mobile-app",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --test packages/*/src/**/*.test.ts apps/*/src/**/*.test.ts apps/*/src/**/*.spec.ts"
+  }
+}
