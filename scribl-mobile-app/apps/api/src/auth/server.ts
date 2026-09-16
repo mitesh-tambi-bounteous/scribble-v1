@@ -3,6 +3,7 @@ import { randomUUID } from "node:crypto";
 import { validateSignInRequest } from "../../../../packages/contracts/src/api/auth.ts";
 import { ERROR_STATUS, type ErrorCode } from "../../../../packages/contracts/src/api/errors.ts";
 import { signUp, confirmEmail, resendConfirmation, type AuthServiceDeps } from "./auth.service.ts";
+import { SIGN_UP_RATE_LIMIT_MAX_ATTEMPTS, SIGN_UP_RATE_LIMIT_WINDOW_MS } from "./constants.ts";
 
 /**
  * Plain `node:http` router standing in for the Nest scaffold this story's
@@ -73,13 +74,42 @@ function writeError(res: ServerResponse, code: ErrorCode, message: string): void
   writeJson(res, ERROR_STATUS[code], { code, message, correlationId: randomUUID() });
 }
 
+// AC11 requires the sign-up response to state plainly that an email is
+// already registered, which is itself a (documented, accepted) enumeration
+// signal -- see auth.service.ts. This per-client window caps how many
+// distinct emails one client can probe, without changing what the response
+// says while under the cap.
+interface SignUpAttemptWindow {
+  count: number;
+  windowStartedAt: number;
+}
+
+function createSignUpRateLimiter() {
+  const attemptsByClient = new Map<string, SignUpAttemptWindow>();
+  return function isRateLimited(clientKey: string, now: number): boolean {
+    const window = attemptsByClient.get(clientKey);
+    if (!window || now - window.windowStartedAt > SIGN_UP_RATE_LIMIT_WINDOW_MS) {
+      attemptsByClient.set(clientKey, { count: 1, windowStartedAt: now });
+      return false;
+    }
+    window.count += 1;
+    return window.count > SIGN_UP_RATE_LIMIT_MAX_ATTEMPTS;
+  };
+}
+
 export function createAuthServer(deps: AuthServiceDeps): Server {
+  const isSignUpRateLimited = createSignUpRateLimiter();
+
   return createServer(async (req: IncomingMessage, res: ServerResponse) => {
     const method = req.method ?? "GET";
     const path = (req.url ?? "/").split("?")[0];
 
     try {
       if (method === "POST" && path === "/auth/sign-up") {
+        const clientKey = req.socket.remoteAddress ?? "unknown";
+        if (isSignUpRateLimited(clientKey, Date.now())) {
+          return writeError(res, "rate_limited", "Too many sign-up attempts. Try again later.");
+        }
         const body = await readJsonBody(req);
         const result = await signUp(body, deps);
         if (result.ok) return writeJson(res, 200, result.value);

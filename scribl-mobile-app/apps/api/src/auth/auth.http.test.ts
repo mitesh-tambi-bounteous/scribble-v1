@@ -6,6 +6,7 @@ import {
   CONFIRM_EMAIL_MAX_ATTEMPTS,
   RESEND_COOLDOWN_MS,
   RESEND_LIMIT_PER_WINDOW,
+  SIGN_UP_RATE_LIMIT_MAX_ATTEMPTS,
 } from "./constants.ts";
 
 function makeClock(startMs: number) {
@@ -275,6 +276,19 @@ test("POST /auth/sign-up: an oversized request body is rejected rather than buff
     // The server must still be usable afterward -- proof it didn't crash.
     const followUp = await postJson(baseUrl, "/auth/sign-up", { ...adultBody, email: "after-oversized@example.com" });
     assert.equal(followUp.status, 200);
+  });
+});
+
+test("POST /auth/sign-up: a client that exceeds the per-window attempt cap is rate-limited (mitigates AC11 email-enumeration risk)", async () => {
+  const adapter = new LocalAuthAdapter();
+  await withServer(adapter, async (baseUrl) => {
+    for (let i = 0; i < SIGN_UP_RATE_LIMIT_MAX_ATTEMPTS; i++) {
+      const { status } = await postJson(baseUrl, "/auth/sign-up", { ...adultBody, email: `probe-${i}@example.com` });
+      assert.equal(status, 200);
+    }
+    const { status, json } = await postJson(baseUrl, "/auth/sign-up", { ...adultBody, email: "one-more@example.com" });
+    assert.equal(status, 429);
+    assert.equal(json.code, "rate_limited");
   });
 });
 

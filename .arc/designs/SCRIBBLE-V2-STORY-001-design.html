@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SCRIBBLE-V2-STORY-001 — Sign-Up Flow — Design Review</title>
+<style>
+  /*
+    PROPOSAL — design system awaiting review.
+    Scribl has no established design system yet; this palette/type scale/spacing
+    is proposed here for the Sign-Up Flow and, if approved, becomes the seed of
+    the project's shared tokens. Warm and legible for a family drawing app, but
+    calm enough to carry compliance-heavy screens (age gate, parental consent,
+    lockouts) without feeling alarming.
+  */
+  :root {
+    /* Palette */
+    --bg: #FBF7F1;
+    --surface: #FFFFFF;
+    --surface-sunken: #F3ECE1;
+    --border: #E4D9C8;
+    --fg: #2B2420;
+    --muted: #786F63;
+    --brand: #E0632A;
+    --brand-hover: #C8531F;
+    --brand-fg: #FFFFFF;
+    --accent-teal: #2F8F86;
+    --success: #2F8F5B;
+    --success-bg: #E8F5EE;
+    --warning: #B8781A;
+    --warning-bg: #FBF0DD;
+    --danger: #C63B32;
+    --danger-bg: #FBEAE8;
+    --focus-ring: #2F8F86;
+
+    /* Type */
+    --font-family-sans: "Nunito Sans", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-family-display: "Fraunces", Georgia, serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.75rem;
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.55;
+    --weight-regular: 400;
+    --weight-medium: 600;
+    --weight-bold: 700;
+
+    /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+
+    /* Radii */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-full: 999px;
+
+    /* Elevation */
+    --shadow-sm: 0 1px 2px rgba(43, 36, 32, 0.08);
+    --shadow-md: 0 8px 24px rgba(43, 36, 32, 0.12);
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-normal);
+  }
+  h1, h2, h3 { font-family: var(--font-family-display); font-weight: var(--weight-bold); line-height: var(--line-height-tight); margin: 0; }
+  p { margin: 0; }
+  button { font-family: inherit; }
+
+  /* ===== Reviewer bar (always present; canonical prev/next + screen label) ===== */
+  #reviewer-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-5);
+    background: var(--fg);
+    color: var(--brand-fg);
+    font-size: var(--font-size-sm);
+  }
+  #reviewer-bar .rb-title {
+    font-weight: var(--weight-bold);
+    margin-right: auto;
+    white-space: nowrap;
+  }
+  #reviewer-bar .rb-screen-label {
+    font-weight: var(--weight-medium);
+    color: var(--brand-fg);
+    opacity: 0.85;
+  }
+  #reviewer-bar button {
+    background: rgba(255,255,255,0.12);
+    color: var(--brand-fg);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2) var(--space-3);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+  }
+  #reviewer-bar button:hover { background: rgba(255,255,255,0.22); }
+  #reviewer-bar select {
+    background: rgba(255,255,255,0.12);
+    color: var(--brand-fg);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+  }
+  #reviewer-bar select option { color: var(--fg); }
+
+  /* ===== App shell ===== */
+  #app-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-6);
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  #app-nav .brand-mark {
+    font-family: var(--font-family-display);
+    font-weight: var(--weight-bold);
+    font-size: var(--font-size-lg);
+    color: var(--brand);
+  }
+  #app-nav .tagline {
+    color: var(--muted);
+    font-size: var(--font-size-sm);
+    margin-left: var(--space-2);
+  }
+
+  #stage {
+    min-height: calc(100vh - 116px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: var(--space-7) var(--space-4);
+  }
+
+  .screen { display: none; width: 100%; }
+  .screen.active { display: flex; justify-content: center; }
+
+  .card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-6);
+  }
+
+  .card-wide { max-width: 560px; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-xs);
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    margin-bottom: var(--space-2);
+  }
+  .card h1 { font-size: var(--font-size-xl); margin-bottom: var(--space-2); }
+  .card .subtitle { color: var(--muted); margin-bottom: var(--space-5); }
+
+  .field { margin-bottom: var(--space-4); }
+  .field label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--weight-medium);
+    margin-bottom: var(--space-2);
+  }
+  .field .hint { font-size: var(--font-size-xs); color: var(--muted); margin-top: var(--space-1); }
+  .field input {
+    width: 100%;
+    padding: var(--space-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--fg);
+    font-size: var(--font-size-md);
+    font-family: inherit;
+  }
+  .field input:focus {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 1px;
+    border-color: var(--focus-ring);
+  }
+  .field input.invalid {
+    border-color: var(--danger);
+  }
+  .field-error {
+    display: none;
+    align-items: flex-start;
+    gap: var(--space-2);
+    font-size: var(--font-size-xs);
+    color: var(--danger);
+    margin-top: var(--space-2);
+  }
+  .field-error.visible { display: flex; }
+
+  .banner {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-5);
+  }
+  .banner-danger { background: var(--danger-bg); color: var(--danger); border: 1px solid rgba(198,59,50,0.25); }
+  .banner-warning { background: var(--warning-bg); color: var(--warning); border: 1px solid rgba(184,120,26,0.25); }
+  .banner-success { background: var(--success-bg); color: var(--success); border: 1px solid rgba(47,143,91,0.25); }
+  .banner strong { display: block; margin-bottom: var(--space-1); }
+  .banner .banner-icon { font-size: var(--font-size-lg); line-height: 1; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    font-size: var(--font-size-md);
+    font-weight: var(--weight-bold);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+  .btn-primary { background: var(--brand); color: var(--brand-fg); }
+  .btn-primary:hover:not(:disabled) { background: var(--brand-hover); }
+  .btn-primary:disabled { background: var(--surface-sunken); color: var(--muted); cursor: not-allowed; border-color: var(--border); }
+  .btn-secondary { background: var(--surface); color: var(--fg); border-color: var(--border); }
+  .btn-secondary:hover { background: var(--surface-sunken); }
+  .btn-link {
+    background: none;
+    border: none;
+    color: var(--accent-teal);
+    font-weight: var(--weight-bold);
+    cursor: pointer;
+    padding: 0;
+    font-size: var(--font-size-sm);
+  }
+  .btn-link:disabled { color: var(--muted); cursor: not-allowed; }
+
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: var(--brand-fg);
+    animation: spin 0.7s linear infinite;
+    display: inline-block;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .foot-note {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+    margin-top: var(--space-5);
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin: var(--space-5) 0;
+    color: var(--muted);
+    font-size: var(--font-size-xs);
+  }
+  .divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .code-input-row {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+  .code-input-row input {
+    width: 100%;
+    text-align: center;
+    font-size: var(--font-size-lg);
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.3em;
+    padding: var(--space-3) var(--space-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+  }
+
+  .resend-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    color: var(--muted);
+    margin-top: var(--space-4);
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .avatar-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: var(--brand-fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family-display);
+    font-weight: var(--weight-bold);
+    font-size: var(--font-size-lg);
+    margin: 0 auto var(--space-4);
+  }
+
+  .consent-illustration {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--surface-sunken);
+    color: var(--accent-teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto var(--space-4);
+  }
+
+  .kv-list { list-style: none; margin: var(--space-4) 0; padding: 0; }
+  .kv-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--font-size-sm);
+  }
+  .kv-list li:last-child { border-bottom: none; }
+  .kv-list .k { color: var(--muted); }
+  .kv-list .v { font-weight: var(--weight-medium); text-align: right; }
+
+  .pill {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    background: var(--surface-sunken);
+    color: var(--muted);
+    font-size: var(--font-size-xs);
+    font-weight: var(--weight-bold);
+  }
+
+  .annotation {
+    max-width: 440px;
+    margin: 0 auto var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    background: #FFF9EC;
+    border: 1px dashed #D8B675;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    color: #7A5C1E;
+    width: 100%;
+  }
+  .annotation code {
+    background: rgba(0,0,0,0.06);
+    padding: 0 4px;
+    border-radius: 3px;
+  }
+  .screen-col { display: flex; flex-direction: column; align-items: center; width: 100%; }
+
+  .state-toolbar {
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  .state-toolbar button {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .state-toolbar button.on {
+    background: var(--fg);
+    color: var(--surface);
+    border-color: var(--fg);
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Reviewer bar: canonical prev/next + screen label + jump menu ===== -->
+<div id="reviewer-bar">
+  <span class="rb-title">SCRIBBLE-V2-STORY-001 · Sign-Up Flow</span>
+  <span class="rb-screen-label" id="rb-label">1 / 8 — Sign up</span>
+  <select id="rb-jump" onchange="goToScreen(this.value)"></select>
+  <button onclick="prevScreen()">&larr; Prev</button>
+  <button onclick="nextScreen()">Next &rarr;</button>
+</div>
+
+<!--
+  Application nav: this flow is pre-authentication (sign-up / verify), so there is
+  no arc sidebar and no authenticated app chrome — only the Scribl wordmark, matching
+  how a real signed-out visitor would see the product. SCRIBBLE-V2-STORY-001 is not an
+  ARC-* story, so per guidelines this uses a minimal project-appropriate nav rather than
+  the arc platform sidebar.
+-->
+<div id="app-nav">
+  <span class="brand-mark">scribl</span>
+  <span class="tagline">One prompt. One drawing. Every day.</span>
+</div>
+
+<div id="stage">
+
+  <!-- ============================================================ -->
+  <!-- Screen 1: Sign-up form — default -->
+  <!-- Annotation: Satisfies AC1 (adult -> verification_required), AC8 (no token
+       ever in response — nothing in this UI stores/shows a token), AC9/AC10
+       (no social or phone auth surfaced at all — email/password only, per
+       Cognito user-pool scoping). dateOfBirth is a single date field; age-class
+       branching happens server-side on submit (AC1/AC2). -->
+  <div class="screen active" id="screen-signup-default" data-label="Sign up">
+    <div class="screen-col">
+      <div class="annotation">
+        <strong>Screen: Sign up (default)</strong> — email/password/displayName/dateOfBirth only.
+        No social buttons, no phone field, per Cognito user-pool scope (email/password only).
+        Submitting branches server-side: adult → <code>verification_required</code> (AC1),
+        minor → <code>parental_consent_required</code> (AC2).
+      </div>
+      <div class="card">
+        <span class="eyebrow">● Create your account</span>
+        <h1>Join Scribl</h1>
+        <p class="subtitle">A prompt a day, drawn with the people who know you best.</p>
+
+        <form onsubmit="return false;">
+          <div class="field">
+            <label for="su-email">Email</label>
+            <input id="su-email" type="email" placeholder="you@example.com" value="matthew@example.com" autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="su-password">Password</label>
+            <input id="su-password" type="password" placeholder="12+ characters" value="correct-horse-battery-staple" autocomplete="new-password" />
+            <p class="hint">At least 12 characters. Cognito's policy also requires a mix of cases and a number.</p>
+          </div>
+          <div class="field">
+            <label for="su-name">Display name</label>
+            <input id="su-name" type="text" placeholder="What should we call you?" value="Matthew" autocomplete="nickname" />
+            <p class="hint">Shown on your dashboard greeting and to people you draw with.</p>
+          </div>
+          <div class="field">
+            <label for="su-dob">Date of birth</label>
+            <input id="su-dob" type="date" value="1990-04-12" />
+            <p class="hint">Used only to apply the right sign-up path — we ask once, at sign-up.</p>
+          </div>
+
+          <button class="btn btn-primary" id="su-submit-btn" onclick="submitSignUpDefault()">
+            Create account
+          </button>
+        </form>
+
+        <div class="divider">already have an account?</div>
+        <p class="foot-note"><a class="btn-link" href="#" onclick="return false;">Sign in instead</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- Screen 2: Sign-up form — submitting (loading + disabled) -->
+  <!-- Annotation: Satisfies AC14 (submit control disabled while POST /auth/sign-up
+       is in flight) and AC15 (loading indicator shown). Reachable by clicking
+       "Create account" on screen 1, or directly via the reviewer bar. -->
+  <div class="screen" id="screen-signup-loading" data-label="Sign up — submitting">
+    <div class="screen-col">
+      <div class="annotation">
+        <strong>Screen: Sign up — submitting (AC14, AC15)</strong> — the submit
+        button is disabled and shows a spinner the moment <code>POST /auth/sign-up</code>
+        is in flight, before any response has come back.
+      </div>
+      <div class="card">
+        <span class="eyebrow">● Create your account</span>
+        <h1>Join Scribl</h1>
+        <p class="subtitle">A prompt a day, drawn with the people who know you best.</p>
+
+        <form onsubmit="return false;">
+          <div class="field">
+            <label for="su-email-2">Email</label>
+            <input id="su-email-2" type="email" value="matthew@example.com" disabled />
+          </div>
+          <div class="field">
+            <label for="su-password-2">Password</label>
+            <input id="su-password-2" type="password" value="correct-horse-battery-staple" disabled />
+          </div>
+          <div class="field">
+            <label for="su-name-2">Display name</label>
+            <input id="su-name-2" type="text" value="Matthew" disabled />
+          </div>
+          <div class="field">
+            <label for="su-dob-2">Date of birth</label>
+            <input id="su-dob-2" type="date" value="1990-04-12" disabled />
+          </div>
+
+          <button class="btn btn-primary" disabled>
+            <span class="spinner"></span> Creating account…
+          </button>
+        </form>
+        <p class="foot-note" style="margin-top: var(--space-4);">Calling <code>POST /auth/sign-up</code>…</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- Screen 3: Verification-required (adult path) -->
+  <!-- Annotation: Result of a verification_required response (AC1). This is the
+       hand-off to POST /auth/confirm-email, and is distinct from the sign-in-time
+       challenge screen (AC7) — no "challenge" language appears here. -->
+  <div class="screen" id="screen-verify-code" data-label="Verify email — default">
+    <div class="screen-col">
+      <div class="annotation">
+        <strong>Screen: Verify email (AC1 result, feeds AC5–AC7, AC13, AC16–AC18)</strong> —
+        reached only after <code>{ kind: "verification_required" }</code>. Confirms via
+        <code>POST /auth/confirm-email</code>, never the sign-in-time
+        <code>/auth/challenge</code> endpoint (AC7).
+      </div>
+      <div class="state-toolbar">
+        <button class="on" onclick="setVerifyState('default')" id="vtab-default">Default</button>
+        <button onclick="setVerifyState('checking')" id="vtab-checking">Checking code</button>
+        <button onclick="setVerifyState('wrong')" id="vtab-wrong">Wrong code (AC6)</button>
+        <button onclick="setVerifyState('locked')" id="vtab-locked">Lockout (AC13)</button>
+        <button onclick="setVerifyState('resend-cooldown')" id="vtab-resend-cooldown">Resend cooldown (AC16)</button>
+        <button onclick="setVerifyState('resend-limit')" id="vtab-resend-limit">Resend limit (AC17/18)</button>
+      </div>
+      <div class="card">
+        <div class="avatar-circle">M</div>
+        <span class="eyebrow" style="justify-content:center; display:flex;">● Check your inbox</span>
+        <h1 style="text-align:center;">Verify your email</h1>
+        <p class="subtitle" style="text-align:center;">
+          We sent a 6-digit code to <strong>matthew@example.com</strong>.
+        </p>
+
+        <div id="verify-banner-slot"></div>
+
+        <div class="field">
+          <label for="verify-code">Confirmation code</label>
+          <div class="code-input-row">
+            <input id="verify-code" type="text" inputmode="numeric" maxlength="6" placeholder="482913" value="482913" />
+          </div>
+          <p class="hint" id="verify-code-hint">Enter the code exactly as it appears in the email.</p>
+        </div>
+
+        <button class="btn btn-primary" id="verify-submit-btn" onclick="submitVerifyCode()">
+          Confirm and continue
+        </button>
+
+        <div class="resend-row">
+          <span id="resend-status">Didn't get it?</span>
+          <button class="btn-link" id="resend-btn" onclick="clickResend()">Resend code</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- Screen 4: Confirming code (loading) -->
+  <!-- Annotation: Loading state for POST /auth/confirm-email, mirrors AC14/AC15's
+       intent for the verify step's own submit control. -->
+  <div class="screen" id="screen-verify-loading" data-label="Verify email — confirming">
+    <div class="screen-col">
+      <div class="annotation">
+        <strong>Screen: Verify email — confirming</strong> — submit disabled with a
+        spinner while <code>POST /auth/confirm-email</code> is in flight, same pattern
+        as sign-up's loading state.
+      </div>
+      <div class="card">
+        <div class="avatar-circle">M</div>
+        <span class="eyebrow" style="justify-content:center; display:flex;">● Check your inbox</span>
+        <h1 style="text-align:center;">Verify your email</h1>
+        <p class="subtitle" style="text-align:center;">
+          We sent a 6-digit code to <strong>matthew@example.com</strong>.
+        </p>
+        <div class="field">
+          <label>Confirmation code</label>
+          <div class="code-input-row">
+            <input type="text" value="482913" disabled />
+          </div>
+        </div>
+        <button class="btn btn-primary" disabled>
+          <span class="spinner"></span> Confirming…
+        </button>
+        <div class="resend-row">
+          <span>Didn't get it?</span>
+          <button class="btn-link" disabled>Resend code</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- Screen 5: Authenticated session (success) -->
+  <!-- Annotation: Terminal state for AC5 — correct code confirmed, authenticated
+       session established, no token surfaced anywhere in the UI. -->
+  <div class="screen" id="screen-authenticated" data-label="Authenticated (success)">
+    <div class="screen-col">
+      <div class="annotation">
+        <strong>Screen: Authenticated session (AC5)</strong> — arrival state after a
+        correct <code>POST /auth/confirm-email</code> call. No token is ever rendered;
+        session material stays server/cookie-side, off-screen.
+      </div>
+      <div class="card">
+        <div class="banner banner-success" style="margin-bottom: var(--space-4);">
+          <span class="banner-icon">✓</span>
+          <div><strong>Email verified</strong>You're signed in as matthew@example.com.</div>
+        </div>
+        <h1>Welcome to Scribl, Matthew</h1>
+        <p class="subtitle">Your account is ready. Today's prompt is waiting.</p>
+        <button class="btn btn-primary" onclick="return false;">Go to today's prompt</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- Screen 6: Minor — parental consent required -->
+  <!-- Annotation: Satisfies AC2 (minor dateOfBirth -> parental_consent_required)
+       and communicates AC3's current production posture (no account created,
+       allowsMinorEnrollment = false per ADR-0012 Option A) plainly to the user
+       instead of implying an account already exists in limbo. -->
+  <div class="screen" id="screen-parental-consent" data-label="Parental consent required">
+    <div class="screen-col">
+      <div class="annotation">
+        <strong>Screen: Parental consent required (AC2, AC3)</strong> — shown when
+        <code>dateOfBirth</code> indicates a minor. Response is
+        <code>{ kind: "parental_consent_required" }</code>; per ADR-0012 "Option A",
+        production does not create an account at this point, so copy avoids implying
+        one exists.
+      </div>
+      <div class="card">
+        <div class="consent-illustration">🛡</div>
+        <span class="eyebrow" style="justify-content:center; display:flex;">● Parental consent needed</span>
+        <h1 style="text-align:center;">Let's bring in a parent or guardian</h1>
+        <p class="subtitle" style="text-align:center;">
+          The date of birth you entered means Scribl needs a parent or guardian's consent
+          before an account can be created.
+        </p>
+        <div class="banner banner-warning">
+          <span class="banner-icon">ⓘ</span>
+          <div>
+            <strong>No account has been created yet</strong>
+            Scribl isn't currently able to enroll accounts for people under 13.
+            This path is being built out — check back soon, or ask a parent to
+            sign up on your behalf once it's available.
+          </div>
+        </div>
+        <ul class="kv-list">
+          <li><span class="k">Email submitted</span><span class="v">matthew.k@example.com</span></li>
+          <li><span class="k">Consent request</span><span class="v">consent_8f2a...</span></li>
+          <li><span class="k">Status</span><span class="v pill">Not started</span></li>
+        </ul>
+        <button class="btn btn-secondary" onclick="goToScreen('screen-signup-default')">Back to sign up</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- Screen 7: Sign-up validation errors -->
+  <!-- Annotation: One screen, four selectable error states for the sign-up form:
+       AC4 (dateOfBirth unparseable/implausible, e.g. future date), AC11 (email
+       already registered), AC12 (password policy), AC10 (unsupported auth method
+       payload, shown as defense-in-depth messaging even though the UI never
+       lets a user submit a phone number or federated token directly). -->
+  <div class="screen" id="screen-signup-errors" data-label="Sign up — validation errors">
+    <div class="screen-col">
+      <div class="annotation">
+        <strong>Screen: Sign up — validation errors (AC4, AC10, AC11, AC12)</strong> —
+        use the tabs to preview each rejection. Errors are field-specific where the
+        contract calls for it (AC4: dateOfBirth only; AC12: password only), never a
+        generic failure banner masking the real cause.
+      </div>
+      <div class="state-toolbar">
+        <button class="on" onclick="setErrorState('dob')" id="etab-dob">Bad date of birth (AC4)</button>
+        <button onclick="setErrorState('email')" id="etab-email">Email already registered (AC11)</button>
+        <button onclick="setErrorState('password')" id="etab-password">Weak password (AC12)</button>
+        <button onclick="setErrorState('method')" id="etab-method">Unsupported auth method (AC9/AC10)</button>
+      </div>
+      <div class="card">
+        <span class="eyebrow">● Create your account</span>
+        <h1>Join Scribl</h1>
+        <p class="subtitle">A prompt a day, drawn with the people who know you best.</p>
+
+        <div id="signup-error-banner-slot"></div>
+
+        <form onsubmit="return false;">
+          <div class="field">
+            <label for="err-email">Email</label>
+            <input id="err-email" type="email" value="matthew@example.com" />
+            <div class="field-error" id="err-email-msg">
+              <span>⚠</span><span>This email is already registered. <a href="#" onclick="return false;" style="color:inherit;">Sign in instead</a>.</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="err-password">Password</label>
+            <input id="err-password" type="password" value="hunter2" />
+            <div class="field-error" id="err-password-msg">
+              <span>⚠</span><span>Password must be at least 12 characters and include an uppercase letter, a lowercase letter, and a number.</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="err-name">Display name</label>
+            <input id="err-name" type="text" value="Matthew" />
+          </div>
+          <div class="field">
+            <label for="err-dob">Date of birth</label>
+            <input id="err-dob" type="date" value="2031-01-01" class="invalid" />
+            <div class="field-error visible" id="err-dob-msg">
+              <span>⚠</span><span>Enter a valid date of birth that isn't in the future.</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" onclick="return false;">Create account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- Screen 8: Endpoint scoping (not-found / method-not-supported) -->
+  <!-- Annotation: Illustrates AC9 — no social/phone endpoints are exposed at all
+       (a would-be "Continue with Google" button and phone field are shown struck
+       through as "not offered," with the API's 404 behavior called out) so a
+       reviewer can sign off that the product intentionally never surfaces them,
+       rather than this being an oversight. -->
+  <div class="screen" id="screen-scoping" data-label="Reference — auth methods not offered">
+    <div class="screen-col">
+      <div class="annotation">
+        <strong>Reference screen: auth methods intentionally not offered (AC9, AC10)</strong> —
+        not a real user-facing screen; a sign-off aid showing what the sign-up form
+        deliberately omits. Cognito user pool is scoped to email/password only
+        (federation deferred to RE-F4). Hitting a social/phone endpoint directly
+        returns not-found; a federated-token or phone payload posted to
+        <code>/auth/sign-up</code> or <code>/auth/sign-in</code> is rejected with an
+        unsupported-auth-method error.
+      </div>
+      <div class="card card-wide">
+        <h1>What this sign-up form intentionally leaves out</h1>
+        <p class="subtitle">For reviewer sign-off — not shown to real users.</p>
+
+        <ul class="kv-list">
+          <li><span class="k">Continue with Google / Apple / Facebook</span><span class="v pill">Not offered</span></li>
+          <li><span class="k">Phone number sign-up</span><span class="v pill">Not offered</span></li>
+          <li><span class="k">GET/POST /auth/federated/*</span><span class="v pill">404 not found</span></li>
+          <li><span class="k">POST /auth/sign-up/phone</span><span class="v pill">404 not found</span></li>
+          <li><span class="k">{ providerToken: ... } to /auth/sign-up</span><span class="v pill">400 unsupported_auth_method</span></li>
+          <li><span class="k">{ phoneNumber: ... } to /auth/sign-in</span><span class="v pill">400 unsupported_auth_method</span></li>
+        </ul>
+
+        <div class="banner banner-danger">
+          <span class="banner-icon">✕</span>
+          <div>
+            <strong>Simulated response</strong>
+            <code>{ "error": "unsupported_auth_method", "message": "Only email and password sign-in is supported." }</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  /* ---------- Screen navigation (reviewer bar) ---------- */
+  var screens = [
+    'screen-signup-default',
+    'screen-signup-loading',
+    'screen-verify-code',
+    'screen-verify-loading',
+    'screen-authenticated',
+    'screen-parental-consent',
+    'screen-signup-errors',
+    'screen-scoping'
+  ];
+  var currentIndex = 0;
+
+  function renderJumpMenu() {
+    var jump = document.getElementById('rb-jump');
+    jump.innerHTML = '';
+    screens.forEach(function (id, i) {
+      var el = document.getElementById(id);
+      var opt = document.createElement('option');
+      opt.value = id;
+      opt.textContent = (i + 1) + '. ' + el.getAttribute('data-label');
+      jump.appendChild(opt);
+    });
+  }
+
+  function updateActive() {
+    screens.forEach(function (id, i) {
+      document.getElementById(id).classList.toggle('active', i === currentIndex);
+    });
+    var el = document.getElementById(screens[currentIndex]);
+    document.getElementById('rb-label').textContent =
+      (currentIndex + 1) + ' / ' + screens.length + ' — ' + el.getAttribute('data-label');
+    document.getElementById('rb-jump').value = screens[currentIndex];
+  }
+
+  function goToScreen(id) {
+    var i = screens.indexOf(id);
+    if (i !== -1) { currentIndex = i; updateActive(); }
+  }
+
+  function nextScreen() {
+    currentIndex = (currentIndex + 1) % screens.length;
+    updateActive();
+  }
+
+  function prevScreen() {
+    currentIndex = (currentIndex - 1 + screens.length) % screens.length;
+    updateActive();
+  }
+
+  renderJumpMenu();
+  updateActive();
+
+  /* ---------- Screen 1 -> 2 -> 3/6/7: sign-up submit simulation ---------- */
+  // State: idle. Clicking "Create account" simulates POST /auth/sign-up in flight
+  // (AC14 disabled submit, AC15 loading indicator), then routes to the adult
+  // verification path (AC1) after a short delay, matching the fixture email below.
+  function submitSignUpDefault() {
+    goToScreen('screen-signup-loading');
+    setTimeout(function () {
+      // State: sign-up resolved as verification_required (adult date of birth fixture).
+      goToScreen('screen-verify-code');
+      setVerifyState('default');
+    }, 1200);
+  }
+
+  /* ---------- Screen 3: Verify email — tabbed states ---------- */
+  var verifyBannerSlot = document.getElementById('verify-banner-slot');
+
+  function setVerifyState(state) {
+    ['default', 'checking', 'wrong', 'locked', 'resend-cooldown', 'resend-limit'].forEach(function (s) {
+      var tab = document.getElementById('vtab-' + s);
+      if (tab) tab.classList.toggle('on', s === state);
+    });
+
+    var codeInput = document.getElementById('verify-code');
+    var submitBtn = document.getElementById('verify-submit-btn');
+    var resendBtn = document.getElementById('resend-btn');
+    var resendStatus = document.getElementById('resend-status');
+    var hint = document.getElementById('verify-code-hint');
+
+    verifyBannerSlot.innerHTML = '';
+    codeInput.disabled = false;
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = 'Confirm and continue';
+    resendBtn.disabled = false;
+    resendBtn.textContent = 'Resend code';
+    resendStatus.textContent = "Didn't get it?";
+    hint.textContent = 'Enter the code exactly as it appears in the email.';
+
+    if (state === 'default') {
+      codeInput.value = '482913';
+    } else if (state === 'wrong') {
+      // State: AC6 — incorrect code submitted, no session created, error surfaced inline.
+      codeInput.value = '000000';
+      verifyBannerSlot.innerHTML =
+        '<div class="banner banner-danger"><span class="banner-icon">✕</span>' +
+        '<div><strong>That code isn\'t right</strong>Double-check the 6 digits from your email and try again. No session has been created.</div></div>';
+    } else if (state === 'locked') {
+      // State: AC13 — max failed confirm-email attempts reached, cooldown enforced.
+      codeInput.value = '000000';
+      codeInput.disabled = true;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Confirm and continue';
+      verifyBannerSlot.innerHTML =
+        '<div class="banner banner-danger"><span class="banner-icon">⏱</span>' +
+        '<div><strong>Too many attempts</strong>You\'ve reached the limit of failed codes. Try again in <strong>14:52</strong>, or request a fresh code by email after the cooldown.</div></div>';
+    } else if (state === 'resend-cooldown') {
+      // State: AC16 — resend requested before the cooldown since the last send elapsed.
+      resendBtn.disabled = true;
+      resendStatus.textContent = '';
+      verifyBannerSlot.innerHTML =
+        '<div class="banner banner-warning"><span class="banner-icon">⏱</span>' +
+        '<div><strong>Hold on a moment</strong>You can request another code in <strong>0:47</strong>. We already sent one — check spam if it hasn\'t arrived.</div></div>';
+    } else if (state === 'resend-limit') {
+      // State: AC17/AC18 — resend limit reached within the time window, no code sent.
+      resendBtn.disabled = true;
+      resendStatus.textContent = '';
+      verifyBannerSlot.innerHTML =
+        '<div class="banner banner-danger"><span class="banner-icon">✕</span>' +
+        '<div><strong>Resend limit reached</strong>You\'ve used all your code resends for this hour. No further code has been sent — try again after <strong>42:10</strong>, or contact support.</div></div>';
+    } else if (state === 'checking') {
+      submitVerifyCode(true);
+    }
+  }
+
+  function submitVerifyCode(skipLoadingHop) {
+    goToScreen('screen-verify-loading');
+    setTimeout(function () {
+      var code = document.getElementById('verify-code') ? document.getElementById('verify-code').value : '482913';
+      if (code === '482913') {
+        // State: AC5 — correct code, authenticated session established.
+        goToScreen('screen-authenticated');
+      } else {
+        goToScreen('screen-verify-code');
+        setVerifyState('wrong');
+      }
+    }, 1000);
+  }
+
+  function clickResend() {
+    var resendBtn = document.getElementById('resend-btn');
+    var resendStatus = document.getElementById('resend-status');
+    resendBtn.disabled = true;
+    resendBtn.textContent = 'Sending…';
+    setTimeout(function () {
+      // State: resend succeeded (not a limited/cooldown case) — new code sent.
+      resendBtn.disabled = false;
+      resendBtn.textContent = 'Resend code';
+      resendStatus.textContent = 'Sent a new code.';
+    }, 900);
+  }
+
+  /* ---------- Screen 7: sign-up validation error tabs ---------- */
+  var signupErrorSlot = document.getElementById('signup-error-banner-slot');
+
+  function setErrorState(state) {
+    ['dob', 'email', 'password', 'method'].forEach(function (s) {
+      document.getElementById('etab-' + s).classList.toggle('on', s === state);
+    });
+
+    // Reset all field states
+    ['dob', 'email', 'password'].forEach(function (f) {
+      document.getElementById('err-' + f).classList.remove('invalid');
+      document.getElementById('err-' + f + '-msg').classList.remove('visible');
+    });
+    signupErrorSlot.innerHTML = '';
+
+    if (state === 'dob') {
+      document.getElementById('err-dob').classList.add('invalid');
+      document.getElementById('err-dob').value = '2031-01-01';
+      document.getElementById('err-dob-msg').classList.add('visible');
+    } else if (state === 'email') {
+      document.getElementById('err-email').classList.add('invalid');
+      document.getElementById('err-email-msg').classList.add('visible');
+      document.getElementById('err-dob').value = '1990-04-12';
+    } else if (state === 'password') {
+      document.getElementById('err-password').classList.add('invalid');
+      document.getElementById('err-password').value = 'hunter2';
+      document.getElementById('err-password-msg').classList.add('visible');
+      document.getElementById('err-dob').value = '1990-04-12';
+    } else if (state === 'method') {
+      document.getElementById('err-dob').value = '1990-04-12';
+      signupErrorSlot.innerHTML =
+        '<div class="banner banner-danger"><span class="banner-icon">✕</span>' +
+        '<div><strong>Unsupported sign-up method</strong>This request included a federated provider token / phone number as the identity mechanism. Only email and password are supported — <code>unsupported_auth_method</code>.</div></div>';
+    }
+  }
+</script>
+
+</body>
+</html>
